@@ -1,3 +1,11 @@
+# Platformio
+.pio
+cmake-build-debug
+stm32pio.ini
+
+# IDE
+.idea
+
 # Prerequisites
 *.d
 

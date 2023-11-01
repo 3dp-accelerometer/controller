@@ -33,10 +33,10 @@ enum Adxl345Register_Address {
 /* Register Flags ------------------------------------------------------------*/
 
 enum Adxl345Register_PowerCtl_Wakeup {
-  Adxl345Register_PowerCtl_Wakeup_8Hz = 0x00,
-  Adxl345Register_PowerCtl_Wakeup_4Hz = 0x01,
-  Adxl345Register_PowerCtl_Wakeup_2Hz = 0x10,
-  Adxl345Register_PowerCtl_Wakeup_1Hz = 0x11,
+  Adxl345Register_PowerCtl_Wakeup_8Hz = 0b00,
+  Adxl345Register_PowerCtl_Wakeup_4Hz = 0b01,
+  Adxl345Register_PowerCtl_Wakeup_2Hz = 0b10,
+  Adxl345Register_PowerCtl_Wakeup_1Hz = 0b11,
 };
 
 enum Adxl345Register_PowerCtl_Sleep {

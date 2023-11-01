@@ -15,20 +15,20 @@ struct TransportHeader {
 /* TX ------------------------------------------------------------------------*/
 
 enum TransportRx_SetOutputDataRate_Rate {
-  TransportRx_SetOutputDataRate_Rate3200 = 0x1111,
-  TransportRx_SetOutputDataRate_Rate1600 = 0x1110,
-  TransportRx_SetOutputDataRate_Rate_800 = 0x1101,
-  TransportRx_SetOutputDataRate_Rate_400 = 0x1100,
-  TransportRx_SetOutputDataRate_Rate_200 = 0x1011,
-  TransportRx_SetOutputDataRate_Rate_100 = 0x1010,
-  TransportRx_SetOutputDataRate_Rate_50 = 0x1001
+  TransportRx_SetOutputDataRate_Rate3200 = 0b1111,
+  TransportRx_SetOutputDataRate_Rate1600 = 0b1110,
+  TransportRx_SetOutputDataRate_Rate_800 = 0b1101,
+  TransportRx_SetOutputDataRate_Rate_400 = 0b1100,
+  TransportRx_SetOutputDataRate_Rate_200 = 0b1011,
+  TransportRx_SetOutputDataRate_Rate_100 = 0b1010,
+  TransportRx_SetOutputDataRate_Rate_50 = 0b1001
 };
 
 enum TransportRx_SetRange_Range {
-  TransportRx_SetRange_Range_2g = 0x00,
-  TransportRx_SetRange_Range_4g = 0x01,
-  TransportRx_SetRange_Range_8g = 0x10,
-  TransportRx_SetRange_Range_16g = 0x11
+  TransportRx_SetRange_Range_2g = 0b00,
+  TransportRx_SetRange_Range_4g = 0b01,
+  TransportRx_SetRange_Range_8g = 0b10,
+  TransportRx_SetRange_Range_16g = 0b11
 };
 
 struct TransportRx_SetOutputDataRate {

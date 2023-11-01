@@ -2,55 +2,69 @@
 #include "gpio.h"
 #include "spi.h"
 #include "usbd_cdc_if.h"
+#include <errno.h>
 #include <stdio.h>
 #include <string.h>
 
-static void ncs_set() {
+static void ncsSet() {
   HAL_GPIO_WritePin(SPI1_SS_GPIO_Port, SPI1_SS_Pin, GPIO_PIN_RESET);
 }
 
-static void ncs_clear() {
+static void ncsClear() {
   HAL_GPIO_WritePin(SPI1_SS_GPIO_Port, SPI1_SS_Pin, GPIO_PIN_SET);
 }
 
-static void transmit_frame(union Adxl345TxFrame *frame, uint8_t num_bytes,
+static void transmitFrame(union Adxl345TxFrame *frame, uint8_t num_bytes,
                           enum Adxl345CS apply_cs,
                           enum Adxl345RWFlags rw_flag) {
   frame->asAddress |= rw_flag;
 
   if (Adxl345CS_modify == apply_cs) {
-    ncs_set();
+    ncsSet();
     HAL_SPI_Transmit(&hspi1, (uint8_t *)frame, num_bytes, 10);
-    ncs_clear();
+    ncsClear();
   } else {
     HAL_SPI_Transmit(&hspi1, (uint8_t *)frame, num_bytes, 10);
   }
 }
 
-static void receive_frame(union Adxl345RxFrame *frame, uint8_t num_bytes,
+static void receiveFrame(union Adxl345RxFrame *frame, uint8_t num_bytes,
                          enum Adxl345CS apply_cs) {
 
   if (Adxl345CS_modify == apply_cs) {
-    ncs_set();
+    ncsSet();
     HAL_SPI_Receive(&hspi1, (uint8_t *)frame, num_bytes, 10);
-    ncs_clear();
+    ncsClear();
   } else {
     HAL_SPI_Receive(&hspi1, (uint8_t *)frame, num_bytes, 10);
   }
 }
 
-static int transmit_receive(union Adxl345TxFrame *tx_frame,
-                            union Adxl345RxFrame *rx_frame,
-                            uint8_t num_bytes_receive) {
+static void transmitReceiveFrame(union Adxl345TxFrame *tx_frame,
+                                 union Adxl345RxFrame *rx_frame,
+                                 uint8_t num_bytes_receive) {
   const uint8_t multiByte =
       num_bytes_receive > 1 ? Adxl345RWFlags_multiByte : 0;
-  ncs_set();
-  transmit_frame(tx_frame, 1, Adxl345CS_untouched,
-                 Adxl345RWFlags_read | multiByte);
-  receive_frame(rx_frame, num_bytes_receive, Adxl345CS_untouched);
-  ncs_clear();
+  ncsSet();
+  transmitFrame(tx_frame, 1, Adxl345CS_untouched,
+                Adxl345RWFlags_read | multiByte);
+  receiveFrame(rx_frame, num_bytes_receive, Adxl345CS_untouched);
+  ncsClear();
+}
 
-  return 0;
+static void readRegister(enum Adxl345Register_Address addr,
+                         union Adxl345Register *reg) {
+  union Adxl345TxFrame txFrame = {.asAddress = addr | Adxl345RWFlags_read};
+  union Adxl345RxFrame rxFrame = {0};
+  transmitReceiveFrame(&txFrame, &rxFrame, 1);
+  *reg = rxFrame.asRegister;
+}
+
+static void writeRegister(enum Adxl345Register_Address addr,
+                          union Adxl345Register *reg) {
+  union Adxl345TxFrame txFrame = {.asAddress = addr};
+  txFrame.asPaddedRegister.asRegister = *reg;
+  transmitFrame(&txFrame, 1, Adxl345CS_modify, Adxl345RWFlags_write);
 }
 
 int Adxl345_init() {
@@ -66,7 +80,7 @@ int Adxl345_init() {
             .justify = Adxl345Register_DataFormat_Justify_msb,
             .range = Adxl345Register_DataFormat_Range_2g}};
     tx_frame.asAddress = Adxl345Register_Address_dataFormat;
-    transmit_frame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
+    transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
   }
 
   { // bandwidth rate
@@ -78,7 +92,7 @@ int Adxl345_init() {
             ._zeroD6 = 0,
             ._zeroD7 = 0}};
     tx_frame.asAddress = Adxl345Register_Address_bwRate;
-    transmit_frame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
+    transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
   }
 
   { // fifo control
@@ -89,7 +103,7 @@ int Adxl345_init() {
             //.fifoMode = Adxl345Register_FifoCtl_FifoMode_bypass
             .fifoMode = Adxl345Register_FifoCtl_FifoMode_fifo}};
     tx_frame.asAddress = Adxl345Register_Address_fifoCtl;
-    transmit_frame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
+    transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
   }
 
   { // power control
@@ -103,7 +117,7 @@ int Adxl345_init() {
             ._zeroD6 = 0,
             ._zeroD7 = 0}};
     tx_frame.asAddress = Adxl345Register_Address_powerCtl;
-    transmit_frame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
+    transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
   }
 
   { // interrupt enable
@@ -118,7 +132,7 @@ int Adxl345_init() {
             .singleTap = Adxl345Register_IntEnable_SingleTap_disable,
             .dataReady = Adxl345Register_IntEnable_DataReady_disable}};
     tx_frame.asAddress = Adxl345Register_Address_intEnable;
-    transmit_frame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
+    transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
   }
 
   { // interrupt map
@@ -133,7 +147,7 @@ int Adxl345_init() {
             .singleTap = Adxl345Register_IntMap_SingleTap_int1,
             .dataReady = Adxl345Register_IntMap_DataReady_int1}};
     tx_frame.asAddress = Adxl345Register_Address_intMap;
-    transmit_frame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
+    transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
   }
 
   return 0;
@@ -143,7 +157,7 @@ int Adxl345_checkDevId() {
   union Adxl345TxFrame tx_frame = {.asAddress = Adxl345Register_Address_devId};
   union Adxl345RxFrame rx_frame = {0};
 
-  transmit_receive(&tx_frame, &rx_frame, 1);
+  transmitReceiveFrame(&tx_frame, &rx_frame, 1);
   char str[24];
   sprintf(str, "devId=%d\r\n", rx_frame.asBytes.byte1);
   CDC_Transmit_FS((uint8_t *)str, strnlen(str, sizeof(str)));
@@ -155,7 +169,7 @@ int Adxl345_checkBwRate() {
   union Adxl345TxFrame tx_frame = {.asAddress = Adxl345Register_Address_bwRate};
   union Adxl345RxFrame rx_frame = {0};
 
-  transmit_receive(&tx_frame, &rx_frame, 1);
+  transmitReceiveFrame(&tx_frame, &rx_frame, 1);
   char str[24];
   sprintf(str, "bwRate=%d\r\n", rx_frame.asBytes.byte1);
   CDC_Transmit_FS((uint8_t *)str, strnlen(str, sizeof(str)));
@@ -167,7 +181,7 @@ int Adxl345_checkAcceleration() {
   union Adxl345TxFrame tx_frame = {.asAddress = Adxl345Register_Address_dataX0};
   union Adxl345RxFrame rx_frame = {0};
 
-  transmit_receive(&tx_frame, &rx_frame, 6);
+  transmitReceiveFrame(&tx_frame, &rx_frame, 6);
   char str[32];
   sprintf(str, "x=%d y=%d z=%d\r\n", rx_frame.asAcceleration.x,
           rx_frame.asAcceleration.y, rx_frame.asAcceleration.z);
@@ -180,7 +194,7 @@ int Adxl345_checkPowerCtl() {
   union Adxl345TxFrame tx_frame = {.asAddress = Adxl345Register_Address_bwRate};
   union Adxl345RxFrame rx_frame = {0};
 
-  transmit_receive(&tx_frame, &rx_frame, 1);
+  transmitReceiveFrame(&tx_frame, &rx_frame, 1);
   char str[24];
   sprintf(str, "powerCtl=%d\r\n", rx_frame.asBytes.byte1);
   CDC_Transmit_FS((uint8_t *)str, strnlen(str, sizeof(str)));
@@ -193,7 +207,7 @@ int Adxl345_checkDataFormat() {
                                        Adxl345Register_Address_dataFormat};
   union Adxl345RxFrame rx_frame = {0};
 
-  transmit_receive(&tx_frame, &rx_frame, 1);
+  transmitReceiveFrame(&tx_frame, &rx_frame, 1);
   char str[24];
   sprintf(str, "dataFormat=%d\r\n", rx_frame.asBytes.byte1);
   CDC_Transmit_FS((uint8_t *)str, strnlen(str, sizeof(str)));
@@ -206,7 +220,7 @@ int Adxl345_checkFifoCtl() {
                                        Adxl345Register_Address_fifoCtl};
   union Adxl345RxFrame rx_frame = {0};
 
-  transmit_receive(&tx_frame, &rx_frame, 1);
+  transmitReceiveFrame(&tx_frame, &rx_frame, 1);
   char str[24];
   sprintf(str, "fifoCtl=%d\r\n", rx_frame.asBytes.byte1);
   CDC_Transmit_FS((uint8_t *)str, strnlen(str, sizeof(str)));
@@ -219,10 +233,50 @@ int Adxl345_checkFifoStatus() {
                                        Adxl345Register_Address_fifoStatus};
   union Adxl345RxFrame rx_frame = {0};
 
-  transmit_receive(&tx_frame, &rx_frame, 1);
+  transmitReceiveFrame(&tx_frame, &rx_frame, 1);
   char str[24];
   sprintf(str, "fifoStatus=%d\r\n", rx_frame.asBytes.byte1);
   CDC_Transmit_FS((uint8_t *)str, strnlen(str, sizeof(str)));
+
+  return 0;
+}
+
+int Adxl345_setOutputDataRate(uint8_t rate) {
+  switch ((enum Adxl345Register_BwRate_Rate)rate) {
+  case Adxl345Register_BwRate_Rate_normalPowerOdr3200:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr1600:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr800:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr400:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr200:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr100: {
+    union Adxl345Register reg;
+    readRegister(Adxl345Register_Address_bwRate, &reg);
+    reg.asBwRate.rate = (enum Adxl345Register_BwRate_Rate)rate;
+    writeRegister(Adxl345Register_Address_bwRate, &reg);
+  } break;
+
+  default:
+    return -EINVAL;
+  }
+
+  return 0;
+}
+
+int Adxl345_setRange(uint8_t range) {
+  switch ((enum Adxl345Register_DataFormat_Range)range) {
+  case Adxl345Register_DataFormat_Range_2g:
+  case Adxl345Register_DataFormat_Range_4g:
+  case Adxl345Register_DataFormat_Range_8g:
+  case Adxl345Register_DataFormat_Range_16g: {
+    union Adxl345Register reg;
+    readRegister(Adxl345Register_Address_dataFormat, &reg);
+    reg.asDataFormat.range = (enum Adxl345Register_BwRate_Rate)range;
+    writeRegister(Adxl345Register_Address_dataFormat, &reg);
+  } break;
+
+  default:
+    return -EINVAL;
+  }
 
   return 0;
 }

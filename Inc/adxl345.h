@@ -314,6 +314,7 @@ struct Acceleration {
 } __attribute__((packed));
 
 union Adxl345RxFrame {
+  union Adxl345Register asRegister;
   struct Acceleration asAcceleration;
   struct TwoBytes asBytes;
   uint16_t asWord;
@@ -322,6 +323,7 @@ union Adxl345RxFrame {
 /* ---------------------------------------------------------------------------*/
 
 int Adxl345_init();
+
 int Adxl345_checkDevId();
 int Adxl345_checkBwRate();
 int Adxl345_checkPowerCtl();
@@ -329,3 +331,6 @@ int Adxl345_checkDataFormat();
 int Adxl345_checkAcceleration();
 int Adxl345_checkFifoCtl();
 int Adxl345_checkFifoStatus();
+
+int Adxl345_setOutputDataRate(uint8_t rate);
+int Adxl345_setRange(uint8_t range);

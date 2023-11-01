@@ -271,8 +271,10 @@ struct Adxl345Register_FifoCtl {
 struct Adxl345Register_FifoStatus {
   uint8_t entries : 6;
   uint8_t _zeroD6 : 1;
-  uint8_t fifoTrig : 2;
+  uint8_t fifoTrig : 1;
 } __attribute__((packed));
+
+/* Device Register Listing ---------------------------------------------------*/
 
 struct TwoBytes {
   uint8_t byte1;
@@ -316,6 +318,8 @@ union Adxl345RxFrame {
   struct TwoBytes asBytes;
   uint16_t asWord;
 } __attribute__((packed));
+
+/* ---------------------------------------------------------------------------*/
 
 int Adxl345_init();
 int Adxl345_checkDevId();

@@ -92,7 +92,6 @@ int main(void)
   MX_RTC_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-  HAL_Delay(50);
   Adxl345_init();
   /* USER CODE END 2 */
 
@@ -159,6 +158,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+  HAL_RCC_MCOConfig(RCC_MCO1, RCC_MCO1SOURCE_PLLCLK, RCC_MCODIV_5);
 }
 
 /* USER CODE BEGIN 4 */

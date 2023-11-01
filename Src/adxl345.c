@@ -13,7 +13,7 @@ static void ncs_clear() {
   HAL_GPIO_WritePin(SPI1_SS_GPIO_Port, SPI1_SS_Pin, GPIO_PIN_SET);
 }
 
-static int transmit_frame(union Adxl345TxFrame *frame, uint8_t num_bytes,
+static void transmit_frame(union Adxl345TxFrame *frame, uint8_t num_bytes,
                           enum Adxl345CS apply_cs,
                           enum Adxl345RWFlags rw_flag) {
   frame->asAddress |= rw_flag;
@@ -27,7 +27,7 @@ static int transmit_frame(union Adxl345TxFrame *frame, uint8_t num_bytes,
   }
 }
 
-static int receive_frame(union Adxl345RxFrame *frame, uint8_t num_bytes,
+static void receive_frame(union Adxl345RxFrame *frame, uint8_t num_bytes,
                          enum Adxl345CS apply_cs) {
 
   if (Adxl345CS_modify == apply_cs) {

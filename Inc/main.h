@@ -61,6 +61,10 @@ void Error_Handler(void);
 #define USER_LED0_GPIO_Port GPIOC
 #define USER_KEY0_Pin GPIO_PIN_0
 #define USER_KEY0_GPIO_Port GPIOA
+#define ACC_INT1_Pin GPIO_PIN_2
+#define ACC_INT1_GPIO_Port GPIOA
+#define ACC_INT2_Pin GPIO_PIN_3
+#define ACC_INT2_GPIO_Port GPIOA
 #define SPI1_SS_Pin GPIO_PIN_4
 #define SPI1_SS_GPIO_Port GPIOA
 

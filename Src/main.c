@@ -100,6 +100,7 @@ int main(void)
   while (1) {
     HAL_GPIO_TogglePin(USER_LED0_GPIO_Port, USER_LED0_Pin);
     HAL_Delay(200);
+    /*
     Adxl345_checkDevId();
     Adxl345_checkBwRate();
     Adxl345_checkPowerCtl();
@@ -107,6 +108,7 @@ int main(void)
     Adxl345_checkAcceleration();
     Adxl345_checkFifoStatus();
     Adxl345_checkFifoCtl();
+    */
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -151,7 +153,7 @@ void SystemClock_Config(void)
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV16;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)

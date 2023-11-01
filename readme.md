@@ -13,7 +13,7 @@ Prerequisites
 
        [app]
        platformio_cmd = platformio
-       cubemx_cmd = ${sysenv.HOME}/STM32CubeMX/STM32CubeMX
+       cubemx_cmd = /home/foo/STM32CubeMX/STM32CubeMX
        java_cmd = None
 
 Workflow
@@ -32,6 +32,26 @@ Roadmap
 - todo: assert sampling separation is equidistant
 - todo: assert no data is left behind (fifo overrun) 
 - todo: implement simple python api to gather data from controller
+
+
+Connecting Modules
+------------------
+
+```
+     +---------------------optional-for-development------------------+
+     |                   +-----------+          +------------+       |
++-------+----+       +---+           |---3V3----|            +---+   |
+| HOST post- +-------+USB| BlackPill |---GND----| STLink     |USB+---+
+| procession |       |   | STM32F401 |---SWD----| programmer |   |
++------------+       +---+           |---SWCLK--|            +---+  
+                         +-----------+          +------------+
+                             ||||PA2,  PA3,  PA4, PA5, PA6, PA7, 5V0, GND
+                             ||||
+                             ||||INT1, INT2, CS,  SCL  SDO, SDA, VCC, GNC
+                         +-----------+
+                         |  ADXL345  |
+                         +-----------+
+```
 
 References
 ----------

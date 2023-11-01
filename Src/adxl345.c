@@ -249,7 +249,7 @@ int Adxl345_setOutputDataRate(uint8_t rate) {
   case Adxl345Register_BwRate_Rate_normalPowerOdr400:
   case Adxl345Register_BwRate_Rate_normalPowerOdr200:
   case Adxl345Register_BwRate_Rate_normalPowerOdr100: {
-    union Adxl345Register reg;
+    union Adxl345Register reg = {0};
     readRegister(Adxl345Register_Address_bwRate, &reg);
     reg.asBwRate.rate = (enum Adxl345Register_BwRate_Rate)rate;
     writeRegister(Adxl345Register_Address_bwRate, &reg);
@@ -262,13 +262,25 @@ int Adxl345_setOutputDataRate(uint8_t rate) {
   return 0;
 }
 
+int Adxl345_getOutputDataRate(enum Adxl345Register_BwRate_Rate *rate) {
+
+  if (NULL == rate)
+    return -EINVAL;
+
+  union Adxl345Register reg = {0};
+  readRegister(Adxl345Register_Address_bwRate, &reg);
+  *rate = (enum Adxl345Register_BwRate_Rate)reg.asBwRate.rate;
+
+  return 0;
+}
+
 int Adxl345_setRange(uint8_t range) {
   switch ((enum Adxl345Register_DataFormat_Range)range) {
   case Adxl345Register_DataFormat_Range_2g:
   case Adxl345Register_DataFormat_Range_4g:
   case Adxl345Register_DataFormat_Range_8g:
   case Adxl345Register_DataFormat_Range_16g: {
-    union Adxl345Register reg;
+    union Adxl345Register reg = {0};
     readRegister(Adxl345Register_Address_dataFormat, &reg);
     reg.asDataFormat.range = (enum Adxl345Register_BwRate_Rate)range;
     writeRegister(Adxl345Register_Address_dataFormat, &reg);
@@ -277,6 +289,28 @@ int Adxl345_setRange(uint8_t range) {
   default:
     return -EINVAL;
   }
+
+  return 0;
+}
+
+int Adxl345_getRange(enum Adxl345Register_DataFormat_Range *range) {
+  if (NULL == range)
+    return -EINVAL;
+
+  union Adxl345Register reg = {0};
+  readRegister(Adxl345Register_Address_dataFormat, &reg);
+  *range = (enum Adxl345Register_DataFormat_Range)reg.asDataFormat.range;
+
+  return 0;
+}
+
+int Adxl345_getScale(enum Adxl345Register_DataFormat_FullResBit *scale) {
+  if (NULL == scale)
+    return -EINVAL;
+
+  union Adxl345Register reg = {0};
+  readRegister(Adxl345Register_Address_dataFormat, &reg);
+  *scale = (enum Adxl345Register_DataFormat_FullResBit)reg.asDataFormat.fullRes;
 
   return 0;
 }

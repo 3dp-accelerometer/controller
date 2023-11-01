@@ -4,8 +4,12 @@
 /* Transport Header ----------------------------------------------------------*/
 
 enum TransportHeader_Id {
-  TransportHeader_Id_SetOutputDataRate,
-  TransportHeader_Id_SetRange
+  TransportHeader_Id_SetOutputDataRate = 1,
+  TransportHeader_Id_GetOutputDataRate,
+  TransportHeader_Id_SetRange,
+  TransportHeader_Id_GetRange,
+  TransportHeader_Id_SetScale,
+  TransportHeader_Id_GetScale,
 };
 
 struct TransportHeader {
@@ -31,24 +35,51 @@ enum TransportRx_SetRange_Range {
   TransportRx_SetRange_Range_16g = 0b11
 };
 
+enum TransportRx_SetScale_Scale {
+  TransportRx_SetScale_Scale_10bit = 0,
+  TransportRx_SetScale_Scale_full4mg
+};
+
 struct TransportRx_SetOutputDataRate {
   enum TransportRx_SetOutputDataRate_Rate rate;
-};
+} __attribute__((packed));
+
+struct TransportRx_GetOutputDataRate {
+} __attribute__((packed));
+
+struct TransportRx_GetRange {
+} __attribute__((packed));
+
+struct TransportRx_GetScale {
+} __attribute__((packed));
 
 struct TransportRx_SetRange {
   enum TransportRx_SetRange_Range range;
-};
-
-struct TransportTxResponseBar {};
+} __attribute__((packed));
 
 /* RX ------------------------------------------------------------------------*/
 
+struct TransportTx_GetOutputDataRate {
+  enum TransportRx_SetOutputDataRate_Rate rate;
+} __attribute__((packed));
+
+struct TransportTx_GetRange {
+  enum TransportRx_SetRange_Range range;
+} __attribute__((packed));
+
+struct TransportTx_GetScale {
+  enum TransportRx_SetScale_Scale scale;
+} __attribute__((packed));
+
 union TransportTxFrame {
-  struct TransportTxResponseBar asResponseBar;
+  struct TransportTx_GetOutputDataRate asGetOutputDataRate;
+  struct TransportTx_GetRange asGetRange;
+  struct TransportTx_GetScale asGetScale;
 } __attribute__((packed));
 
 union TransportRxFrame {
   struct TransportRx_SetOutputDataRate asSetOutputDataRate;
+  struct TransportRx_GetOutputDataRate asGetOutputDataRate;
   struct TransportRx_SetRange asSetRange;
 
 } __attribute__((packed));

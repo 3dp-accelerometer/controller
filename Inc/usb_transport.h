@@ -40,21 +40,25 @@ enum TransportRx_SetScale_Scale {
   TransportRx_SetScale_Scale_full4mg
 };
 
-struct TransportRx_SetOutputDataRate {
-  enum TransportRx_SetOutputDataRate_Rate rate;
+struct TransportRx_GetOutputDataRate {
 } __attribute__((packed));
 
-struct TransportRx_GetOutputDataRate {
+struct TransportRx_SetOutputDataRate {
+  enum TransportRx_SetOutputDataRate_Rate rate;
 } __attribute__((packed));
 
 struct TransportRx_GetRange {
 } __attribute__((packed));
 
+struct TransportRx_SetRange {
+  enum TransportRx_SetRange_Range range;
+} __attribute__((packed));
+
 struct TransportRx_GetScale {
 } __attribute__((packed));
 
-struct TransportRx_SetRange {
-  enum TransportRx_SetRange_Range range;
+struct TransportRx_SetScale {
+  enum TransportRx_SetScale_Scale scale;
 } __attribute__((packed));
 
 /* RX ------------------------------------------------------------------------*/
@@ -79,9 +83,8 @@ union TransportTxFrame {
 
 union TransportRxFrame {
   struct TransportRx_SetOutputDataRate asSetOutputDataRate;
-  struct TransportRx_GetOutputDataRate asGetOutputDataRate;
   struct TransportRx_SetRange asSetRange;
-
+  struct TransportRx_SetScale asSetScale;
 } __attribute__((packed));
 
 struct TransportFrame {

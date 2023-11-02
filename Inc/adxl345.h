@@ -332,9 +332,11 @@ int Adxl345_checkAcceleration();
 int Adxl345_checkFifoCtl();
 int Adxl345_checkFifoStatus();
 
+int Adxl345_getOutputDataRate(enum Adxl345Register_BwRate_Rate *rate);
 int Adxl345_setOutputDataRate(uint8_t rate);
+
+int Adxl345_getRange(enum Adxl345Register_DataFormat_Range *range);
 int Adxl345_setRange(uint8_t range);
 
-int Adxl345_getOutputDataRate(enum Adxl345Register_BwRate_Rate *rate);
-int Adxl345_getRange(enum Adxl345Register_DataFormat_Range *range);
 int Adxl345_getScale(enum Adxl345Register_DataFormat_FullResBit *scale);
+int Adxl345_setScale(uint8_t scale);

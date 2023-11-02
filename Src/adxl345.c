@@ -86,7 +86,7 @@ int Adxl345_init() {
   { // bandwidth rate
     union Adxl345TxFrame tx_frame = {
         .asPaddedRegister.asRegister.asBwRate = {
-            .rate = Adxl345Register_BwRate_Rate_normalPowerOdr200,
+            .rate = Adxl345Register_BwRate_Rate_normalPowerOdr400,
             .lowPower = Adxl345Register_BwRate_LowPower_normal,
             ._zeroD5 = 0,
             ._zeroD6 = 0,
@@ -311,6 +311,24 @@ int Adxl345_getScale(enum Adxl345Register_DataFormat_FullResBit *scale) {
   union Adxl345Register reg = {0};
   readRegister(Adxl345Register_Address_dataFormat, &reg);
   *scale = (enum Adxl345Register_DataFormat_FullResBit)reg.asDataFormat.fullRes;
+
+  return 0;
+}
+
+int Adxl345_setScale(uint8_t scale) {
+  switch ((enum Adxl345Register_DataFormat_FullResBit)scale) {
+  case Adxl345Register_DataFormat_FullResBit_10bit:
+  case Adxl345Register_DataFormat_FullResBit_fullRes_4mg: {
+    union Adxl345Register reg = {0};
+    readRegister(Adxl345Register_Address_dataFormat, &reg);
+    reg.asDataFormat.fullRes =
+        (enum Adxl345Register_DataFormat_FullResBit)scale;
+    writeRegister(Adxl345Register_Address_dataFormat, &reg);
+  } break;
+
+  default:
+    return -EINVAL;
+  }
 
   return 0;
 }

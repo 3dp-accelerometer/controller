@@ -64,7 +64,7 @@ static void writeRegister(enum Adxl345Register_Address addr,
                           union Adxl345Register *reg) {
   union Adxl345TxFrame txFrame = {.asAddress = addr};
   txFrame.asPaddedRegister.asRegister = *reg;
-  transmitFrame(&txFrame, 1, Adxl345CS_modify, Adxl345RWFlags_write);
+  transmitFrame(&txFrame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
 }
 
 int Adxl345_init() {

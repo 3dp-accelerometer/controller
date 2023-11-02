@@ -26,6 +26,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "adxl345.h"
+#include "device_reboot.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,6 +99,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1) {
+    device_reboot_checkReboot();
     HAL_GPIO_TogglePin(USER_LED0_GPIO_Port, USER_LED0_Pin);
     HAL_Delay(200);
     /*

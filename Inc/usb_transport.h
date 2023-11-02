@@ -10,6 +10,10 @@ enum TransportHeader_Id {
   TransportHeader_Id_GetRange,
   TransportHeader_Id_SetScale,
   TransportHeader_Id_GetScale,
+  TransportHeader_Id_DeviceReboot = 32,
+  TransportHeader_Id_SamplingStart,
+  TransportHeader_Id_SamplingStartN,
+  TransportHeader_Id_SamplingStop,
 };
 
 struct TransportHeader {
@@ -61,6 +65,19 @@ struct TransportRx_SetScale {
   enum TransportRx_SetScale_Scale scale;
 } __attribute__((packed));
 
+struct TransportRx_DeviceReboot {
+} __attribute__((packed));
+
+struct TransportRx_SamplingStart {
+} __attribute__((packed));
+
+struct TransportRx_SamplingStartN {
+  uint16_t max_samples_count;
+} __attribute__((packed));
+
+struct TransportRx_SamplingStop {
+} __attribute__((packed));
+
 /* RX ------------------------------------------------------------------------*/
 
 struct TransportTx_GetOutputDataRate {
@@ -85,6 +102,10 @@ union TransportRxFrame {
   struct TransportRx_SetOutputDataRate asSetOutputDataRate;
   struct TransportRx_SetRange asSetRange;
   struct TransportRx_SetScale asSetScale;
+  struct TransportRx_DeviceReboot asDeviceReboot;
+  struct TransportRx_SamplingStart asSamplingStart;
+  struct TransportRx_SamplingStartN asSamplingStartN;
+  struct TransportRx_SamplingStop asSamplingStop;
 } __attribute__((packed));
 
 struct TransportFrame {

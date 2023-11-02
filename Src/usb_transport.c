@@ -1,5 +1,7 @@
 #include "usb_transport.h"
 #include "adxl345.h"
+#include "device_reboot.h"
+#include "sampling.h"
 #include "usbd_cdc_if.h"
 #include <errno.h>
 
@@ -20,7 +22,8 @@ int TransportRxProcess(uint8_t *buffer, uint32_t *length) {
       union TransportTxFrame txFrame = {
           .asGetOutputDataRate.rate =
               (enum TransportRx_SetOutputDataRate_Rate)rate};
-      CDC_Transmit_FS((uint8_t *)&txFrame, sizeof(txFrame.asGetOutputDataRate));
+      return CDC_Transmit_FS((uint8_t *)&txFrame,
+                             sizeof(txFrame.asGetOutputDataRate));
     }
   } break;
 
@@ -37,7 +40,7 @@ int TransportRxProcess(uint8_t *buffer, uint32_t *length) {
       Adxl345_getRange(&range);
       union TransportTxFrame txFrame = {
           .asGetRange.range = (enum TransportRx_SetRange_Range)range};
-      CDC_Transmit_FS((uint8_t *)&txFrame, sizeof(txFrame.asGetRange));
+      return CDC_Transmit_FS((uint8_t *)&txFrame, sizeof(txFrame.asGetRange));
     }
   } break;
 
@@ -53,13 +56,40 @@ int TransportRxProcess(uint8_t *buffer, uint32_t *length) {
       Adxl345_getScale(&scale);
       union TransportTxFrame txFrame = {
           .asGetScale.scale = (enum TransportRx_SetScale_Scale)scale};
-      CDC_Transmit_FS((uint8_t *)&txFrame, sizeof(txFrame.asGetScale));
+      return CDC_Transmit_FS((uint8_t *)&txFrame, sizeof(txFrame.asGetScale));
     }
   } break;
 
   case TransportHeader_Id_SetScale: {
     if (EXPECTED_RX_PKG_SIZE(struct TransportRx_SetScale) == *length) {
       return Adxl345_setScale(frame->asRxFrame.asSetScale.scale);
+    }
+  } break;
+
+  case TransportHeader_Id_DeviceReboot: {
+    if (EXPECTED_RX_PKG_SIZE(struct TransportRx_DeviceReboot) == *length) {
+      device_reboot_requestAsyncReboot();
+      return 0;
+    }
+  } break;
+
+  case TransportHeader_Id_SamplingStart: {
+    if (EXPECTED_RX_PKG_SIZE(struct TransportRx_SamplingStart) == *length) {
+      return sampling_start();
+    }
+  } break;
+
+  case TransportHeader_Id_SamplingStartN: {
+    if (EXPECTED_RX_PKG_SIZE(struct TransportRx_SamplingStartN) == *length) {
+      return sampling_startN(
+          frame->asRxFrame.asSamplingStartN.max_samples_count);
+    }
+  }
+
+  break;
+  case TransportHeader_Id_SamplingStop: {
+    if (EXPECTED_RX_PKG_SIZE(struct TransportRx_SamplingStop) == *length) {
+      return sampling_stop();
     }
   } break;
 

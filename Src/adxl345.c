@@ -120,7 +120,7 @@ int Adxl345_init() {
     transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
   }
 
-  { // interrupt enable
+  { // interrupt enable: watermark + overrun
     union Adxl345TxFrame tx_frame = {
         .asPaddedRegister.asRegister.asIntEnable = {
             .overrun = Adxl345Register_IntEnable_Overrun_enable,
@@ -135,7 +135,7 @@ int Adxl345_init() {
     transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
   }
 
-  { // interrupt map
+  { // interrupt map: watermark -> INT1, overrun -> INT2
     union Adxl345TxFrame tx_frame = {
         .asPaddedRegister.asRegister.asIntMap = {
             .overrun = Adxl345Register_IntMap_Overrun_int2,
@@ -177,6 +177,7 @@ int Adxl345_checkBwRate() {
   return 0;
 }
 
+/*
 int Adxl345_checkAcceleration() {
   union Adxl345TxFrame tx_frame = {.asAddress = Adxl345Register_Address_dataX0};
   union Adxl345RxFrame rx_frame = {0};
@@ -189,6 +190,7 @@ int Adxl345_checkAcceleration() {
 
   return 0;
 }
+*/
 
 int Adxl345_checkPowerCtl() {
   union Adxl345TxFrame tx_frame = {.asAddress = Adxl345Register_Address_bwRate};
@@ -329,6 +331,18 @@ int Adxl345_setScale(uint8_t scale) {
   default:
     return -EINVAL;
   }
+
+  return 0;
+}
+
+int Adxl345_getAcceleration(struct Adxl345_Acceleration *acc) {
+  if (NULL == acc)
+    return -EINVAL;
+
+  union Adxl345TxFrame tx_frame = {.asAddress = Adxl345Register_Address_dataX0};
+  union Adxl345RxFrame rx_frame = {0};
+  transmitReceiveFrame(&tx_frame, &rx_frame, 6);
+  *acc = rx_frame.asAcceleration;
 
   return 0;
 }

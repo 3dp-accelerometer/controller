@@ -307,7 +307,7 @@ union Adxl345TxFrame {
 
 /* RX Frame ------------------------------------------------------------------*/
 
-struct Acceleration {
+struct Adxl345_Acceleration {
   int16_t x;
   int16_t y;
   int16_t z;
@@ -315,7 +315,7 @@ struct Acceleration {
 
 union Adxl345RxFrame {
   union Adxl345Register asRegister;
-  struct Acceleration asAcceleration;
+  struct Adxl345_Acceleration asAcceleration;
   struct TwoBytes asBytes;
   uint16_t asWord;
 } __attribute__((packed));
@@ -328,7 +328,7 @@ int Adxl345_checkDevId();
 int Adxl345_checkBwRate();
 int Adxl345_checkPowerCtl();
 int Adxl345_checkDataFormat();
-int Adxl345_checkAcceleration();
+// int Adxl345_checkAcceleration();
 int Adxl345_checkFifoCtl();
 int Adxl345_checkFifoStatus();
 
@@ -340,3 +340,5 @@ int Adxl345_setRange(uint8_t range);
 
 int Adxl345_getScale(enum Adxl345Register_DataFormat_FullResBit *scale);
 int Adxl345_setScale(uint8_t scale);
+
+int Adxl345_getAcceleration(struct  Adxl345_Acceleration * acc);

@@ -75,31 +75,29 @@ int TransportRxProcess(uint8_t *buffer, uint32_t *length) {
 
   case TransportHeader_Id_SamplingStart: {
     if (EXPECTED_RX_PKG_SIZE(struct TransportRx_SamplingStart) == *length) {
-      return sampling_start();
+      sampling_start();
+      return 0;
     }
   } break;
 
   case TransportHeader_Id_SamplingStartN: {
     if (EXPECTED_RX_PKG_SIZE(struct TransportRx_SamplingStartN) == *length) {
-      return sampling_startN(
-          frame->asRxFrame.asSamplingStartN.max_samples_count);
+      sampling_startN(frame->asRxFrame.asSamplingStartN.max_samples_count);
+      return 0;
     }
   }
 
   break;
   case TransportHeader_Id_SamplingStop: {
     if (EXPECTED_RX_PKG_SIZE(struct TransportRx_SamplingStop) == *length) {
-      return sampling_stop();
+      sampling_stop();
+      return 0;
     }
   } break;
 
   default:
     break;
   }
-
-  char str[24];
-  sprintf(str, "unknown command=%d\r\n", (uint8_t)frame->header.id);
-  CDC_Transmit_FS((uint8_t *)str, strnlen(str, sizeof(str)));
 
   return -EINVAL;
 }

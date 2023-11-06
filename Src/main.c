@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "adxl345.h"
 #include "device_reboot.h"
+#include "sampling.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -99,18 +100,10 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1) {
+    sampling_fetchForward();
     device_reboot_checkReboot();
-    HAL_GPIO_TogglePin(USER_LED0_GPIO_Port, USER_LED0_Pin);
-    HAL_Delay(200);
-    /*
-    Adxl345_checkDevId();
-    Adxl345_checkBwRate();
-    Adxl345_checkPowerCtl();
-    Adxl345_checkDataFormat();
-    Adxl345_checkAcceleration();
-    Adxl345_checkFifoStatus();
-    Adxl345_checkFifoCtl();
-    */
+    // HAL_GPIO_TogglePin(USER_LED0_GPIO_Port, USER_LED0_Pin);
+    // HAL_Delay(200);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

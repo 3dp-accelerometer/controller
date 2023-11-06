@@ -14,6 +14,11 @@ enum TransportHeader_Id {
   TransportHeader_Id_SamplingStart,
   TransportHeader_Id_SamplingStartN,
   TransportHeader_Id_SamplingStop,
+  TransportHeader_Id_FifoOverflow,
+  TransportHeader_Id_SamplingStarted,
+  TransportHeader_Id_SamplingFinished,
+  TransportHeader_Id_SamplingStopped,
+  TransportHeader_Id_SamplingAborted,
 };
 
 struct TransportHeader {
@@ -92,10 +97,32 @@ struct TransportTx_GetScale {
   enum TransportRx_SetScale_Scale scale;
 } __attribute__((packed));
 
+struct TransportTx_FifoOverflow {
+} __attribute__((packed));
+
+struct TransportTx_SamplingStarted {
+} __attribute__((packed));
+
+struct TransportTx_SamplingFinished {
+} __attribute__((packed));
+
+struct TransportTx_SamplingStopped {
+} __attribute__((packed));
+
+struct TransportTx_SamplingAborted {
+} __attribute__((packed));
+
+/* Frames --------------------------------------------------------------------*/
+
 union TransportTxFrame {
   struct TransportTx_GetOutputDataRate asGetOutputDataRate;
   struct TransportTx_GetRange asGetRange;
   struct TransportTx_GetScale asGetScale;
+  struct TransportTx_FifoOverflow asFifoOverflow;
+  struct TransportTx_SamplingStarted asSamplingStarted;
+  struct TransportTx_SamplingFinished asSamplingFinished;
+  struct TransportTx_SamplingStopped asSamplingStopped;
+  struct TransportTx_SamplingAborted asSamplingAborted;
 } __attribute__((packed));
 
 union TransportRxFrame {

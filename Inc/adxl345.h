@@ -1,6 +1,17 @@
 #pragma once
 
+#include <assert.h>
 #include <inttypes.h>
+
+/* FiFo  Constants -----------------------------------------------------------*/
+
+#define ADXL345_WATERMARK_LEVEL 24
+#define ADXL345_FIFO_SIZE 24
+
+static_assert(ADXL345_WATERMARK_LEVEL <= 32,
+              "maximum allowed watermark level: 32");
+static_assert(ADXL345_WATERMARK_LEVEL >= 0,
+              "minimum allowed watermark level: 0");
 
 /* TX/RX Constants -----------------------------------------------------------*/
 
@@ -15,10 +26,28 @@ enum Adxl345RWFlags {
 
 enum Adxl345Register_Address {
   Adxl345Register_Address_devId = 0x00, // expected 0b11100101
+  __Adxl345Register_Address_reserved_01 = 0x01,
+  __Adxl345Register_Address_reserved_1C = 0x1C,
+  Adxl345Register_Address_thresTap = 0x1D,
+  Adxl345Register_Address_offsX = 0x1E,
+  Adxl345Register_Address_offsY = 0x1F,
+  Adxl345Register_Address_offsZ = 0x20,
+  Adxl345Register_Address_dur = 0x21,
+  Adxl345Register_Address_latent = 0x22,
+  Adxl345Register_Address_window = 0x23,
+  Adxl345Register_Address_thresAct = 0x24,
+  Adxl345Register_Address_thresInact = 0x25,
+  Adxl345Register_Address_timeInact = 0x26,
+  Adxl345Register_Address_actInactCtl = 0x27,
+  Adxl345Register_Address_thresFf = 0x28,
+  Adxl345Register_Address_timeFf = 0x29,
+  Adxl345Register_Address_tapAxes = 0x2A,
+  Adxl345Register_Address_actTapStatus = 0x2B,
   Adxl345Register_Address_bwRate = 0x2C,
   Adxl345Register_Address_powerCtl = 0x2D,
   Adxl345Register_Address_intEnable = 0x2E,
   Adxl345Register_Address_intMap = 0x2F,
+  Adxl345Register_Address_intSource = 0x30,
   Adxl345Register_Address_dataFormat = 0x31,
   Adxl345Register_Address_dataX0 = 0x32,
   Adxl345Register_Address_dataX1 = 0x33,
@@ -55,8 +84,8 @@ enum Adxl345Register_PowerCtl_AutoSleep {
 };
 
 enum Adxl345Register_PowerCtl_Link {
-  Adxl345Register_PowerCtl_Link_serial = 0,
-  Adxl345Register_PowerCtl_Link_concurrent
+  Adxl345Register_PowerCtl_Link_concurrent = 0,
+  Adxl345Register_PowerCtl_Link_serial
 };
 
 enum Adxl345Register_IntEnable_Overrun {
@@ -140,8 +169,8 @@ enum Adxl345Register_IntMap_DataReady {
 };
 
 enum Adxl345Register_DataFormat_SelfTest {
-  Adxl345Register_DataFormat_SelfTest_disable = 0,
-  Adxl345Register_DataFormat_SelfTest_enable
+  Adxl345Register_DataFormat_SelfTest_disableForce = 0,
+  Adxl345Register_DataFormat_SelfTest_enableForce
 };
 
 enum Adxl345Register_DataFormat_SpiBit {
@@ -156,8 +185,10 @@ enum Adxl345Register_DataFormat_IntInvert {
 
 enum Adxl345Register_DataFormat_FullResBit {
   Adxl345Register_DataFormat_FullResBit_10bit =
-      0, // range determines max g and scale
-  Adxl345Register_DataFormat_FullResBit_fullRes_4mg
+      0, // range determines max g and scale factor
+  Adxl345Register_DataFormat_FullResBit_fullRes_4mg // full resolution,
+                                                    // maintains a 4 mg/LSB
+                                                    // scale factor
 };
 
 enum Adxl345Register_DataFormat_Justify {
@@ -180,17 +211,19 @@ enum Adxl345Register_BwRate_Rate {
   Adxl345Register_BwRate_Rate_normalPowerOdr200 = 0b1011,
   Adxl345Register_BwRate_Rate_normalPowerOdr100 = 0b1010,
   Adxl345Register_BwRate_Rate_normalPowerOdr50 = 0b1001,
-  Adxl345Register_BwRate_Rate_lowPowerOdr400 = 0b1100,
-  Adxl345Register_BwRate_Rate_lowPowerOdr200 = 0b1011,
-  Adxl345Register_BwRate_Rate_lowPowerOdr100 = 0b1010,
-  Adxl345Register_BwRate_Rate_lowPowerOdr50 = 0b1001,
-  Adxl345Register_BwRate_Rate_lowPowerOdr25 = 0b1000,
-  Adxl345Register_BwRate_Rate_lowPowerOdr12_5 = 0b0111
+  Adxl345Register_BwRate_Rate_normalPowerOdr25 = 0b1000,
+  Adxl345Register_BwRate_Rate_normalPowerOdr12_5 = 0b0111,
+  Adxl345Register_BwRate_Rate_reducedPowerOdr400 = 0b1100,
+  Adxl345Register_BwRate_Rate_reducedPowerOdr200 = 0b1011,
+  Adxl345Register_BwRate_Rate_reducedPowerOdr100 = 0b1010,
+  Adxl345Register_BwRate_Rate_reducedPowerOdr50 = 0b1001,
+  Adxl345Register_BwRate_Rate_reducedPowerOdr25 = 0b1000,
+  Adxl345Register_BwRate_Rate_reducedPowerOdr12_5 = 0b0111
 };
 
 enum Adxl345Register_BwRate_LowPower {
   Adxl345Register_BwRate_LowPower_normal = 0,
-  Adxl345Register_BwRate_LowPower_low
+  Adxl345Register_BwRate_LowPower_reduced
 };
 
 enum Adxl345Register_FifoCtl_Trigger {
@@ -324,14 +357,6 @@ union Adxl345RxFrame {
 
 int Adxl345_init();
 
-int Adxl345_checkDevId();
-int Adxl345_checkBwRate();
-int Adxl345_checkPowerCtl();
-int Adxl345_checkDataFormat();
-// int Adxl345_checkAcceleration();
-int Adxl345_checkFifoCtl();
-int Adxl345_checkFifoStatus();
-
 int Adxl345_getOutputDataRate(enum Adxl345Register_BwRate_Rate *rate);
 int Adxl345_setOutputDataRate(uint8_t rate);
 
@@ -341,4 +366,7 @@ int Adxl345_setRange(uint8_t range);
 int Adxl345_getScale(enum Adxl345Register_DataFormat_FullResBit *scale);
 int Adxl345_setScale(uint8_t scale);
 
-int Adxl345_getAcceleration(struct  Adxl345_Acceleration * acc);
+void Adxl345_setPowerCtlStandby();
+void Adxl345_setPowerCtlMeasure();
+
+int Adxl345_getAcceleration(struct Adxl345_Acceleration *acc);

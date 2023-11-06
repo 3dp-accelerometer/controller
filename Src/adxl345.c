@@ -1,10 +1,7 @@
 #include "adxl345.h"
 #include "gpio.h"
 #include "spi.h"
-#include "usbd_cdc_if.h"
 #include <errno.h>
-#include <stdio.h>
-#include <string.h>
 
 static void ncsSet() {
   HAL_GPIO_WritePin(SPI1_SS_GPIO_Port, SPI1_SS_Pin, GPIO_PIN_RESET);
@@ -72,13 +69,13 @@ int Adxl345_init() {
   { // data format
     union Adxl345TxFrame tx_frame = {
         .asPaddedRegister.asRegister.asDataFormat = {
-            .selfTest = Adxl345Register_DataFormat_SelfTest_disable,
-            .spi = Adxl345Register_DataFormat_SpiBit_4wire,
-            .intInvert = Adxl345Register_DataFormat_IntInvert_activeHigh,
-            ._zeroD4 = 0,
-            .fullRes = Adxl345Register_DataFormat_FullResBit_10bit,
+            .range = Adxl345Register_DataFormat_Range_2g,
             .justify = Adxl345Register_DataFormat_Justify_msb,
-            .range = Adxl345Register_DataFormat_Range_2g}};
+            .fullRes = Adxl345Register_DataFormat_FullResBit_10bit,
+            ._zeroD4 = 0,
+            .intInvert = Adxl345Register_DataFormat_IntInvert_activeHigh,
+            .spi = Adxl345Register_DataFormat_SpiBit_4wire,
+            .selfTest = Adxl345Register_DataFormat_SelfTest_disableForce}};
     tx_frame.asAddress = Adxl345Register_Address_dataFormat;
     transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
   }
@@ -98,9 +95,8 @@ int Adxl345_init() {
   { // fifo control
     union Adxl345TxFrame tx_frame = {
         .asPaddedRegister.asRegister.asFifoCtl = {
-            .samples = 24,
+            .samples = ADXL345_WATERMARK_LEVEL,
             .trigger = Adxl345Register_FifoCtl_Trigger_int1,
-            //.fifoMode = Adxl345Register_FifoCtl_FifoMode_bypass
             .fifoMode = Adxl345Register_FifoCtl_FifoMode_fifo}};
     tx_frame.asAddress = Adxl345Register_Address_fifoCtl;
     transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
@@ -111,27 +107,12 @@ int Adxl345_init() {
         .asPaddedRegister.asRegister.asPowerControl = {
             .wakeup = Adxl345Register_PowerCtl_Wakeup_8Hz,
             .sleep = Adxl345Register_PowerCtl_Sleep_normalMode,
-            .measure = Adxl345Register_PowerCtl_Measure_measure,
+            .measure = Adxl345Register_PowerCtl_Measure_standby,
             .autoSleep = Adxl345Register_PowerCtl_AutoSleep_disabled,
             .link = Adxl345Register_PowerCtl_Link_concurrent,
             ._zeroD6 = 0,
             ._zeroD7 = 0}};
     tx_frame.asAddress = Adxl345Register_Address_powerCtl;
-    transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
-  }
-
-  { // interrupt enable: watermark + overrun
-    union Adxl345TxFrame tx_frame = {
-        .asPaddedRegister.asRegister.asIntEnable = {
-            .overrun = Adxl345Register_IntEnable_Overrun_enable,
-            .watermark = Adxl345Register_IntEnable_Watermark_enable,
-            .freeFall = Adxl345Register_IntEnable_FreeFall_disable,
-            .inactivity = Adxl345Register_IntEnable_Inactivity_disable,
-            .activity = Adxl345Register_IntEnable_Activity_disable,
-            .doubleTap = Adxl345Register_IntEnable_DoubleTap_disable,
-            .singleTap = Adxl345Register_IntEnable_SingleTap_disable,
-            .dataReady = Adxl345Register_IntEnable_DataReady_disable}};
-    tx_frame.asAddress = Adxl345Register_Address_intEnable;
     transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
   }
 
@@ -150,95 +131,20 @@ int Adxl345_init() {
     transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
   }
 
-  return 0;
-}
-
-int Adxl345_checkDevId() {
-  union Adxl345TxFrame tx_frame = {.asAddress = Adxl345Register_Address_devId};
-  union Adxl345RxFrame rx_frame = {0};
-
-  transmitReceiveFrame(&tx_frame, &rx_frame, 1);
-  char str[24];
-  sprintf(str, "devId=%d\r\n", rx_frame.asBytes.byte1);
-  CDC_Transmit_FS((uint8_t *)str, strnlen(str, sizeof(str)));
-
-  return 0;
-}
-
-int Adxl345_checkBwRate() {
-  union Adxl345TxFrame tx_frame = {.asAddress = Adxl345Register_Address_bwRate};
-  union Adxl345RxFrame rx_frame = {0};
-
-  transmitReceiveFrame(&tx_frame, &rx_frame, 1);
-  char str[24];
-  sprintf(str, "bwRate=%d\r\n", rx_frame.asBytes.byte1);
-  CDC_Transmit_FS((uint8_t *)str, strnlen(str, sizeof(str)));
-
-  return 0;
-}
-
-/*
-int Adxl345_checkAcceleration() {
-  union Adxl345TxFrame tx_frame = {.asAddress = Adxl345Register_Address_dataX0};
-  union Adxl345RxFrame rx_frame = {0};
-
-  transmitReceiveFrame(&tx_frame, &rx_frame, 6);
-  char str[32];
-  sprintf(str, "x=%d y=%d z=%d\r\n", rx_frame.asAcceleration.x,
-          rx_frame.asAcceleration.y, rx_frame.asAcceleration.z);
-  CDC_Transmit_FS((uint8_t *)str, strnlen(str, sizeof(str)));
-
-  return 0;
-}
-*/
-
-int Adxl345_checkPowerCtl() {
-  union Adxl345TxFrame tx_frame = {.asAddress = Adxl345Register_Address_bwRate};
-  union Adxl345RxFrame rx_frame = {0};
-
-  transmitReceiveFrame(&tx_frame, &rx_frame, 1);
-  char str[24];
-  sprintf(str, "powerCtl=%d\r\n", rx_frame.asBytes.byte1);
-  CDC_Transmit_FS((uint8_t *)str, strnlen(str, sizeof(str)));
-
-  return 0;
-}
-
-int Adxl345_checkDataFormat() {
-  union Adxl345TxFrame tx_frame = {.asAddress =
-                                       Adxl345Register_Address_dataFormat};
-  union Adxl345RxFrame rx_frame = {0};
-
-  transmitReceiveFrame(&tx_frame, &rx_frame, 1);
-  char str[24];
-  sprintf(str, "dataFormat=%d\r\n", rx_frame.asBytes.byte1);
-  CDC_Transmit_FS((uint8_t *)str, strnlen(str, sizeof(str)));
-
-  return 0;
-}
-
-int Adxl345_checkFifoCtl() {
-  union Adxl345TxFrame tx_frame = {.asAddress =
-                                       Adxl345Register_Address_fifoCtl};
-  union Adxl345RxFrame rx_frame = {0};
-
-  transmitReceiveFrame(&tx_frame, &rx_frame, 1);
-  char str[24];
-  sprintf(str, "fifoCtl=%d\r\n", rx_frame.asBytes.byte1);
-  CDC_Transmit_FS((uint8_t *)str, strnlen(str, sizeof(str)));
-
-  return 0;
-}
-
-int Adxl345_checkFifoStatus() {
-  union Adxl345TxFrame tx_frame = {.asAddress =
-                                       Adxl345Register_Address_fifoStatus};
-  union Adxl345RxFrame rx_frame = {0};
-
-  transmitReceiveFrame(&tx_frame, &rx_frame, 1);
-  char str[24];
-  sprintf(str, "fifoStatus=%d\r\n", rx_frame.asBytes.byte1);
-  CDC_Transmit_FS((uint8_t *)str, strnlen(str, sizeof(str)));
+  { // interrupt enable: watermark + overrun
+    union Adxl345TxFrame tx_frame = {
+        .asPaddedRegister.asRegister.asIntEnable = {
+            .overrun = Adxl345Register_IntEnable_Overrun_enable,
+            .watermark = Adxl345Register_IntEnable_Watermark_enable,
+            .freeFall = Adxl345Register_IntEnable_FreeFall_disable,
+            .inactivity = Adxl345Register_IntEnable_Inactivity_disable,
+            .activity = Adxl345Register_IntEnable_Activity_disable,
+            .doubleTap = Adxl345Register_IntEnable_DoubleTap_disable,
+            .singleTap = Adxl345Register_IntEnable_SingleTap_disable,
+            .dataReady = Adxl345Register_IntEnable_DataReady_disable}};
+    tx_frame.asAddress = Adxl345Register_Address_intEnable;
+    transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
+  }
 
   return 0;
 }
@@ -333,6 +239,20 @@ int Adxl345_setScale(uint8_t scale) {
   }
 
   return 0;
+}
+
+void Adxl345_setPowerCtlStandby() {
+  union Adxl345Register reg = {0};
+  readRegister(Adxl345Register_Address_powerCtl, &reg);
+  reg.asPowerControl.measure = Adxl345Register_PowerCtl_Measure_standby;
+  writeRegister(Adxl345Register_Address_powerCtl, &reg);
+}
+
+void Adxl345_setPowerCtlMeasure() {
+  union Adxl345Register reg = {0};
+  readRegister(Adxl345Register_Address_powerCtl, &reg);
+  reg.asPowerControl.measure = Adxl345Register_PowerCtl_Measure_measure;
+  writeRegister(Adxl345Register_Address_powerCtl, &reg);
 }
 
 int Adxl345_getAcceleration(struct Adxl345_Acceleration *acc) {

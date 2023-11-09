@@ -3,11 +3,9 @@
 #include <inttypes.h>
 #include <stdbool.h>
 
-/// Starts sampling if not started so far.
-void sampling_start();
-
-/// Starts sampling of N samples if no sampling was started so far.
-void sampling_startN(uint16_t maxSamples);
+/// Starts sampling of up to N samples if no sampling was started so far.
+/// Set N=0 for indefinite sampling (until #sampling_stop() is called).
+void sampling_start(uint16_t maxSamples);
 
 /// Stops sampling if not stopped so far.
 void sampling_stop();

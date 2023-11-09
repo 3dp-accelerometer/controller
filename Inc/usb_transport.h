@@ -10,22 +10,22 @@ enum TransportHeader_Id {
   TransportHeader_Id_GetRange,
   TransportHeader_Id_SetScale,
   TransportHeader_Id_GetScale,
-  TransportHeader_Id_DeviceReboot = 32,
+  TransportHeader_Id_DeviceReboot = 16,
   TransportHeader_Id_SamplingStart,
-  TransportHeader_Id_SamplingStartN,
   TransportHeader_Id_SamplingStop,
-  TransportHeader_Id_FifoOverflow,
+  TransportHeader_Id_FifoOverflow = 24,
   TransportHeader_Id_SamplingStarted,
   TransportHeader_Id_SamplingFinished,
   TransportHeader_Id_SamplingStopped,
   TransportHeader_Id_SamplingAborted,
+  TransportHeader_Id_Acceleration,
 };
 
 struct TransportHeader {
   enum TransportHeader_Id id;
 } __attribute__((packed));
 
-/* TX ------------------------------------------------------------------------*/
+/* RX ------------------------------------------------------------------------*/
 
 enum TransportRx_SetOutputDataRate_Rate {
   TransportRx_SetOutputDataRate_Rate3200 = 0b1111,
@@ -74,16 +74,13 @@ struct TransportRx_DeviceReboot {
 } __attribute__((packed));
 
 struct TransportRx_SamplingStart {
-} __attribute__((packed));
-
-struct TransportRx_SamplingStartN {
   uint16_t max_samples_count;
 } __attribute__((packed));
 
 struct TransportRx_SamplingStop {
 } __attribute__((packed));
 
-/* RX ------------------------------------------------------------------------*/
+/* TX ------------------------------------------------------------------------*/
 
 struct TransportTx_GetOutputDataRate {
   enum TransportRx_SetOutputDataRate_Rate rate;
@@ -112,6 +109,12 @@ struct TransportTx_SamplingStopped {
 struct TransportTx_SamplingAborted {
 } __attribute__((packed));
 
+struct TransportTx_Acceleration {
+  int16_t x;
+  int16_t y;
+  int16_t z;
+} __attribute__((packed));
+
 /* Frames --------------------------------------------------------------------*/
 
 union TransportTxFrame {
@@ -123,6 +126,7 @@ union TransportTxFrame {
   struct TransportTx_SamplingFinished asSamplingFinished;
   struct TransportTx_SamplingStopped asSamplingStopped;
   struct TransportTx_SamplingAborted asSamplingAborted;
+  struct TransportTx_Acceleration asAcceleration;
 } __attribute__((packed));
 
 union TransportRxFrame {
@@ -131,7 +135,6 @@ union TransportRxFrame {
   struct TransportRx_SetScale asSetScale;
   struct TransportRx_DeviceReboot asDeviceReboot;
   struct TransportRx_SamplingStart asSamplingStart;
-  struct TransportRx_SamplingStartN asSamplingStartN;
   struct TransportRx_SamplingStop asSamplingStop;
 } __attribute__((packed));
 

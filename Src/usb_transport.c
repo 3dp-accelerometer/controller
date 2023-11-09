@@ -75,14 +75,7 @@ int TransportRxProcess(uint8_t *buffer, uint32_t *length) {
 
   case TransportHeader_Id_SamplingStart: {
     if (EXPECTED_RX_PKG_SIZE(struct TransportRx_SamplingStart) == *length) {
-      sampling_start();
-      return 0;
-    }
-  } break;
-
-  case TransportHeader_Id_SamplingStartN: {
-    if (EXPECTED_RX_PKG_SIZE(struct TransportRx_SamplingStartN) == *length) {
-      sampling_startN(frame->asRxFrame.asSamplingStartN.max_samples_count);
+      sampling_start(frame->asRxFrame.asSamplingStart.max_samples_count);
       return 0;
     }
   }

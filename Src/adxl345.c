@@ -156,7 +156,17 @@ int Adxl345_setOutputDataRate(uint8_t rate) {
   case Adxl345Register_BwRate_Rate_normalPowerOdr800:
   case Adxl345Register_BwRate_Rate_normalPowerOdr400:
   case Adxl345Register_BwRate_Rate_normalPowerOdr200:
-  case Adxl345Register_BwRate_Rate_normalPowerOdr100: {
+  case Adxl345Register_BwRate_Rate_normalPowerOdr100:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr50:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr25:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr12_5:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr6_25:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr3_13:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr1_56:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr0_78:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr0_39:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr0_20:
+  case Adxl345Register_BwRate_Rate_normalPowerOdr0_10: {
     union Adxl345Register reg = {0};
     readRegister(Adxl345Register_Address_bwRate, &reg);
     reg.asBwRate.rate = (enum Adxl345Register_BwRate_Rate)rate;

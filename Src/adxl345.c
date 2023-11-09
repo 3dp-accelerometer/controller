@@ -69,9 +69,9 @@ int Adxl345_init() {
   { // data format
     union Adxl345TxFrame tx_frame = {
         .asPaddedRegister.asRegister.asDataFormat = {
-            .range = Adxl345Register_DataFormat_Range_2g,
-            .justify = Adxl345Register_DataFormat_Justify_msb,
-            .fullRes = Adxl345Register_DataFormat_FullResBit_10bit,
+            .range = Adxl345Register_DataFormat_Range_16g,
+            .justify = Adxl345Register_DataFormat_Justify_lsbRight,
+            .fullRes = Adxl345Register_DataFormat_FullResBit_fullRes_4mg,
             ._zeroD4 = 0,
             .intInvert = Adxl345Register_DataFormat_IntInvert_activeHigh,
             .spi = Adxl345Register_DataFormat_SpiBit_4wire,
@@ -83,7 +83,7 @@ int Adxl345_init() {
   { // bandwidth rate
     union Adxl345TxFrame tx_frame = {
         .asPaddedRegister.asRegister.asBwRate = {
-            .rate = Adxl345Register_BwRate_Rate_normalPowerOdr400,
+            .rate = Adxl345Register_BwRate_Rate_normalPowerOdr3200,
             .lowPower = Adxl345Register_BwRate_LowPower_normal,
             ._zeroD5 = 0,
             ._zeroD6 = 0,

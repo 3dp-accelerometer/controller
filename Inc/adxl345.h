@@ -184,16 +184,15 @@ enum Adxl345Register_DataFormat_IntInvert {
 };
 
 enum Adxl345Register_DataFormat_FullResBit {
-  Adxl345Register_DataFormat_FullResBit_10bit =
-      0, // range determines max g and scale factor
-  Adxl345Register_DataFormat_FullResBit_fullRes_4mg // full resolution,
-                                                    // maintains a 4 mg/LSB
-                                                    // scale factor
+  // full range 10bit: each range scales to 10 bit output
+  Adxl345Register_DataFormat_FullResBit_10bit = 0,
+  // full resolution (16 bit): each range maintains 4mg/LSB
+  Adxl345Register_DataFormat_FullResBit_fullRes_4mg
 };
 
 enum Adxl345Register_DataFormat_Justify {
-  Adxl345Register_DataFormat_Justify_lsb = 0, // LSB with sign extension
-  Adxl345Register_DataFormat_Justify_msb      // MSB
+  Adxl345Register_DataFormat_Justify_lsbRight = 0,
+  Adxl345Register_DataFormat_Justify_msbLeft
 };
 
 enum Adxl345Register_DataFormat_Range {

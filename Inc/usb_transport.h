@@ -1,24 +1,41 @@
 #pragma once
 #include <inttypes.h>
 
+/*----------------------------------------------------------------------------*/
+
+struct Adxl345_Acceleration;
+
+/*----------------------------------------------------------------------------*/
+
+#define SIZEOF_HEADER_INCL_PAYLOAD(packageType)                                \
+  (sizeof(struct TransportHeader) + sizeof(packageType))
+
 /* Transport Header ----------------------------------------------------------*/
 
 enum TransportHeader_Id {
-  TransportHeader_Id_SetOutputDataRate = 1,
-  TransportHeader_Id_GetOutputDataRate,
-  TransportHeader_Id_SetRange,
-  TransportHeader_Id_GetRange,
-  TransportHeader_Id_SetScale,
-  TransportHeader_Id_GetScale,
-  TransportHeader_Id_DeviceReboot = 16,
-  TransportHeader_Id_SamplingStart,
-  TransportHeader_Id_SamplingStop,
-  TransportHeader_Id_FifoOverflow = 24,
-  TransportHeader_Id_SamplingStarted,
-  TransportHeader_Id_SamplingFinished,
-  TransportHeader_Id_SamplingStopped,
-  TransportHeader_Id_SamplingAborted,
-  TransportHeader_Id_Acceleration,
+  TransportHeader_Id_Rx_SetOutputDataRate = 1,
+  TransportHeader_Id_Rx_GetOutputDataRate,
+  TransportHeader_Id_Rx_SetRange,
+  TransportHeader_Id_Rx_GetRange,
+  TransportHeader_Id_Rx_SetScale,
+  TransportHeader_Id_Rx_GetScale,
+  TransportHeader_Id_Rx_GetDeviceSetup,
+
+  TransportHeader_Id_Rx_DeviceReboot = 17,
+  TransportHeader_Id_Rx_SamplingStart,
+  TransportHeader_Id_Rx_SamplingStop,
+
+  TransportHeader_Id_Tx_OutputDataRate = 25,
+  TransportHeader_Id_Tx_Range,
+  TransportHeader_Id_Tx_Scale,
+  TransportHeader_Id_Tx_DeviceSetup,
+
+  TransportHeader_Id_Tx_FifoOverflow = 33,
+  TransportHeader_Id_Tx_SamplingStarted,
+  TransportHeader_Id_Tx_SamplingFinished,
+  TransportHeader_Id_Tx_SamplingStopped,
+  TransportHeader_Id_Tx_SamplingAborted,
+  TransportHeader_Id_Tx_Acceleration,
 };
 
 struct TransportHeader {
@@ -80,17 +97,20 @@ struct TransportRx_SamplingStart {
 struct TransportRx_SamplingStop {
 } __attribute__((packed));
 
+struct TransportRx_GetDeviceSetup {
+} __attribute__((packed));
+
 /* TX ------------------------------------------------------------------------*/
 
-struct TransportTx_GetOutputDataRate {
+struct TransportTx_OutputDataRate {
   enum TransportRx_SetOutputDataRate_Rate rate;
 } __attribute__((packed));
 
-struct TransportTx_GetRange {
+struct TransportTx_Range {
   enum TransportRx_SetRange_Range range;
 } __attribute__((packed));
 
-struct TransportTx_GetScale {
+struct TransportTx_Scale {
   enum TransportRx_SetScale_Scale scale;
 } __attribute__((packed));
 
@@ -103,6 +123,12 @@ struct TransportTx_SamplingStarted {
 struct TransportTx_SamplingFinished {
 } __attribute__((packed));
 
+struct TransportTx_DeviceSetup {
+  uint8_t outputDataRate : 4; // enum Adxl345Register_BwRate_Rate
+  uint8_t range : 2;          // enum Adxl345Register_DataFormat_Range
+  uint8_t scale : 1;          // enum Adxl345Register_DataFormat_FullResBit
+} __attribute__((packed));
+
 struct TransportTx_SamplingStopped {
 } __attribute__((packed));
 
@@ -110,6 +136,7 @@ struct TransportTx_SamplingAborted {
 } __attribute__((packed));
 
 struct TransportTx_Acceleration {
+  uint16_t index;
   int16_t x;
   int16_t y;
   int16_t z;
@@ -118,9 +145,10 @@ struct TransportTx_Acceleration {
 /* Frames --------------------------------------------------------------------*/
 
 union TransportTxFrame {
-  struct TransportTx_GetOutputDataRate asGetOutputDataRate;
-  struct TransportTx_GetRange asGetRange;
-  struct TransportTx_GetScale asGetScale;
+  struct TransportTx_OutputDataRate asOutputDataRate;
+  struct TransportTx_Range asRange;
+  struct TransportTx_Scale asScale;
+  struct TransportTx_DeviceSetup asDeviceSetup;
   struct TransportTx_FifoOverflow asFifoOverflow;
   struct TransportTx_SamplingStarted asSamplingStarted;
   struct TransportTx_SamplingFinished asSamplingFinished;
@@ -131,8 +159,12 @@ union TransportTxFrame {
 
 union TransportRxFrame {
   struct TransportRx_SetOutputDataRate asSetOutputDataRate;
+  struct TransportRx_GetOutputDataRate asGetOutputDataRate;
   struct TransportRx_SetRange asSetRange;
+  struct TransportRx_GetRange asGetRange;
   struct TransportRx_SetScale asSetScale;
+  struct TransportRx_GetScale asGetScale;
+  struct TransportRx_GetDeviceSetup asGetDeviceSetup;
   struct TransportRx_DeviceReboot asDeviceReboot;
   struct TransportRx_SamplingStart asSamplingStart;
   struct TransportRx_SamplingStop asSamplingStop;
@@ -149,3 +181,14 @@ struct TransportFrame {
 /* ---------------------------------------------------------------------------*/
 
 int TransportRxProcess(uint8_t *buffer, uint32_t *length);
+
+/* ---------------------------------------------------------------------------*/
+
+void TransportTxSamplingSetup();
+void TransportTxSamplingStarted();
+void TransportTxSamplingFinished();
+void TransportTxSamplingStopped();
+void TransportTxSamplingAborted();
+void TransportTxFifoOverflow();
+int TransportTxAccelerationBuffer(struct Adxl345_Acceleration *buffer,
+                                  uint8_t count, uint16_t start_index);

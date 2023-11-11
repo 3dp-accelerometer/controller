@@ -24,9 +24,12 @@ int TransportRxProcess(uint8_t *buffer, uint32_t *length) {
       response.asTxFrame.asOutputDataRate.rate =
           (enum TransportRx_SetOutputDataRate_Rate)rate;
       // send IDR
-      return CDC_Transmit_FS(
-          (uint8_t *)&response,
-          SIZEOF_HEADER_INCL_PAYLOAD(response.asTxFrame.asOutputDataRate));
+      while (USBD_BUSY ==
+             CDC_Transmit_FS((uint8_t *)&response,
+                             SIZEOF_HEADER_INCL_PAYLOAD(
+                                 response.asTxFrame.asOutputDataRate)))
+        ;
+      return 0;
     }
   } break;
     // set ODR
@@ -49,9 +52,11 @@ int TransportRxProcess(uint8_t *buffer, uint32_t *length) {
       response.asTxFrame.asRange.range = (enum TransportRx_SetRange_Range)range;
 
       // send range
-      return CDC_Transmit_FS(
-          (uint8_t *)&response,
-          SIZEOF_HEADER_INCL_PAYLOAD(response.asTxFrame.asRange));
+      while (USBD_BUSY == CDC_Transmit_FS((uint8_t *)&response,
+                                          SIZEOF_HEADER_INCL_PAYLOAD(
+                                              response.asTxFrame.asRange)))
+        ;
+      return 0;
     }
   } break;
 
@@ -73,9 +78,11 @@ int TransportRxProcess(uint8_t *buffer, uint32_t *length) {
       response.asTxFrame.asScale.scale = (enum TransportRx_SetScale_Scale)scale;
 
       // send scale
-      return CDC_Transmit_FS(
-          (uint8_t *)&response,
-          SIZEOF_HEADER_INCL_PAYLOAD(response.asTxFrame.asScale));
+      while (USBD_BUSY == CDC_Transmit_FS((uint8_t *)&response,
+                                          SIZEOF_HEADER_INCL_PAYLOAD(
+                                              response.asTxFrame.asScale)))
+        ;
+      return 0;
     }
   } break;
 
@@ -107,9 +114,12 @@ int TransportRxProcess(uint8_t *buffer, uint32_t *length) {
           (enum TransportRx_SetScale_Scale)scale;
 
       // send scale
-      return CDC_Transmit_FS(
-          (uint8_t *)&response,
-          SIZEOF_HEADER_INCL_PAYLOAD(response.asTxFrame.asDeviceSetup));
+      while (USBD_BUSY ==
+             CDC_Transmit_FS(
+                 (uint8_t *)&response,
+                 SIZEOF_HEADER_INCL_PAYLOAD(response.asTxFrame.asDeviceSetup)))
+        ;
+      return 0;
     }
   } break;
 

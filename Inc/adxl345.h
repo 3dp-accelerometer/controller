@@ -5,8 +5,8 @@
 
 /* FiFo  Constants -----------------------------------------------------------*/
 
+#define ADXL345_FIFO_ENTRIES 32 // 32 * (X, Y, Z); 2 bytes each coordinate
 #define ADXL345_WATERMARK_LEVEL 24
-#define ADXL345_FIFO_SIZE 24
 
 static_assert(ADXL345_WATERMARK_LEVEL <= 32,
               "maximum allowed watermark level: 32");
@@ -20,6 +20,7 @@ enum Adxl345RWFlags {
   Adxl345RWFlags_read = 0x80,
   Adxl345RWFlags_write = 0x00,
   Adxl345RWFlags_multiByte = 0x40,
+  Adxl345RWFlags_singleByte = 0x00,
 };
 
 /* Register Addresses --------------------------------------------------------*/

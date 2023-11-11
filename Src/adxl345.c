@@ -40,8 +40,8 @@ static void receiveFrame(union Adxl345RxFrame *frame, uint8_t num_bytes,
 static void transmitReceiveFrame(union Adxl345TxFrame *tx_frame,
                                  union Adxl345RxFrame *rx_frame,
                                  uint8_t num_bytes_receive) {
-  const uint8_t multiByte =
-      num_bytes_receive > 1 ? Adxl345RWFlags_multiByte : 0;
+  const uint8_t multiByte = (num_bytes_receive > 1) ? Adxl345RWFlags_multiByte
+                                                    : Adxl345RWFlags_singleByte;
   ncsSet();
   transmitFrame(tx_frame, 1, Adxl345CS_untouched,
                 Adxl345RWFlags_read | multiByte);

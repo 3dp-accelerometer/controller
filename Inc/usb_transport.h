@@ -118,6 +118,7 @@ struct TransportTx_FifoOverflow {
 } __attribute__((packed));
 
 struct TransportTx_SamplingStarted {
+  uint16_t maxSamples;
 } __attribute__((packed));
 
 struct TransportTx_SamplingFinished {
@@ -185,7 +186,7 @@ int TransportRxProcess(uint8_t *buffer, uint32_t *length);
 /* ---------------------------------------------------------------------------*/
 
 void TransportTxSamplingSetup();
-void TransportTxSamplingStarted();
+void TransportTxSamplingStarted(uint16_t max_samples);
 void TransportTxSamplingFinished();
 void TransportTxSamplingStopped();
 void TransportTxSamplingAborted();

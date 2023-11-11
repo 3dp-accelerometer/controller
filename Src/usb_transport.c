@@ -169,9 +169,11 @@ void TransportTxSamplingSetup() {
     ;
 }
 
-void TransportTxSamplingStarted() {
+void TransportTxSamplingStarted(uint16_t max_samples) {
   struct TransportFrame tx = {.header.id =
                                   TransportHeader_Id_Tx_SamplingStarted};
+  tx.asTxFrame.asSamplingStarted.maxSamples = max_samples;
+
   while (USBD_BUSY ==
          CDC_Transmit_FS((uint8_t *)&tx,
                          sizeof(struct TransportHeader) +

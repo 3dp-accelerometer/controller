@@ -43,7 +43,7 @@ static void checkStartRequest() {
     return;
   }
 
-  TransportTxSamplingStarted();
+  TransportTxSamplingStarted(samplingState.maxSamples);
 
   samplingState.isFifoOverflowSet = false;
   samplingState.transactionsCount = 0;
@@ -69,9 +69,9 @@ static void checkStopRequest() {
 
   Adxl345_setPowerCtlStandby();
 
-  // clear watermark interrupt
+  // clear watermark interrupt (clear whole fifo)
   struct Adxl345_Acceleration devNull;
-  for (uint8_t idx = 0; idx < ADXL345_WATERMARK_LEVEL; idx++) {
+  for (uint8_t idx = 0; idx < ADXL345_FIFO_ENTRIES; idx++) {
     Adxl345_getAcceleration(&devNull);
   }
 

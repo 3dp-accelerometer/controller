@@ -28,6 +28,7 @@
 #include "adxl345.h"
 #include "device_reboot.h"
 #include "sampling.h"
+#include <sys/errno.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -100,10 +101,16 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1) {
-    sampling_fetchForward();
+    switch (sampling_fetchForward()) {
+    case -ECANCELED:
+    case -EOVERFLOW:
+      HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_RESET);
+      break;
+    case ENODATA:
+      HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_SET);
+      break;
+    }
     device_reboot_checkReboot();
-    // HAL_GPIO_TogglePin(USER_LED0_GPIO_Port, USER_LED0_Pin);
-    // HAL_Delay(200);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

@@ -1,5 +1,6 @@
 #include "sampling.h"
 #include "adxl345.h"
+#include "tim.h"
 #include "usb_transport.h"
 #include <assert.h>
 #include <errno.h>
@@ -14,6 +15,7 @@ struct SamplingState {
   volatile bool doStart;
   volatile bool doStop;
   volatile bool isStarted;
+  volatile bool waitFor5usTimer;
   struct Adxl345_Acceleration rxBuffer[ADXL345_WATERMARK_LEVEL];
   volatile bool isFifoOverflowSet;
   volatile bool isFifoWatermarkSet;
@@ -25,6 +27,7 @@ static struct SamplingState samplingState = {
     .doStart = false,
     .doStop = false,
     .isStarted = false,
+    .waitFor5usTimer = false,
     .rxBuffer = {{.x = 0, .y = 0, .z = 0}},
     .isFifoOverflowSet = false,
     .isFifoWatermarkSet = false,
@@ -78,6 +81,19 @@ static void checkStopRequest() {
   samplingState.isStarted = false;
 }
 
+static void delay5us() {
+  samplingState.waitFor5usTimer = true;
+  TIM3->CNT = 0;
+
+  // HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_SET);
+  HAL_TIM_Base_Start_IT(&htim3);
+
+  while (samplingState.waitFor5usTimer)
+    ;
+
+  HAL_TIM_Base_Stop_IT(&htim3);
+}
+
 void sampling_start(uint16_t maxSamples) {
   samplingState.maxSamples = maxSamples;
   samplingState.doStart = true;
@@ -113,6 +129,15 @@ int sampling_fetchForward() {
         break;
       }
 
+      // UM ADXL345 Rev.G p21 - RETRIEVING DATA FROM FIFO:
+      // To ensure that the FIFO has completely popped (that is, that new
+      // data has completely moved into the DATAX, DATAY, and DATAZ
+      // registers), there must be at least 5 µs between the end of reading
+      // the data registers and the start of a new read of the FIFO or a read
+      // of the FIFO_STATUS register (Address 0x39). The end of reading
+      // a data register is signified by the transition from Register 0x37 to
+      // Register 0x38 or by the CS pin going high.
+      delay5us();
       Adxl345_getAcceleration(&samplingState.rxBuffer[rxCount]);
       rxCount++;
     }
@@ -148,3 +173,5 @@ void sampling_setFifoWatermark() { samplingState.isFifoWatermarkSet = true; }
 void sampling_clearFifoWatermark() { samplingState.isFifoWatermarkSet = false; }
 
 void sampling_setFifoOverflow() { samplingState.isFifoOverflowSet = true; }
+
+void on5usTimerExpired() { samplingState.waitFor5usTimer = false; }

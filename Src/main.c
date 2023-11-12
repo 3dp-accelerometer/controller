@@ -20,6 +20,7 @@
 #include "main.h"
 #include "rtc.h"
 #include "spi.h"
+#include "tim.h"
 #include "usb_device.h"
 #include "gpio.h"
 
@@ -94,6 +95,7 @@ int main(void)
   MX_SPI1_Init();
   MX_RTC_Init();
   MX_USB_DEVICE_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   Adxl345_init();
   /* USER CODE END 2 */

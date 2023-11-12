@@ -30,3 +30,6 @@ void sampling_clearFifoWatermark();
 /// Sets the FiFo overrun flag.
 /// Normally called by respective interrupt handler (on rising INT edge).
 void sampling_setFifoOverflow();
+
+/// Clears the wait flag; called by respective timer interrupt.
+void on5usTimerExpired();

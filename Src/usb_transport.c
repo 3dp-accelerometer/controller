@@ -5,7 +5,7 @@
 #include "usbd_cdc_if.h"
 #include <errno.h>
 
-int TransportRxProcess(uint8_t *buffer, uint32_t *length) {
+int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
   if (NULL == buffer || NULL == length)
     return -EINVAL;
 

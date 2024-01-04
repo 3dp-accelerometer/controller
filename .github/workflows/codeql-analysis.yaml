@@ -44,7 +44,9 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/.platformio
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+        key: ${{ runner.os }}-pio-${{ hashFiles('**/lockfiles') }}
+        restore-keys: |
+          ${{ runner.os }}-pio-
 
     - name: Set up Python
       uses: actions/setup-python@v5

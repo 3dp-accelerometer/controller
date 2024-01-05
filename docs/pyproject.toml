@@ -1,0 +1,155 @@
+[tool.poetry]
+name = "3dpaxxel"
+version = "0.1.0"
+description = "3DP Accelerometer controller firmware documentation."
+license = "Apache-2.0"
+authors = ["Raoul Rubien <rubienr@sbox.tugraz.at>"]
+maintainers = ["Raoul Rubien <rubienr@sbox.tugraz.at>"]
+readme = "sphinx/readme.md"
+repository = "https://github.com/3dp-accelerometer"
+packages = []
+documentation = "https://github.com/3dp-accelerometer/controller/readme.md"
+keywords = ["3d printing", "accelerometer", "adxl345", "stm32", "marlin", "octoprint"]
+classifiers = ["Topic :: System :: Hardware"]
+include = []
+exclude = []
+
+[tool.poetry.dependencies]
+python = ">=3.9,<3.13"
+# sphinx documentation
+astroid = "2.15.8"
+default-values = "^0.6.0"
+html-section = "^0.3.0"
+# myst-parser = "^2.0.0"
+seed-intersphinx-mapping = "^1.2.2"
+sphinx-argparse = "^0.4.0"
+sphinx-autodoc2 = "^0.4.2"
+sphinx-copybutton = "^0.5.2"
+sphinx-debuginfo = "^0.2.2"
+# sphinx-notfound-page = "^1.0.0"
+sphinx-packaging = "^0.2.0"
+sphinx-pyproject = "^0.3.0"
+sphinx-rtd-theme = "^1.3.0"
+sphinx-toolbox = "^3.5.0"
+clang = "^17.0.6"
+exhale = "^0.3.6"
+breathe = "^4.35.0"
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/3dp-accelerometer/controller/issues"
+
+[build-system]
+requires = ["poetry-core", "poetry2setup"]
+build-backend = "poetry.core.masonry.api"
+
+# reqired by [tool.sphinx-pyproject]
+[project]
+name = "3dpaxxel"
+version = "0.1.0"
+description = "3DP Accelerometer controller firmware documentation."
+readme = "readme.md"
+keywords = ["3d printing", "accelerometer", "adxl345", "stm32", "blackpill", "marlin", "octoprint"]
+dynamic = ["requires-python", "classifiers", "dependencies", ]
+
+# reqired by [tool.sphinx-pyproject]
+[[project.author]]
+name = "Raoul Rubien"
+email = "rubienr@sbox.tugraz.at"
+
+# reqired by [tool.sphinx-pyproject]
+[project.license]
+file = "Apache-2.0"
+
+[tool.sphinx-pyproject]
+github_username = "3dp-accelerometer"
+github_repository = "controller"
+author = "Raoul Rubien"
+project = "3dp-accelerometer"
+copyright = "2023 Raoul Rubien"
+language = "en"
+package_root = "../doxygen/3dpaxxel"
+extensions = [
+    ### "myst_parser",
+    "sphinxarg.ext",
+    "sphinx_toolbox",
+    "sphinx_toolbox.more_autodoc",
+    "sphinx_toolbox.more_autosummary",
+    "sphinx_toolbox.documentation_summary",
+    "sphinx_toolbox.tweaks.param_dash",
+    ### "sphinxcontrib.toctree_plus",
+    #"sphinx_toolbox.tweaks.latex_layout",
+    #"sphinx_toolbox.tweaks.latex_toc",
+    #"sphinx.ext.intersphinx",
+    "sphinx.ext.mathjax",
+    ### "sphinx_autopackagesummary",
+    ### "autodoc2",
+    ### "sphinxcontrib.extras_require",
+    "sphinx.ext.todo",
+    ### "sphinxemoji.sphinxemoji",
+    ### "notfound.extension",
+    "sphinx_copybutton",
+    "sphinxcontrib.default_values",
+    #"sphinx_debuginfo",
+    ### "sphinx_licenseinfo",
+    #"seed_intersphinx_mapping",
+    "html_section",
+    ### "sphinx_md",
+    #"sphinx_toolbox.more_autosummary.column_widths",
+    #"sphinx_toolbox.latex",
+    #"sphinx_toolbox.latex.succinct_seealso",
+    ### "sphinx_toolbox_experimental.missing_xref",
+    ### "sphinx_toolbox_experimental.changelog",
+    #"sphinx_packaging.peps",
+    #"hawkmoth",
+    "breathe",
+    "exhale"
+
+]
+# sphinxemoji_style = "twemoji"
+gitstamp_fmt = "%d %b %Y"
+templates_path = ["_templates", ]
+html_static_path = ["_static", ]
+source_suffix = ".rst"
+master_doc = "index"
+suppress_warnings = ["image.nonlocal_uri", ]
+pygments_style = "default"
+html_theme = "sphinx_rtd_theme"
+html_theme_path = ["../..", ]
+html_show_sourcelink = true
+# toctree_plus_types = [
+#     "class",
+#     "confval",
+#     "data",
+#     "directive",
+#     "enum",
+#     "exception",
+#     "flag",
+#     "function",
+#     "namedtuple",
+#     "protocol",
+#     "role",
+#     "typeddict",
+# ]
+add_module_names = false
+#hide_none_rtype = true
+all_typevars = true
+overloads_location = "bottom"
+html_codeblock_linenos_style = "table"
+#autodoc_exclude_members = [
+#    "__dict__",
+#    "__class__",
+#    "__dir__",
+#    "__weakref__",
+#    "__module__",
+#    "__annotations__",
+#    "__orig_bases__",
+#    "__parameters__",
+#    "__subclasshook__",
+#    "__init_subclass__",
+#    "__attrs_attrs__",
+#    "__init__",
+#    "__new__",
+#    "__getnewargs__",
+#    "__abstractmethods__",
+#    "__hash__",
+#]

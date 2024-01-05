@@ -23,19 +23,39 @@ The CLI interface allows to manipulate the controller:
 Prerequisites
 -------------
 
-1. install [CubeMx](https://www.st.com/en/development-tools/stm32cubemx.html)
-2. install [stm32pio](https://github.com/ussserrr/stm32pio)
-3. ensure the `cubemx_cmd` in stm32pio.ini is set correctly:
+1. Install packages
+   * Manually
+      1. `pip install platformio`
+      2. install [CubeMx](https://www.st.com/en/development-tools/stm32cubemx.html)
+      3. install [stm32pio](https://github.com/ussserrr/stm32pio)
 
-       [app]
-       platformio_cmd = platformio
-       cubemx_cmd = /home/foo/STM32CubeMX/STM32CubeMX
-       java_cmd = None
+   * Poetry
 
+      ```bash
+      cd docs
+      poetry shell
+      poetry install
+      ```
+
+2. ensure the `cubemx_cmd` in stm32pio.ini is set correctly:
+
+   ```bash
+   [app]
+   platformio_cmd = platformio
+   cubemx_cmd = /home/foo/STM32CubeMX/STM32CubeMX
+   java_cmd = None
+   ```
+   
 Workflow
 --------
 
-1. edit `cubemx.ioc` with CubeMx, safe file
+1. if Poetry
+   ```bash
+   cd docs
+   poetry shell
+   ```
+ 
+2. edit `cubemx.ioc` with CubeMx, safe file
 2. generate code and patch existing code: `stm32pio generate`
 3. compile and run: `pio run -t upload`
 

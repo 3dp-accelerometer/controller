@@ -3,20 +3,18 @@ name: PIO run native unit tests
 on:
   push:
     paths:
-      - "**"
-      - "!**.md"
-      - "!**license"
-      - "!**.gitignore"
-      - "!**.clang-format"
+      - "**/*.c"
+      - "**/*.cpp"
+      - "**/*.h"
+      - "**/*platformio.ini"
       - "!.github/workflows/**"
       - ".github/workflows/unit-tests.yaml"
   pull_request:
     paths:
-      - "**"
-      - "!**.md"
-      - "!**license"
-      - "!**.gitignore"
-      - "!**.clang-format"
+      - "**/*.c"
+      - "**/*.cpp"
+      - "**/*.h"
+      - "**/*platformio.ini"
       - "!.github/workflows/**"
       - ".github/workflows/unit-tests.yaml"
 
@@ -32,32 +30,38 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Cache pip
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-
-    - name: Cache PlatformIO
-      uses: actions/cache@v3
-      with:
-        path: ~/.platformio
-        key: ${{ runner.os }}-pio-${{ hashFiles('**/lockfiles') }}
-        restore-keys: |
-          ${{ runner.os }}-pio-
-
-    - name: Set up Python
+    - name: Install Python
+      id: install-python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10'
+        python-version: "3.10"
 
-    - name: Install PlatformIO
+    - name: Load Poetry cache
+      id: cached-poetry-dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pypoetry
+        key: ${{ runner.os }}-py-${{ steps.install-python.outputs.python-version }}-poetry-cache-${{ hashFiles('docs/poetry.lock') }}
+
+    - name: Install Poetry
+      uses: Gr1N/setup-poetry@v8
+
+    - name: Install Poetry dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install --upgrade platformio
+        cd docs
+        poetry install
+
+    - name: load PlatformIO cache
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.cache/pip
+          ~/.platformio
+        key: ${{ runner.os }}-py-${{ steps.install-python.outputs.python-version }}-pio-cache-${{ hashFiles('**/platformio.ini') }}
 
     - name: Unit tests
       run: |
-        platformio test --environment test_native
+        cd docs
+        source .venv/bin/activate
+        cd -
+        platformio test --environment test_native --verbose

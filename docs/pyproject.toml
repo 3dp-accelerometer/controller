@@ -34,6 +34,8 @@ sphinx-toolbox = "^3.5.0"
 clang = "^17.0.6"
 exhale = "^0.3.6"
 breathe = "^4.35.0"
+stm32pio = "^2.1.2"
+platformio = "^6.1.11"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/3dp-accelerometer/controller/issues"

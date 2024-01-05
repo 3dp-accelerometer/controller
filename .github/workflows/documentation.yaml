@@ -1,31 +1,30 @@
-name: PIO run static code analysis
+name: "DOC build and deploy"
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - "**/*.c"
       - "**/*.cpp"
       - "**/*.h"
-      - "**/*platformio.ini"
+      - "docs/**/*"
       - "!.github/workflows/**"
-      - ".github/workflows/pio-check.yaml"
+      - ".github/workflows/documentation.yaml"
   pull_request:
     paths:
       - "**/*.c"
       - "**/*.cpp"
       - "**/*.h"
-      - "**/*platformio.ini"
+      - "docs/**/*"
       - "!.github/workflows/**"
-      - ".github/workflows/pio-check.yaml"
+      - ".github/workflows/documentation.yaml"
+
+permissions:
+  contents: write
 
 jobs:
-  pio-check:
-    name: PIO static code analysis on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-
+  docs-build-deploy:
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -54,14 +53,27 @@ jobs:
     - name: load PlatformIO cache
       uses: actions/cache@v3
       with:
-        path: |
-          ~/.cache/pip
-          ~/.platformio
+        path: ~/.platformio
         key: ${{ runner.os }}-py-${{ steps.install-python.outputs.python-version }}-pio-cache-${{ hashFiles('**/platformio.ini') }}
 
-    - name: Static code analysis
+    - name: Install OS dependencies
+      run: |
+        sudo apt install python3-clang
+        sudo apt install doxygen
+
+    - name: Sphinx build
       run: |
         cd docs
         source .venv/bin/activate
-        cd -
-        platformio check --fail-on-defect=high --fail-on-defect=medium --fail-on-defect=low --verbose
+        cd sphinx
+        make clean
+        make docs
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+      with:
+        publish_branch: gh-pages
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: docs/sphinx/_build/html
+        force_orphan: true

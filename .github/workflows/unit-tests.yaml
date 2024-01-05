@@ -1,4 +1,4 @@
-name: Unit tests
+name: PIO run native unit tests
 
 on:
   push:

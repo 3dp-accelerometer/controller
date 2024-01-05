@@ -1,4 +1,4 @@
-name: PIO static code analysis
+name: PIO run static code analysis
 
 on:
   push:

@@ -7,7 +7,7 @@ SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
 SOURCEDIR     = .
 BUILDDIR      = _build
-SPHINXOPTS    = -v
+SPHINXOPTS    = -v -j auto
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -20,13 +20,19 @@ help:
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
+# generate doxygen xml output for breathe
 doxy:
 	doxygen doxygen-project.conf
 
-# build doxygen-xml and html from doxygen
-html: doxy html
+# build documentation from xml (sphinx + exhale)
+docs: doxy html
+	#
 
 # open index.html in default application
 show:
 	xdg-open "$(BUILDDIR)/html/index.html"
 
+clean:
+	find ./_build            -mindepth 1 -maxdepth 1 -not -name ".keep" -exec rm -drf {} \;
+	find ./_gen_doxygen_docs -mindepth 1 -maxdepth 1 -not -name ".keep" -exec rm -drf {} \;
+	echo rm -drf ./api

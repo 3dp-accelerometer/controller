@@ -87,3 +87,5 @@ References
 3. https://wiki-power.com/en/PlatformIO%E6%90%AD%E9%85%8DCubeMX%E9%A3%9F%E7%94%A8/#cubemx-initialization-steps
 4. https://github.com/ussserrr/stm32pio
 5. https://community.platformio.org/t/board-genericstm32h750vb-not-found/36441
+
+**Read the Docs** at [3dp-accelerometer.github.io](https://3dp-accelerometer.github.io/controller)

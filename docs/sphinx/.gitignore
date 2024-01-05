@@ -1,7 +1,6 @@
 _build/*
 !_build/.keep
 api
-3dpaxxel
 _gen_doxygen_docs/*
 !_gen_doxygen_docs/.keep
 

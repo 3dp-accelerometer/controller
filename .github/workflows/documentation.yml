@@ -1,0 +1,54 @@
+name: "DOC build and deploy"
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions:
+  contents: write
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - uses: Gr1N/setup-poetry@v8
+
+      - name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+          path: .venv
+          key: ${{ steps.setup-python.outputs.python-version }}-sphinx-venv-${{ hashFiles('docs/poetry.lock') }}
+          restore-keys: |
+            ${{ steps.setup-python.outputs.python-version }}-sphinx-venv-
+
+      - name: Install Poetry dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: |
+          cd docs
+          poetry install
+
+      - name: Install OS dependencies
+        run: |
+          sudo apt install python3-clang
+          sudo apt install doxygen
+
+      - name: Sphinx build
+        run: |
+          cd docs
+          source .venv/bin/activate
+          cd sphinx
+          make html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/sphinx/_build/html
+          force_orphan: true

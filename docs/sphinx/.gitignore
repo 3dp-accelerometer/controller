@@ -1,6 +1,7 @@
 _build/*
 !_build/.keep
-api
+api/*
+!api/.keep
 _gen_doxygen_docs/*
 !_gen_doxygen_docs/.keep
 

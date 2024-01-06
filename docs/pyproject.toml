@@ -1,9 +1,10 @@
 [tool.poetry]
-name = "3dpaxxel"
+name = "3dpaxxel_utils"
 version = "0.1.0"
 description = "3DP Accelerometer controller firmware documentation."
 license = "Apache-2.0"
 authors = ["Raoul Rubien <rubienr@sbox.tugraz.at>"]
+packages = [{ include = "3dpaxxel" }]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.13"
@@ -27,9 +28,13 @@ exhale = "^0.3.6"
 breathe = "^4.35.0"
 stm32pio = "^2.1.2"
 platformio = "^6.1.11"
+tomli = "^2.0.1"
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/3dp-accelerometer/controller/issues"
+
+[tool.poetry.scripts]
+versionbump = "3dpaxxel.version:generate_source_files"
 
 [build-system]
 requires = ["poetry-core", "poetry2setup"]
@@ -44,42 +49,42 @@ copyright = "2023 Raoul Rubien"
 language = "en"
 package_root = "../doxygen/3dpaxxel"
 extensions = [
-    ### "myst_parser",
+    ### "myst_parser", # for embeddingreadme.md but version clash since exhale depends on old sphinx version
     "sphinxarg.ext",
     "sphinx_toolbox",
     "sphinx_toolbox.more_autodoc",
     "sphinx_toolbox.more_autosummary",
     "sphinx_toolbox.documentation_summary",
     "sphinx_toolbox.tweaks.param_dash",
-    ### "sphinxcontrib.toctree_plus",
-    #"sphinx_toolbox.tweaks.latex_layout",
-    #"sphinx_toolbox.tweaks.latex_toc",
+    ### "sphinxcontrib.toctree_plus",               # blocked by exhale
+    #"sphinx_toolbox.tweaks.latex_layout",          # blocked by exhale
+    #"sphinx_toolbox.tweaks.latex_toc",             # blocked by exhale
     #"sphinx.ext.intersphinx",
     "sphinx.ext.mathjax",
-    ### "sphinx_autopackagesummary",
-    ### "autodoc2",
-    ### "sphinxcontrib.extras_require",
+    ### "sphinx_autopackagesummary",                # blocked by exhale
+    ### "autodoc2",                                 # blocked by exhale
+    ### "sphinxcontrib.extras_require",             # blocked by exhale
     "sphinx.ext.todo",
-    ### "sphinxemoji.sphinxemoji",
-    ### "notfound.extension",
+    ### "sphinxemoji.sphinxemoji",                  # blocked by exhale
+    ### "notfound.extension",                       # blocked by exhale
     "sphinx_copybutton",
     "sphinxcontrib.default_values",
     #"sphinx_debuginfo",
-    ### "sphinx_licenseinfo",
+    ### "sphinx_licenseinfo",                       # blocked by exhale
     #"seed_intersphinx_mapping",
     "html_section",
-    ### "sphinx_md",
+    ### "sphinx_md",                                # blocked by exhale
     #"sphinx_toolbox.more_autosummary.column_widths",
     #"sphinx_toolbox.latex",
     #"sphinx_toolbox.latex.succinct_seealso",
-    ### "sphinx_toolbox_experimental.missing_xref",
-    ### "sphinx_toolbox_experimental.changelog",
+    ### "sphinx_toolbox_experimental.missing_xref", # blocked by exhale
+    ### "sphinx_toolbox_experimental.changelog",    # blocked by exhale
     #"sphinx_packaging.peps",
     #"hawkmoth",
     "breathe",
-    "exhale"
-
+    "exhale",
 ]
+
 # sphinxemoji_style = "twemoji"
 templates_path = ["_templates", ]
 html_static_path = ["_static", ]

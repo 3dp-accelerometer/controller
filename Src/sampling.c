@@ -10,6 +10,9 @@
 static_assert(NUM_SAMPLES_READ_AT_ONCE > 0,
               "minimum required watermark level: 1");
 
+/**
+ * Internal module state.
+ */
 struct SamplingState {
   volatile uint16_t maxSamples;
   volatile bool doStart;
@@ -22,6 +25,9 @@ struct SamplingState {
   int transactionsCount;
 };
 
+/**
+ * Internal module state.
+ */
 static struct SamplingState samplingState = {
     .maxSamples = 0,
     .doStart = false,

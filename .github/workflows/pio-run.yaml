@@ -31,19 +31,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Prepare Python
-        id: prepare-python
-        uses: ./.github/actions/python
-
-      - name: Prepare Poetry
-        uses: ./.github/actions/poetry
-        with:
-          python-version: ${{ steps.prepare-python.outputs.python-version }}
-
-      - name: Prepare Platformio
-        uses: ./.github/actions/platformio
-        with:
-          python-version: ${{ steps.prepare-python.outputs.python-version }}
+      - name: Prerequisites
+        uses: ./.github/actions/checkout-python-poetry-platformio
 
       - name: Build targets
         run: |

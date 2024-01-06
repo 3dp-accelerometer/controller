@@ -23,9 +23,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Prepare Python
-        id: prepare-python
-        uses: ./.github/actions/python
+      - name: Prerequisites
+        uses: ./.github/actions/checkout-python-poetry-platformio
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
@@ -35,16 +34,6 @@ jobs:
           # By default, queries listed here will override any specified in a config file.
           # Prefix the list here with "+" to use these queries and those in the config file.
           # queries: ./path/to/local/query, your-org/your-repo/queries@main
-
-      - name: Prepare Poetry
-        uses: ./.github/actions/poetry
-        with:
-          python-version: ${{ steps.prepare-python.outputs.python-version }}
-
-      - name: Prepare Platformio
-        uses: ./.github/actions/platformio
-        with:
-          python-version: ${{ steps.prepare-python.outputs.python-version }}
 
       - name: Build targets
         run: |

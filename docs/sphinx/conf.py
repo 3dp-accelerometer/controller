@@ -10,7 +10,7 @@ from sphinx_pyproject import SphinxConfig
 
 sys.path.append(".")
 
-config = SphinxConfig(globalns=globals())
+config = SphinxConfig(style="poetry", globalns=globals())
 project = config["project"]
 author = config["author"]
 documentation_summary = config.description

@@ -4,15 +4,6 @@ version = "0.1.0"
 description = "3DP Accelerometer controller firmware documentation."
 license = "Apache-2.0"
 authors = ["Raoul Rubien <rubienr@sbox.tugraz.at>"]
-maintainers = ["Raoul Rubien <rubienr@sbox.tugraz.at>"]
-readme = "sphinx/readme.md"
-repository = "https://github.com/3dp-accelerometer"
-packages = []
-documentation = "https://github.com/3dp-accelerometer/controller/readme.md"
-keywords = ["3d printing", "accelerometer", "adxl345", "stm32", "marlin", "octoprint"]
-classifiers = ["Topic :: System :: Hardware"]
-include = []
-exclude = []
 
 [tool.poetry.dependencies]
 python = ">=3.9,<3.13"
@@ -43,24 +34,6 @@ platformio = "^6.1.11"
 [build-system]
 requires = ["poetry-core", "poetry2setup"]
 build-backend = "poetry.core.masonry.api"
-
-# reqired by [tool.sphinx-pyproject]
-[project]
-name = "3dpaxxel"
-version = "0.1.0"
-description = "3DP Accelerometer controller firmware documentation."
-readme = "readme.md"
-keywords = ["3d printing", "accelerometer", "adxl345", "stm32", "blackpill", "marlin", "octoprint"]
-dynamic = ["requires-python", "classifiers", "dependencies", ]
-
-# reqired by [tool.sphinx-pyproject]
-[[project.author]]
-name = "Raoul Rubien"
-email = "rubienr@sbox.tugraz.at"
-
-# reqired by [tool.sphinx-pyproject]
-[project.license]
-file = "Apache-2.0"
 
 [tool.sphinx-pyproject]
 github_username = "3dp-accelerometer"
@@ -108,13 +81,14 @@ extensions = [
 
 ]
 # sphinxemoji_style = "twemoji"
-gitstamp_fmt = "%d %b %Y"
 templates_path = ["_templates", ]
 html_static_path = ["_static", ]
 source_suffix = ".rst"
 master_doc = "index"
-suppress_warnings = ["image.nonlocal_uri", ]
+# suppress_warnings = ["image.nonlocal_uri", ]
 pygments_style = "default"
+gitstamp_fmt = "%d %b %Y"
+html_last_updated_fmt = "%d %b %Y"
 html_theme = "sphinx_rtd_theme"
 html_theme_path = ["../..", ]
 html_show_sourcelink = true
@@ -132,9 +106,9 @@ html_show_sourcelink = true
 #     "role",
 #     "typeddict",
 # ]
-add_module_names = false
+#add_module_names = false
 #hide_none_rtype = true
-all_typevars = true
+#all_typevars = true
 overloads_location = "bottom"
 html_codeblock_linenos_style = "table"
 #autodoc_exclude_members = [

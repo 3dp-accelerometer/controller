@@ -3,7 +3,7 @@ name: CodeQL check
 on:
   workflow_dispatch:
   schedule:
-    - cron: "19 0 * * 5"
+    - cron: "0 0 * * 6" # min (0-59), hour (0-23), day o. month (1-31), month (1-12), day o. week (0-6)
 
 jobs:
   codeql-analyze:

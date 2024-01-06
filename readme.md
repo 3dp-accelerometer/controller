@@ -1,9 +1,10 @@
 Introduction
-------------
+============
 
 This firmware acts as proxy in between host and accelerometer.
 It fetches sampled acceleration data from ADXL345 in a real-time manner by using a Blackpill board (ARM STM32F401).
 The proxy asserts no sample is lost and each measurement is sampled equidistant.
+To operate the proxy refer to the [py3dpaxxel](https://github.com/3dp-accelerometer/py3dpaxxel) API.
 
 ```
 +------------+       +------------+       +------------+
@@ -25,19 +26,19 @@ It provides the python API to communicate with this firmware which can work as s
 The CLI interface allows to manipulate the controller as follows:
 
 - start/stop sampling (in streaming mode or up to specific limit of samples)
-- setup/reset device (output data rate, range, scale)
+- configure/reset device (output data rate, range, scale)
 - decode samples from controller
 - print samples or store in tabular separated values file
 
 See also:
 - Python Host-API [py3dpaxxel](https://github.com/3dp-accelerometer/py3dpaxxel/)
-- OctoPrint plugin [Octoprint Accelerometer](https://github.com/3dp-accelerometer/octoprint-accelerometer) (work in progress)
+- OctoPrint plugin [Octoprint Accelerometer](https://github.com/3dp-accelerometer/octoprint-accelerometer)
 - **Read the Docs** at [3dp-accelerometer.github.io](https://3dp-accelerometer.github.io/controller)
 
 [![Build Test Docs](https://github.com/3dp-accelerometer/controller/actions/workflows/build-test-builddocs.yaml/badge.svg)](https://github.com/3dp-accelerometer/controller/actions/workflows/build-test-builddocs.yaml)
 
 Prerequisites
--------------
+=============
 
 The following steps use Poetry to install required tools and set up the environment.
 This is not a must but for convenience rather.
@@ -63,7 +64,7 @@ All steps can be achieved manually without Poetry: develop, build, flash, genera
    ```
 
 Workflow
---------
+========
 
 1. Setup environment
     * Poetry
@@ -93,7 +94,7 @@ If only flashing the latest firmware is your desire follow first and last step w
 ```
 
 Connecting Modules
-------------------
+==================
 
 The controller (BlackPill) is attached to the HOST (i.e. your PC, OctoPrint server, ...). 
 It acts as proxy that shovels the data from the accelerometer so that each sample that is reported to the host,
@@ -135,7 +136,7 @@ A constant time separation in between samples is a key aspect for later Fourier 
 ```
 
 References
-----------
+==========
 
 1. Datasheets [./datasheets](./datasheets)
 2. PlatformIO [BlackPill](https://docs.platformio.org/en/stable/boards/ststm32/blackpill_f401cc.html)

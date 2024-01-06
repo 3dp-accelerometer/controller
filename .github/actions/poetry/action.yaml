@@ -1,0 +1,26 @@
+name: 'Prepare Poetry'
+description: 'Load cache, install Poetry, install Poetry dependencies'
+
+inputs:
+  python-version:
+    description: 'Installed Python version'
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Load Poetry cache
+      id: cached-poetry-dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pypoetry
+        key: ${{ runner.os }}-py-${{ inputs.python-version }}-poetry-cache-${{ hashFiles('utils/poetry.lock') }}
+
+    - name: Install Poetry
+      uses: Gr1N/setup-poetry@v8
+
+    - name: Install Poetry dependencies
+      shell: bash
+      run: |
+        cd utils
+        poetry install

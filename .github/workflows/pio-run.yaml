@@ -24,44 +24,29 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ ubuntu-latest ]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Install Python
-      id: install-python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.10"
+      - name: Prepare Python
+        id: prepare-python
+        uses: ./.github/actions/python
 
-    - name: Load Poetry cache
-      id: cached-poetry-dependencies
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pypoetry
-        key: ${{ runner.os }}-py-${{ steps.install-python.outputs.python-version }}-poetry-cache-${{ hashFiles('utils/poetry.lock') }}
+      - name: Prepare Poetry
+        uses: ./.github/actions/poetry
+        with:
+          python-version: ${{ steps.prepare-python.outputs.python-version }}
 
-    - name: Install Poetry
-      uses: Gr1N/setup-poetry@v8
+      - name: Prepare Platformio
+        uses: ./.github/actions/platformio
+        with:
+          python-version: ${{ steps.prepare-python.outputs.python-version }}
 
-    - name: Install Poetry dependencies
-      run: |
-        cd utils
-        poetry install
-
-    - name: load PlatformIO cache
-      uses: actions/cache@v3
-      with:
-        path: | 
-          ~/.cache/pip
-          ~/.platformio
-        key: ${{ runner.os }}-py-${{ steps.install-python.outputs.python-version }}-pio-cache-${{ hashFiles('**/platformio.ini') }}
-
-    - name: Build targets
-      run: |
-        cd utils
-        source .venv/bin/activate
-        cd -
-        platformio run --verbose
+      - name: Build targets
+        run: |
+          cd utils
+          source .venv/bin/activate
+          cd -
+          platformio run --verbose

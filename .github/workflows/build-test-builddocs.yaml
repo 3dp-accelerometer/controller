@@ -1,0 +1,117 @@
+name: Build Test Docs
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "**/*"
+      - "!.github/workflows/**"
+      - ".github/workflows/build-test-builddocs.yaml"
+  pull_request:
+    paths:
+      - "**/*"
+      - "!.github/workflows/**"
+      - ".github/workflows/build-test-builddocs.yaml"
+
+jobs:
+  pio-run:
+    name: PIO build all targets on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prerequisites
+        uses: ./.github/actions/checkout-python-poetry-platformio
+
+      - name: Build targets
+        run: |
+          cd utils
+          source .venv/bin/activate
+          cd -
+          platformio run --verbose
+
+  pio-check:
+    needs: pio-run
+    name: PIO static code analysis on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prerequisites
+        uses: ./.github/actions/checkout-python-poetry-platformio
+
+      - name: Static code analysis
+        run: |
+          cd utils
+          source .venv/bin/activate
+          cd -
+          platformio check --fail-on-defect=high --fail-on-defect=medium --fail-on-defect=low --verbose
+
+  pio-tests:
+    needs: pio-run
+    name: PIO native unit tests on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prerequisites
+        uses: ./.github/actions/checkout-python-poetry-platformio
+
+      - name: Unit tests
+        run: |
+          cd utils
+          source .venv/bin/activate
+          cd -
+          platformio test --environment test_native --verbose
+
+  docs-build-deploy:
+    needs: [ pio-check, pio-tests ]
+    name: Generate docs on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prerequisites
+        uses: ./.github/actions/checkout-python-poetry-platformio
+
+      - name: Install OS dependencies
+        run: |
+          sudo apt install python3-clang
+          sudo apt install doxygen
+
+      - name: Sphinx build
+        run: |
+          cd utils
+          source .venv/bin/activate
+          cd docs
+          make clean
+          make docs
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        with:
+          publish_branch: gh-pages
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: utils/docs/_build/html
+          force_orphan: true

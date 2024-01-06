@@ -7,7 +7,7 @@ on:
       - "**/*.c"
       - "**/*.cpp"
       - "**/*.h"
-      - "docs/**/*"
+      - "utils/**/*"
       - "!.github/workflows/**"
       - ".github/workflows/documentation.yaml"
   pull_request:
@@ -15,7 +15,7 @@ on:
       - "**/*.c"
       - "**/*.cpp"
       - "**/*.h"
-      - "docs/**/*"
+      - "utils/**/*"
       - "!.github/workflows/**"
       - ".github/workflows/documentation.yaml"
 
@@ -40,14 +40,14 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/.cache/pypoetry
-        key: ${{ runner.os }}-py-${{ steps.install-python.outputs.python-version }}-poetry-cache-${{ hashFiles('docs/poetry.lock') }}
+        key: ${{ runner.os }}-py-${{ steps.install-python.outputs.python-version }}-poetry-cache-${{ hashFiles('utils/poetry.lock') }}
 
     - name: Install Poetry
       uses: Gr1N/setup-poetry@v8
 
     - name: Install Poetry dependencies
       run: |
-        cd docs
+        cd utils
         poetry install
 
     - name: load PlatformIO cache
@@ -63,9 +63,9 @@ jobs:
 
     - name: Sphinx build
       run: |
-        cd docs
+        cd utils
         source .venv/bin/activate
-        cd sphinx
+        cd docs
         make clean
         make docs
 
@@ -75,5 +75,5 @@ jobs:
       with:
         publish_branch: gh-pages
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: docs/sphinx/_build/html
+        publish_dir: utils/docs/_build/html
         force_orphan: true

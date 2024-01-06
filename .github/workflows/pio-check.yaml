@@ -41,14 +41,14 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/.cache/pypoetry
-        key: ${{ runner.os }}-py-${{ steps.install-python.outputs.python-version }}-poetry-cache-${{ hashFiles('docs/poetry.lock') }}
+        key: ${{ runner.os }}-py-${{ steps.install-python.outputs.python-version }}-poetry-cache-${{ hashFiles('utils/poetry.lock') }}
 
     - name: Install Poetry
       uses: Gr1N/setup-poetry@v8
 
     - name: Install Poetry dependencies
       run: |
-        cd docs
+        cd utils
         poetry install
 
     - name: load PlatformIO cache
@@ -61,7 +61,7 @@ jobs:
 
     - name: Static code analysis
       run: |
-        cd docs
+        cd utils
         source .venv/bin/activate
         cd -
         platformio check --fail-on-defect=high --fail-on-defect=medium --fail-on-defect=low --verbose

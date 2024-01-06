@@ -44,7 +44,7 @@ build-backend = "poetry.core.masonry.api"
 github_username = "3dp-accelerometer"
 github_repository = "controller"
 author = "Raoul Rubien"
-project = "3dp-accelerometer"
+project = "3dpaxxel"
 copyright = "2023 Raoul Rubien"
 language = "en"
 package_root = "../doxygen/3dpaxxel"
@@ -84,7 +84,6 @@ extensions = [
     "breathe",
     "exhale",
 ]
-
 # sphinxemoji_style = "twemoji"
 templates_path = ["_templates", ]
 html_static_path = ["_static", ]

@@ -35,4 +35,4 @@ show:
 clean:
 	find ./_build            -mindepth 1 -maxdepth 1 -not -name ".keep" -exec rm -drf {} \;
 	find ./_gen_doxygen_docs -mindepth 1 -maxdepth 1 -not -name ".keep" -exec rm -drf {} \;
-	find api                 -mindepth 1 -maxdepth 1 -not -name ".keep" -exec rm -drf {} \;
+	find ./api               -mindepth 1 -maxdepth 1 -not -name ".keep" -exec rm -drf {} \;

@@ -19,24 +19,25 @@ on:
   #    - "!.github/workflows/**"
   #    - ".github/workflows/documentation.yaml"
 
-permissions:
-  contents: write
-
 jobs:
   docs-build-deploy:
-    runs-on: ubuntu-latest
+    needs: [ pio-check, pio-tests ]
+    name: Generate docs on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    permissions:
+      contents: write
+
+    strategy:
+      matrix:
+        os: [ ubuntu-latest ]
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Prepare Python
-        id: prepare-python
-        uses: ./.github/actions/python
-
-      - name: Prepare Poetry
-        uses: ./.github/actions/poetry
-        with:
-          python-version: ${{ steps.prepare-python.outputs.python-version }}
+      - name: Prerequisites
+        uses: ./.github/actions/checkout-python-poetry-platformio
 
       - name: Install OS dependencies
         run: |

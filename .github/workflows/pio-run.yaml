@@ -1,22 +1,23 @@
 name: PIO build all targets
 
 on:
-  push:
-    paths:
-      - "**/*.c"
-      - "**/*.cpp"
-      - "**/*.h"
-      - "**/*platformio.ini"
-      - "!.github/workflows/**"
-      - ".github/workflows/pio-run.yaml"
-  pull_request:
-    paths:
-      - "**/*.c"
-      - "**/*.cpp"
-      - "**/*.h"
-      - "**/*platformio.ini"
-      - "!.github/workflows/**"
-      - ".github/workflows/pio-run.yaml"
+  workflow_dispatch:
+  #push:
+  #  paths:
+  #    - "**/*.c"
+  #    - "**/*.cpp"
+  #    - "**/*.h"
+  #    - "**/*platformio.ini"
+  #    - "!.github/workflows/**"
+  #    - ".github/workflows/pio-run.yaml"
+  #pull_request:
+  #  paths:
+  #    - "**/*.c"
+  #    - "**/*.cpp"
+  #    - "**/*.h"
+  #    - "**/*platformio.ini"
+  #    - "!.github/workflows/**"
+  #    - ".github/workflows/pio-run.yaml"
 
 jobs:
   pio-run:

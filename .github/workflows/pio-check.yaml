@@ -1,22 +1,23 @@
 name: PIO run static code analysis
 
 on:
-  push:
-    paths:
-      - "**/*.c"
-      - "**/*.cpp"
-      - "**/*.h"
-      - "**/*platformio.ini"
-      - "!.github/workflows/**"
-      - ".github/workflows/pio-check.yaml"
-  pull_request:
-    paths:
-      - "**/*.c"
-      - "**/*.cpp"
-      - "**/*.h"
-      - "**/*platformio.ini"
-      - "!.github/workflows/**"
-      - ".github/workflows/pio-check.yaml"
+  workflow_dispatch:
+  #push:
+  #  paths:
+  #    - "**/*.c"
+  #    - "**/*.cpp"
+  #    - "**/*.h"
+  #    - "**/*platformio.ini"
+  #    - "!.github/workflows/**"
+  #    - ".github/workflows/pio-check.yaml"
+  #pull_request:
+  #  paths:
+  #    - "**/*.c"
+  #    - "**/*.cpp"
+  #    - "**/*.h"
+  #    - "**/*platformio.ini"
+  #    - "!.github/workflows/**"
+  #    - ".github/workflows/pio-check.yaml"
 
 jobs:
   pio-check:

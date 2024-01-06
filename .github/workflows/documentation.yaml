@@ -2,22 +2,22 @@ name: "DOC build and deploy"
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - "**/*.c"
-      - "**/*.cpp"
-      - "**/*.h"
-      - "utils/**/*"
-      - "!.github/workflows/**"
-      - ".github/workflows/documentation.yaml"
-  pull_request:
-    paths:
-      - "**/*.c"
-      - "**/*.cpp"
-      - "**/*.h"
-      - "utils/**/*"
-      - "!.github/workflows/**"
-      - ".github/workflows/documentation.yaml"
+  #push:
+  #  paths:
+  #    - "**/*.c"
+  #    - "**/*.cpp"
+  #    - "**/*.h"
+  #    - "utils/**/*"
+  #    - "!.github/workflows/**"
+  #    - ".github/workflows/documentation.yaml"
+  #pull_request:
+  #  paths:
+  #    - "**/*.c"
+  #    - "**/*.cpp"
+  #    - "**/*.h"
+  #    - "utils/**/*"
+  #    - "!.github/workflows/**"
+  #    - ".github/workflows/documentation.yaml"
 
 permissions:
   contents: write

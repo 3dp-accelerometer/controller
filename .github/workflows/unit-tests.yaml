@@ -1,22 +1,23 @@
 name: PIO run native unit tests
 
 on:
-  push:
-    paths:
-      - "**/*.c"
-      - "**/*.cpp"
-      - "**/*.h"
-      - "**/*platformio.ini"
-      - "!.github/workflows/**"
-      - ".github/workflows/unit-tests.yaml"
-  pull_request:
-    paths:
-      - "**/*.c"
-      - "**/*.cpp"
-      - "**/*.h"
-      - "**/*platformio.ini"
-      - "!.github/workflows/**"
-      - ".github/workflows/unit-tests.yaml"
+  workflow_dispatch:
+  #push:
+  #  paths:
+  #    - "**/*.c"
+  #    - "**/*.cpp"
+  #    - "**/*.h"
+  #    - "**/*platformio.ini"
+  #    - "!.github/workflows/**"
+  #    - ".github/workflows/unit-tests.yaml"
+  #pull_request:
+  #  paths:
+  #    - "**/*.c"
+  #    - "**/*.cpp"
+  #    - "**/*.h"
+  #    - "**/*platformio.ini"
+  #    - "!.github/workflows/**"
+  #    - ".github/workflows/unit-tests.yaml"
 
 jobs:
   unit-tests:

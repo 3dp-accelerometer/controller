@@ -30,6 +30,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Test Action
+      uses: ./.github/actions/test-action
+
     - name: Install Python
       id: install-python
       uses: actions/setup-python@v5

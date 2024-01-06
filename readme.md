@@ -109,3 +109,5 @@ References
 5. https://community.platformio.org/t/board-genericstm32h750vb-not-found/36441
 
 **Read the Docs** at [3dp-accelerometer.github.io](https://3dp-accelerometer.github.io/controller)
+
+[![Build Test Docs](https://github.com/3dp-accelerometer/controller/actions/workflows/build-test-builddocs.yaml/badge.svg)](https://github.com/3dp-accelerometer/controller/actions/workflows/build-test-builddocs.yaml)

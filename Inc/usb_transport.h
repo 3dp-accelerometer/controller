@@ -33,6 +33,7 @@ enum TransportHeader_Id {
   TransportHeader_Id_Rx_SetScale,
   TransportHeader_Id_Rx_GetScale,
   TransportHeader_Id_Rx_GetDeviceSetup,
+  TransportHeader_Id_Rx_GetFirmwareVersion,
 
   TransportHeader_Id_Rx_DeviceReboot = 17,
   TransportHeader_Id_Rx_SamplingStart,
@@ -42,6 +43,7 @@ enum TransportHeader_Id {
   TransportHeader_Id_Tx_Range,
   TransportHeader_Id_Tx_Scale,
   TransportHeader_Id_Tx_DeviceSetup,
+  TransportHeader_Id_Tx_FirmwareVersion,
 
   TransportHeader_Id_Tx_FifoOverflow = 33,
   TransportHeader_Id_Tx_SamplingStarted,
@@ -158,6 +160,12 @@ struct TransportRx_SamplingStop {
 struct TransportRx_GetDeviceSetup {
 } __attribute__((packed));
 
+/**
+ * RX payload for retrieving the firmware version.
+ */
+struct TransportRx_GetFirmwareVersion {
+} __attribute__((packed));
+
 /* TX ------------------------------------------------------------------------*/
 
 /**
@@ -231,6 +239,15 @@ struct TransportTx_Acceleration {
   int16_t z;      ///< raw sampling value in z-axis as seen from sensor
 } __attribute__((packed));
 
+/**
+ * TX payload transporting the firmware version.
+ */
+struct TransportTx_FirmwareVersion {
+  uint8_t major; ///< major version
+  uint8_t minor; ///< minor version
+  uint8_t patch; ///< patch version
+} __attribute__((packed));
+
 /* Frames --------------------------------------------------------------------*/
 
 /**
@@ -247,6 +264,7 @@ union TransportTxFrame {
   struct TransportTx_SamplingStopped asSamplingStopped;
   struct TransportTx_SamplingAborted asSamplingAborted;
   struct TransportTx_Acceleration asAcceleration;
+  struct TransportTx_FirmwareVersion asFirmwareVersion;
 } __attribute__((packed));
 
 /**
@@ -263,6 +281,7 @@ union TransportRxFrame {
   struct TransportRx_DeviceReboot asDeviceReboot;
   struct TransportRx_SamplingStart asSamplingStart;
   struct TransportRx_SamplingStop asSamplingStop;
+  struct TransportRx_GetFirmwareVersion asGetFirmwareVersion;
 } __attribute__((packed));
 
 /**

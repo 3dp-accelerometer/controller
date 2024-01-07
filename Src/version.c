@@ -1,5 +1,7 @@
-/** \file version.c    
+/** \file version.c
+ *
  * Auto generated file crated by "poetry run versionbump".
+ *
  * See also "poetry version".
  *
  * example:

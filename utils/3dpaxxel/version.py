@@ -25,8 +25,10 @@ def _generate_c_files(major: int, minor: int, patch: int):
     c_file = os.path.relpath(Path(__file__).parent / "../../Src/version.c")
     h_file = os.path.relpath(Path(__file__).parent / "../../Inc/version.h")
 
-    autogen = """/** \\file {file}    
+    autogen = """/** \\file {file}
+ *
  * Auto generated file crated by "poetry run versionbump".
+ *
  * See also "poetry version".
  *
  * example:

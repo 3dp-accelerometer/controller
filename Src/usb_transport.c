@@ -3,6 +3,7 @@
 #include "device_reboot.h"
 #include "sampling.h"
 #include "usbd_cdc_if.h"
+#include "version.h"
 #include <errno.h>
 
 int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
@@ -12,6 +13,26 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
   struct TransportFrame *request = (struct TransportFrame *)buffer;
 
   switch (request->header.id) {
+    // get firmware version
+  case TransportHeader_Id_Rx_GetFirmwareVersion: {
+    if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_GetFirmwareVersion) ==
+        *length) {
+
+      struct TransportFrame response = {
+          .header.id = TransportHeader_Id_Tx_FirmwareVersion,
+          .asTxFrame.asFirmwareVersion.major = VERSION_MAJOR,
+          .asTxFrame.asFirmwareVersion.minor = VERSION_MINOR,
+          .asTxFrame.asFirmwareVersion.patch = VERSION_PATCH};
+
+      // send version
+      while (USBD_BUSY ==
+             CDC_Transmit_FS((uint8_t *)&response,
+                             SIZEOF_HEADER_INCL_PAYLOAD(
+                                 response.asTxFrame.asFirmwareVersion)))
+        ;
+      return 0;
+    }
+  } break;
     // get ODR
   case TransportHeader_Id_Rx_GetOutputDataRate: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_GetOutputDataRate) ==
@@ -23,7 +44,7 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
           .header.id = TransportHeader_Id_Tx_OutputDataRate};
       response.asTxFrame.asOutputDataRate.rate =
           (enum TransportRx_SetOutputDataRate_Rate)rate;
-      // send IDR
+      // send ODR
       while (USBD_BUSY ==
              CDC_Transmit_FS((uint8_t *)&response,
                              SIZEOF_HEADER_INCL_PAYLOAD(

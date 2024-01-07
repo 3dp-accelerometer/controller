@@ -2,24 +2,24 @@ name: CodeQL check
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ "main" ]
-    paths:
-      - "**/*.h"
-      - "**/*.c"
-      - "**/*.cpp"
-      - "!.github/workflows/**/*"
-      - ".github/workflows/codeql-analysis.yaml"
-  pull_request:
-    branches: [ "main" ]
-    paths:
-      - "**/*.h"
-      - "**/*.c"
-      - "**/*.cpp"
-      - "!.github/workflows/**/*"
-      - ".github/workflows/codeql-analysis.yaml"
-  schedule:
-    - cron: "0 0 * * 6" # min (0-59), hour (0-23), day o. month (1-31), month (1-12), day o. week (0-6)
+  #push:
+  #  branches: [ "main" ]
+  #  paths:
+  #    - "**/*.h"
+  #    - "**/*.c"
+  #    - "**/*.cpp"
+  #    - "!.github/workflows/**/*"
+  #    - ".github/workflows/codeql-analysis.yaml"
+  #pull_request:
+  #  branches: [ "main" ]
+  #  paths:
+  #    - "**/*.h"
+  #    - "**/*.c"
+  #    - "**/*.cpp"
+  #    - "!.github/workflows/**/*"
+  #    - ".github/workflows/codeql-analysis.yaml"
+  #schedule:
+  #  - cron: "0 0 * * 6" # min (0-59), hour (0-23), day o. month (1-31), month (1-12), day o. week (0-6)
 
 jobs:
   codeql-analyze:

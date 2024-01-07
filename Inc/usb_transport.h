@@ -203,7 +203,13 @@ struct TransportTx_SamplingStarted {
 } __attribute__((packed));
 
 /**
- * TX payload indicating sampling finished normally.
+ * TX payload indicating sampling stream has finished (all samples sent).
+ *
+ * Response to host indicating that sampling has been finished successfully.
+ * This package is sent at the end of stream.
+ * When this response is sent, the sampling stream has been successfully transferred:
+ *  - stream is complete and
+ *  - without HW errors.
  */
 struct TransportTx_SamplingFinished {
 } __attribute__((packed));
@@ -218,13 +224,18 @@ struct TransportTx_DeviceSetup {
 } __attribute__((packed));
 
 /**
- * TX payload indicating sampling has stopped (reason unknown).
+ * TX payload indicating that the sampling has been stopped (for whatever reason).
+ *
+ * This package is sent whenever the device stops gathering data from sensor.
+ * Reasons: user request, overflow, error
  */
 struct TransportTx_SamplingStopped {
 } __attribute__((packed));
 
 /**
- * TX payload indicating sampling was aborted (upon request or error).
+ * TX payload indicating that the sampling has been aborted upon user request.
+ *
+ * Sent when user requested to stop forwarding samples was received.
  */
 struct TransportTx_SamplingAborted {
 } __attribute__((packed));
@@ -309,21 +320,43 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length);
 /* ---------------------------------------------------------------------------*/
 
 /**
- * Initialize sampling module.
- *
- * Must be called before going operational.
+ * Transmits device configuration.
  */
 void TransportTxSamplingSetup();
 
-//@{
 /**
- * TODO: make private
+ * Transmits firmware version.
+ */
+void TransportTxFirmwareVersion();
+
+/**
+ * Transmits sampling started package.
  */
 void TransportTxSamplingStarted(uint16_t max_samples);
+
+/**
+ * Transmits sampling finished package.
+ */
 void TransportTxSamplingFinished();
+
+/**
+ * Transmits sampling stopped package.
+ */
 void TransportTxSamplingStopped();
+
+/**
+ * Transmits sampling aborted package.
+ */
 void TransportTxSamplingAborted();
+
+/**
+ * Transmits FiFo overflow package.
+ */
 void TransportTxFifoOverflow();
+
+/**
+ * Forwards acceleration data block.
+ */
 int TransportTxAccelerationBuffer(struct Adxl345_Acceleration *buffer,
                                   uint8_t count, uint16_t start_index);
-//@}
+

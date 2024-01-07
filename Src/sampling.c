@@ -52,6 +52,7 @@ static void checkStartRequest() {
     return;
   }
 
+  TransportTxFirmwareVersion();
   TransportTxSamplingStarted(samplingState.maxSamples);
 
   samplingState.isFifoOverflowSet = false;

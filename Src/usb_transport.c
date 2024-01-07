@@ -179,8 +179,7 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
 }
 
 void TransportTxSamplingSetup() {
-  struct TransportFrame frame = {.header.id =
-                                     TransportHeader_Id_Tx_DeviceSetup};
+  struct TransportFrame tx;
 
   enum Adxl345Register_BwRate_Rate rate;
   enum Adxl345Register_DataFormat_Range range;
@@ -190,19 +189,32 @@ void TransportTxSamplingSetup() {
   Adxl345_getScale(&scale);
   Adxl345_getRange(&range);
 
-  frame.asTxFrame.asDeviceSetup.outputDataRate = rate;
-  frame.asTxFrame.asDeviceSetup.range = range;
-  frame.asTxFrame.asDeviceSetup.scale = scale;
+  tx.header.id = TransportHeader_Id_Tx_DeviceSetup;
+  tx.asTxFrame.asDeviceSetup.outputDataRate = rate;
+  tx.asTxFrame.asDeviceSetup.range = range;
+  tx.asTxFrame.asDeviceSetup.scale = scale;
 
   while (USBD_BUSY ==
-         CDC_Transmit_FS((uint8_t *)&frame, SIZEOF_HEADER_INCL_PAYLOAD(
-                                                frame.asTxFrame.asDeviceSetup)))
+         CDC_Transmit_FS((uint8_t *)&tx, SIZEOF_HEADER_INCL_PAYLOAD(
+                                             tx.asTxFrame.asDeviceSetup)))
+    ;
+}
+void TransportTxFirmwareVersion() {
+  struct TransportFrame tx;
+  tx.header.id = TransportHeader_Id_Tx_FirmwareVersion;
+  tx.asTxFrame.asFirmwareVersion.major = VERSION_MAJOR;
+  tx.asTxFrame.asFirmwareVersion.minor = VERSION_MINOR;
+  tx.asTxFrame.asFirmwareVersion.patch = VERSION_PATCH;
+
+  while (USBD_BUSY ==
+         CDC_Transmit_FS((uint8_t *)&tx, SIZEOF_HEADER_INCL_PAYLOAD(
+                                             tx.asTxFrame.asFirmwareVersion)))
     ;
 }
 
 void TransportTxSamplingStarted(uint16_t max_samples) {
-  struct TransportFrame tx = {.header.id =
-                                  TransportHeader_Id_Tx_SamplingStarted};
+  struct TransportFrame tx;
+  tx.header.id = TransportHeader_Id_Tx_SamplingStarted;
   tx.asTxFrame.asSamplingStarted.maxSamples = max_samples;
 
   while (USBD_BUSY ==

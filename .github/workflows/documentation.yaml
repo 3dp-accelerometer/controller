@@ -21,7 +21,6 @@ on:
 
 jobs:
   docs-build-deploy:
-    needs: [ pio-check, pio-tests ]
     name: Generate docs on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
 

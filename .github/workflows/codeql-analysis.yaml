@@ -8,7 +8,7 @@ on:
       - "**/*.h"
       - "**/*.c"
       - "**/*.cpp"
-      - "!.github/workflows/**"
+      - "!.github/workflows/**/*"
       - ".github/workflows/codeql-analysis.yaml"
   pull_request:
     branches: [ "main" ]
@@ -16,16 +16,23 @@ on:
       - "**/*.h"
       - "**/*.c"
       - "**/*.cpp"
-      - "!.github/workflows/**"
+      - "!.github/workflows/**/*"
       - ".github/workflows/codeql-analysis.yaml"
   schedule:
     - cron: "0 0 * * 6" # min (0-59), hour (0-23), day o. month (1-31), month (1-12), day o. week (0-6)
 
 jobs:
   codeql-analyze:
-    name: Analyze with CodeQL
-    runs-on: ubuntu-latest
+    name: Analyze with CodeQL on ${{ matrix.os }}
+    if: ${{ github.event_name == 'pull_request' || github.ref == 'refs/heads/main' }}
+    runs-on: $ {{ matrix.os }}
+    # Runner size impacts CodeQL analysis time. To learn more, please see:
+    #   - https://gh.io/recommended-hardware-resources-for-running-codeql
+    #   - https://gh.io/supported-runners-and-hardware-resources
+    #   - https://gh.io/using-larger-runners
+    # Consider using larger runners for possible analysis time improvements.
     timeout-minutes: 15
+
     permissions:
       actions: read
       contents: read
@@ -34,6 +41,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        os: [ ubuntu-latest ]
         language: [ 'c-cpp' ]
         # CodeQL supports [ 'c-cpp', 'csharp', 'go', 'java-kotlin', 'javascript-typescript', 'python', 'ruby', 'swift' ]
         # Use only 'java-kotlin' to analyze code written in Java, Kotlin or both

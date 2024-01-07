@@ -4,19 +4,19 @@ on:
   workflow_dispatch:
   #push:
   #  paths:
+  #    - "**/*.h"
   #    - "**/*.c"
   #    - "**/*.cpp"
-  #    - "**/*.h"
-  #    - "**/*platformio.ini"
-  #    - "!.github/workflows/**"
+  #    - "**/platformio.ini"
+  #    - "!.github/workflows/**/*"
   #    - ".github/workflows/unit-tests.yaml"
   #pull_request:
   #  paths:
+  #    - "**/*.h"
   #    - "**/*.c"
   #    - "**/*.cpp"
-  #    - "**/*.h"
-  #    - "**/*platformio.ini"
-  #    - "!.github/workflows/**"
+  #    - "**/platformio.ini"
+  #    - "!.github/workflows/**/*"
   #    - ".github/workflows/unit-tests.yaml"
 
 jobs:

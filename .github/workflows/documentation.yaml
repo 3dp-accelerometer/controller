@@ -4,19 +4,19 @@ on:
   workflow_dispatch:
   #push:
   #  paths:
+  #    - "**/*.h"
   #    - "**/*.c"
   #    - "**/*.cpp"
-  #    - "**/*.h"
   #    - "utils/**/*"
-  #    - "!.github/workflows/**"
+  #    - "!.github/workflows/**/*"
   #    - ".github/workflows/documentation.yaml"
   #pull_request:
   #  paths:
+  #    - "**/*.h"
   #    - "**/*.c"
   #    - "**/*.cpp"
-  #    - "**/*.h"
   #    - "utils/**/*"
-  #    - "!.github/workflows/**"
+  #    - "!.github/workflows/**/*"
   #    - ".github/workflows/documentation.yaml"
 
 jobs:

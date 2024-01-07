@@ -6,7 +6,7 @@
 #include "version.h"
 #include <errno.h>
 
-int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
+int TransportRx_Process(uint8_t *buffer, const uint32_t *length) {
   if (NULL == buffer || NULL == length)
     return -EINVAL;
 
@@ -14,12 +14,12 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
 
   switch (request->header.id) {
     // get firmware version
-  case TransportHeader_Id_Rx_GetFirmwareVersion: {
+  case Transport_HeaderId_Rx_GetFirmwareVersion: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_GetFirmwareVersion) ==
         *length) {
 
       struct TransportFrame response = {
-          .header.id = TransportHeader_Id_Tx_FirmwareVersion,
+          .header.id = Transport_HeaderId_Tx_FirmwareVersion,
           .asTxFrame.asFirmwareVersion.major = VERSION_MAJOR,
           .asTxFrame.asFirmwareVersion.minor = VERSION_MINOR,
           .asTxFrame.asFirmwareVersion.patch = VERSION_PATCH};
@@ -34,14 +34,14 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
     }
   } break;
     // get ODR
-  case TransportHeader_Id_Rx_GetOutputDataRate: {
+  case Transport_HeaderId_Rx_GetOutputDataRate: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_GetOutputDataRate) ==
         *length) {
       enum Adxl345Register_BwRate_Rate rate;
       Adxl345_getOutputDataRate(&rate);
 
       struct TransportFrame response = {
-          .header.id = TransportHeader_Id_Tx_OutputDataRate};
+          .header.id = Transport_HeaderId_Tx_OutputDataRate};
       response.asTxFrame.asOutputDataRate.rate =
           (enum TransportRx_SetOutputDataRate_Rate)rate;
       // send ODR
@@ -54,7 +54,7 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
     }
   } break;
     // set ODR
-  case TransportHeader_Id_Rx_SetOutputDataRate:
+  case Transport_HeaderId_Rx_SetOutputDataRate:
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_SetOutputDataRate) ==
         *length) {
       return Adxl345_setOutputDataRate(
@@ -63,13 +63,13 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
     break;
 
     // get range
-  case TransportHeader_Id_Rx_GetRange: {
+  case Transport_HeaderId_Rx_GetRange: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_GetRange) == *length) {
       enum Adxl345Register_DataFormat_Range range;
       Adxl345_getRange(&range);
 
       struct TransportFrame response = {.header.id =
-                                            TransportHeader_Id_Tx_Range};
+                                            Transport_HeaderId_Tx_Range};
       response.asTxFrame.asRange.range = (enum TransportRx_SetRange_Range)range;
 
       // send range
@@ -82,20 +82,20 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
   } break;
 
     // set range
-  case TransportHeader_Id_Rx_SetRange: {
+  case Transport_HeaderId_Rx_SetRange: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_SetRange) == *length) {
       return Adxl345_setRange(request->asRxFrame.asSetRange.range);
     }
   } break;
 
     // get scale
-  case TransportHeader_Id_Rx_GetScale: {
+  case Transport_HeaderId_Rx_GetScale: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_GetScale) == *length) {
       enum Adxl345Register_DataFormat_FullResBit scale;
       Adxl345_getScale(&scale);
 
       struct TransportFrame response = {.header.id =
-                                            TransportHeader_Id_Tx_Scale};
+                                            Transport_HeaderId_Tx_Scale};
       response.asTxFrame.asScale.scale = (enum TransportRx_SetScale_Scale)scale;
 
       // send scale
@@ -108,14 +108,14 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
   } break;
 
     // set scale
-  case TransportHeader_Id_Rx_SetScale: {
+  case Transport_HeaderId_Rx_SetScale: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_SetScale) == *length) {
       return Adxl345_setScale(request->asRxFrame.asSetScale.scale);
     }
   } break;
 
   // get device setup
-  case TransportHeader_Id_Rx_GetDeviceSetup: {
+  case Transport_HeaderId_Rx_GetDeviceSetup: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_GetDeviceSetup) ==
         *length) {
       enum Adxl345Register_BwRate_Rate rate;
@@ -126,7 +126,7 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
       Adxl345_getScale(&scale);
 
       struct TransportFrame response = {.header.id =
-                                            TransportHeader_Id_Tx_DeviceSetup};
+                                            Transport_HeaderId_Tx_DeviceSetup};
       response.asTxFrame.asDeviceSetup.outputDataRate =
           (enum TransportRx_SetOutputDataRate_Rate)rate;
       response.asTxFrame.asDeviceSetup.range =
@@ -145,7 +145,7 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
   } break;
 
     // device reboot requested
-  case TransportHeader_Id_Rx_DeviceReboot: {
+  case Transport_HeaderId_Rx_DeviceReboot: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_DeviceReboot) ==
         *length) {
       device_reboot_requestAsyncReboot();
@@ -154,7 +154,7 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
   } break;
 
     // sapling start requested
-  case TransportHeader_Id_Rx_SamplingStart: {
+  case Transport_HeaderId_Rx_SamplingStart: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_SamplingStart) ==
         *length) {
       sampling_start(request->asRxFrame.asSamplingStart.max_samples_count);
@@ -163,7 +163,7 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
   } break;
 
     // sampling stop requested
-  case TransportHeader_Id_Rx_SamplingStop: {
+  case Transport_HeaderId_Rx_SamplingStop: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_SamplingStop) ==
         *length) {
       sampling_stop();
@@ -178,7 +178,7 @@ int TransportRxProcess(uint8_t *buffer, const uint32_t *length) {
   return -EINVAL;
 }
 
-void TransportTxSamplingSetup() {
+void Transport_TxSamplingSetup() {
   struct TransportFrame tx;
 
   enum Adxl345Register_BwRate_Rate rate;
@@ -189,7 +189,7 @@ void TransportTxSamplingSetup() {
   Adxl345_getScale(&scale);
   Adxl345_getRange(&range);
 
-  tx.header.id = TransportHeader_Id_Tx_DeviceSetup;
+  tx.header.id = Transport_HeaderId_Tx_DeviceSetup;
   tx.asTxFrame.asDeviceSetup.outputDataRate = rate;
   tx.asTxFrame.asDeviceSetup.range = range;
   tx.asTxFrame.asDeviceSetup.scale = scale;
@@ -199,9 +199,9 @@ void TransportTxSamplingSetup() {
                                              tx.asTxFrame.asDeviceSetup)))
     ;
 }
-void TransportTxFirmwareVersion() {
+void TransportTx_FirmwareVersion() {
   struct TransportFrame tx;
-  tx.header.id = TransportHeader_Id_Tx_FirmwareVersion;
+  tx.header.id = Transport_HeaderId_Tx_FirmwareVersion;
   tx.asTxFrame.asFirmwareVersion.major = VERSION_MAJOR;
   tx.asTxFrame.asFirmwareVersion.minor = VERSION_MINOR;
   tx.asTxFrame.asFirmwareVersion.patch = VERSION_PATCH;
@@ -212,78 +212,78 @@ void TransportTxFirmwareVersion() {
     ;
 }
 
-void TransportTxSamplingStarted(uint16_t max_samples) {
+void TransportTx_SamplingStarted(uint16_t max_samples) {
   struct TransportFrame tx;
-  tx.header.id = TransportHeader_Id_Tx_SamplingStarted;
+  tx.header.id = Transport_HeaderId_Tx_SamplingStarted;
   tx.asTxFrame.asSamplingStarted.maxSamples = max_samples;
 
   while (USBD_BUSY ==
          CDC_Transmit_FS((uint8_t *)&tx,
-                         sizeof(struct TransportHeader) +
+                         sizeof(struct Transport_Header) +
                              sizeof(tx.asTxFrame.asSamplingStarted)))
     ;
 }
 
-void TransportTxSamplingFinished() {
+void TransportTx_SamplingFinished() {
   struct TransportFrame tx = {.header.id =
-                                  TransportHeader_Id_Tx_SamplingFinished};
+                                  Transport_HeaderId_Tx_SamplingFinished};
   while (USBD_BUSY ==
          CDC_Transmit_FS((uint8_t *)&tx,
-                         sizeof(struct TransportHeader) +
+                         sizeof(struct Transport_Header) +
                              sizeof(tx.asTxFrame.asSamplingFinished)))
     ;
 }
 
-void TransportTxSamplingStopped() {
-  TransportTxSamplingSetup();
+void TransportTx_SamplingStopped() {
+  Transport_TxSamplingSetup();
 
   struct TransportFrame tx = {.header.id =
-                                  TransportHeader_Id_Tx_SamplingStopped};
+                                  Transport_HeaderId_Tx_SamplingStopped};
   while (USBD_BUSY ==
          CDC_Transmit_FS((uint8_t *)&tx,
-                         sizeof(struct TransportHeader) +
+                         sizeof(struct Transport_Header) +
                              sizeof(tx.asTxFrame.asSamplingStopped)))
     ;
 }
 
-void TransportTxSamplingAborted() {
+void TransportTx_SamplingAborted() {
   struct TransportFrame tx = {.header.id =
-                                  TransportHeader_Id_Tx_SamplingAborted};
+                                  Transport_HeaderId_Tx_SamplingAborted};
   while (USBD_BUSY ==
          CDC_Transmit_FS((uint8_t *)&tx,
-                         sizeof(struct TransportHeader) +
+                         sizeof(struct Transport_Header) +
                              sizeof(tx.asTxFrame.asSamplingAborted)))
     ;
 }
 
-void TransportTxFifoOverflow() {
-  struct TransportFrame tx = {.header.id = TransportHeader_Id_Tx_FifoOverflow};
+void TransportTx_FifoOverflow() {
+  struct TransportFrame tx = {.header.id = Transport_HeaderId_Tx_FifoOverflow};
   while (USBD_BUSY == CDC_Transmit_FS((uint8_t *)&tx,
-                                      sizeof(struct TransportHeader) +
+                                      sizeof(struct Transport_Header) +
                                           sizeof(tx.asTxFrame.asFifoOverflow)))
     ;
 }
 
-int TransportTxAccelerationBuffer(struct Adxl345_Acceleration *buffer,
+int TransportTx_AccelerationBuffer(struct Adxl345_Acceleration *data,
                                   uint8_t count, uint16_t start_index) {
   // HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_SET);
   struct TransportFrame acc[ADXL345_WATERMARK_LEVEL] = {};
 
-  if (ADXL345_WATERMARK_LEVEL < count || NULL == buffer) {
+  if (ADXL345_WATERMARK_LEVEL < count || NULL == data) {
     return -EINVAL;
   }
 
   // todo
   assert(sizeof(struct TransportFrame) ==
          (sizeof(struct TransportTx_Acceleration) +
-          sizeof(struct TransportHeader)));
+          sizeof(struct Transport_Header)));
 
   for (uint8_t idx = 0; idx < count; idx++) {
     acc[idx].asTxFrame.asAcceleration.index = start_index++;
-    acc[idx].asTxFrame.asAcceleration.x = buffer[idx].x;
-    acc[idx].asTxFrame.asAcceleration.y = buffer[idx].y;
-    acc[idx].asTxFrame.asAcceleration.z = buffer[idx].z;
-    acc[idx].header.id = TransportHeader_Id_Tx_Acceleration;
+    acc[idx].asTxFrame.asAcceleration.x = data[idx].x;
+    acc[idx].asTxFrame.asAcceleration.y = data[idx].y;
+    acc[idx].asTxFrame.asAcceleration.z = data[idx].z;
+    acc[idx].header.id = Transport_HeaderId_Tx_Acceleration;
   }
 
   while (USBD_BUSY ==

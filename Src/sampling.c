@@ -52,8 +52,8 @@ static void checkStartRequest() {
     return;
   }
 
-  TransportTxFirmwareVersion();
-  TransportTxSamplingStarted(samplingState.maxSamples);
+  TransportTx_FirmwareVersion();
+  TransportTx_SamplingStarted(samplingState.maxSamples);
 
   samplingState.isFifoOverflowSet = false;
   samplingState.transactionsCount = 0;
@@ -73,9 +73,9 @@ static void checkStopRequest() {
   }
 
   if (samplingState.transactionsCount < samplingState.maxSamples) {
-    TransportTxSamplingAborted();
+    TransportTx_SamplingAborted();
   }
-  TransportTxSamplingStopped();
+  TransportTx_SamplingStopped();
 
   Adxl345_setPowerCtlStandby();
 
@@ -150,24 +150,24 @@ int sampling_fetchForward() {
     }
 
     if (0 < rxCount) {
-      TransportTxAccelerationBuffer(samplingState.rxBuffer, rxCount,
-                                    samplingState.transactionsCount);
+      TransportTx_AccelerationBuffer(samplingState.rxBuffer, rxCount,
+                                     samplingState.transactionsCount);
       samplingState.transactionsCount += rxCount;
     }
   }
 
   if (-EOVERFLOW == ret) {
-    TransportTxFifoOverflow();
+    TransportTx_FifoOverflow();
     sampling_stop();
   }
 
   if (-ECANCELED == ret) {
-    TransportTxSamplingAborted();
+    TransportTx_SamplingAborted();
     sampling_stop();
   }
 
   if (ENODATA == ret) {
-    TransportTxSamplingFinished();
+    TransportTx_SamplingFinished();
     sampling_stop();
   }
 

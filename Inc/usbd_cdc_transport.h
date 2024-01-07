@@ -16,7 +16,7 @@ struct Adxl345_Acceleration;
  * Computes size of package, namely size of header type + size of package type.
  */
 #define SIZEOF_HEADER_INCL_PAYLOAD(packageType)                                \
-  (sizeof(struct TransportHeader) + sizeof(packageType))
+  (sizeof(struct Transport_Header) + sizeof(packageType))
 
 /* Transport Header ----------------------------------------------------------*/
 
@@ -25,39 +25,39 @@ struct Adxl345_Acceleration;
  *
  * Each package's header ID must be one of these.
  */
-enum TransportHeader_Id {
-  TransportHeader_Id_Rx_SetOutputDataRate = 1,
-  TransportHeader_Id_Rx_GetOutputDataRate,
-  TransportHeader_Id_Rx_SetRange,
-  TransportHeader_Id_Rx_GetRange,
-  TransportHeader_Id_Rx_SetScale,
-  TransportHeader_Id_Rx_GetScale,
-  TransportHeader_Id_Rx_GetDeviceSetup,
-  TransportHeader_Id_Rx_GetFirmwareVersion,
+enum Transport_HeaderId {
+  Transport_HeaderId_Rx_SetOutputDataRate = 1,
+  Transport_HeaderId_Rx_GetOutputDataRate,
+  Transport_HeaderId_Rx_SetRange,
+  Transport_HeaderId_Rx_GetRange,
+  Transport_HeaderId_Rx_SetScale,
+  Transport_HeaderId_Rx_GetScale,
+  Transport_HeaderId_Rx_GetDeviceSetup,
+  Transport_HeaderId_Rx_GetFirmwareVersion,
 
-  TransportHeader_Id_Rx_DeviceReboot = 17,
-  TransportHeader_Id_Rx_SamplingStart,
-  TransportHeader_Id_Rx_SamplingStop,
+  Transport_HeaderId_Rx_DeviceReboot = 17,
+  Transport_HeaderId_Rx_SamplingStart,
+  Transport_HeaderId_Rx_SamplingStop,
 
-  TransportHeader_Id_Tx_OutputDataRate = 25,
-  TransportHeader_Id_Tx_Range,
-  TransportHeader_Id_Tx_Scale,
-  TransportHeader_Id_Tx_DeviceSetup,
-  TransportHeader_Id_Tx_FirmwareVersion,
+  Transport_HeaderId_Tx_OutputDataRate = 25,
+  Transport_HeaderId_Tx_Range,
+  Transport_HeaderId_Tx_Scale,
+  Transport_HeaderId_Tx_DeviceSetup,
+  Transport_HeaderId_Tx_FirmwareVersion,
 
-  TransportHeader_Id_Tx_FifoOverflow = 33,
-  TransportHeader_Id_Tx_SamplingStarted,
-  TransportHeader_Id_Tx_SamplingFinished,
-  TransportHeader_Id_Tx_SamplingStopped,
-  TransportHeader_Id_Tx_SamplingAborted,
-  TransportHeader_Id_Tx_Acceleration,
+  Transport_HeaderId_Tx_FifoOverflow = 33,
+  Transport_HeaderId_Tx_SamplingStarted,
+  Transport_HeaderId_Tx_SamplingFinished,
+  Transport_HeaderId_Tx_SamplingStopped,
+  Transport_HeaderId_Tx_SamplingAborted,
+  Transport_HeaderId_Tx_Acceleration,
 };
 
 /**
  * TX/RX package header.
  */
-struct TransportHeader {
-  enum TransportHeader_Id id;
+struct Transport_Header {
+  enum Transport_HeaderId id;
 } __attribute__((packed));
 
 /* RX ------------------------------------------------------------------------*/
@@ -207,7 +207,8 @@ struct TransportTx_SamplingStarted {
  *
  * Response to host indicating that sampling has been finished successfully.
  * This package is sent at the end of stream.
- * When this response is sent, the sampling stream has been successfully transferred:
+ * When this response is sent, the sampling stream has been successfully
+ * transferred:
  *  - stream is complete and
  *  - without HW errors.
  */
@@ -224,7 +225,8 @@ struct TransportTx_DeviceSetup {
 } __attribute__((packed));
 
 /**
- * TX payload indicating that the sampling has been stopped (for whatever reason).
+ * TX payload indicating that the sampling has been stopped (for whatever
+ * reason).
  *
  * This package is sent whenever the device stops gathering data from sensor.
  * Reasons: user request, overflow, error
@@ -299,7 +301,7 @@ union TransportRxFrame {
  * Generic package (TX/RX) including header and payload.
  */
 struct TransportFrame {
-  struct TransportHeader header;
+  struct Transport_Header header;
   union {
     union TransportTxFrame asTxFrame;
     union TransportRxFrame asRxFrame;
@@ -329,51 +331,66 @@ struct TransportFrame {
  * @param length received package length
  * @return 0 on success, EINVAL otherwise
  */
-int TransportRxProcess(uint8_t *buffer, const uint32_t *length);
+int TransportRx_Process(uint8_t *buffer, const uint32_t *length);
 
 /**
- * Transmits device configuration TransportTx_DeviceSetup to the IN endpoint of host.
+ * Transmits device configuration TransportTx_DeviceSetup to the IN endpoint of
+ * host.
  */
-void TransportTxSamplingSetup();
+void TransportTx_SamplingSetup();
 
 /**
- * Transmits firmware version TransportTx_FirmwareVersion to the IN endpoint of host.
+ * Transmits firmware version TransportTx_FirmwareVersion to the IN endpoint of
+ * host.
  */
-void TransportTxFirmwareVersion();
+void TransportTx_FirmwareVersion();
 
 /**
- * Transmits sampling started package TransportTx_SamplingStarted to the IN endpoint of host.
+ * Transmits sampling started package TransportTx_SamplingStarted to the IN
+ * endpoint of host.
  */
-void TransportTxSamplingStarted(uint16_t max_samples);
+void TransportTx_SamplingStarted(uint16_t max_samples);
 
 /**
- * Transmits sampling finished package TransportTx_SamplingFinished to the IN endpoint of host.
+ * Transmits sampling finished package TransportTx_SamplingFinished to the IN
+ * endpoint of host.
  */
-void TransportTxSamplingFinished();
+void TransportTx_SamplingFinished();
 
 /**
- * Transmits sampling stopped package TransportTx_SamplingStopped to the IN endpoint of host.
+ * Transmits sampling stopped package TransportTx_SamplingStopped to the IN
+ * endpoint of host.
  */
-void TransportTxSamplingStopped();
+void TransportTx_SamplingStopped();
 
 /**
- * Transmits sampling aborted package TransportTx_SamplingAborted to the IN endpoint of host.
+ * Transmits sampling aborted package TransportTx_SamplingAborted to the IN
+ * endpoint of host.
  */
-void TransportTxSamplingAborted();
+void TransportTx_SamplingAborted();
 
 /**
- * Transmits FiFo overflow package TransportTx_FifoOverflow to the IN endpoint of host.
+ * Transmits FiFo overflow package TransportTx_FifoOverflow to the IN endpoint
+ * of host.
  */
-void TransportTxFifoOverflow();
+void TransportTx_FifoOverflow();
 
 /**
  * Forwards acceleration data block to the IN endpoint of host.
  *
- * @param buffer tx buffer
- * @param count buffer size
- * @param start_index where to start from within buffer
+ * Triggers sending data to the the IN endpoint.
+ * If USB is busy the data is buffered for a later transmission.
+ * To consume all buffered data this function shall be called until ENODATA is
+ * returned (data and count must be NULL and 0).
+ *
+ * @param data tx buffer or NULL to consume buffered data
+ * @param count buffer size or 0 to consume buffered data
+ * @param start_index where to start from within data
  * @return
+ *   - 0 on success (data send in first run),
+ *   - EBUSY if data was buffered,
+ *   - ENODATA if no buffered data available (all data sent),
+ *   - -EINVAL otherwise
  */
-int TransportTxAccelerationBuffer(struct Adxl345_Acceleration *buffer,
-                                  uint8_t count, uint16_t start_index);
-
+int TransportTx_AccelerationBuffer(struct Adxl345_Acceleration *data,
+                                   uint8_t count, uint16_t start_index);

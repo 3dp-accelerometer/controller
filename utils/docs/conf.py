@@ -21,6 +21,8 @@ rst_prolog = f""".. |pkgname| replace:: sphinx-pyproject
 .. |pkgname2| replace:: ``sphinx-pyproject``
 .. |browse_github| replace:: `Browse the GitHub Repository <{github_url}>`__
 """
+rst_epilog = """
+"""
 
 slug = re.sub(r"\W+", "-", project.lower())
 release = version = config.version
@@ -34,10 +36,14 @@ intersphinx_mapping = {
     "sphinx-toolbox": ("https://sphinx-toolbox.readthedocs.io/en/latest", None),
 }
 
-html_theme_options = {"logo_only": False}
-
+html_show_sphinx = False
+html_theme_options = {
+    "logo_only": False,
+    "prev_next_buttons_location": None
+}
+html_show_sourcelink = False
 html_context = {
-    "display_github": True,
+    "display_github": False,
     "github_user": config["github_username"],
     "github_repo": config["github_repository"],
     "github_version": "master",
@@ -99,6 +105,3 @@ exhale_args = {
 
 primary_domain = 'c'
 highlight_language = 'c'
-
-html_copy_source=True
-html_show_sourcelink=True

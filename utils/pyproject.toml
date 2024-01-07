@@ -74,6 +74,7 @@ extensions = [
     #"seed_intersphinx_mapping",
     "html_section",
     ### "sphinx_md",                                # blocked by exhale
+    "sphinx_toolbox.github",
     #"sphinx_toolbox.more_autosummary.column_widths",
     #"sphinx_toolbox.latex",
     #"sphinx_toolbox.latex.succinct_seealso",

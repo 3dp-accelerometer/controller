@@ -17,3 +17,6 @@ Indices and tables
 ------------------
 
 * :ref:`genindex`
+
+.. sidebar-links::
+   :github:

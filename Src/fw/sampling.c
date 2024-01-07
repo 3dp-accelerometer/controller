@@ -1,7 +1,8 @@
 #include "fw/sampling.h"
 #include "fw/adxl345.h"
-#include "tim.h"
+#include "fw/adxl345_transport_types.h"
 #include "fw/usbd_cdc_transport.h"
+#include "tim.h"
 #include <assert.h>
 #include <errno.h>
 
@@ -33,7 +34,7 @@ struct SamplingState {
   volatile bool doStop;
   volatile bool isStarted;
   volatile bool waitFor5usTimer;
-  struct Adxl345_Acceleration rxBuffer[NUM_SAMPLES_READ_AT_ONCE];
+  struct Adxl345TP_Acceleration rxBuffer[NUM_SAMPLES_READ_AT_ONCE];
   volatile bool isFifoOverflowSet;
   volatile bool isFifoWatermarkSet;
   int transactionsCount;
@@ -94,7 +95,7 @@ static void checkStopRequest() {
   Adxl345_setPowerCtlStandby();
 
   // clear watermark interrupt (clear whole fifo)
-  struct Adxl345_Acceleration devNull;
+  struct Adxl345TP_Acceleration devNull;
   for (uint8_t idx = 0; idx < ADXL345_FIFO_ENTRIES; idx++) {
     Adxl345_getAcceleration(&devNull);
   }

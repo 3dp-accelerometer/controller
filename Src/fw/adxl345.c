@@ -1,4 +1,6 @@
 #include "fw/adxl345.h"
+#include "fw/adxl345_spi_types.h"
+#include "fw/adxl345_transport_types.h"
 #include "gpio.h"
 #include "spi.h"
 #include <errno.h>
@@ -11,12 +13,12 @@ static void ncsClear() {
   HAL_GPIO_WritePin(SPI1_SS_GPIO_Port, SPI1_SS_Pin, GPIO_PIN_SET);
 }
 
-static void transmitFrame(union Adxl345TxFrame *frame, uint8_t num_bytes,
-                          enum Adxl345CS apply_cs,
-                          enum Adxl345RWFlags rw_flag) {
+static void transmitFrame(union Adxl345TP_TxFrame *frame, uint8_t num_bytes,
+                          enum Adxl345SPI_CS apply_cs,
+                          enum Adxl345SPI_RWFlags rw_flag) {
   frame->asAddress |= rw_flag;
 
-  if (Adxl345CS_modify == apply_cs) {
+  if (Adxl345SPI_CS_modify == apply_cs) {
     ncsSet();
     HAL_SPI_Transmit(&hspi1, (uint8_t *)frame, num_bytes, 10);
     ncsClear();
@@ -25,10 +27,10 @@ static void transmitFrame(union Adxl345TxFrame *frame, uint8_t num_bytes,
   }
 }
 
-static void receiveFrame(union Adxl345RxFrame *frame, uint8_t num_bytes,
-                         enum Adxl345CS apply_cs) {
+static void receiveFrame(union Adxl345TP_RxFrame *frame, uint8_t num_bytes,
+                         enum Adxl345SPI_CS apply_cs) {
 
-  if (Adxl345CS_modify == apply_cs) {
+  if (Adxl345SPI_CS_modify == apply_cs) {
     ncsSet();
     HAL_SPI_Receive(&hspi1, (uint8_t *)frame, num_bytes, 10);
     ncsClear();
@@ -37,37 +39,39 @@ static void receiveFrame(union Adxl345RxFrame *frame, uint8_t num_bytes,
   }
 }
 
-static void transmitReceiveFrame(union Adxl345TxFrame *tx_frame,
-                                 union Adxl345RxFrame *rx_frame,
+static void transmitReceiveFrame(union Adxl345TP_TxFrame *tx_frame,
+                                 union Adxl345TP_RxFrame *rx_frame,
                                  uint8_t num_bytes_receive) {
-  const uint8_t multiByte = (num_bytes_receive > 1) ? Adxl345RWFlags_multiByte
-                                                    : Adxl345RWFlags_singleByte;
+  const uint8_t multiByte = (num_bytes_receive > 1)
+                                ? Adxl345SPI_RWFlags_multiByte
+                                : Adxl345SPI_RWFlags_singleByte;
   ncsSet();
-  transmitFrame(tx_frame, 1, Adxl345CS_untouched,
-                Adxl345RWFlags_read | multiByte);
-  receiveFrame(rx_frame, num_bytes_receive, Adxl345CS_untouched);
+  transmitFrame(tx_frame, 1, Adxl345SPI_CS_untouched,
+                Adxl345SPI_RWFlags_read | multiByte);
+  receiveFrame(rx_frame, num_bytes_receive, Adxl345SPI_CS_untouched);
   ncsClear();
 }
 
 static void readRegister(enum Adxl345Register_Address addr,
                          union Adxl345Register *reg) {
-  union Adxl345TxFrame txFrame = {.asAddress = addr | Adxl345RWFlags_read};
-  union Adxl345RxFrame rxFrame = {0};
+  union Adxl345TP_TxFrame txFrame = {.asAddress =
+                                         addr | Adxl345SPI_RWFlags_read};
+  union Adxl345TP_RxFrame rxFrame = {0};
   transmitReceiveFrame(&txFrame, &rxFrame, 1);
   *reg = rxFrame.asRegister;
 }
 
 static void writeRegister(enum Adxl345Register_Address addr,
                           const union Adxl345Register *reg) {
-  union Adxl345TxFrame txFrame = {.asAddress = addr};
+  union Adxl345TP_TxFrame txFrame = {.asAddress = addr};
   txFrame.asPaddedRegister.asRegister = *reg;
-  transmitFrame(&txFrame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
+  transmitFrame(&txFrame, 2, Adxl345SPI_CS_modify, Adxl345SPI_RWFlags_write);
 }
 
 int Adxl345_init() {
 
   { // data format
-    union Adxl345TxFrame tx_frame = {
+    union Adxl345TP_TxFrame tx_frame = {
         .asPaddedRegister.asRegister.asDataFormat = {
             .range = Adxl345Register_DataFormat_Range_16g,
             .justify = Adxl345Register_DataFormat_Justify_lsbRight,
@@ -77,11 +81,11 @@ int Adxl345_init() {
             .spi = Adxl345Register_DataFormat_SpiBit_4wire,
             .selfTest = Adxl345Register_DataFormat_SelfTest_disableForce}};
     tx_frame.asAddress = Adxl345Register_Address_dataFormat;
-    transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
+    transmitFrame(&tx_frame, 2, Adxl345SPI_CS_modify, Adxl345SPI_RWFlags_write);
   }
 
   { // bandwidth rate
-    union Adxl345TxFrame tx_frame = {
+    union Adxl345TP_TxFrame tx_frame = {
         .asPaddedRegister.asRegister.asBwRate = {
             .rate = Adxl345Register_BwRate_Rate_normalPowerOdr3200,
             .lowPower = Adxl345Register_BwRate_LowPower_normal,
@@ -89,21 +93,21 @@ int Adxl345_init() {
             ._zeroD6 = 0,
             ._zeroD7 = 0}};
     tx_frame.asAddress = Adxl345Register_Address_bwRate;
-    transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
+    transmitFrame(&tx_frame, 2, Adxl345SPI_CS_modify, Adxl345SPI_RWFlags_write);
   }
 
   { // fifo control
-    union Adxl345TxFrame tx_frame = {
+    union Adxl345TP_TxFrame tx_frame = {
         .asPaddedRegister.asRegister.asFifoCtl = {
             .samples = ADXL345_WATERMARK_LEVEL,
             .trigger = Adxl345Register_FifoCtl_Trigger_int1,
             .fifoMode = Adxl345Register_FifoCtl_FifoMode_fifo}};
     tx_frame.asAddress = Adxl345Register_Address_fifoCtl;
-    transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
+    transmitFrame(&tx_frame, 2, Adxl345SPI_CS_modify, Adxl345SPI_RWFlags_write);
   }
 
   { // power control
-    union Adxl345TxFrame tx_frame = {
+    union Adxl345TP_TxFrame tx_frame = {
         .asPaddedRegister.asRegister.asPowerControl = {
             .wakeup = Adxl345Register_PowerCtl_Wakeup_8Hz,
             .sleep = Adxl345Register_PowerCtl_Sleep_normalMode,
@@ -113,11 +117,11 @@ int Adxl345_init() {
             ._zeroD6 = 0,
             ._zeroD7 = 0}};
     tx_frame.asAddress = Adxl345Register_Address_powerCtl;
-    transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
+    transmitFrame(&tx_frame, 2, Adxl345SPI_CS_modify, Adxl345SPI_RWFlags_write);
   }
 
   { // interrupt map: watermark -> INT1, overrun -> INT2
-    union Adxl345TxFrame tx_frame = {
+    union Adxl345TP_TxFrame tx_frame = {
         .asPaddedRegister.asRegister.asIntMap = {
             .overrun = Adxl345Register_IntMap_Overrun_int2,
             .watermark = Adxl345Register_IntMap_Watermark_int1,
@@ -128,11 +132,11 @@ int Adxl345_init() {
             .singleTap = Adxl345Register_IntMap_SingleTap_int1,
             .dataReady = Adxl345Register_IntMap_DataReady_int1}};
     tx_frame.asAddress = Adxl345Register_Address_intMap;
-    transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
+    transmitFrame(&tx_frame, 2, Adxl345SPI_CS_modify, Adxl345SPI_RWFlags_write);
   }
 
   { // interrupt enable: watermark + overrun
-    union Adxl345TxFrame tx_frame = {
+    union Adxl345TP_TxFrame tx_frame = {
         .asPaddedRegister.asRegister.asIntEnable = {
             .overrun = Adxl345Register_IntEnable_Overrun_enable,
             .watermark = Adxl345Register_IntEnable_Watermark_enable,
@@ -143,7 +147,7 @@ int Adxl345_init() {
             .singleTap = Adxl345Register_IntEnable_SingleTap_disable,
             .dataReady = Adxl345Register_IntEnable_DataReady_disable}};
     tx_frame.asAddress = Adxl345Register_Address_intEnable;
-    transmitFrame(&tx_frame, 2, Adxl345CS_modify, Adxl345RWFlags_write);
+    transmitFrame(&tx_frame, 2, Adxl345SPI_CS_modify, Adxl345SPI_RWFlags_write);
   }
 
   return 0;
@@ -265,12 +269,13 @@ void Adxl345_setPowerCtlMeasure() {
   writeRegister(Adxl345Register_Address_powerCtl, &reg);
 }
 
-int Adxl345_getAcceleration(struct Adxl345_Acceleration *acc) {
+int Adxl345_getAcceleration(struct Adxl345TP_Acceleration *acc) {
   if (NULL == acc)
     return -EINVAL;
 
-  union Adxl345TxFrame tx_frame = {.asAddress = Adxl345Register_Address_dataX0};
-  union Adxl345RxFrame rx_frame = {0};
+  union Adxl345TP_TxFrame tx_frame = {.asAddress =
+                                          Adxl345Register_Address_dataX0};
+  union Adxl345TP_RxFrame rx_frame = {0};
   transmitReceiveFrame(&tx_frame, &rx_frame, 6);
   *acc = rx_frame.asAcceleration;
 

@@ -1,9 +1,11 @@
 #include "fw/usbd_cdc_transport.h"
 #include "fw/adxl345.h"
+#include "fw/adxl345_transport_types.h"
 #include "fw/device_reboot.h"
 #include "fw/sampling.h"
-#include "usbd_cdc_if.h"
+#include "fw/usbd_cdc_transport_types.h"
 #include "fw/version.h"
+#include "usbd_cdc_if.h"
 #include <errno.h>
 
 int TransportRx_Process(uint8_t *buffer, const uint32_t *length) {
@@ -265,8 +267,8 @@ void TransportTx_FifoOverflow() {
     ;
 }
 
-int TransportTx_AccelerationBuffer(struct Adxl345_Acceleration *data,
-                                  uint8_t count, uint16_t start_index) {
+int TransportTx_AccelerationBuffer(struct Adxl345TP_Acceleration *data,
+                                   uint8_t count, uint16_t start_index) {
   // HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_SET);
   struct TransportFrame acc[ADXL345_WATERMARK_LEVEL] = {};
 

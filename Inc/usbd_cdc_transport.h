@@ -1,8 +1,9 @@
 /**
- * \file usb_transport.h
+ * \file usbd_cdc_transport.h
  *
- * Controller to host transport API.
+ * Controller to IN endpoint (host) transport API.
  */
+
 #pragma once
 #include <inttypes.h>
 

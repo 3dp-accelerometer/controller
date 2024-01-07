@@ -112,7 +112,7 @@ int main(void)
       HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_SET);
       break;
     }
-    device_reboot_checkReboot();
+    DeviceReboot_checkReboot();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

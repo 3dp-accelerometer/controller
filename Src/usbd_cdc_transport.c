@@ -148,7 +148,7 @@ int TransportRx_Process(uint8_t *buffer, const uint32_t *length) {
   case Transport_HeaderId_Rx_DeviceReboot: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_DeviceReboot) ==
         *length) {
-      device_reboot_requestAsyncReboot();
+      DeviceReboot_requestAsyncReboot();
       return 0;
     }
   } break;

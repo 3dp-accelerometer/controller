@@ -1,9 +1,9 @@
-#include "usbd_cdc_transport.h"
-#include "adxl345.h"
-#include "device_reboot.h"
-#include "sampling.h"
+#include "fw/usbd_cdc_transport.h"
+#include "fw/adxl345.h"
+#include "fw/device_reboot.h"
+#include "fw/sampling.h"
 #include "usbd_cdc_if.h"
-#include "version.h"
+#include "fw/version.h"
 #include <errno.h>
 
 int TransportRx_Process(uint8_t *buffer, const uint32_t *length) {

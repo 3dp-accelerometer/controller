@@ -1,4 +1,4 @@
-#include "adxl345.h"
+#include "fw/adxl345.h"
 #include "gpio.h"
 #include "spi.h"
 #include <errno.h>

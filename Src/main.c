@@ -26,9 +26,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "adxl345.h"
-#include "device_reboot.h"
-#include "sampling.h"
+#include "fw/adxl345.h"
+#include "fw/device_reboot.h"
+#include "fw/sampling.h"
 #include <sys/errno.h>
 /* USER CODE END Includes */
 

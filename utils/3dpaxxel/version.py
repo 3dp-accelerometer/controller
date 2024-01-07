@@ -22,8 +22,8 @@ def _package_version_from_str(version_str: str) -> Tuple[int, int, int]:
 
 
 def _generate_c_files(major: int, minor: int, patch: int):
-    c_file = os.path.relpath(Path(__file__).parent / "../../Src/version.c")
-    h_file = os.path.relpath(Path(__file__).parent / "../../Inc/version.h")
+    c_file = os.path.relpath(Path(__file__).parent / "../../Src/fw/version.c")
+    h_file = os.path.relpath(Path(__file__).parent / "../../Inc/fw/version.h")
 
     autogen = """/** \\file {file}
  *
@@ -40,7 +40,7 @@ def _generate_c_files(major: int, minor: int, patch: int):
 
     c_template = f"""{autogen.format(file="version.c")}
 
-#include "version.h"
+#include "fw/version.h"
 """
 
     h_template = f"""{autogen.format(file="version.h")}

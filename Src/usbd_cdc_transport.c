@@ -1,4 +1,4 @@
-#include "usb_transport.h"
+#include "usbd_cdc_transport.h"
 #include "adxl345.h"
 #include "device_reboot.h"
 #include "sampling.h"

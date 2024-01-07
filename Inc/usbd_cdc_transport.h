@@ -309,7 +309,21 @@ struct TransportFrame {
 /* ---------------------------------------------------------------------------*/
 
 /**
- * Processes received package.
+ * Processes received package from the OUT endpoint of host.
+ *
+ * Handles requests, namely received packets with RX header ID one of:
+ *
+ *   - TransportHeader_Id_Rx_GetFirmwareVersion
+ *   - TransportHeader_Id_Rx_GetOutputDataRate
+ *   - TransportHeader_Id_Rx_SetOutputDataRa
+ *   - TransportHeader_Id_Rx_GetRange
+ *   - TransportHeader_Id_Rx_SetRange
+ *   - TransportHeader_Id_Rx_GetScale
+ *   - TransportHeader_Id_Rx_SetScale
+ *   - TransportHeader_Id_Rx_GetDeviceSetup
+ *   - TransportHeader_Id_Rx_DeviceReboot
+ *   - TransportHeader_Id_Rx_SamplingStart
+ *   - TransportHeader_Id_Rx_SamplingStop
  *
  * @param buffer received package (as a whole, must not be fragmented)
  * @param length received package length
@@ -317,45 +331,48 @@ struct TransportFrame {
  */
 int TransportRxProcess(uint8_t *buffer, const uint32_t *length);
 
-/* ---------------------------------------------------------------------------*/
-
 /**
- * Transmits device configuration.
+ * Transmits device configuration TransportTx_DeviceSetup to the IN endpoint of host.
  */
 void TransportTxSamplingSetup();
 
 /**
- * Transmits firmware version.
+ * Transmits firmware version TransportTx_FirmwareVersion to the IN endpoint of host.
  */
 void TransportTxFirmwareVersion();
 
 /**
- * Transmits sampling started package.
+ * Transmits sampling started package TransportTx_SamplingStarted to the IN endpoint of host.
  */
 void TransportTxSamplingStarted(uint16_t max_samples);
 
 /**
- * Transmits sampling finished package.
+ * Transmits sampling finished package TransportTx_SamplingFinished to the IN endpoint of host.
  */
 void TransportTxSamplingFinished();
 
 /**
- * Transmits sampling stopped package.
+ * Transmits sampling stopped package TransportTx_SamplingStopped to the IN endpoint of host.
  */
 void TransportTxSamplingStopped();
 
 /**
- * Transmits sampling aborted package.
+ * Transmits sampling aborted package TransportTx_SamplingAborted to the IN endpoint of host.
  */
 void TransportTxSamplingAborted();
 
 /**
- * Transmits FiFo overflow package.
+ * Transmits FiFo overflow package TransportTx_FifoOverflow to the IN endpoint of host.
  */
 void TransportTxFifoOverflow();
 
 /**
- * Forwards acceleration data block.
+ * Forwards acceleration data block to the IN endpoint of host.
+ *
+ * @param buffer tx buffer
+ * @param count buffer size
+ * @param start_index where to start from within buffer
+ * @return
  */
 int TransportTxAccelerationBuffer(struct Adxl345_Acceleration *buffer,
                                   uint8_t count, uint16_t start_index);

@@ -1,7 +1,7 @@
 #include "sampling.h"
 #include "adxl345.h"
 #include "tim.h"
-#include "usb_transport.h"
+#include "usbd_cdc_transport.h"
 #include <assert.h>
 #include <errno.h>
 

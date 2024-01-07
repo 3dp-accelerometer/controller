@@ -103,7 +103,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1) {
-    switch (sampling_fetchForward()) {
+    switch (Sampling_fetchForward()) {
     case -ECANCELED:
     case -EOVERFLOW:
       HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_RESET);

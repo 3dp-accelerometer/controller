@@ -314,6 +314,7 @@ struct TransportFrame {
 /**
  * Processes received package from the OUT endpoint of host.
  *
+ * Shall be called in CDC_Receive_FS(uint8_t* Buf, uint32_t *Len).
  * Handles requests, namely received packets with RX header ID one of:
  *
  *   - TransportHeader_Id_Rx_GetFirmwareVersion

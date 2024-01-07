@@ -5,10 +5,24 @@
 #include <assert.h>
 #include <errno.h>
 
+/**
+ * Configures how many samples can be maximally read at once from the sensor.
+ *
+ * Must be less than or equal watermark level to not read beyond buffered FiFo.
+ */
 #define NUM_SAMPLES_READ_AT_ONCE ADXL345_WATERMARK_LEVEL
 
-static_assert(NUM_SAMPLES_READ_AT_ONCE > 0,
+#define STRINGIZE0(A) #A
+#define STRINGIZE(A) STRINGIZE0(A)
+
+static_assert(
+    NUM_SAMPLES_READ_AT_ONCE <= ADXL345_WATERMARK_LEVEL,
+    "maximum allowed read-at-once: " STRINGIZE(ADXL345_WATERMARK_LEVEL));
+
+static_assert(ADXL345_WATERMARK_LEVEL > 0,
               "minimum required watermark level: 1");
+#undef STRINGIZE
+#undef STRINGIZE0
 
 /**
  * Internal module state.
@@ -19,7 +33,7 @@ struct SamplingState {
   volatile bool doStop;
   volatile bool isStarted;
   volatile bool waitFor5usTimer;
-  struct Adxl345_Acceleration rxBuffer[ADXL345_WATERMARK_LEVEL];
+  struct Adxl345_Acceleration rxBuffer[NUM_SAMPLES_READ_AT_ONCE];
   volatile bool isFifoOverflowSet;
   volatile bool isFifoWatermarkSet;
   int transactionsCount;
@@ -101,14 +115,14 @@ static void delay5us() {
   HAL_TIM_Base_Stop_IT(&htim3);
 }
 
-void sampling_start(uint16_t maxSamples) {
+void Sampling_start(uint16_t maxSamples) {
   samplingState.maxSamples = maxSamples;
   samplingState.doStart = true;
 }
 
-void sampling_stop() { samplingState.doStop = true; }
+void Sampling_stop() { samplingState.doStop = true; }
 
-int sampling_fetchForward() {
+int Sampling_fetchForward() {
   int ret = {0};
 
   checkStartRequest();
@@ -116,6 +130,7 @@ int sampling_fetchForward() {
   if (samplingState.isFifoWatermarkSet && samplingState.isStarted) {
     uint8_t rxCount = 0;
 
+    // fetch samples
     while (rxCount < NUM_SAMPLES_READ_AT_ONCE) {
 
       checkStopRequest();
@@ -149,6 +164,7 @@ int sampling_fetchForward() {
       rxCount++;
     }
 
+    // forward samples
     if (0 < rxCount) {
       TransportTx_AccelerationBuffer(samplingState.rxBuffer, rxCount,
                                      samplingState.transactionsCount);
@@ -158,27 +174,27 @@ int sampling_fetchForward() {
 
   if (-EOVERFLOW == ret) {
     TransportTx_FifoOverflow();
-    sampling_stop();
+    Sampling_stop();
   }
 
   if (-ECANCELED == ret) {
     TransportTx_SamplingAborted();
-    sampling_stop();
+    Sampling_stop();
   }
 
   if (ENODATA == ret) {
     TransportTx_SamplingFinished();
-    sampling_stop();
+    Sampling_stop();
   }
 
   checkStopRequest();
   return ret;
 }
 
-void sampling_setFifoWatermark() { samplingState.isFifoWatermarkSet = true; }
+void Sampling_setFifoWatermark() { samplingState.isFifoWatermarkSet = true; }
 
-void sampling_clearFifoWatermark() { samplingState.isFifoWatermarkSet = false; }
+void Sampling_clearFifoWatermark() { samplingState.isFifoWatermarkSet = false; }
 
-void sampling_setFifoOverflow() { samplingState.isFifoOverflowSet = true; }
+void Sampling_setFifoOverflow() { samplingState.isFifoOverflowSet = true; }
 
-void on5usTimerExpired() { samplingState.waitFor5usTimer = false; }
+void Sampling_on5usTimerExpired() { samplingState.waitFor5usTimer = false; }

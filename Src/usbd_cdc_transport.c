@@ -157,7 +157,7 @@ int TransportRx_Process(uint8_t *buffer, const uint32_t *length) {
   case Transport_HeaderId_Rx_SamplingStart: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_SamplingStart) ==
         *length) {
-      sampling_start(request->asRxFrame.asSamplingStart.max_samples_count);
+      Sampling_start(request->asRxFrame.asSamplingStart.max_samples_count);
       return 0;
     }
   } break;
@@ -166,7 +166,7 @@ int TransportRx_Process(uint8_t *buffer, const uint32_t *length) {
   case Transport_HeaderId_Rx_SamplingStop: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_SamplingStop) ==
         *length) {
-      sampling_stop();
+      Sampling_stop();
       return 0;
     }
   } break;
@@ -178,7 +178,7 @@ int TransportRx_Process(uint8_t *buffer, const uint32_t *length) {
   return -EINVAL;
 }
 
-void Transport_TxSamplingSetup() {
+void TransportTx_SamplingSetup() {
   struct TransportFrame tx;
 
   enum Adxl345Register_BwRate_Rate rate;
@@ -199,6 +199,7 @@ void Transport_TxSamplingSetup() {
                                              tx.asTxFrame.asDeviceSetup)))
     ;
 }
+
 void TransportTx_FirmwareVersion() {
   struct TransportFrame tx;
   tx.header.id = Transport_HeaderId_Tx_FirmwareVersion;
@@ -235,7 +236,7 @@ void TransportTx_SamplingFinished() {
 }
 
 void TransportTx_SamplingStopped() {
-  Transport_TxSamplingSetup();
+  TransportTx_SamplingSetup();
 
   struct TransportFrame tx = {.header.id =
                                   Transport_HeaderId_Tx_SamplingStopped};

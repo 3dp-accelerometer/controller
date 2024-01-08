@@ -21,10 +21,4 @@ enum HostTransport_Status {
 struct HostTransport_Handle {
   enum HostTransport_Status (*transmit)(
       uint8_t *buffer, uint16_t len); ///< host communication pimpl
-
-  // todo: move to other handle. i.e. device_handle
-  uint8_t versionMajor;
-  uint8_t versionMinor;
-  uint8_t versionPatch;
-
 };

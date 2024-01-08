@@ -34,18 +34,18 @@ static void ncsClear() {
  *
  * @param frame receive buffer
  * @param num_bytes expected size of received data
- * @param apply_cs whether or not to set nCS before and clear nCS after
+ * @param applyCs whether or not to set nCS before and clear nCS after
  * transmission
  *
  * @return -EINVAL if invalid args, -EIO on RX error, 0 otherwise
  */
 static int receiveFrame(union Adxl345Transport_RxFrame *frame,
-                        uint8_t num_bytes, enum Adxl345Spi_Cs apply_cs) {
+                        uint8_t num_bytes, enum Adxl345Spi_Cs applyCs) {
 
   if (NULL == frame)
     return -EINVAL;
 
-  if (Adxl345Spi_Cs_modify == apply_cs) {
+  if (Adxl345Spi_Cs_modify == applyCs) {
     ncsSet();
     if (0 != HAL_SPI_Receive(&hspi1, (uint8_t *)frame, num_bytes, 10))
       return -EIO;
@@ -59,22 +59,22 @@ static int receiveFrame(union Adxl345Transport_RxFrame *frame,
 }
 
 int Adxl345TransportImpl_transmitFrame(union Adxl345Transport_TxFrame *frame,
-                                       uint8_t num_bytes,
-                                       enum Adxl345Spi_Cs apply_cs,
-                                       enum Adxl345Spi_RwFlags rw_flag) {
+                                       uint8_t numBytes,
+                                       enum Adxl345Spi_Cs applyCs,
+                                       enum Adxl345Spi_RwFlags rwFlag) {
 
   if (NULL == frame)
     return -EINVAL;
 
-  frame->asAddress |= rw_flag;
+  frame->asAddress |= rwFlag;
 
-  if (Adxl345Spi_Cs_modify == apply_cs) {
+  if (Adxl345Spi_Cs_modify == applyCs) {
     ncsSet();
-    if (0 != HAL_SPI_Transmit(&hspi1, (uint8_t *)frame, num_bytes, 10))
+    if (0 != HAL_SPI_Transmit(&hspi1, (uint8_t *)frame, numBytes, 10))
       return -EIO;
     ncsClear();
   } else {
-    if (0 != HAL_SPI_Transmit(&hspi1, (uint8_t *)frame, num_bytes, 10))
+    if (0 != HAL_SPI_Transmit(&hspi1, (uint8_t *)frame, numBytes, 10))
       return -EIO;
   }
   return 0;

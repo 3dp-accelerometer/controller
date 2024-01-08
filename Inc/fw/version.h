@@ -13,7 +13,7 @@
 
 #pragma once
 
-#define VERSION "0.1.3"
+#define VERSION "0.1.4"
 #define VERSION_MAJOR 0
 #define VERSION_MINOR 1
-#define VERSION_PATCH 3
+#define VERSION_PATCH 4

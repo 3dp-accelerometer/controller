@@ -12,23 +12,28 @@
 
 struct Adxl345_Handle;
 
+#define ADXL345_DECLARE_HANDLE(HANDLE_NAME)                                    \
+  struct Adxl345_Handle HANDLE_NAME = {                                        \
+      .transmitFrame = Adxl345TransportImpl_transmitFrame,                     \
+      .transmitReceiveFrame = Adxl345TransportImpl_transmitReceiveFrame}
+
 /**
  * Sends one single frame to ADXL345 via SPI interface.
  *
  * @param frame the payload to send via SPI
- * @param num_bytes size of frame
- * @param apply_cs whether or not to set nCS before and clear nCS after
+ * @param numBytes size of frame
+ * @param applyCs whether or not to set nCS before and clear nCS after
  * transmission
- * @param rw_flag flag to indicate whether this transaction is write or read
+ * @param rwRlag flag to indicate whether this transaction is write or read
  *   \see Adxl345TransportImpl_transmitReceiveFrame(union Adxl345TP_TxFrame *,
  * union Adxl345TP_RxFrame *, uint8_t)
  *
  * @return -EINVAL if invalid args, -EIO on TX error, 0 otherwise
  */
 int Adxl345TransportImpl_transmitFrame(union Adxl345Transport_TxFrame *frame,
-                                       uint8_t num_bytes,
-                                       enum Adxl345Spi_Cs apply_cs,
-                                       enum Adxl345Spi_RwFlags rw_flag);
+                                       uint8_t numBytes,
+                                       enum Adxl345Spi_Cs applyCs,
+                                       enum Adxl345Spi_RwFlags rwRlag);
 
 /**
  * Transmits and receives frames (read transaction).
@@ -36,15 +41,15 @@ int Adxl345TransportImpl_transmitFrame(union Adxl345Transport_TxFrame *frame,
  * Note: This automatically sets nCS before TX and clears nCS after completed
  * RX.
  *
- * @param tx_frame data to send
- * @param rx_frame receive data
- * @param num_bytes_receive expected size of received data
+ * @param txFrame data to send
+ * @param rxFrame receive data
+ * @param numBytesReceive expected size of received data
  *
  * @return -EINVAL if invalid args, -EIO on TX/RX error, 0 otherwise
  */
-int Adxl345TransportImpl_transmitReceiveFrame(union Adxl345Transport_TxFrame *tx_frame,
-                                              union Adxl345Transport_RxFrame *rx_frame,
-                                              uint8_t num_bytes_receive);
+int Adxl345TransportImpl_transmitReceiveFrame(
+    union Adxl345Transport_TxFrame *txFrame,
+    union Adxl345Transport_RxFrame *rxFrame, uint8_t numBytesReceive);
 
 /**
  * Initializes the handle's read/write pimpl.

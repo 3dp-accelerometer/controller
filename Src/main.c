@@ -27,12 +27,12 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "fw/adxl345_transport_impl.h"
-#include "fw/device_reboot.h"
+#include "fw/controller_impl.h"
 #include "fw/host_transport_impl.h"
-#include "fw/sampling.h"
 #include "fw/version.h"
 #include "usbd_cdc_if.h"
 #include <adxl345.h>
+#include <controller.h>
 #include <host_transport.h>
 #include <sys/errno.h>
 /* USER CODE END Includes */
@@ -55,14 +55,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-struct Adxl345_Handle sensor_handle = {
-    .transmitFrame = Adxl345TransportImpl_transmitFrame,
-    .transmitReceiveFrame = Adxl345TransportImpl_transmitReceiveFrame};
-struct HostTransport_Handle host_handle = {.transmit =
-                                               HostTransportImpl_transmit,
-                                           .versionMajor = VERSION_MAJOR,
-                                           .versionMinor = VERSION_MINOR,
-                                           .versionPatch = VERSION_PATCH};
+ADXL345_DECLARE_HANDLE(sensorHandle);
+HOSTTRANSPORT_DECLARE_HANDLE(hostHandle);
+DEVICEIMPL_DECLARE_HANDLE(controllerHandle);
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -109,13 +104,13 @@ int main(void) {
   MX_TIM3_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-  Adxl345_init(&sensor_handle);
+  Adxl345_init(&sensorHandle);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1) {
-    switch (Sampling_fetchForward()) {
+    switch (controllerHandle.samplingFetchForward()) {
     case -ECANCELED:
     case -EOVERFLOW:
       HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_RESET);
@@ -124,7 +119,7 @@ int main(void) {
       HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_SET);
       break;
     }
-    DeviceReboot_checkReboot();
+    controllerHandle.deviceCheckReboot();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

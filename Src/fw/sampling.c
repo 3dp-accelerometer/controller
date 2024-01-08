@@ -4,11 +4,13 @@
 #include <adxl345.h>
 #include <adxl345_transport_types.h>
 #include <assert.h>
+#include <controller.h>
 #include <errno.h>
 #include <to_host_transport.h>
 
-extern struct Adxl345_Handle sensor_handle;
-extern struct HostTransport_Handle host_handle;
+extern struct Adxl345_Handle sensorHandle;
+extern struct HostTransport_Handle hostHandle;
+extern struct Controller_Handle controllerHandle;
 
 /**
  * Configures how many samples can be maximally read at once from the sensor.
@@ -71,14 +73,14 @@ static void checkStartRequest() {
     return;
   }
 
-  TransportTx_FirmwareVersion(&host_handle);
-  TransportTx_SamplingStarted(&host_handle, samplingState.maxSamples);
+  TransportTx_FirmwareVersion(&hostHandle, &controllerHandle);
+  TransportTx_SamplingStarted(&hostHandle, samplingState.maxSamples);
 
   samplingState.isFifoOverflowSet = false;
   samplingState.transactionsCount = 0;
   samplingState.isStarted = true;
 
-  Adxl345_setPowerCtlMeasure(&sensor_handle);
+  Adxl345_setPowerCtlMeasure(&sensorHandle);
 }
 
 static void checkStopRequest() {
@@ -92,16 +94,16 @@ static void checkStopRequest() {
   }
 
   if (samplingState.transactionsCount < samplingState.maxSamples) {
-    TransportTx_SamplingAborted(&host_handle);
+    TransportTx_SamplingAborted(&hostHandle);
   }
-  TransportTx_SamplingStopped(&host_handle, &sensor_handle);
+  TransportTx_SamplingStopped(&hostHandle, &sensorHandle);
 
-  Adxl345_setPowerCtlStandby(&sensor_handle);
+  Adxl345_setPowerCtlStandby(&sensorHandle);
 
   // clear watermark interrupt (clear whole fifo)
   struct Adxl345Transport_Acceleration devNull;
   for (uint8_t idx = 0; idx < ADXL345_FIFO_ENTRIES; idx++) {
-    Adxl345_getAcceleration(&sensor_handle, &devNull);
+    Adxl345_getAcceleration(&sensorHandle, &devNull);
   }
 
   samplingState.isStarted = false;
@@ -165,31 +167,30 @@ int Sampling_fetchForward() {
       // a data register is signified by the transition from Register 0x37 to
       // Register 0x38 or by the CS pin going high.
       delay5us();
-      Adxl345_getAcceleration(&sensor_handle,
-                              &samplingState.rxBuffer[rxCount]);
+      Adxl345_getAcceleration(&sensorHandle, &samplingState.rxBuffer[rxCount]);
       rxCount++;
     }
 
     // forward samples
     if (0 < rxCount) {
-      TransportTx_AccelerationBuffer(&host_handle, samplingState.rxBuffer,
+      TransportTx_AccelerationBuffer(&hostHandle, samplingState.rxBuffer,
                                      rxCount, samplingState.transactionsCount);
       samplingState.transactionsCount += rxCount;
     }
   }
 
   if (-EOVERFLOW == ret) {
-    TransportTx_FifoOverflow(&host_handle);
+    TransportTx_FifoOverflow(&hostHandle);
     Sampling_stop();
   }
 
   if (-ECANCELED == ret) {
-    TransportTx_SamplingAborted(&host_handle);
+    TransportTx_SamplingAborted(&hostHandle);
     Sampling_stop();
   }
 
   if (ENODATA == ret) {
-    TransportTx_SamplingFinished(&host_handle);
+    TransportTx_SamplingFinished(&hostHandle);
     Sampling_stop();
   }
 

@@ -23,10 +23,3 @@ enum HostTransport_Status HostTransportImpl_transmit(uint8_t *buffer,
     return HostTransport_Status_Undefined;
   }
 }
-
-int HostTransportImpl_initHandle(struct HostTransport_Handle *handle) {
-  if (NULL == handle)
-    return -EINVAL;
-  handle->transmit = CDC_Transmit_FS;
-  return 0;
-}

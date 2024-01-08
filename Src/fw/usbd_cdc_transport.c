@@ -289,6 +289,17 @@ int TransportTx_AccelerationBuffer(struct Adxl345TP_Acceleration *data,
     acc[idx].header.id = Transport_HeaderId_Tx_Acceleration;
   }
 
+  // todo: don't insist for completed transmission here. usb host (pc) will poll
+  //   the usb client (us) for transactions about every 1ms or lesser. this is
+  //   even more visible on weak hardware (i.e. raspberry pi).
+  //   suggestion:
+  //     1 apply Ringbuffer from <ringbuffer.h>
+  //     2 store complete Adxl345TP_Acceleration buffer to ringbuffer
+  //     3 try to send from ringbuffer: several items, as many possible but timeboxed
+  //     4 return ENODATA (nothing to transmit) or EBUSY (data pending) respectively
+  //     5 send remaining next time we are called
+  //     6 caller shall call us until ENODATA
+
   while (USBD_BUSY ==
          CDC_Transmit_FS((uint8_t *)acc, count * sizeof(struct TransportFrame)))
     ;

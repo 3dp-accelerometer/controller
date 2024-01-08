@@ -18,18 +18,19 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "gpio.h"
 #include "rtc.h"
 #include "spi.h"
 #include "tim.h"
 #include "usb_device.h"
-#include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "fw/adxl345.h"
+#include "fw/adxl345_transport_impl.h"
 #include "fw/device_reboot.h"
 #include "fw/sampling.h"
 #include <sys/errno.h>
+#include <adxl345.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -50,7 +51,9 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+struct Adxl345_Handle adxl345_handle = {
+    .transmitFrame = Adxl345TransportImpl_transmitFrame,
+    .transmitReceiveFrame = Adxl345TransportImpl_transmitReceiveFrame};
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -97,7 +100,7 @@ int main(void)
   MX_TIM3_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-  Adxl345_init();
+  Adxl345_init(&adxl345_handle);
   /* USER CODE END 2 */
 
   /* Infinite loop */

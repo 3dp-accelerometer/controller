@@ -1,12 +1,15 @@
 #include "fw/usbd_cdc_transport.h"
-#include "fw/adxl345.h"
-#include "fw/adxl345_transport_types.h"
+#include "adxl345_flags.h"
 #include "fw/device_reboot.h"
 #include "fw/sampling.h"
 #include "fw/usbd_cdc_transport_types.h"
 #include "fw/version.h"
 #include "usbd_cdc_if.h"
+#include <adxl345.h>
+#include <adxl345_transport_types.h>
 #include <errno.h>
+
+extern struct Adxl345_Handle adxl345_handle;
 
 int TransportRx_Process(uint8_t *buffer, const uint32_t *length) {
   if (NULL == buffer || NULL == length)
@@ -39,8 +42,8 @@ int TransportRx_Process(uint8_t *buffer, const uint32_t *length) {
   case Transport_HeaderId_Rx_GetOutputDataRate: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_GetOutputDataRate) ==
         *length) {
-      enum Adxl345Register_BwRate_Rate rate;
-      Adxl345_getOutputDataRate(&rate);
+      enum Adxl345Flags_BwRate_Rate rate;
+      Adxl345_getOutputDataRate(&adxl345_handle, &rate);
 
       struct TransportFrame response = {
           .header.id = Transport_HeaderId_Tx_OutputDataRate};
@@ -60,15 +63,15 @@ int TransportRx_Process(uint8_t *buffer, const uint32_t *length) {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_SetOutputDataRate) ==
         *length) {
       return Adxl345_setOutputDataRate(
-          request->asRxFrame.asSetOutputDataRate.rate);
+          &adxl345_handle, request->asRxFrame.asSetOutputDataRate.rate);
     }
     break;
 
     // get range
   case Transport_HeaderId_Rx_GetRange: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_GetRange) == *length) {
-      enum Adxl345Register_DataFormat_Range range;
-      Adxl345_getRange(&range);
+      enum Adxl345Flags_DataFormat_Range range;
+      Adxl345_getRange(&adxl345_handle, &range);
 
       struct TransportFrame response = {.header.id =
                                             Transport_HeaderId_Tx_Range};
@@ -86,15 +89,16 @@ int TransportRx_Process(uint8_t *buffer, const uint32_t *length) {
     // set range
   case Transport_HeaderId_Rx_SetRange: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_SetRange) == *length) {
-      return Adxl345_setRange(request->asRxFrame.asSetRange.range);
+      return Adxl345_setRange(&adxl345_handle,
+                              request->asRxFrame.asSetRange.range);
     }
   } break;
 
     // get scale
   case Transport_HeaderId_Rx_GetScale: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_GetScale) == *length) {
-      enum Adxl345Register_DataFormat_FullResBit scale;
-      Adxl345_getScale(&scale);
+      enum Adxl345Flags_DataFormat_FullResBit scale;
+      Adxl345_getScale(&adxl345_handle, &scale);
 
       struct TransportFrame response = {.header.id =
                                             Transport_HeaderId_Tx_Scale};
@@ -112,7 +116,8 @@ int TransportRx_Process(uint8_t *buffer, const uint32_t *length) {
     // set scale
   case Transport_HeaderId_Rx_SetScale: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_SetScale) == *length) {
-      return Adxl345_setScale(request->asRxFrame.asSetScale.scale);
+      return Adxl345_setScale(&adxl345_handle,
+                              request->asRxFrame.asSetScale.scale);
     }
   } break;
 
@@ -120,12 +125,12 @@ int TransportRx_Process(uint8_t *buffer, const uint32_t *length) {
   case Transport_HeaderId_Rx_GetDeviceSetup: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_GetDeviceSetup) ==
         *length) {
-      enum Adxl345Register_BwRate_Rate rate;
-      enum Adxl345Register_DataFormat_Range range;
-      enum Adxl345Register_DataFormat_FullResBit scale;
-      Adxl345_getOutputDataRate(&rate);
-      Adxl345_getRange(&range);
-      Adxl345_getScale(&scale);
+      enum Adxl345Flags_BwRate_Rate rate;
+      enum Adxl345Flags_DataFormat_Range range;
+      enum Adxl345Flags_DataFormat_FullResBit scale;
+      Adxl345_getOutputDataRate(&adxl345_handle, &rate);
+      Adxl345_getRange(&adxl345_handle, &range);
+      Adxl345_getScale(&adxl345_handle, &scale);
 
       struct TransportFrame response = {.header.id =
                                             Transport_HeaderId_Tx_DeviceSetup};
@@ -183,13 +188,13 @@ int TransportRx_Process(uint8_t *buffer, const uint32_t *length) {
 void TransportTx_SamplingSetup() {
   struct TransportFrame tx;
 
-  enum Adxl345Register_BwRate_Rate rate;
-  enum Adxl345Register_DataFormat_Range range;
-  enum Adxl345Register_DataFormat_FullResBit scale;
+  enum Adxl345Flags_BwRate_Rate rate;
+  enum Adxl345Flags_DataFormat_Range range;
+  enum Adxl345Flags_DataFormat_FullResBit scale;
 
-  Adxl345_getOutputDataRate(&rate);
-  Adxl345_getScale(&scale);
-  Adxl345_getRange(&range);
+  Adxl345_getOutputDataRate(&adxl345_handle, &rate);
+  Adxl345_getScale(&adxl345_handle, &scale);
+  Adxl345_getRange(&adxl345_handle, &range);
 
   tx.header.id = Transport_HeaderId_Tx_DeviceSetup;
   tx.asTxFrame.asDeviceSetup.outputDataRate = rate;
@@ -267,7 +272,7 @@ void TransportTx_FifoOverflow() {
     ;
 }
 
-int TransportTx_AccelerationBuffer(struct Adxl345TP_Acceleration *data,
+int TransportTx_AccelerationBuffer(struct Adxl345Transport_Acceleration *data,
                                    uint8_t count, uint16_t start_index) {
   // HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_SET);
   struct TransportFrame acc[ADXL345_WATERMARK_LEVEL] = {};
@@ -295,10 +300,10 @@ int TransportTx_AccelerationBuffer(struct Adxl345TP_Acceleration *data,
   //   suggestion:
   //     1 apply Ringbuffer from <ringbuffer.h>
   //     2 store complete Adxl345TP_Acceleration buffer to ringbuffer
-  //     3 try to send from ringbuffer: several items, as many possible but timeboxed
-  //     4 return ENODATA (nothing to transmit) or EBUSY (data pending) respectively
-  //     5 send remaining next time we are called
-  //     6 caller shall call us until ENODATA
+  //     3 try to send from ringbuffer: several items, as many possible but
+  //     timeboxed 4 return ENODATA (nothing to transmit) or EBUSY (data
+  //     pending) respectively 5 send remaining next time we are called 6 caller
+  //     shall call us until ENODATA
 
   while (USBD_BUSY ==
          CDC_Transmit_FS((uint8_t *)acc, count * sizeof(struct TransportFrame)))

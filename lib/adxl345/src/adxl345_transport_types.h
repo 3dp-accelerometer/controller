@@ -1,7 +1,7 @@
 /**
  * \file adxl345_transport_types.h
  *
- * ADXL345 transport types transported to/from the sensor.
+ * ADXL345 data types transported to/from the sensor.
  */
 
 #pragma once
@@ -25,7 +25,7 @@ struct TwoBytes {
 /**
  * Struct for convenient data access of padded register without bit-shift magic.
  */
-struct Adxl345TP_DataPaddedRegister {
+struct Adxl345Transport_DataPaddedRegister {
   uint8_t _padding8;                ///< reserved
   union Adxl345Register asRegister; ///< cast to Adxl345Register
 } __attribute__((packed));
@@ -34,11 +34,11 @@ struct Adxl345TP_DataPaddedRegister {
  * Union for convenient data access of words, bytes and padded registers
  * without bit-shift magic.
  */
-union Adxl345TP_TxFrame {
+union Adxl345Transport_TxFrame {
   uint16_t asWord;         ///< cast to uint16_t
   struct TwoBytes asBytes; ///< cast to TwoBytes
   uint8_t asAddress;       ///< cast to uint8_t
-  struct Adxl345TP_DataPaddedRegister
+  struct Adxl345Transport_DataPaddedRegister
       asPaddedRegister; ///< cast to Adxl345DataPaddedRegister
 } __attribute__((packed));
 
@@ -47,7 +47,7 @@ union Adxl345TP_TxFrame {
 /**
  * Data acceleration struct with same byte layout as reports by ADXL345.
  */
-struct Adxl345TP_Acceleration {
+struct Adxl345Transport_Acceleration {
   int16_t x; ///< x-axis acceleration as seen from the sensor's perspective
   int16_t y; ///< y-axis acceleration as seen from the sensor's perspective
   int16_t z; ///< z-axis acceleration as seen from the sensor's perspective
@@ -57,9 +57,9 @@ struct Adxl345TP_Acceleration {
  * Union for convenient type-casting in between raw data, bytes, word, register
  * and payload types without c-style cast.
  */
-union Adxl345TP_RxFrame {
+union Adxl345Transport_RxFrame {
   union Adxl345Register asRegister; ///< cast to Adxl345Register
-  struct Adxl345TP_Acceleration
+  struct Adxl345Transport_Acceleration
       asAcceleration;      ///< cast to Adxl345_Acceleration
   struct TwoBytes asBytes; ///< cast to TwoBytes
   uint16_t asWord;         ///< cast to uint16_t

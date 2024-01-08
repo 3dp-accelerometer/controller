@@ -1,10 +1,12 @@
 #include "fw/sampling.h"
-#include "fw/adxl345.h"
-#include "fw/adxl345_transport_types.h"
 #include "fw/usbd_cdc_transport.h"
 #include "tim.h"
+#include <adxl345.h>
+#include <adxl345_transport_types.h>
 #include <assert.h>
 #include <errno.h>
+
+extern struct Adxl345_Handle adxl345_handle;
 
 /**
  * Configures how many samples can be maximally read at once from the sensor.
@@ -34,7 +36,7 @@ struct SamplingState {
   volatile bool doStop;
   volatile bool isStarted;
   volatile bool waitFor5usTimer;
-  struct Adxl345TP_Acceleration rxBuffer[NUM_SAMPLES_READ_AT_ONCE];
+  struct Adxl345Transport_Acceleration rxBuffer[NUM_SAMPLES_READ_AT_ONCE];
   volatile bool isFifoOverflowSet;
   volatile bool isFifoWatermarkSet;
   int transactionsCount;
@@ -74,7 +76,7 @@ static void checkStartRequest() {
   samplingState.transactionsCount = 0;
   samplingState.isStarted = true;
 
-  Adxl345_setPowerCtlMeasure();
+  Adxl345_setPowerCtlMeasure(&adxl345_handle);
 }
 
 static void checkStopRequest() {
@@ -92,12 +94,12 @@ static void checkStopRequest() {
   }
   TransportTx_SamplingStopped();
 
-  Adxl345_setPowerCtlStandby();
+  Adxl345_setPowerCtlStandby(&adxl345_handle);
 
   // clear watermark interrupt (clear whole fifo)
-  struct Adxl345TP_Acceleration devNull;
+  struct Adxl345Transport_Acceleration devNull;
   for (uint8_t idx = 0; idx < ADXL345_FIFO_ENTRIES; idx++) {
-    Adxl345_getAcceleration(&devNull);
+    Adxl345_getAcceleration(&adxl345_handle, &devNull);
   }
 
   samplingState.isStarted = false;
@@ -161,7 +163,8 @@ int Sampling_fetchForward() {
       // a data register is signified by the transition from Register 0x37 to
       // Register 0x38 or by the CS pin going high.
       delay5us();
-      Adxl345_getAcceleration(&samplingState.rxBuffer[rxCount]);
+      Adxl345_getAcceleration(&adxl345_handle,
+                              &samplingState.rxBuffer[rxCount]);
       rxCount++;
     }
 

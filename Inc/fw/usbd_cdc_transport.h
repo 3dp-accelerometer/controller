@@ -7,7 +7,7 @@
 #pragma once
 #include <inttypes.h>
 
-struct Adxl345TP_Acceleration;
+struct Adxl345Transport_Acceleration;
 
 /**
  * Processes received package from the OUT endpoint of host.
@@ -92,5 +92,5 @@ void TransportTx_FifoOverflow();
  *   - ENODATA if no buffered data available (all data sent),
  *   - -EINVAL otherwise
  */
-int TransportTx_AccelerationBuffer(struct Adxl345TP_Acceleration *data,
+int TransportTx_AccelerationBuffer(struct Adxl345Transport_Acceleration *data,
                                    uint8_t count, uint16_t start_index);

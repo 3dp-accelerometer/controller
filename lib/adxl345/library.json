@@ -1,0 +1,20 @@
+{
+  "name": "ADXL345 Lib",
+  "version": "0.0.1",
+  "description": "Library to manipulate ADXL345 acceleration sensor: configure, read/write registers and retrieve data.",
+  "keywords": [
+    "ADXL345",
+    "sensor",
+    "accelerometer"
+  ],
+  "authors": [
+    {
+      "name": "Raoul Rubien",
+      "maintainer": true
+    }
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "frameworks": "*",
+  "platforms": "*"
+}

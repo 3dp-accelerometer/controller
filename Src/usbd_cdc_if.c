@@ -22,7 +22,8 @@
 #include "usbd_cdc_if.h"
 
 /* USER CODE BEGIN INCLUDE */
-#include "fw/usbd_cdc_transport.h"
+#include <from_host_transport.h>
+#include <adxl345_transport_types.h>
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -109,7 +110,8 @@ uint8_t UserTxBufferFS[APP_TX_DATA_SIZE];
 extern USBD_HandleTypeDef hUsbDeviceFS;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
-
+extern struct HostTransport_Handle host_handle;
+extern struct Adxl345_Handle sensor_handle;
 /* USER CODE END EXPORTED_VARIABLES */
 
 /**
@@ -263,7 +265,7 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
   /* USER CODE BEGIN 6 */
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
-  TransportRx_Process(Buf, Len);
+  TransportRx_Process(&host_handle, &sensor_handle, Buf, Len);
   return (USBD_OK);
   /* USER CODE END 6 */
 }

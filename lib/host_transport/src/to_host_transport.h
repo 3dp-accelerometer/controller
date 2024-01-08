@@ -1,79 +1,74 @@
 /**
- * \file usbd_cdc_transport.h
+ * \file to_host_transport.h
  *
- * Controller to IN USB endpoint (host) transport API.
+ * API for transporting data from controller to host.
  */
 
 #pragma once
 #include <inttypes.h>
 
+struct Adxl345_Handle;
 struct Adxl345Transport_Acceleration;
-
-/**
- * Processes received package from the OUT endpoint of host.
- *
- * Shall be called in CDC_Receive_FS(uint8_t* Buf, uint32_t *Len).
- * Handles requests, namely received packets with RX header ID one of:
- *
- *   - TransportHeader_Id_Rx_GetFirmwareVersion
- *   - TransportHeader_Id_Rx_GetOutputDataRate
- *   - TransportHeader_Id_Rx_SetOutputDataRa
- *   - TransportHeader_Id_Rx_GetRange
- *   - TransportHeader_Id_Rx_SetRange
- *   - TransportHeader_Id_Rx_GetScale
- *   - TransportHeader_Id_Rx_SetScale
- *   - TransportHeader_Id_Rx_GetDeviceSetup
- *   - TransportHeader_Id_Rx_DeviceReboot
- *   - TransportHeader_Id_Rx_SamplingStart
- *   - TransportHeader_Id_Rx_SamplingStop
- *
- * @param buffer received package (as a whole, must not be fragmented)
- * @param length received package length
- * @return 0 on success, EINVAL otherwise
- */
-int TransportRx_Process(uint8_t *buffer, const uint32_t *length);
 
 /**
  * Transmits device configuration TransportTx_DeviceSetup to the IN endpoint of
  * host.
+ *
+ * @param host_handle host transport pimpl
+ * @param sensor_handle acceleration sensor transport pimpl
  */
-void TransportTx_SamplingSetup();
+void TransportTx_SamplingSetup(struct HostTransport_Handle *host_handle,
+                               struct Adxl345_Handle *sensor_handle);
 
 /**
  * Transmits firmware version TransportTx_FirmwareVersion to the IN endpoint of
  * host.
+ *
+ * @param handle host transport pimpl
  */
-void TransportTx_FirmwareVersion();
+void TransportTx_FirmwareVersion(struct HostTransport_Handle *handle);
 
 /**
  * Transmits sampling started package TransportTx_SamplingStarted to the IN
  * endpoint of host.
+ *
+ * @param handle host transport pimpl
  */
-void TransportTx_SamplingStarted(uint16_t max_samples);
+void TransportTx_SamplingStarted(struct HostTransport_Handle *handle,
+                                 uint16_t max_samples);
 
 /**
  * Transmits sampling finished package TransportTx_SamplingFinished to the IN
  * endpoint of host.
+ *
+ * @param handle host transport pimpl
  */
-void TransportTx_SamplingFinished();
+void TransportTx_SamplingFinished(struct HostTransport_Handle *handle);
 
 /**
  * Transmits sampling stopped package TransportTx_SamplingStopped to the IN
  * endpoint of host.
+ *
+ * @param handle host transport pimpl
  */
-void TransportTx_SamplingStopped();
+void TransportTx_SamplingStopped(struct HostTransport_Handle *handle,
+                                 struct Adxl345_Handle *sensor_handle);
 
 /**
  * Transmits sampling aborted package TransportTx_SamplingAborted to the IN
  * endpoint of host.
+ *
+ * @param handle host transport pimpl
  */
-void TransportTx_SamplingAborted();
+void TransportTx_SamplingAborted(struct HostTransport_Handle *handle);
 
 /**
  * Transmits FiFo overflow package TransportTx_FifoOverflow to the IN endpoint
  * of host.
+ *
+ * @param handle host transport pimpl
  */
-void TransportTx_FifoOverflow();
+void TransportTx_FifoOverflow(struct HostTransport_Handle *handle);
 
 /**
  * Forwards acceleration data block to the IN endpoint of host.
@@ -83,6 +78,7 @@ void TransportTx_FifoOverflow();
  * To consume all buffered data this function shall be called until ENODATA is
  * returned (data and count must be NULL and 0).
  *
+ * @param handle host transport pimpl
  * @param data tx buffer or NULL to consume buffered data
  * @param count buffer size or 0 to consume buffered data
  * @param start_index where to start from within data
@@ -92,5 +88,6 @@ void TransportTx_FifoOverflow();
  *   - ENODATA if no buffered data available (all data sent),
  *   - -EINVAL otherwise
  */
-int TransportTx_AccelerationBuffer(struct Adxl345Transport_Acceleration *data,
+int TransportTx_AccelerationBuffer(struct HostTransport_Handle *handle,
+                                   struct Adxl345Transport_Acceleration *data,
                                    uint8_t count, uint16_t start_index);

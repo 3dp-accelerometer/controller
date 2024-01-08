@@ -17,13 +17,31 @@ void DeviceImpl_device_requestAsyncReboot() {
   ControllerReboot_requestAsyncReboot();
 }
 
-void DeviceImpl_sampling_start(uint16_t maxSamples) {
-  Sampling_start(maxSamples);
+void DeviceImpl_sampling_start(struct Sampling_Handle *handle,
+                               uint16_t maxSamples) {
+  Sampling_start(handle, maxSamples);
 }
 
-void DeviceImpl_sampling_stop() { Sampling_stop(); }
-int DeviceImpl_sampling_fetchForward() { return Sampling_fetchForward(); }
-void DeviceImpl_sampling_setFifoWatermark() { Sampling_setFifoWatermark(); }
-void DeviceImpl_sampling_clearFifoWatermark() { Sampling_clearFifoWatermark(); }
-void DeviceImpl_sampling_setFifoOverflow() { Sampling_setFifoOverflow(); }
-void DeviceImpl_sampling_on5usTimerExpired() { Sampling_on5usTimerExpired(); }
+void DeviceImpl_sampling_stop(struct Sampling_Handle *handle) {
+  Sampling_stop(handle);
+}
+
+int DeviceImpl_sampling_fetchForward(struct Sampling_Handle *handle) {
+  return Sampling_fetchForward(handle);
+}
+
+void DeviceImpl_sampling_setFifoWatermark(struct Sampling_Handle *handle) {
+  Sampling_setFifoWatermark(handle);
+}
+
+void DeviceImpl_sampling_clearFifoWatermark(struct Sampling_Handle *handle) {
+  Sampling_clearFifoWatermark(handle);
+}
+
+void DeviceImpl_sampling_setFifoOverflow(struct Sampling_Handle *handle) {
+  Sampling_setFifoOverflow(handle);
+}
+
+void DeviceImpl_sampling_on5usTimerExpired(struct Sampling_Handle *handle) {
+  Sampling_on5usTimerExpired(handle);
+}

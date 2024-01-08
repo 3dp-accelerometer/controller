@@ -14,8 +14,8 @@
 
 int TransportRx_Process(struct HostTransport_Handle *hostHandle,
                         struct Controller_Handle *controllerHandle,
-                        struct Adxl345_Handle *sensorHandle,
-                        uint8_t *buffer, const uint32_t *length) {
+                        struct Adxl345_Handle *sensorHandle, uint8_t *buffer,
+                        const uint32_t *length) {
   if (NULL == buffer || NULL == length)
     return -EINVAL;
 
@@ -70,8 +70,7 @@ int TransportRx_Process(struct HostTransport_Handle *hostHandle,
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_SetOutputDataRate) ==
         *length) {
       return Adxl345_setOutputDataRate(
-          sensorHandle,
-          request->asRxFrame.asSetOutputDataRate.rate);
+          sensorHandle, request->asRxFrame.asSetOutputDataRate.rate);
     }
     break;
 
@@ -175,6 +174,7 @@ int TransportRx_Process(struct HostTransport_Handle *hostHandle,
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_SamplingStart) ==
         *length) {
       controllerHandle->samplingStart(
+          controllerHandle->samplingHandle,
           request->asRxFrame.asSamplingStart.max_samples_count);
       return 0;
     }
@@ -184,7 +184,7 @@ int TransportRx_Process(struct HostTransport_Handle *hostHandle,
   case Transport_HeaderId_Rx_SamplingStop: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_SamplingStop) ==
         *length) {
-      controllerHandle->samplingStop();
+      controllerHandle->samplingStop(controllerHandle->samplingHandle);
       return 0;
     }
   } break;

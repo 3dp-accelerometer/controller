@@ -29,6 +29,7 @@
 #include "fw/adxl345_transport_impl.h"
 #include "fw/controller_impl.h"
 #include "fw/host_transport_impl.h"
+#include "fw/sampling.h"
 #include "fw/version.h"
 #include "usbd_cdc_if.h"
 #include <adxl345.h>
@@ -56,8 +57,9 @@
 
 /* USER CODE BEGIN PV */
 ADXL345_DECLARE_HANDLE(sensorHandle);
+SAMPLING_DECLARE_HANDLE(samplingHandle);
 HOSTTRANSPORT_DECLARE_HANDLE(hostHandle);
-DEVICEIMPL_DECLARE_HANDLE(controllerHandle);
+DEVICEIMPL_DECLARE_HANDLE(controllerHandle, sensorHandle, samplingHandle);
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -110,7 +112,7 @@ int main(void) {
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1) {
-    switch (controllerHandle.samplingFetchForward()) {
+    switch (controllerHandle.samplingFetchForward(&samplingHandle)) {
     case -ECANCELED:
     case -EOVERFLOW:
       HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_RESET);

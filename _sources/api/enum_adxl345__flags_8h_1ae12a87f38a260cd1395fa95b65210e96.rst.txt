@@ -1,0 +1,14 @@
+.. _exhale_enum_adxl345__flags_8h_1ae12a87f38a260cd1395fa95b65210e96:
+
+Enum Adxl345Flags_PowerCtl_Measure
+==================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: Adxl345Flags_PowerCtl_Measure
+   :project: My Proj

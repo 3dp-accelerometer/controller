@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__register_8h_1afb916727068c402389508917b64dc82b:
+
+Variable fullRes
+================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: fullRes
+   :project: My Proj

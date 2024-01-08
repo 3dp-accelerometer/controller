@@ -1,0 +1,14 @@
+.. _exhale_function_ringbuffer_8c_1a0bcd7705c6aae413215637f1d01920ae:
+
+Function Ringbuffer_init(struct Ringbuffer \*, uint8_t \*, uint16_t, uint8_t)
+=============================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Ringbuffer_init(struct Ringbuffer *, uint8_t *, uint16_t, uint8_t)
+   :project: My Proj

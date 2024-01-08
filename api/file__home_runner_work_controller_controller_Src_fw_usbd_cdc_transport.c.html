@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File usbd_cdc_transport.c &mdash; 3dpaxxel 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File usbd_cdc_transport.c</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-usbd-cdc-transport-c">
+<span id="file-home-runner-work-controller-controller-src-fw-usbd-cdc-transport-c"></span><h1>File usbd_cdc_transport.c<a class="headerlink" href="#file-usbd-cdc-transport-c" title="Permalink to this headline"></a></h1>
+<p>↰ <a class="reference internal" href="dir__home_runner_work_controller_controller_Src_fw.html#dir-home-runner-work-controller-controller-src-fw"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Src/fw</span></code>)</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-home-runner-work-controller-controller-src-fw-usbd-cdc-transport-c" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Src/fw/usbd_cdc_transport.c</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id3">Functions</a></p></li>
+<li><p><a class="reference internal" href="#variables" id="id4">Variables</a></p></li>
+</ul>
+</div>
+<section id="definition-home-runner-work-controller-controller-src-fw-usbd-cdc-transport-c">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Src/fw/usbd_cdc_transport.c</span></code>)<a class="headerlink" href="#definition-home-runner-work-controller-controller-src-fw-usbd-cdc-transport-c" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file__home_runner_work_controller_controller_Src_fw_usbd_cdc_transport.c.html">Program Listing for File usbd_cdc_transport.c</a></li>
+</ul>
+</div>
+</section>
+<section id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">adxl345.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h.html#file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-h"><span class="std std-ref">File adxl345.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">adxl345_flags.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h.html#file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-flags-h"><span class="std std-ref">File adxl345_flags.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">adxl345_transport_types.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h.html#file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-transport-types-h"><span class="std std-ref">File adxl345_transport_types.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">errno.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fw/device_reboot.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_device_reboot.h.html#file-home-runner-work-controller-controller-inc-fw-device-reboot-h"><span class="std std-ref">File device_reboot.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fw/sampling.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_sampling.h.html#file-home-runner-work-controller-controller-inc-fw-sampling-h"><span class="std std-ref">File sampling.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fw/usbd_cdc_transport.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport.h.html#file-home-runner-work-controller-controller-inc-fw-usbd-cdc-transport-h"><span class="std std-ref">File usbd_cdc_transport.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fw/usbd_cdc_transport_types.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport_types.h.html#file-home-runner-work-controller-controller-inc-fw-usbd-cdc-transport-types-h"><span class="std std-ref">File usbd_cdc_transport_types.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fw/version.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_version.h.html#file-home-runner-work-controller-controller-inc-fw-version-h"><span class="std std-ref">File version.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">usbd_cdc_if.h</span></code></p></li>
+</ul>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_usbd__cdc__transport_8c_1a0311e97ea6e16f99bcd4145a88e0444c.html#exhale-function-usbd-cdc-transport-8c-1a0311e97ea6e16f99bcd4145a88e0444c"><span class="std std-ref">Function TransportRx_Process(uint8_t *, const uint32_t *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_usbd__cdc__transport_8c_1a9c276229394f735a28f9d4dca36eeae8.html#exhale-function-usbd-cdc-transport-8c-1a9c276229394f735a28f9d4dca36eeae8"><span class="std std-ref">Function TransportTx_AccelerationBuffer(struct Adxl345Transport_Acceleration *, uint8_t, uint16_t)</span></a></p></li>
+<li><p><a class="reference internal" href="function_usbd__cdc__transport_8c_1a570d2f85c118f4b9d6a80969e98b0e4d.html#exhale-function-usbd-cdc-transport-8c-1a570d2f85c118f4b9d6a80969e98b0e4d"><span class="std std-ref">Function TransportTx_FifoOverflow()</span></a></p></li>
+<li><p><a class="reference internal" href="function_usbd__cdc__transport_8c_1af00655cf92129e2a8972bc4527b47818.html#exhale-function-usbd-cdc-transport-8c-1af00655cf92129e2a8972bc4527b47818"><span class="std std-ref">Function TransportTx_FirmwareVersion()</span></a></p></li>
+<li><p><a class="reference internal" href="function_usbd__cdc__transport_8c_1a498b7ad08bc757ec1c56ea73edf1980a.html#exhale-function-usbd-cdc-transport-8c-1a498b7ad08bc757ec1c56ea73edf1980a"><span class="std std-ref">Function TransportTx_SamplingAborted()</span></a></p></li>
+<li><p><a class="reference internal" href="function_usbd__cdc__transport_8c_1a2feb614fcdaf18d555b155174de17f0f.html#exhale-function-usbd-cdc-transport-8c-1a2feb614fcdaf18d555b155174de17f0f"><span class="std std-ref">Function TransportTx_SamplingFinished()</span></a></p></li>
+<li><p><a class="reference internal" href="function_usbd__cdc__transport_8c_1a998e5f1947fa6f46a73eef8cd2a7b23c.html#exhale-function-usbd-cdc-transport-8c-1a998e5f1947fa6f46a73eef8cd2a7b23c"><span class="std std-ref">Function TransportTx_SamplingSetup()</span></a></p></li>
+<li><p><a class="reference internal" href="function_usbd__cdc__transport_8c_1ab75d2a3a6936b68052915ad60ab54ea9.html#exhale-function-usbd-cdc-transport-8c-1ab75d2a3a6936b68052915ad60ab54ea9"><span class="std std-ref">Function TransportTx_SamplingStarted(uint16_t)</span></a></p></li>
+<li><p><a class="reference internal" href="function_usbd__cdc__transport_8c_1a759ec3b2ea6080fee2c76bcef9320ba6.html#exhale-function-usbd-cdc-transport-8c-1a759ec3b2ea6080fee2c76bcef9320ba6"><span class="std std-ref">Function TransportTx_SamplingStopped()</span></a></p></li>
+</ul>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport_8c_1abcbbc1f486b74fc4964570a4a2a09d31.html#exhale-variable-usbd-cdc-transport-8c-1abcbbc1f486b74fc4964570a4a2a09d31"><span class="std std-ref">Variable adxl345_handle</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 08 Jan 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

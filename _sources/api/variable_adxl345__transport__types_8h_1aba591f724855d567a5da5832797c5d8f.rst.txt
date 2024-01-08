@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__transport__types_8h_1aba591f724855d567a5da5832797c5d8f:
+
+Variable asBytes
+================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asBytes
+   :project: My Proj

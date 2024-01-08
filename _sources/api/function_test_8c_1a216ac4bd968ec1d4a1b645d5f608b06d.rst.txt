@@ -1,0 +1,14 @@
+.. _exhale_function_test_8c_1a216ac4bd968ec1d4a1b645d5f608b06d:
+
+Function test_cap1_empty_isEmptyNotFull
+=======================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_test_test_ringbuffer_test.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: test_cap1_empty_isEmptyNotFull()
+   :project: My Proj

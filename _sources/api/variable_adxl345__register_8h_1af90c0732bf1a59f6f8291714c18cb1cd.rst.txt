@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__register_8h_1af90c0732bf1a59f6f8291714c18cb1cd:
+
+Variable entries
+================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: entries
+   :project: My Proj

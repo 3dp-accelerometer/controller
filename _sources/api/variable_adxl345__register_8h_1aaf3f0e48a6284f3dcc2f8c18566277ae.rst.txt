@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__register_8h_1aaf3f0e48a6284f3dcc2f8c18566277ae:
+
+Variable fifoTrig
+=================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: fifoTrig
+   :project: My Proj

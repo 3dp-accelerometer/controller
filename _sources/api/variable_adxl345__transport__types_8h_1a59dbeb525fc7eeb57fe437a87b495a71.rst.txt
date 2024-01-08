@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__transport__types_8h_1a59dbeb525fc7eeb57fe437a87b495a71:
+
+Variable asRegister
+===================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asRegister
+   :project: My Proj

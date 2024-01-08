@@ -1,0 +1,14 @@
+.. _exhale_variable_usbd__cdc__transport__types_8h_1aa3169da96d07ddb56442e1f0219ee59d:
+
+Variable asSetScale
+===================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asSetScale
+   :project: My Proj

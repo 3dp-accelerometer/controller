@@ -1,0 +1,14 @@
+.. _exhale_variable_usbd__cdc__transport__types_8h_1a5189cd3671dace2454c818487957edcf:
+
+Variable asFifoOverflow
+=======================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asFifoOverflow
+   :project: My Proj

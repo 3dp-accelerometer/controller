@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__register_8h_1a401a1c7bc3fea1c7fbc21fd378f68376:
+
+Variable fifoMode
+=================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: fifoMode
+   :project: My Proj

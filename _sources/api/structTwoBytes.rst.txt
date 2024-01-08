@@ -1,0 +1,17 @@
+.. _exhale_struct_structTwoBytes:
+
+Struct TwoBytes
+===============
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h`
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: TwoBytes
+   :project: My Proj
+   :members:
+   :protected-members:
+   :undoc-members:

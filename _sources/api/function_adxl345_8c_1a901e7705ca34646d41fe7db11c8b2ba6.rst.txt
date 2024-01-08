@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345_8c_1a901e7705ca34646d41fe7db11c8b2ba6:
+
+Function readRegister
+=====================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: readRegister(struct Adxl345_Handle *, enum Adxl345Flags_Address, union Adxl345Register *)
+   :project: My Proj

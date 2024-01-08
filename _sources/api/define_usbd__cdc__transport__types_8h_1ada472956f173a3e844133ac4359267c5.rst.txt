@@ -1,0 +1,14 @@
+.. _exhale_define_usbd__cdc__transport__types_8h_1ada472956f173a3e844133ac4359267c5:
+
+Define SIZEOF_HEADER_INCL_PAYLOAD
+=================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport_types.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: SIZEOF_HEADER_INCL_PAYLOAD
+   :project: My Proj

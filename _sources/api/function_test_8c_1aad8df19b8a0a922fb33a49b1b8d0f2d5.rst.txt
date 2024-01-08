@@ -1,0 +1,14 @@
+.. _exhale_function_test_8c_1aad8df19b8a0a922fb33a49b1b8d0f2d5:
+
+Function test_cap3_empty_takeItem
+=================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_test_test_ringbuffer_test.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: test_cap3_empty_takeItem()
+   :project: My Proj

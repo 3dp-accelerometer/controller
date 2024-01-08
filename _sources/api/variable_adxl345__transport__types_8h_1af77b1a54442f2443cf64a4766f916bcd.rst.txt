@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__transport__types_8h_1af77b1a54442f2443cf64a4766f916bcd:
+
+Variable y
+==========
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: y
+   :project: My Proj

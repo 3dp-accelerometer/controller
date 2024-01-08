@@ -1,0 +1,14 @@
+.. _exhale_variable_sampling_8c_1abcbbc1f486b74fc4964570a4a2a09d31:
+
+Variable adxl345_handle
+=======================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_sampling.c`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: adxl345_handle
+   :project: My Proj

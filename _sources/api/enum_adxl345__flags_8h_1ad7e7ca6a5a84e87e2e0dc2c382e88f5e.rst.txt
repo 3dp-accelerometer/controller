@@ -1,0 +1,14 @@
+.. _exhale_enum_adxl345__flags_8h_1ad7e7ca6a5a84e87e2e0dc2c382e88f5e:
+
+Enum Adxl345Flags_IntMap_Watermark
+==================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: Adxl345Flags_IntMap_Watermark
+   :project: My Proj

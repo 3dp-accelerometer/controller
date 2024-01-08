@@ -1,0 +1,14 @@
+.. _exhale_function_sampling_8h_1ab8cef26b160871247301aad8f69913d8:
+
+Function Sampling_on5usTimerExpired()
+=====================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_sampling.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Sampling_on5usTimerExpired()
+   :project: My Proj

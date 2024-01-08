@@ -1,0 +1,26 @@
+
+.. _program_listing_file__home_runner_work_controller_controller_Src_fw_version.c:
+
+Program Listing for File version.c
+==================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_controller_controller_Src_fw_version.c>` (``/home/runner/work/controller/controller/Src/fw/version.c``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   /** \file version.c
+    *
+    * Auto generated file crated by "poetry run versionbump".
+    *
+    * See also "poetry version".
+    *
+    * example:
+    * \code{.sh}
+    * poetry version patch
+    * poetry run versionbump
+    * \endcode
+    **/
+   
+   #include "fw/version.h"

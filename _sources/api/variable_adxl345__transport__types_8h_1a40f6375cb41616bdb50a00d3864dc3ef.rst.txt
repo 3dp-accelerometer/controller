@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__transport__types_8h_1a40f6375cb41616bdb50a00d3864dc3ef:
+
+Variable asWord
+===============
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asWord
+   :project: My Proj

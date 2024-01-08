@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345_8h_1a67d00841116cfecf53a7ca6352209df4:
+
+Function Adxl345_getRange(struct Adxl345_Handle \*, enum Adxl345Flags_DataFormat_Range \*)
+==========================================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Adxl345_getRange(struct Adxl345_Handle *, enum Adxl345Flags_DataFormat_Range *)
+   :project: My Proj

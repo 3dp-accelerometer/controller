@@ -1,0 +1,14 @@
+.. _exhale_function_sampling_8c_1aac9f1ee33f4984dbe18da6776c9dbdf9:
+
+Function delay5us
+=================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_sampling.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: delay5us()
+   :project: My Proj

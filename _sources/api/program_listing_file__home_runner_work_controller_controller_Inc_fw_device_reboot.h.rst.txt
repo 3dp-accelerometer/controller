@@ -1,0 +1,32 @@
+
+.. _program_listing_file__home_runner_work_controller_controller_Inc_fw_device_reboot.h:
+
+Program Listing for File device_reboot.h
+========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_controller_controller_Inc_fw_device_reboot.h>` (``/home/runner/work/controller/controller/Inc/fw/device_reboot.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   /**
+    * \file device_reboot.h
+    *
+    * Implements scheduling a device reboot.
+    */
+   
+   #pragma once
+   #include <stdbool.h>
+   
+   /**
+    * Resets device device if DEVICE_REBOOT_DO_REBOOT is set.
+    *
+    * Must be polled.
+    */
+   void DeviceReboot_checkReboot();
+   
+   /**
+    * Requests reboot which is scheduled at a later time but ASAP.
+    */
+   void DeviceReboot_requestAsyncReboot();

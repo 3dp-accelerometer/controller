@@ -1,0 +1,17 @@
+.. _exhale_struct_structRingbuffer:
+
+Struct Ringbuffer
+=================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.h`
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: Ringbuffer
+   :project: My Proj
+   :members:
+   :protected-members:
+   :undoc-members:

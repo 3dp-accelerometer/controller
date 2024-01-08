@@ -1,0 +1,14 @@
+.. _exhale_function_usbd__cdc__transport_8h_1af00655cf92129e2a8972bc4527b47818:
+
+Function TransportTx_FirmwareVersion()
+======================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TransportTx_FirmwareVersion()
+   :project: My Proj

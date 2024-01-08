@@ -1,0 +1,14 @@
+.. _exhale_define_version_8h_1ae0cb52afb79b185b1bf82c7e235f682b:
+
+Define VERSION_MINOR
+====================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_version.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: VERSION_MINOR
+   :project: My Proj

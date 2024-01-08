@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345_8h_1ab61b3d92785c6a11acb64cb5b1b9d630:
+
+Function Adxl345_setPowerCtlStandby(struct Adxl345_Handle \*)
+=============================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Adxl345_setPowerCtlStandby(struct Adxl345_Handle *)
+   :project: My Proj

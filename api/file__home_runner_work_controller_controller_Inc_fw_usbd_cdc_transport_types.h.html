@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File usbd_cdc_transport_types.h &mdash; 3dpaxxel 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File usbd_cdc_transport_types.h</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-usbd-cdc-transport-types-h">
+<span id="file-home-runner-work-controller-controller-inc-fw-usbd-cdc-transport-types-h"></span><h1>File usbd_cdc_transport_types.h<a class="headerlink" href="#file-usbd-cdc-transport-types-h" title="Permalink to this headline"></a></h1>
+<p>↰ <a class="reference internal" href="dir__home_runner_work_controller_controller_Inc_fw.html#dir-home-runner-work-controller-controller-inc-fw"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Inc/fw</span></code>)</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-home-runner-work-controller-controller-inc-fw-usbd-cdc-transport-types-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Inc/fw/usbd_cdc_transport_types.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id2">Detailed Description</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id3">Includes</a></p></li>
+<li><p><a class="reference internal" href="#included-by" id="id4">Included By</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id5">Classes</a></p></li>
+<li><p><a class="reference internal" href="#enums" id="id6">Enums</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id7">Functions</a></p></li>
+<li><p><a class="reference internal" href="#defines" id="id8">Defines</a></p></li>
+<li><p><a class="reference internal" href="#unions" id="id9">Unions</a></p></li>
+<li><p><a class="reference internal" href="#variables" id="id10">Variables</a></p></li>
+</ul>
+</div>
+<section id="definition-home-runner-work-controller-controller-inc-fw-usbd-cdc-transport-types-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Inc/fw/usbd_cdc_transport_types.h</span></code>)<a class="headerlink" href="#definition-home-runner-work-controller-controller-inc-fw-usbd-cdc-transport-types-h" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport_types.h.html">Program Listing for File usbd_cdc_transport_types.h</a></li>
+</ul>
+</div>
+</section>
+<section id="detailed-description">
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline"></a></h2>
+<p>Types transferred from/to the IN USB endpoint (host).</p>
+</section>
+<section id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">inttypes.h</span></code></p></li>
+</ul>
+</section>
+<section id="included-by">
+<h2>Included By<a class="headerlink" href="#included-by" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="file__home_runner_work_controller_controller_Src_fw_usbd_cdc_transport.c.html#file-home-runner-work-controller-controller-src-fw-usbd-cdc-transport-c"><span class="std std-ref">File usbd_cdc_transport.c</span></a></p></li>
+</ul>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="structTransport__Header.html#exhale-struct-structtransport-header"><span class="std std-ref">Struct Transport_Header</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportFrame.html#exhale-struct-structtransportframe"><span class="std std-ref">Struct TransportFrame</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__DeviceReboot.html#exhale-struct-structtransportrx-devicereboot"><span class="std std-ref">Struct TransportRx_DeviceReboot</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__GetDeviceSetup.html#exhale-struct-structtransportrx-getdevicesetup"><span class="std std-ref">Struct TransportRx_GetDeviceSetup</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__GetFirmwareVersion.html#exhale-struct-structtransportrx-getfirmwareversion"><span class="std std-ref">Struct TransportRx_GetFirmwareVersion</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__GetOutputDataRate.html#exhale-struct-structtransportrx-getoutputdatarate"><span class="std std-ref">Struct TransportRx_GetOutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__GetRange.html#exhale-struct-structtransportrx-getrange"><span class="std std-ref">Struct TransportRx_GetRange</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__GetScale.html#exhale-struct-structtransportrx-getscale"><span class="std std-ref">Struct TransportRx_GetScale</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__SamplingStart.html#exhale-struct-structtransportrx-samplingstart"><span class="std std-ref">Struct TransportRx_SamplingStart</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__SamplingStop.html#exhale-struct-structtransportrx-samplingstop"><span class="std std-ref">Struct TransportRx_SamplingStop</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__SetOutputDataRate.html#exhale-struct-structtransportrx-setoutputdatarate"><span class="std std-ref">Struct TransportRx_SetOutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__SetRange.html#exhale-struct-structtransportrx-setrange"><span class="std std-ref">Struct TransportRx_SetRange</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__SetScale.html#exhale-struct-structtransportrx-setscale"><span class="std std-ref">Struct TransportRx_SetScale</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__Acceleration.html#exhale-struct-structtransporttx-acceleration"><span class="std std-ref">Struct TransportTx_Acceleration</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__DeviceSetup.html#exhale-struct-structtransporttx-devicesetup"><span class="std std-ref">Struct TransportTx_DeviceSetup</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__FifoOverflow.html#exhale-struct-structtransporttx-fifooverflow"><span class="std std-ref">Struct TransportTx_FifoOverflow</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__FirmwareVersion.html#exhale-struct-structtransporttx-firmwareversion"><span class="std std-ref">Struct TransportTx_FirmwareVersion</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__OutputDataRate.html#exhale-struct-structtransporttx-outputdatarate"><span class="std std-ref">Struct TransportTx_OutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__Range.html#exhale-struct-structtransporttx-range"><span class="std std-ref">Struct TransportTx_Range</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__SamplingAborted.html#exhale-struct-structtransporttx-samplingaborted"><span class="std std-ref">Struct TransportTx_SamplingAborted</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__SamplingFinished.html#exhale-struct-structtransporttx-samplingfinished"><span class="std std-ref">Struct TransportTx_SamplingFinished</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__SamplingStarted.html#exhale-struct-structtransporttx-samplingstarted"><span class="std std-ref">Struct TransportTx_SamplingStarted</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__SamplingStopped.html#exhale-struct-structtransporttx-samplingstopped"><span class="std std-ref">Struct TransportTx_SamplingStopped</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__Scale.html#exhale-struct-structtransporttx-scale"><span class="std std-ref">Struct TransportTx_Scale</span></a></p></li>
+</ul>
+</section>
+<section id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="enum_usbd__cdc__transport__types_8h_1acdd6c68eea248e81eff3eb8f547f5204.html#exhale-enum-usbd-cdc-transport-types-8h-1acdd6c68eea248e81eff3eb8f547f5204"><span class="std std-ref">Enum Transport_HeaderId</span></a></p></li>
+<li><p><a class="reference internal" href="enum_usbd__cdc__transport__types_8h_1a09588d2abff7c25824fe338a4cfafe63.html#exhale-enum-usbd-cdc-transport-types-8h-1a09588d2abff7c25824fe338a4cfafe63"><span class="std std-ref">Enum TransportRx_SetOutputDataRate_Rate</span></a></p></li>
+<li><p><a class="reference internal" href="enum_usbd__cdc__transport__types_8h_1aef31738b236562c4f0a18348be10fa81.html#exhale-enum-usbd-cdc-transport-types-8h-1aef31738b236562c4f0a18348be10fa81"><span class="std std-ref">Enum TransportRx_SetRange_Range</span></a></p></li>
+<li><p><a class="reference internal" href="enum_usbd__cdc__transport__types_8h_1a0f8fc7d8d585dcd04d9142be969268e5.html#exhale-enum-usbd-cdc-transport-types-8h-1a0f8fc7d8d585dcd04d9142be969268e5"><span class="std std-ref">Enum TransportRx_SetScale_Scale</span></a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_usbd__cdc__transport__types_8h_1ac79abf6004596fe72a9b87b36132f2ef.html#exhale-function-usbd-cdc-transport-types-8h-1ac79abf6004596fe72a9b87b36132f2ef"><span class="std std-ref">Function __attribute__((packed))</span></a></p></li>
+</ul>
+</section>
+<section id="defines">
+<h2>Defines<a class="headerlink" href="#defines" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="define_usbd__cdc__transport__types_8h_1ada472956f173a3e844133ac4359267c5.html#exhale-define-usbd-cdc-transport-types-8h-1ada472956f173a3e844133ac4359267c5"><span class="std std-ref">Define SIZEOF_HEADER_INCL_PAYLOAD</span></a></p></li>
+</ul>
+</section>
+<section id="unions">
+<h2>Unions<a class="headerlink" href="#unions" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="unionTransportRxFrame.html#exhale-union-uniontransportrxframe"><span class="std std-ref">Union TransportRxFrame</span></a></p></li>
+<li><p><a class="reference internal" href="unionTransportTxFrame.html#exhale-union-uniontransporttxframe"><span class="std std-ref">Union TransportTxFrame</span></a></p></li>
+</ul>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1ac3cae26f5f4fd77505c5cc684f000f8b.html#exhale-variable-usbd-cdc-transport-types-8h-1ac3cae26f5f4fd77505c5cc684f000f8b"><span class="std std-ref">Variable &#64;2</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1aa64e81af72c0dbee197a99974cc6477f.html#exhale-variable-usbd-cdc-transport-types-8h-1aa64e81af72c0dbee197a99974cc6477f"><span class="std std-ref">Variable __attribute__</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a3875c02c7867a24afd72c07a8e836d0c.html#exhale-variable-usbd-cdc-transport-types-8h-1a3875c02c7867a24afd72c07a8e836d0c"><span class="std std-ref">Variable asAcceleration</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1aa6fa942a4aba55e671401efab0301f68.html#exhale-variable-usbd-cdc-transport-types-8h-1aa6fa942a4aba55e671401efab0301f68"><span class="std std-ref">Variable asDeviceReboot</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a5468707ba0cf05d846b544d6ec5698ab.html#exhale-variable-usbd-cdc-transport-types-8h-1a5468707ba0cf05d846b544d6ec5698ab"><span class="std std-ref">Variable asDeviceSetup</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a5189cd3671dace2454c818487957edcf.html#exhale-variable-usbd-cdc-transport-types-8h-1a5189cd3671dace2454c818487957edcf"><span class="std std-ref">Variable asFifoOverflow</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a1d9850472cc852e0884b276ac2131a4e.html#exhale-variable-usbd-cdc-transport-types-8h-1a1d9850472cc852e0884b276ac2131a4e"><span class="std std-ref">Variable asFirmwareVersion</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1add2e75a6243ec44bd1c9f647932d0807.html#exhale-variable-usbd-cdc-transport-types-8h-1add2e75a6243ec44bd1c9f647932d0807"><span class="std std-ref">Variable asGetDeviceSetup</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1ae2ce2ef8f1ae200a09f2d551d634f569.html#exhale-variable-usbd-cdc-transport-types-8h-1ae2ce2ef8f1ae200a09f2d551d634f569"><span class="std std-ref">Variable asGetFirmwareVersion</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1af62d06fba8293c51e03074d4cb7e4585.html#exhale-variable-usbd-cdc-transport-types-8h-1af62d06fba8293c51e03074d4cb7e4585"><span class="std std-ref">Variable asGetOutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a57831df9d6b0fc0b56f277d97399c5ab.html#exhale-variable-usbd-cdc-transport-types-8h-1a57831df9d6b0fc0b56f277d97399c5ab"><span class="std std-ref">Variable asGetRange</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1ad0c6e0653d68ec75dcc18d34b1986578.html#exhale-variable-usbd-cdc-transport-types-8h-1ad0c6e0653d68ec75dcc18d34b1986578"><span class="std std-ref">Variable asGetScale</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1ab164ff21553b40079f884e7adaaab71d.html#exhale-variable-usbd-cdc-transport-types-8h-1ab164ff21553b40079f884e7adaaab71d"><span class="std std-ref">Variable asOutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a8d2ec4d8224fab4223a6ce5fc880c88d.html#exhale-variable-usbd-cdc-transport-types-8h-1a8d2ec4d8224fab4223a6ce5fc880c88d"><span class="std std-ref">Variable asRange</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a72a394e847080e277ff32248ebb7133e.html#exhale-variable-usbd-cdc-transport-types-8h-1a72a394e847080e277ff32248ebb7133e"><span class="std std-ref">Variable asRxFrame</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a7b901b2ed436c9b8a5485f518cda5e02.html#exhale-variable-usbd-cdc-transport-types-8h-1a7b901b2ed436c9b8a5485f518cda5e02"><span class="std std-ref">Variable asSamplingAborted</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a4d33c777e50886258b7f902cab478d0f.html#exhale-variable-usbd-cdc-transport-types-8h-1a4d33c777e50886258b7f902cab478d0f"><span class="std std-ref">Variable asSamplingFinished</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a8fb2926c1358556d1058310c1d227952.html#exhale-variable-usbd-cdc-transport-types-8h-1a8fb2926c1358556d1058310c1d227952"><span class="std std-ref">Variable asSamplingStart</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a1af577436c0e4a90d7b84d9f1658798f.html#exhale-variable-usbd-cdc-transport-types-8h-1a1af577436c0e4a90d7b84d9f1658798f"><span class="std std-ref">Variable asSamplingStarted</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1ac921e372c73f74e47f9df8105d6c832e.html#exhale-variable-usbd-cdc-transport-types-8h-1ac921e372c73f74e47f9df8105d6c832e"><span class="std std-ref">Variable asSamplingStop</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a30ce5a792a73cde28c6eabc0d3bfb1c3.html#exhale-variable-usbd-cdc-transport-types-8h-1a30ce5a792a73cde28c6eabc0d3bfb1c3"><span class="std std-ref">Variable asSamplingStopped</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1ab616bd38ef9b5bce0700f2f719982afe.html#exhale-variable-usbd-cdc-transport-types-8h-1ab616bd38ef9b5bce0700f2f719982afe"><span class="std std-ref">Variable asScale</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1ad861ce2862ef9cba24b3b950b4dd37e2.html#exhale-variable-usbd-cdc-transport-types-8h-1ad861ce2862ef9cba24b3b950b4dd37e2"><span class="std std-ref">Variable asSetOutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a6cd216ab4f7b652797fef14382ed17c7.html#exhale-variable-usbd-cdc-transport-types-8h-1a6cd216ab4f7b652797fef14382ed17c7"><span class="std std-ref">Variable asSetRange</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1aa3169da96d07ddb56442e1f0219ee59d.html#exhale-variable-usbd-cdc-transport-types-8h-1aa3169da96d07ddb56442e1f0219ee59d"><span class="std std-ref">Variable asSetScale</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1aafbd65a18c302f1f153b181db80ba8fa.html#exhale-variable-usbd-cdc-transport-types-8h-1aafbd65a18c302f1f153b181db80ba8fa"><span class="std std-ref">Variable asTxFrame</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1ade1fc93f9f2ad74d50761aabcbb8c58f.html#exhale-variable-usbd-cdc-transport-types-8h-1ade1fc93f9f2ad74d50761aabcbb8c58f"><span class="std std-ref">Variable header</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1aaa2b01a5565390d6b8b8c7d4ee0ce0f1.html#exhale-variable-usbd-cdc-transport-types-8h-1aaa2b01a5565390d6b8b8c7d4ee0ce0f1"><span class="std std-ref">Variable id</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a852b86a2eaee9852ada7a43e61e311a2.html#exhale-variable-usbd-cdc-transport-types-8h-1a852b86a2eaee9852ada7a43e61e311a2"><span class="std std-ref">Variable index</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a5bd4e4c943762926c8f653b6224cced2.html#exhale-variable-usbd-cdc-transport-types-8h-1a5bd4e4c943762926c8f653b6224cced2"><span class="std std-ref">Variable major</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a7092625ebce4006ef4775bf3417f3f42.html#exhale-variable-usbd-cdc-transport-types-8h-1a7092625ebce4006ef4775bf3417f3f42"><span class="std std-ref">Variable max_samples_count</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1ae6ee9be053cfc09d38936dada346162d.html#exhale-variable-usbd-cdc-transport-types-8h-1ae6ee9be053cfc09d38936dada346162d"><span class="std std-ref">Variable maxSamples</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1ae2f416b0a34b7beb4ed3873d791ac393.html#exhale-variable-usbd-cdc-transport-types-8h-1ae2f416b0a34b7beb4ed3873d791ac393"><span class="std std-ref">Variable minor</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a6215da7f38ae96ed447bb6277fe48150.html#exhale-variable-usbd-cdc-transport-types-8h-1a6215da7f38ae96ed447bb6277fe48150"><span class="std std-ref">Variable outputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a00c54fad5fef8d31eb75c1163468005b.html#exhale-variable-usbd-cdc-transport-types-8h-1a00c54fad5fef8d31eb75c1163468005b"><span class="std std-ref">Variable patch</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a9edcde0584b2ab6c4a7b49eaec49d237.html#exhale-variable-usbd-cdc-transport-types-8h-1a9edcde0584b2ab6c4a7b49eaec49d237"><span class="std std-ref">Variable range</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a20ed0fb1e9a2b4e0c3ae40fc5e348962.html#exhale-variable-usbd-cdc-transport-types-8h-1a20ed0fb1e9a2b4e0c3ae40fc5e348962"><span class="std std-ref">Variable rate</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1a616c0a72f0e4af38b93c736773ac7210.html#exhale-variable-usbd-cdc-transport-types-8h-1a616c0a72f0e4af38b93c736773ac7210"><span class="std std-ref">Variable scale</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1ae1c2d516777e6b42af0d281c9ecc7375.html#exhale-variable-usbd-cdc-transport-types-8h-1ae1c2d516777e6b42af0d281c9ecc7375"><span class="std std-ref">Variable x</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1af77b1a54442f2443cf64a4766f916bcd.html#exhale-variable-usbd-cdc-transport-types-8h-1af77b1a54442f2443cf64a4766f916bcd"><span class="std std-ref">Variable y</span></a></p></li>
+<li><p><a class="reference internal" href="variable_usbd__cdc__transport__types_8h_1abd938edbea27ed4f351dc19d69039222.html#exhale-variable-usbd-cdc-transport-types-8h-1abd938edbea27ed4f351dc19d69039222"><span class="std std-ref">Variable z</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 08 Jan 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

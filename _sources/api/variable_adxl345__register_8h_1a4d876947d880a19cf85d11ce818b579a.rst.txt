@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__register_8h_1a4d876947d880a19cf85d11ce818b579a:
+
+Variable spi
+============
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: spi
+   :project: My Proj

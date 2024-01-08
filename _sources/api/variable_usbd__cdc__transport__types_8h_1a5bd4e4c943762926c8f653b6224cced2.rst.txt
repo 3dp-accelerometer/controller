@@ -1,0 +1,14 @@
+.. _exhale_variable_usbd__cdc__transport__types_8h_1a5bd4e4c943762926c8f653b6224cced2:
+
+Variable major
+==============
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: major
+   :project: My Proj

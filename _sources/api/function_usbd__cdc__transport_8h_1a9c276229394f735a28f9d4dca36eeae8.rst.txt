@@ -1,0 +1,14 @@
+.. _exhale_function_usbd__cdc__transport_8h_1a9c276229394f735a28f9d4dca36eeae8:
+
+Function TransportTx_AccelerationBuffer(struct Adxl345Transport_Acceleration \*, uint8_t, uint16_t)
+===================================================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TransportTx_AccelerationBuffer(struct Adxl345Transport_Acceleration *, uint8_t, uint16_t)
+   :project: My Proj

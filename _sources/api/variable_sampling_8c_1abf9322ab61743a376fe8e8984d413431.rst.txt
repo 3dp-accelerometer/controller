@@ -1,0 +1,14 @@
+.. _exhale_variable_sampling_8c_1abf9322ab61743a376fe8e8984d413431:
+
+Variable samplingState
+======================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_sampling.c`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: samplingState
+   :project: My Proj

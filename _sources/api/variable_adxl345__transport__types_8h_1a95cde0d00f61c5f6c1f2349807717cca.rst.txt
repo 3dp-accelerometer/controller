@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__transport__types_8h_1a95cde0d00f61c5f6c1f2349807717cca:
+
+Variable _padding8
+==================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: _padding8
+   :project: My Proj

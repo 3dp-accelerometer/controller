@@ -1,0 +1,14 @@
+.. _exhale_function_usbd__cdc__transport_8c_1a759ec3b2ea6080fee2c76bcef9320ba6:
+
+Function TransportTx_SamplingStopped()
+======================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_usbd_cdc_transport.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TransportTx_SamplingStopped()
+   :project: My Proj

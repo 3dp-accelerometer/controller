@@ -1,0 +1,14 @@
+.. _exhale_function_ringbuffer_8h_1af6516385406217957b615bfb3709dcd4:
+
+Function Ringbuffer_take(struct Ringbuffer \*, uint8_t \*)
+==========================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Ringbuffer_take(struct Ringbuffer *, uint8_t *)
+   :project: My Proj

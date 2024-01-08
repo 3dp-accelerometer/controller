@@ -1,0 +1,61 @@
+
+.. _file__home_runner_work_controller_controller_Inc_fw_device_reboot.h:
+
+File device_reboot.h
+====================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Inc_fw>` (``/home/runner/work/controller/controller/Inc/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Inc/fw/device_reboot.h``)
+-------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Inc_fw_device_reboot.h.rst
+
+
+
+Detailed Description
+--------------------
+
+Implements scheduling a device reboot. 
+
+
+
+
+Includes
+--------
+
+
+- ``stdbool.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_device_reboot.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_usbd_cdc_transport.c`
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_device__reboot_8h_1a9da06e7ac46c19f9b90a90cfb59564b9`
+
+- :ref:`exhale_function_device__reboot_8h_1a09a13669d08dbbde3b04fdb5c24107a8`
+

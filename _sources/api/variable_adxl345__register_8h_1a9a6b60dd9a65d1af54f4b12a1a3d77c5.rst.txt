@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__register_8h_1a9a6b60dd9a65d1af54f4b12a1a3d77c5:
+
+Variable overrun
+================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: overrun
+   :project: My Proj

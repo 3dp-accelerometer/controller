@@ -1,0 +1,14 @@
+.. _exhale_define_sampling_8c_1a63c58a64fb866821ab651da9c5c3bea1:
+
+Define NUM_SAMPLES_READ_AT_ONCE
+===============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_sampling.c`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: NUM_SAMPLES_READ_AT_ONCE
+   :project: My Proj

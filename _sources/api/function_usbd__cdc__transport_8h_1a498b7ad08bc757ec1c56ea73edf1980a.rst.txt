@@ -1,0 +1,14 @@
+.. _exhale_function_usbd__cdc__transport_8h_1a498b7ad08bc757ec1c56ea73edf1980a:
+
+Function TransportTx_SamplingAborted()
+======================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TransportTx_SamplingAborted()
+   :project: My Proj

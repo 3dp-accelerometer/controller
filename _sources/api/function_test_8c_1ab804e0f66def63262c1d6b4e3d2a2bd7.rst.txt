@@ -1,0 +1,14 @@
+.. _exhale_function_test_8c_1ab804e0f66def63262c1d6b4e3d2a2bd7:
+
+Function tearDown
+=================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_test_test_ringbuffer_test.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: tearDown()
+   :project: My Proj

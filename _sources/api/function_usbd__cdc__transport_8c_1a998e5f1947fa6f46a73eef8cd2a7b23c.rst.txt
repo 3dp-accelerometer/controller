@@ -1,0 +1,14 @@
+.. _exhale_function_usbd__cdc__transport_8c_1a998e5f1947fa6f46a73eef8cd2a7b23c:
+
+Function TransportTx_SamplingSetup()
+====================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_usbd_cdc_transport.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TransportTx_SamplingSetup()
+   :project: My Proj

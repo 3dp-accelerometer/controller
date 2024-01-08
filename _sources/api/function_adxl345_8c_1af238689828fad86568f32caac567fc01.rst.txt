@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345_8c_1af238689828fad86568f32caac567fc01:
+
+Function Adxl345_getOutputDataRate(struct Adxl345_Handle \*, enum Adxl345Flags_BwRate_Rate \*)
+==============================================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Adxl345_getOutputDataRate(struct Adxl345_Handle *, enum Adxl345Flags_BwRate_Rate *)
+   :project: My Proj

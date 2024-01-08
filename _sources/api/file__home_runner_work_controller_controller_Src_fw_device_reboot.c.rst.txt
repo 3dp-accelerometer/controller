@@ -1,0 +1,56 @@
+
+.. _file__home_runner_work_controller_controller_Src_fw_device_reboot.c:
+
+File device_reboot.c
+====================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Src_fw>` (``/home/runner/work/controller/controller/Src/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Src/fw/device_reboot.c``)
+-------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Src_fw_device_reboot.c.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``fw/device_reboot.h`` (:ref:`file__home_runner_work_controller_controller_Inc_fw_device_reboot.h`)
+
+- ``stm32f4xx_hal.h``
+
+
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_device__reboot_8c_1a9da06e7ac46c19f9b90a90cfb59564b9`
+
+- :ref:`exhale_function_device__reboot_8c_1a09a13669d08dbbde3b04fdb5c24107a8`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_device__reboot_8c_1a21415ce537cbd527920d581610e2e972`
+

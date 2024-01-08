@@ -1,0 +1,14 @@
+.. _exhale_function_test_8c_1a63326a1b70b6e3f070e51687798e02de:
+
+Function setUp
+==============
+
+- Defined in :ref:`file__home_runner_work_controller_controller_test_test_ringbuffer_test.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: setUp()
+   :project: My Proj

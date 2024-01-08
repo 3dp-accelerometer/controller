@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__register_8h_1a80cb95696b39a93fbf3ff70a453383e5:
+
+Variable autoSleep
+==================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: autoSleep
+   :project: My Proj

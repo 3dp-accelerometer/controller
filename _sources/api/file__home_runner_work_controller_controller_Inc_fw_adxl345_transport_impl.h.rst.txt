@@ -1,0 +1,65 @@
+
+.. _file__home_runner_work_controller_controller_Inc_fw_adxl345_transport_impl.h:
+
+File adxl345_transport_impl.h
+=============================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Inc_fw>` (``/home/runner/work/controller/controller/Inc/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Inc/fw/adxl345_transport_impl.h``)
+----------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Inc_fw_adxl345_transport_impl.h.rst
+
+
+
+Detailed Description
+--------------------
+
+API of the underlying SPI communication to the ADXL345 sensor. 
+
+
+
+
+Includes
+--------
+
+
+- ``adxl345_spi_types.h`` (:ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_spi_types.h`)
+
+- ``adxl345_transport_types.h`` (:ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h`)
+
+- ``inttypes.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_adxl345_transport_impl.c`
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_adxl345__transport__impl_8h_1a84c6583ac5b5f75b22ea17345ef80a3a`
+
+- :ref:`exhale_function_adxl345__transport__impl_8h_1a103780b35f1029f73279230855dc8e10`
+
+- :ref:`exhale_function_adxl345__transport__impl_8h_1a9b7ffd9e00dfaeadff48590e44542313`
+

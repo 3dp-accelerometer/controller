@@ -1,0 +1,14 @@
+.. _exhale_define_ringbuffer_8c_1a663b743fea1cb34428f6ac8c9654c6db:
+
+Define BUFFER_CAPACITY_ACC_DATA
+===============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.c`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: BUFFER_CAPACITY_ACC_DATA
+   :project: My Proj

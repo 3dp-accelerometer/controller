@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__register_8h_1a7bafb935dc96b0d6ef23c35d57ec98d5:
+
+Variable freeFall
+=================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: freeFall
+   :project: My Proj

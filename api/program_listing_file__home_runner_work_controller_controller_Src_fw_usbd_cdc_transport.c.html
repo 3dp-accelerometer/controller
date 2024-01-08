@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File usbd_cdc_transport.c &mdash; 3dpaxxel 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File usbd_cdc_transport.c</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-usbd-cdc-transport-c">
+<span id="program-listing-file-home-runner-work-controller-controller-src-fw-usbd-cdc-transport-c"></span><h1>Program Listing for File usbd_cdc_transport.c<a class="headerlink" href="#program-listing-for-file-usbd-cdc-transport-c" title="Permalink to this headline"></a></h1>
+<p>↰ <a class="reference internal" href="file__home_runner_work_controller_controller_Src_fw_usbd_cdc_transport.c.html#file-home-runner-work-controller-controller-src-fw-usbd-cdc-transport-c"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Src/fw/usbd_cdc_transport.c</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fw/usbd_cdc_transport.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;adxl345_flags.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fw/device_reboot.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fw/sampling.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fw/usbd_cdc_transport_types.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fw/version.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;usbd_cdc_if.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;adxl345.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;adxl345_transport_types.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;errno.h&gt;</span>
+
+<span class="k">extern</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345_Handle</span><span class="w"> </span><span class="n">adxl345_handle</span><span class="p">;</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">TransportRx_Process</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="o">*</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">NULL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">buffer</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">length</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="o">*</span><span class="n">request</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">buffer</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">request</span><span class="o">-&gt;</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// get firmware version</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">Transport_HeaderId_Rx_GetFirmwareVersion</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetFirmwareVersion</span><span class="p">)</span><span class="w"> </span><span class="o">==</span>
+<span class="w">        </span><span class="o">*</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">      </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_FirmwareVersion</span><span class="p">,</span>
+<span class="w">          </span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFirmwareVersion</span><span class="p">.</span><span class="n">major</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VERSION_MAJOR</span><span class="p">,</span>
+<span class="w">          </span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFirmwareVersion</span><span class="p">.</span><span class="n">minor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VERSION_MINOR</span><span class="p">,</span>
+<span class="w">          </span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFirmwareVersion</span><span class="p">.</span><span class="n">patch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VERSION_PATCH</span><span class="p">};</span>
+
+<span class="w">      </span><span class="c1">// send version</span>
+<span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">USBD_BUSY</span><span class="w"> </span><span class="o">==</span>
+<span class="w">             </span><span class="n">CDC_Transmit_FS</span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">response</span><span class="p">,</span>
+<span class="w">                             </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span>
+<span class="w">                                 </span><span class="n">response</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFirmwareVersion</span><span class="p">)))</span>
+<span class="w">        </span><span class="p">;</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// get ODR</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">Transport_HeaderId_Rx_GetOutputDataRate</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetOutputDataRate</span><span class="p">)</span><span class="w"> </span><span class="o">==</span>
+<span class="w">        </span><span class="o">*</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_BwRate_Rate</span><span class="w"> </span><span class="n">rate</span><span class="p">;</span>
+<span class="w">      </span><span class="n">Adxl345_getOutputDataRate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rate</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_OutputDataRate</span><span class="p">};</span>
+<span class="w">      </span><span class="n">response</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asOutputDataRate</span><span class="p">.</span><span class="n">rate</span><span class="w"> </span><span class="o">=</span>
+<span class="w">          </span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetOutputDataRate_Rate</span><span class="p">)</span><span class="n">rate</span><span class="p">;</span>
+<span class="w">      </span><span class="c1">// send ODR</span>
+<span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">USBD_BUSY</span><span class="w"> </span><span class="o">==</span>
+<span class="w">             </span><span class="n">CDC_Transmit_FS</span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">response</span><span class="p">,</span>
+<span class="w">                             </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span>
+<span class="w">                                 </span><span class="n">response</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asOutputDataRate</span><span class="p">)))</span>
+<span class="w">        </span><span class="p">;</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// set ODR</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">Transport_HeaderId_Rx_SetOutputDataRate</span><span class="p">:</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SetOutputDataRate</span><span class="p">)</span><span class="w"> </span><span class="o">==</span>
+<span class="w">        </span><span class="o">*</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">Adxl345_setOutputDataRate</span><span class="p">(</span>
+<span class="w">          </span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">asRxFrame</span><span class="p">.</span><span class="n">asSetOutputDataRate</span><span class="p">.</span><span class="n">rate</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// get range</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">Transport_HeaderId_Rx_GetRange</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetRange</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">*</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_Range</span><span class="w"> </span><span class="n">range</span><span class="p">;</span>
+<span class="w">      </span><span class="n">Adxl345_getRange</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">range</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                                            </span><span class="n">Transport_HeaderId_Tx_Range</span><span class="p">};</span>
+<span class="w">      </span><span class="n">response</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asRange</span><span class="p">.</span><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetRange_Range</span><span class="p">)</span><span class="n">range</span><span class="p">;</span>
+
+<span class="w">      </span><span class="c1">// send range</span>
+<span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">USBD_BUSY</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CDC_Transmit_FS</span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">response</span><span class="p">,</span>
+<span class="w">                                          </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span>
+<span class="w">                                              </span><span class="n">response</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asRange</span><span class="p">)))</span>
+<span class="w">        </span><span class="p">;</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// set range</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">Transport_HeaderId_Rx_SetRange</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SetRange</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">*</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">Adxl345_setRange</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">,</span>
+<span class="w">                              </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">asRxFrame</span><span class="p">.</span><span class="n">asSetRange</span><span class="p">.</span><span class="n">range</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// get scale</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">Transport_HeaderId_Rx_GetScale</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetScale</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">*</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_FullResBit</span><span class="w"> </span><span class="n">scale</span><span class="p">;</span>
+<span class="w">      </span><span class="n">Adxl345_getScale</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">scale</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                                            </span><span class="n">Transport_HeaderId_Tx_Scale</span><span class="p">};</span>
+<span class="w">      </span><span class="n">response</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asScale</span><span class="p">.</span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetScale_Scale</span><span class="p">)</span><span class="n">scale</span><span class="p">;</span>
+
+<span class="w">      </span><span class="c1">// send scale</span>
+<span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">USBD_BUSY</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CDC_Transmit_FS</span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">response</span><span class="p">,</span>
+<span class="w">                                          </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span>
+<span class="w">                                              </span><span class="n">response</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asScale</span><span class="p">)))</span>
+<span class="w">        </span><span class="p">;</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// set scale</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">Transport_HeaderId_Rx_SetScale</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SetScale</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="o">*</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="n">Adxl345_setScale</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">,</span>
+<span class="w">                              </span><span class="n">request</span><span class="o">-&gt;</span><span class="n">asRxFrame</span><span class="p">.</span><span class="n">asSetScale</span><span class="p">.</span><span class="n">scale</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// get device setup</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">Transport_HeaderId_Rx_GetDeviceSetup</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetDeviceSetup</span><span class="p">)</span><span class="w"> </span><span class="o">==</span>
+<span class="w">        </span><span class="o">*</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_BwRate_Rate</span><span class="w"> </span><span class="n">rate</span><span class="p">;</span>
+<span class="w">      </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_Range</span><span class="w"> </span><span class="n">range</span><span class="p">;</span>
+<span class="w">      </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_FullResBit</span><span class="w"> </span><span class="n">scale</span><span class="p">;</span>
+<span class="w">      </span><span class="n">Adxl345_getOutputDataRate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rate</span><span class="p">);</span>
+<span class="w">      </span><span class="n">Adxl345_getRange</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">range</span><span class="p">);</span>
+<span class="w">      </span><span class="n">Adxl345_getScale</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">scale</span><span class="p">);</span>
+
+<span class="w">      </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                                            </span><span class="n">Transport_HeaderId_Tx_DeviceSetup</span><span class="p">};</span>
+<span class="w">      </span><span class="n">response</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asDeviceSetup</span><span class="p">.</span><span class="n">outputDataRate</span><span class="w"> </span><span class="o">=</span>
+<span class="w">          </span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetOutputDataRate_Rate</span><span class="p">)</span><span class="n">rate</span><span class="p">;</span>
+<span class="w">      </span><span class="n">response</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asDeviceSetup</span><span class="p">.</span><span class="n">range</span><span class="w"> </span><span class="o">=</span>
+<span class="w">          </span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetRange_Range</span><span class="p">)</span><span class="n">range</span><span class="p">;</span>
+<span class="w">      </span><span class="n">response</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asDeviceSetup</span><span class="p">.</span><span class="n">scale</span><span class="w"> </span><span class="o">=</span>
+<span class="w">          </span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetScale_Scale</span><span class="p">)</span><span class="n">scale</span><span class="p">;</span>
+
+<span class="w">      </span><span class="c1">// send scale</span>
+<span class="w">      </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">USBD_BUSY</span><span class="w"> </span><span class="o">==</span>
+<span class="w">             </span><span class="n">CDC_Transmit_FS</span><span class="p">(</span>
+<span class="w">                 </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">response</span><span class="p">,</span>
+<span class="w">                 </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asDeviceSetup</span><span class="p">)))</span>
+<span class="w">        </span><span class="p">;</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// device reboot requested</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">Transport_HeaderId_Rx_DeviceReboot</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_DeviceReboot</span><span class="p">)</span><span class="w"> </span><span class="o">==</span>
+<span class="w">        </span><span class="o">*</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">DeviceReboot_requestAsyncReboot</span><span class="p">();</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// sapling start requested</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">Transport_HeaderId_Rx_SamplingStart</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SamplingStart</span><span class="p">)</span><span class="w"> </span><span class="o">==</span>
+<span class="w">        </span><span class="o">*</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Sampling_start</span><span class="p">(</span><span class="n">request</span><span class="o">-&gt;</span><span class="n">asRxFrame</span><span class="p">.</span><span class="n">asSamplingStart</span><span class="p">.</span><span class="n">max_samples_count</span><span class="p">);</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// sampling stop requested</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">Transport_HeaderId_Rx_SamplingStop</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SamplingStop</span><span class="p">)</span><span class="w"> </span><span class="o">==</span>
+<span class="w">        </span><span class="o">*</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Sampling_stop</span><span class="p">();</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">break</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">default</span><span class="o">:</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_SamplingSetup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">tx</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_BwRate_Rate</span><span class="w"> </span><span class="n">rate</span><span class="p">;</span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_Range</span><span class="w"> </span><span class="n">range</span><span class="p">;</span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_FullResBit</span><span class="w"> </span><span class="n">scale</span><span class="p">;</span>
+
+<span class="w">  </span><span class="n">Adxl345_getOutputDataRate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">rate</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Adxl345_getScale</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">scale</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Adxl345_getRange</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">range</span><span class="p">);</span>
+
+<span class="w">  </span><span class="n">tx</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_DeviceSetup</span><span class="p">;</span>
+<span class="w">  </span><span class="n">tx</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asDeviceSetup</span><span class="p">.</span><span class="n">outputDataRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rate</span><span class="p">;</span>
+<span class="w">  </span><span class="n">tx</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asDeviceSetup</span><span class="p">.</span><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">range</span><span class="p">;</span>
+<span class="w">  </span><span class="n">tx</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asDeviceSetup</span><span class="p">.</span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scale</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">USBD_BUSY</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">CDC_Transmit_FS</span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">tx</span><span class="p">,</span><span class="w"> </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span>
+<span class="w">                                             </span><span class="n">tx</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asDeviceSetup</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_FirmwareVersion</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">tx</span><span class="p">;</span>
+<span class="w">  </span><span class="n">tx</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_FirmwareVersion</span><span class="p">;</span>
+<span class="w">  </span><span class="n">tx</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFirmwareVersion</span><span class="p">.</span><span class="n">major</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VERSION_MAJOR</span><span class="p">;</span>
+<span class="w">  </span><span class="n">tx</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFirmwareVersion</span><span class="p">.</span><span class="n">minor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VERSION_MINOR</span><span class="p">;</span>
+<span class="w">  </span><span class="n">tx</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFirmwareVersion</span><span class="p">.</span><span class="n">patch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VERSION_PATCH</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">USBD_BUSY</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">CDC_Transmit_FS</span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">tx</span><span class="p">,</span><span class="w"> </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span>
+<span class="w">                                             </span><span class="n">tx</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFirmwareVersion</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_SamplingStarted</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">max_samples</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">tx</span><span class="p">;</span>
+<span class="w">  </span><span class="n">tx</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_SamplingStarted</span><span class="p">;</span>
+<span class="w">  </span><span class="n">tx</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asSamplingStarted</span><span class="p">.</span><span class="n">maxSamples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max_samples</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">USBD_BUSY</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">CDC_Transmit_FS</span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">tx</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Header</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                             </span><span class="k">sizeof</span><span class="p">(</span><span class="n">tx</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asSamplingStarted</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_SamplingFinished</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                                  </span><span class="n">Transport_HeaderId_Tx_SamplingFinished</span><span class="p">};</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">USBD_BUSY</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">CDC_Transmit_FS</span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">tx</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Header</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                             </span><span class="k">sizeof</span><span class="p">(</span><span class="n">tx</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asSamplingFinished</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_SamplingStopped</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportTx_SamplingSetup</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                                  </span><span class="n">Transport_HeaderId_Tx_SamplingStopped</span><span class="p">};</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">USBD_BUSY</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">CDC_Transmit_FS</span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">tx</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Header</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                             </span><span class="k">sizeof</span><span class="p">(</span><span class="n">tx</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asSamplingStopped</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_SamplingAborted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                                  </span><span class="n">Transport_HeaderId_Tx_SamplingAborted</span><span class="p">};</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">USBD_BUSY</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">CDC_Transmit_FS</span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">tx</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Header</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                             </span><span class="k">sizeof</span><span class="p">(</span><span class="n">tx</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asSamplingAborted</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_FifoOverflow</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">tx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_FifoOverflow</span><span class="p">};</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">USBD_BUSY</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">CDC_Transmit_FS</span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">tx</span><span class="p">,</span>
+<span class="w">                                      </span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Header</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                          </span><span class="k">sizeof</span><span class="p">(</span><span class="n">tx</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFifoOverflow</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">TransportTx_AccelerationBuffer</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345Transport_Acceleration</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span>
+<span class="w">                                   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">start_index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_SET);</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">acc</span><span class="p">[</span><span class="n">ADXL345_WATERMARK_LEVEL</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{};</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ADXL345_WATERMARK_LEVEL</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// todo</span>
+<span class="w">  </span><span class="n">assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="p">)</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_Acceleration</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">          </span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Header</span><span class="p">)));</span>
+
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">acc</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asAcceleration</span><span class="p">.</span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start_index</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="n">acc</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asAcceleration</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="n">acc</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asAcceleration</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">acc</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asAcceleration</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">z</span><span class="p">;</span>
+<span class="w">    </span><span class="n">acc</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_Acceleration</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// todo: don&#39;t insist for completed transmission here. usb host (pc) will poll</span>
+<span class="w">  </span><span class="c1">//   the usb client (us) for transactions about every 1ms or lesser. this is</span>
+<span class="w">  </span><span class="c1">//   even more visible on weak hardware (i.e. raspberry pi).</span>
+<span class="w">  </span><span class="c1">//   suggestion:</span>
+<span class="w">  </span><span class="c1">//     1 apply Ringbuffer from &lt;ringbuffer.h&gt;</span>
+<span class="w">  </span><span class="c1">//     2 store complete Adxl345TP_Acceleration buffer to ringbuffer</span>
+<span class="w">  </span><span class="c1">//     3 try to send from ringbuffer: several items, as many possible but</span>
+<span class="w">  </span><span class="c1">//     timeboxed 4 return ENODATA (nothing to transmit) or EBUSY (data</span>
+<span class="w">  </span><span class="c1">//     pending) respectively 5 send remaining next time we are called 6 caller</span>
+<span class="w">  </span><span class="c1">//     shall call us until ENODATA</span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">USBD_BUSY</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">CDC_Transmit_FS</span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">acc</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="p">)))</span>
+<span class="w">    </span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_RESET);</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 08 Jan 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

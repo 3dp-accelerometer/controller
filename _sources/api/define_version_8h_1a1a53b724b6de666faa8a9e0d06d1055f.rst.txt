@@ -1,0 +1,14 @@
+.. _exhale_define_version_8h_1a1a53b724b6de666faa8a9e0d06d1055f:
+
+Define VERSION_MAJOR
+====================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_version.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: VERSION_MAJOR
+   :project: My Proj

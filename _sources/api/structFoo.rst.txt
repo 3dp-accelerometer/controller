@@ -1,0 +1,17 @@
+.. _exhale_struct_structFoo:
+
+Struct Foo
+==========
+
+- Defined in :ref:`file__home_runner_work_controller_controller_test_test_ringbuffer_test.c`
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: Foo
+   :project: My Proj
+   :members:
+   :protected-members:
+   :undoc-members:

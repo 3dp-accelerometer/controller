@@ -1,0 +1,14 @@
+.. _exhale_function_sampling_8c_1a5f08f1c78cd532126641121d214250f9:
+
+Function checkStopRequest
+=========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_sampling.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: checkStopRequest()
+   :project: My Proj

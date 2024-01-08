@@ -1,0 +1,14 @@
+.. _exhale_enum_adxl345__flags_8h_1aea113fb35a8964a5862746ef41d4b8c2:
+
+Enum Adxl345Flags_IntEnable_FreeFall
+====================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: Adxl345Flags_IntEnable_FreeFall
+   :project: My Proj

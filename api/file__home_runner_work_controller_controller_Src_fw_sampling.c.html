@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File sampling.c &mdash; 3dpaxxel 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File sampling.c</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-sampling-c">
+<span id="file-home-runner-work-controller-controller-src-fw-sampling-c"></span><h1>File sampling.c<a class="headerlink" href="#file-sampling-c" title="Permalink to this headline"></a></h1>
+<p>↰ <a class="reference internal" href="dir__home_runner_work_controller_controller_Src_fw.html#dir-home-runner-work-controller-controller-src-fw"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Src/fw</span></code>)</p>
+<div class="contents local topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-home-runner-work-controller-controller-src-fw-sampling-c" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Src/fw/sampling.c</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id3">Classes</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id4">Functions</a></p></li>
+<li><p><a class="reference internal" href="#defines" id="id5">Defines</a></p></li>
+<li><p><a class="reference internal" href="#variables" id="id6">Variables</a></p></li>
+</ul>
+</div>
+<section id="definition-home-runner-work-controller-controller-src-fw-sampling-c">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Src/fw/sampling.c</span></code>)<a class="headerlink" href="#definition-home-runner-work-controller-controller-src-fw-sampling-c" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file__home_runner_work_controller_controller_Src_fw_sampling.c.html">Program Listing for File sampling.c</a></li>
+</ul>
+</div>
+</section>
+<section id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">adxl345.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h.html#file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-h"><span class="std std-ref">File adxl345.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">adxl345_transport_types.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h.html#file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-transport-types-h"><span class="std std-ref">File adxl345_transport_types.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">assert.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">errno.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fw/sampling.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_sampling.h.html#file-home-runner-work-controller-controller-inc-fw-sampling-h"><span class="std std-ref">File sampling.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fw/usbd_cdc_transport.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport.h.html#file-home-runner-work-controller-controller-inc-fw-usbd-cdc-transport-h"><span class="std std-ref">File usbd_cdc_transport.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tim.h</span></code></p></li>
+</ul>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="structSamplingState.html#exhale-struct-structsamplingstate"><span class="std std-ref">Struct SamplingState</span></a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_sampling_8c_1ac367b0bee6acca3cc9b4f354045689f5.html#exhale-function-sampling-8c-1ac367b0bee6acca3cc9b4f354045689f5"><span class="std std-ref">Function checkStartRequest</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1a5f08f1c78cd532126641121d214250f9.html#exhale-function-sampling-8c-1a5f08f1c78cd532126641121d214250f9"><span class="std std-ref">Function checkStopRequest</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1aac9f1ee33f4984dbe18da6776c9dbdf9.html#exhale-function-sampling-8c-1aac9f1ee33f4984dbe18da6776c9dbdf9"><span class="std std-ref">Function delay5us</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1a74f23e572219186226638db34c9e04ed.html#exhale-function-sampling-8c-1a74f23e572219186226638db34c9e04ed"><span class="std std-ref">Function isNSamplesReadEnabled</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1a74e41cd20325a65a2478e6cbc90a28a4.html#exhale-function-sampling-8c-1a74e41cd20325a65a2478e6cbc90a28a4"><span class="std std-ref">Function Sampling_clearFifoWatermark()</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1a66330a349bcf32e42333704eaf54df36.html#exhale-function-sampling-8c-1a66330a349bcf32e42333704eaf54df36"><span class="std std-ref">Function Sampling_fetchForward()</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1ab8cef26b160871247301aad8f69913d8.html#exhale-function-sampling-8c-1ab8cef26b160871247301aad8f69913d8"><span class="std std-ref">Function Sampling_on5usTimerExpired()</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1a2b142959393c75bcfb96c93c624b9082.html#exhale-function-sampling-8c-1a2b142959393c75bcfb96c93c624b9082"><span class="std std-ref">Function Sampling_setFifoOverflow()</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1ae68542a9620fb0858abb786813066aa4.html#exhale-function-sampling-8c-1ae68542a9620fb0858abb786813066aa4"><span class="std std-ref">Function Sampling_setFifoWatermark()</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1a79717685e1fe3e304a60d8c8e8ac0b4c.html#exhale-function-sampling-8c-1a79717685e1fe3e304a60d8c8e8ac0b4c"><span class="std std-ref">Function Sampling_start(uint16_t)</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1aa5b0d182b004257a172f38cd7e7307e6.html#exhale-function-sampling-8c-1aa5b0d182b004257a172f38cd7e7307e6"><span class="std std-ref">Function Sampling_stop()</span></a></p></li>
+</ul>
+</section>
+<section id="defines">
+<h2>Defines<a class="headerlink" href="#defines" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="define_sampling_8c_1ad8047974c1ca16e65db118ef91ebfc7e.html#exhale-define-sampling-8c-1ad8047974c1ca16e65db118ef91ebfc7e"><span class="std std-ref">Define MYSTRINGIZE</span></a></p></li>
+<li><p><a class="reference internal" href="define_sampling_8c_1ab0975b1538786e46b8e4b5fa869e7fcd.html#exhale-define-sampling-8c-1ab0975b1538786e46b8e4b5fa869e7fcd"><span class="std std-ref">Define MYSTRINGIZE0</span></a></p></li>
+<li><p><a class="reference internal" href="define_sampling_8c_1a63c58a64fb866821ab651da9c5c3bea1.html#exhale-define-sampling-8c-1a63c58a64fb866821ab651da9c5c3bea1"><span class="std std-ref">Define NUM_SAMPLES_READ_AT_ONCE</span></a></p></li>
+</ul>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="variable_sampling_8c_1abcbbc1f486b74fc4964570a4a2a09d31.html#exhale-variable-sampling-8c-1abcbbc1f486b74fc4964570a4a2a09d31"><span class="std std-ref">Variable adxl345_handle</span></a></p></li>
+<li><p><a class="reference internal" href="variable_sampling_8c_1abf9322ab61743a376fe8e8984d413431.html#exhale-variable-sampling-8c-1abf9322ab61743a376fe8e8984d413431"><span class="std std-ref">Variable samplingState</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 08 Jan 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

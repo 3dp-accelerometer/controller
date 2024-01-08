@@ -1,0 +1,29 @@
+
+.. _program_listing_file__home_runner_work_controller_controller_Src_fw_device_reboot.c:
+
+Program Listing for File device_reboot.c
+========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_controller_controller_Src_fw_device_reboot.c>` (``/home/runner/work/controller/controller/Src/fw/device_reboot.c``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #include "fw/device_reboot.h"
+   #include <stm32f4xx_hal.h>
+   
+   /**
+    * Flag indicating a device reboot was requested.
+    *
+    * \see DeviceReboot_requestAsyncReboot()
+    */
+   static bool DEVICE_REBOOT_DO_REBOOT = false;
+   
+   void DeviceReboot_checkReboot() {
+     if (DEVICE_REBOOT_DO_REBOOT) {
+       NVIC_SystemReset();
+     }
+   }
+   
+   void DeviceReboot_requestAsyncReboot() { DEVICE_REBOOT_DO_REBOOT = true; }

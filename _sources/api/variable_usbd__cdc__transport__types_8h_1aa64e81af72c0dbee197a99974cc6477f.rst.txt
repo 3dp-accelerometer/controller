@@ -1,0 +1,14 @@
+.. _exhale_variable_usbd__cdc__transport__types_8h_1aa64e81af72c0dbee197a99974cc6477f:
+
+Variable __attribute__
+======================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: __attribute__
+   :project: My Proj

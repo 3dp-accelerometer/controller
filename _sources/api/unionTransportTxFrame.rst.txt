@@ -1,0 +1,14 @@
+.. _exhale_union_unionTransportTxFrame:
+
+Union TransportTxFrame
+======================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport_types.h`
+
+
+Union Documentation
+-------------------
+
+
+.. doxygenunion:: TransportTxFrame
+   :project: My Proj

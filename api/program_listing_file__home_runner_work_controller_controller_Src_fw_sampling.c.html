@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File sampling.c &mdash; 3dpaxxel 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File sampling.c</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-sampling-c">
+<span id="program-listing-file-home-runner-work-controller-controller-src-fw-sampling-c"></span><h1>Program Listing for File sampling.c<a class="headerlink" href="#program-listing-for-file-sampling-c" title="Permalink to this headline"></a></h1>
+<p>↰ <a class="reference internal" href="file__home_runner_work_controller_controller_Src_fw_sampling.c.html#file-home-runner-work-controller-controller-src-fw-sampling-c"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Src/fw/sampling.c</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fw/sampling.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fw/usbd_cdc_transport.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;tim.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;adxl345.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;adxl345_transport_types.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;errno.h&gt;</span>
+
+<span class="k">extern</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345_Handle</span><span class="w"> </span><span class="n">adxl345_handle</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Configures how many samples can be maximally read at once from the sensor.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Must be less than or equal watermark level to not read beyond buffered FiFo.</span>
+<span class="cm"> */</span>
+<span class="cp">#define NUM_SAMPLES_READ_AT_ONCE ADXL345_WATERMARK_LEVEL</span>
+
+<span class="cp">#define MYSTRINGIZE0(A) #A</span>
+<span class="cp">#define MYSTRINGIZE(A) MYSTRINGIZE0(A)</span>
+
+<span class="k">static_assert</span><span class="p">(</span>
+<span class="w">    </span><span class="n">NUM_SAMPLES_READ_AT_ONCE</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">ADXL345_WATERMARK_LEVEL</span><span class="p">,</span>
+<span class="w">    </span><span class="s">&quot;maximum allowed read-at-once: &quot;</span><span class="w"> </span><span class="n">MYSTRINGIZE</span><span class="p">(</span><span class="n">ADXL345_WATERMARK_LEVEL</span><span class="p">));</span>
+
+<span class="k">static_assert</span><span class="p">(</span><span class="n">ADXL345_WATERMARK_LEVEL</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">              </span><span class="s">&quot;minimum required watermark level: 1&quot;</span><span class="p">);</span>
+<span class="cp">#undef MYSTRINGIZE</span>
+<span class="cp">#undef MYSTRINGIZE0</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Internal module state.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">SamplingState</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">maxSamples</span><span class="p">;</span>
+<span class="w">  </span><span class="k">volatile</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">doStart</span><span class="p">;</span>
+<span class="w">  </span><span class="k">volatile</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">doStop</span><span class="p">;</span>
+<span class="w">  </span><span class="k">volatile</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isStarted</span><span class="p">;</span>
+<span class="w">  </span><span class="k">volatile</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">waitFor5usTimer</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345Transport_Acceleration</span><span class="w"> </span><span class="n">rxBuffer</span><span class="p">[</span><span class="n">NUM_SAMPLES_READ_AT_ONCE</span><span class="p">];</span>
+<span class="w">  </span><span class="k">volatile</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isFifoOverflowSet</span><span class="p">;</span>
+<span class="w">  </span><span class="k">volatile</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">isFifoWatermarkSet</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">transactionsCount</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Internal module state.</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">SamplingState</span><span class="w"> </span><span class="n">samplingState</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="n">maxSamples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">doStart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">doStop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">isStarted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">waitFor5usTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">rxBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">}},</span>
+<span class="w">    </span><span class="p">.</span><span class="n">isFifoOverflowSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">isFifoWatermarkSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">transactionsCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="nf">isNSamplesReadEnabled</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">samplingState</span><span class="p">.</span><span class="n">maxSamples</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">checkStartRequest</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">samplingState</span><span class="p">.</span><span class="n">doStart</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">samplingState</span><span class="p">.</span><span class="n">doStart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">samplingState</span><span class="p">.</span><span class="n">isStarted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">TransportTx_FirmwareVersion</span><span class="p">();</span>
+<span class="w">  </span><span class="n">TransportTx_SamplingStarted</span><span class="p">(</span><span class="n">samplingState</span><span class="p">.</span><span class="n">maxSamples</span><span class="p">);</span>
+
+<span class="w">  </span><span class="n">samplingState</span><span class="p">.</span><span class="n">isFifoOverflowSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">  </span><span class="n">samplingState</span><span class="p">.</span><span class="n">transactionsCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="n">samplingState</span><span class="p">.</span><span class="n">isStarted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+
+<span class="w">  </span><span class="n">Adxl345_setPowerCtlMeasure</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">checkStopRequest</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">samplingState</span><span class="p">.</span><span class="n">doStop</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">samplingState</span><span class="p">.</span><span class="n">doStop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">samplingState</span><span class="p">.</span><span class="n">isStarted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">samplingState</span><span class="p">.</span><span class="n">transactionsCount</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">samplingState</span><span class="p">.</span><span class="n">maxSamples</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TransportTx_SamplingAborted</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">TransportTx_SamplingStopped</span><span class="p">();</span>
+
+<span class="w">  </span><span class="n">Adxl345_setPowerCtlStandby</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">);</span>
+
+<span class="w">  </span><span class="c1">// clear watermark interrupt (clear whole fifo)</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345Transport_Acceleration</span><span class="w"> </span><span class="n">devNull</span><span class="p">;</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ADXL345_FIFO_ENTRIES</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Adxl345_getAcceleration</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">devNull</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">samplingState</span><span class="p">.</span><span class="n">isStarted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">delay5us</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">samplingState</span><span class="p">.</span><span class="n">waitFor5usTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">  </span><span class="n">TIM3</span><span class="o">-&gt;</span><span class="n">CNT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_SET);</span>
+<span class="w">  </span><span class="n">HAL_TIM_Base_Start_IT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">samplingState</span><span class="p">.</span><span class="n">waitFor5usTimer</span><span class="p">)</span>
+<span class="w">    </span><span class="p">;</span>
+
+<span class="w">  </span><span class="n">HAL_TIM_Base_Stop_IT</span><span class="p">(</span><span class="o">&amp;</span><span class="n">htim3</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Sampling_start</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">maxSamples</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">samplingState</span><span class="p">.</span><span class="n">maxSamples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">maxSamples</span><span class="p">;</span>
+<span class="w">  </span><span class="n">samplingState</span><span class="p">.</span><span class="n">doStart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Sampling_stop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">samplingState</span><span class="p">.</span><span class="n">doStop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">Sampling_fetchForward</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+<span class="w">  </span><span class="n">checkStartRequest</span><span class="p">();</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">samplingState</span><span class="p">.</span><span class="n">isFifoWatermarkSet</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">samplingState</span><span class="p">.</span><span class="n">isStarted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">rxCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// fetch samples</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">rxCount</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">NUM_SAMPLES_READ_AT_ONCE</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">      </span><span class="n">checkStopRequest</span><span class="p">();</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">samplingState</span><span class="p">.</span><span class="n">isStarted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">ECANCELED</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">samplingState</span><span class="p">.</span><span class="n">isFifoOverflowSet</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">EOVERFLOW</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isNSamplesReadEnabled</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">samplingState</span><span class="p">.</span><span class="n">transactionsCount</span><span class="w"> </span><span class="o">+</span>
+<span class="w">                                      </span><span class="n">rxCount</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">samplingState</span><span class="p">.</span><span class="n">maxSamples</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ENODATA</span><span class="p">;</span>
+<span class="w">        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">      </span><span class="p">}</span>
+
+<span class="w">      </span><span class="c1">// UM ADXL345 Rev.G p21 - RETRIEVING DATA FROM FIFO:</span>
+<span class="w">      </span><span class="c1">// To ensure that the FIFO has completely popped (that is, that new</span>
+<span class="w">      </span><span class="c1">// data has completely moved into the DATAX, DATAY, and DATAZ</span>
+<span class="w">      </span><span class="c1">// registers), there must be at least 5 µs between the end of reading</span>
+<span class="w">      </span><span class="c1">// the data registers and the start of a new read of the FIFO or a read</span>
+<span class="w">      </span><span class="c1">// of the FIFO_STATUS register (Address 0x39). The end of reading</span>
+<span class="w">      </span><span class="c1">// a data register is signified by the transition from Register 0x37 to</span>
+<span class="w">      </span><span class="c1">// Register 0x38 or by the CS pin going high.</span>
+<span class="w">      </span><span class="n">delay5us</span><span class="p">();</span>
+<span class="w">      </span><span class="n">Adxl345_getAcceleration</span><span class="p">(</span><span class="o">&amp;</span><span class="n">adxl345_handle</span><span class="p">,</span>
+<span class="w">                              </span><span class="o">&amp;</span><span class="n">samplingState</span><span class="p">.</span><span class="n">rxBuffer</span><span class="p">[</span><span class="n">rxCount</span><span class="p">]);</span>
+<span class="w">      </span><span class="n">rxCount</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// forward samples</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">rxCount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">TransportTx_AccelerationBuffer</span><span class="p">(</span><span class="n">samplingState</span><span class="p">.</span><span class="n">rxBuffer</span><span class="p">,</span><span class="w"> </span><span class="n">rxCount</span><span class="p">,</span>
+<span class="w">                                     </span><span class="n">samplingState</span><span class="p">.</span><span class="n">transactionsCount</span><span class="p">);</span>
+<span class="w">      </span><span class="n">samplingState</span><span class="p">.</span><span class="n">transactionsCount</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">rxCount</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">EOVERFLOW</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ret</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TransportTx_FifoOverflow</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Sampling_stop</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">ECANCELED</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ret</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TransportTx_SamplingAborted</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Sampling_stop</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ENODATA</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ret</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">TransportTx_SamplingFinished</span><span class="p">();</span>
+<span class="w">    </span><span class="n">Sampling_stop</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">checkStopRequest</span><span class="p">();</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Sampling_setFifoWatermark</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">samplingState</span><span class="p">.</span><span class="n">isFifoWatermarkSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Sampling_clearFifoWatermark</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">samplingState</span><span class="p">.</span><span class="n">isFifoWatermarkSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Sampling_setFifoOverflow</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">samplingState</span><span class="p">.</span><span class="n">isFifoOverflowSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Sampling_on5usTimerExpired</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">samplingState</span><span class="p">.</span><span class="n">waitFor5usTimer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 08 Jan 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

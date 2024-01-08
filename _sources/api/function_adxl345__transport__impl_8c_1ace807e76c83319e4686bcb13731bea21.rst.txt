@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345__transport__impl_8c_1ace807e76c83319e4686bcb13731bea21:
+
+Function receiveFrame
+=====================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_adxl345_transport_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: receiveFrame(union Adxl345Transport_RxFrame *, uint8_t, enum Adxl345Spi_Cs)
+   :project: My Proj

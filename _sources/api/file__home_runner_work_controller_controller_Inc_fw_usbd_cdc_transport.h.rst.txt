@@ -1,0 +1,75 @@
+
+.. _file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport.h:
+
+File usbd_cdc_transport.h
+=========================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Inc_fw>` (``/home/runner/work/controller/controller/Inc/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Inc/fw/usbd_cdc_transport.h``)
+------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport.h.rst
+
+
+
+Detailed Description
+--------------------
+
+Controller to IN USB endpoint (host) transport API. 
+
+
+
+
+Includes
+--------
+
+
+- ``inttypes.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_sampling.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_usbd_cdc_transport.c`
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_usbd__cdc__transport_8h_1a0311e97ea6e16f99bcd4145a88e0444c`
+
+- :ref:`exhale_function_usbd__cdc__transport_8h_1a9c276229394f735a28f9d4dca36eeae8`
+
+- :ref:`exhale_function_usbd__cdc__transport_8h_1a570d2f85c118f4b9d6a80969e98b0e4d`
+
+- :ref:`exhale_function_usbd__cdc__transport_8h_1af00655cf92129e2a8972bc4527b47818`
+
+- :ref:`exhale_function_usbd__cdc__transport_8h_1a498b7ad08bc757ec1c56ea73edf1980a`
+
+- :ref:`exhale_function_usbd__cdc__transport_8h_1a2feb614fcdaf18d555b155174de17f0f`
+
+- :ref:`exhale_function_usbd__cdc__transport_8h_1a998e5f1947fa6f46a73eef8cd2a7b23c`
+
+- :ref:`exhale_function_usbd__cdc__transport_8h_1ab75d2a3a6936b68052915ad60ab54ea9`
+
+- :ref:`exhale_function_usbd__cdc__transport_8h_1a759ec3b2ea6080fee2c76bcef9320ba6`
+

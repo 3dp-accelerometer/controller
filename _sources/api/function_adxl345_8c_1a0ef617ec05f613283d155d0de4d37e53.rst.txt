@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345_8c_1a0ef617ec05f613283d155d0de4d37e53:
+
+Function Adxl345_setPowerCtlMeasure(struct Adxl345_Handle \*)
+=============================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Adxl345_setPowerCtlMeasure(struct Adxl345_Handle *)
+   :project: My Proj

@@ -1,0 +1,14 @@
+.. _exhale_enum_adxl345__flags_8h_1a23a3530e3e870d9c68f5acdfa7311eeb:
+
+Enum Adxl345Flags_DataFormat_FullResBit
+=======================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: Adxl345Flags_DataFormat_FullResBit
+   :project: My Proj

@@ -1,0 +1,14 @@
+.. _exhale_function_sampling_8c_1a79717685e1fe3e304a60d8c8e8ac0b4c:
+
+Function Sampling_start(uint16_t)
+=================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_sampling.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Sampling_start(uint16_t)
+   :project: My Proj

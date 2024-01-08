@@ -1,0 +1,14 @@
+.. _exhale_function_sampling_8c_1a74f23e572219186226638db34c9e04ed:
+
+Function isNSamplesReadEnabled
+==============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_sampling.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: isNSamplesReadEnabled()
+   :project: My Proj

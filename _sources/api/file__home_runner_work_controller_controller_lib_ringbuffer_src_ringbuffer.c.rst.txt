@@ -1,0 +1,80 @@
+
+.. _file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.c:
+
+File ringbuffer.c
+=================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_lib_ringbuffer_src>` (``/home/runner/work/controller/controller/lib/ringbuffer/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/lib/ringbuffer/src/ringbuffer.c``)
+----------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.c.rst
+
+
+
+Detailed Description
+--------------------
+
+Simple ringbuffer implementation. 
+
+
+
+
+Includes
+--------
+
+
+- ``errno.h``
+
+- ``ringbuffer.h`` (:ref:`file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.h`)
+
+- ``string.h``
+
+
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_ringbuffer_8c_1a778c373c85d06d09fd2412d5a5636dee`
+
+- :ref:`exhale_function_ringbuffer_8c_1acaf0d7eaba25e09488f0b1b91646b094`
+
+- :ref:`exhale_function_ringbuffer_8c_1ae056628ebdf9afba084c147520922074`
+
+- :ref:`exhale_function_ringbuffer_8c_1a0bcd7705c6aae413215637f1d01920ae`
+
+- :ref:`exhale_function_ringbuffer_8c_1a90df506fa5d1412690f7045a2a714755`
+
+- :ref:`exhale_function_ringbuffer_8c_1a58c877992b59b998ff9af09cd10639fe`
+
+- :ref:`exhale_function_ringbuffer_8c_1afe03ee6901cbdaca66096420c6880d52`
+
+- :ref:`exhale_function_ringbuffer_8c_1a0ce8c6dc9462bb767de1ee11f8594ada`
+
+- :ref:`exhale_function_ringbuffer_8c_1af6516385406217957b615bfb3709dcd4`
+
+- :ref:`exhale_function_ringbuffer_8c_1a89583e71625a19f29d0da9a42928358b`
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_ringbuffer_8c_1a663b743fea1cb34428f6ac8c9654c6db`
+

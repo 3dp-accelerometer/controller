@@ -1,0 +1,14 @@
+.. _exhale_define_test_8c_1a1c97847f645d2639ee866c7565da562d:
+
+Define DECLARE_BUFFER_CAPACITY3
+===============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_test_test_ringbuffer_test.c`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: DECLARE_BUFFER_CAPACITY3
+   :project: My Proj

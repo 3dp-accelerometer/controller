@@ -1,0 +1,14 @@
+.. _exhale_enum_adxl345__flags_8h_1aaa53a6429862365058e9f0d6df90680f:
+
+Enum Adxl345Flags_DataFormat_SelfTest
+=====================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: Adxl345Flags_DataFormat_SelfTest
+   :project: My Proj

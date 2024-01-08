@@ -1,0 +1,14 @@
+.. _exhale_function_device__reboot_8c_1a09a13669d08dbbde3b04fdb5c24107a8:
+
+Function DeviceReboot_requestAsyncReboot()
+==========================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_device_reboot.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: DeviceReboot_requestAsyncReboot()
+   :project: My Proj

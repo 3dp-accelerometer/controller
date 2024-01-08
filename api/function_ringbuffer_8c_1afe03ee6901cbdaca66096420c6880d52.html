@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Function Ringbuffer_put(struct Ringbuffer *, const uint8_t *) &mdash; 3dpaxxel 0.1.2 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Function Ringbuffer_put(struct Ringbuffer *, const uint8_t *)" href="function_ringbuffer_8h_1afe03ee6901cbdaca66096420c6880d52.html" />
+    <link rel="prev" title="Function Ringbuffer_isFull(const struct Ringbuffer *)" href="function_ringbuffer_8h_1a58c877992b59b998ff9af09cd10639fe.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="library_root.html">Library API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="library_root.html#file-hierarchy">File Hierarchy</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="library_root.html#full-api">Full API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#classes-and-structs">Classes and Structs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#enums">Enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#unions">Unions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="library_root.html#functions">Functions</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport__types_8h_1ac79abf6004596fe72a9b87b36132f2ef.html">Function __attribute__((packed))</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__register_8h_1acc02190e97ec034a25eca812c23b98d6.html">Function __attribute__((packed))</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__types_8h_1a1880fcedd9961d4e738b565207231a04.html">Function __attribute__((packed))</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1a02d49f00cf3ba207510146567e1d6174.html">Function __attribute__((packed))</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a778c373c85d06d09fd2412d5a5636dee.html">Function advanceBegin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1acaf0d7eaba25e09488f0b1b91646b094.html">Function advanceEnd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1a5605a71e07edcc370b027a668f393615.html">Function Adxl345_getAcceleration(struct Adxl345_Handle *, struct Adxl345Transport_Acceleration *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1a5605a71e07edcc370b027a668f393615.html">Function Adxl345_getAcceleration(struct Adxl345_Handle *, struct Adxl345Transport_Acceleration *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1af238689828fad86568f32caac567fc01.html">Function Adxl345_getOutputDataRate(struct Adxl345_Handle *, enum Adxl345Flags_BwRate_Rate *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1af238689828fad86568f32caac567fc01.html">Function Adxl345_getOutputDataRate(struct Adxl345_Handle *, enum Adxl345Flags_BwRate_Rate *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1a67d00841116cfecf53a7ca6352209df4.html">Function Adxl345_getRange(struct Adxl345_Handle *, enum Adxl345Flags_DataFormat_Range *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1a67d00841116cfecf53a7ca6352209df4.html">Function Adxl345_getRange(struct Adxl345_Handle *, enum Adxl345Flags_DataFormat_Range *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1aec1396797b012df335ff8c96955932e2.html">Function Adxl345_getScale(struct Adxl345_Handle *, enum Adxl345Flags_DataFormat_FullResBit *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1aec1396797b012df335ff8c96955932e2.html">Function Adxl345_getScale(struct Adxl345_Handle *, enum Adxl345Flags_DataFormat_FullResBit *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1a92f47a5a55daaa4f0b7c0952fef0a2d1.html">Function Adxl345_init(struct Adxl345_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1a92f47a5a55daaa4f0b7c0952fef0a2d1.html">Function Adxl345_init(struct Adxl345_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1ad38f932fb6fbb6056e9258b9179abdbd.html">Function Adxl345_setOutputDataRate(struct Adxl345_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1ad38f932fb6fbb6056e9258b9179abdbd.html">Function Adxl345_setOutputDataRate(struct Adxl345_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1a0ef617ec05f613283d155d0de4d37e53.html">Function Adxl345_setPowerCtlMeasure(struct Adxl345_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1a0ef617ec05f613283d155d0de4d37e53.html">Function Adxl345_setPowerCtlMeasure(struct Adxl345_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1ab61b3d92785c6a11acb64cb5b1b9d630.html">Function Adxl345_setPowerCtlStandby(struct Adxl345_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1ab61b3d92785c6a11acb64cb5b1b9d630.html">Function Adxl345_setPowerCtlStandby(struct Adxl345_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1a3460885ccd5cf674d0a8b1ec161114ce.html">Function Adxl345_setRange(struct Adxl345_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1a3460885ccd5cf674d0a8b1ec161114ce.html">Function Adxl345_setRange(struct Adxl345_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1ab9baf97a44fa18d98ba816b1ba85f680.html">Function Adxl345_setScale(struct Adxl345_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1ab9baf97a44fa18d98ba816b1ba85f680.html">Function Adxl345_setScale(struct Adxl345_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8h_1a84c6583ac5b5f75b22ea17345ef80a3a.html">Function Adxl345TransportImpl_initHandle(struct Adxl345_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8c_1a84c6583ac5b5f75b22ea17345ef80a3a.html">Function Adxl345TransportImpl_initHandle(struct Adxl345_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8h_1a103780b35f1029f73279230855dc8e10.html">Function Adxl345TransportImpl_transmitFrame(union Adxl345Transport_TxFrame *, uint8_t, enum Adxl345Spi_Cs, enum Adxl345Spi_RwFlags)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8c_1a103780b35f1029f73279230855dc8e10.html">Function Adxl345TransportImpl_transmitFrame(union Adxl345Transport_TxFrame *, uint8_t, enum Adxl345Spi_Cs, enum Adxl345Spi_RwFlags)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8h_1a9b7ffd9e00dfaeadff48590e44542313.html">Function Adxl345TransportImpl_transmitReceiveFrame(union Adxl345Transport_TxFrame *, union Adxl345Transport_RxFrame *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8c_1a9b7ffd9e00dfaeadff48590e44542313.html">Function Adxl345TransportImpl_transmitReceiveFrame(union Adxl345Transport_TxFrame *, union Adxl345Transport_RxFrame *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1ac367b0bee6acca3cc9b4f354045689f5.html">Function checkStartRequest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1a5f08f1c78cd532126641121d214250f9.html">Function checkStopRequest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1aac9f1ee33f4984dbe18da6776c9dbdf9.html">Function delay5us</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_device__reboot_8h_1a9da06e7ac46c19f9b90a90cfb59564b9.html">Function DeviceReboot_checkReboot()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_device__reboot_8c_1a9da06e7ac46c19f9b90a90cfb59564b9.html">Function DeviceReboot_checkReboot()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_device__reboot_8h_1a09a13669d08dbbde3b04fdb5c24107a8.html">Function DeviceReboot_requestAsyncReboot()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_device__reboot_8c_1a09a13669d08dbbde3b04fdb5c24107a8.html">Function DeviceReboot_requestAsyncReboot()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1a74f23e572219186226638db34c9e04ed.html">Function isNSamplesReadEnabled</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1ae056628ebdf9afba084c147520922074.html">Function itemAtIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_run-tests_8h_1a3c04138a5bfe5d72780bb7e82a18e627.html">Function main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8c_1a17e93b852aca31ef8d8f495fcfaadc31.html">Function ncsClear</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8c_1ac054c297b066d074bdbd72919dda4f4d.html">Function ncsSet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1a901e7705ca34646d41fe7db11c8b2ba6.html">Function readRegister</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8c_1ace807e76c83319e4686bcb13731bea21.html">Function receiveFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a0bcd7705c6aae413215637f1d01920ae.html">Function Ringbuffer_init(struct Ringbuffer *, uint8_t *, uint16_t, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1a0bcd7705c6aae413215637f1d01920ae.html">Function Ringbuffer_init(struct Ringbuffer *, uint8_t *, uint16_t, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a90df506fa5d1412690f7045a2a714755.html">Function Ringbuffer_isEmpty(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1a90df506fa5d1412690f7045a2a714755.html">Function Ringbuffer_isEmpty(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a58c877992b59b998ff9af09cd10639fe.html">Function Ringbuffer_isFull(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1a58c877992b59b998ff9af09cd10639fe.html">Function Ringbuffer_isFull(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Function Ringbuffer_put(struct Ringbuffer *, const uint8_t *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1afe03ee6901cbdaca66096420c6880d52.html">Function Ringbuffer_put(struct Ringbuffer *, const uint8_t *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a0ce8c6dc9462bb767de1ee11f8594ada.html">Function Ringbuffer_reset(struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1a0ce8c6dc9462bb767de1ee11f8594ada.html">Function Ringbuffer_reset(struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1af6516385406217957b615bfb3709dcd4.html">Function Ringbuffer_take(struct Ringbuffer *, uint8_t *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1af6516385406217957b615bfb3709dcd4.html">Function Ringbuffer_take(struct Ringbuffer *, uint8_t *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a89583e71625a19f29d0da9a42928358b.html">Function RingbufferIndex_init(struct Ringbuffer_Index *, uint16_t, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1a89583e71625a19f29d0da9a42928358b.html">Function RingbufferIndex_init(struct Ringbuffer_Index *, uint16_t, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8h_1a74e41cd20325a65a2478e6cbc90a28a4.html">Function Sampling_clearFifoWatermark()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1a74e41cd20325a65a2478e6cbc90a28a4.html">Function Sampling_clearFifoWatermark()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8h_1a66330a349bcf32e42333704eaf54df36.html">Function Sampling_fetchForward()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1a66330a349bcf32e42333704eaf54df36.html">Function Sampling_fetchForward()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8h_1ab8cef26b160871247301aad8f69913d8.html">Function Sampling_on5usTimerExpired()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1ab8cef26b160871247301aad8f69913d8.html">Function Sampling_on5usTimerExpired()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8h_1a2b142959393c75bcfb96c93c624b9082.html">Function Sampling_setFifoOverflow()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1a2b142959393c75bcfb96c93c624b9082.html">Function Sampling_setFifoOverflow()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8h_1ae68542a9620fb0858abb786813066aa4.html">Function Sampling_setFifoWatermark()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1ae68542a9620fb0858abb786813066aa4.html">Function Sampling_setFifoWatermark()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8h_1a79717685e1fe3e304a60d8c8e8ac0b4c.html">Function Sampling_start(uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1a79717685e1fe3e304a60d8c8e8ac0b4c.html">Function Sampling_start(uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8h_1aa5b0d182b004257a172f38cd7e7307e6.html">Function Sampling_stop()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1aa5b0d182b004257a172f38cd7e7307e6.html">Function Sampling_stop()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1a63326a1b70b6e3f070e51687798e02de.html">Function setUp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1ab804e0f66def63262c1d6b4e3d2a2bd7.html">Function tearDown</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1a216ac4bd968ec1d4a1b645d5f608b06d.html">Function test_cap1_empty_isEmptyNotFull</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1ae53c39223316e02dff7bb6b9b54c88f7.html">Function test_cap1_full</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1ade4a4f2120bc7efcc6fdb527256943e1.html">Function test_cap3_empty_isEmptyNotFull</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1aad8df19b8a0a922fb33a49b1b8d0f2d5.html">Function test_cap3_empty_takeItem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1a5dba4d349dffe4a1e8bde8f035fc74e4.html">Function test_cap3_full_isNotEmptyButFull</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1ad99934803afa00f470f0a37273290a13.html">Function test_cap3_full_takeItem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1ad29f62dda14b7954a6995e922821fa05.html">Function test_cap3_notEmptyNotFull_isNotEmptyNotFull</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1ac3892e844d173d328e6cdeb06540a86d.html">Function test_cap3_notEmptyNotFull_takeItem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1a06d373c6c15d33187ebaf9c09c64ed12.html">Function test_cap3_overflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1aac1ea17cbc3f1bfe2e87b452072de95f.html">Function test_cap3_putAndOverflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1adde4b4dd76ebe9500b29125a809f2ee6.html">Function test_cap3_putAndTakeNoOverflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1ac6ad356c992638ab5658944dc6ae71c1.html">Function test_cap65535_beyondLimitsAndAbove</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1abb7e479e02c07d9528d45f35846711bc.html">Function test_cap65535_movingWindowBeyondLimits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1a0040b31a2648820e75882b52c2790efa.html">Function tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8h_1a0311e97ea6e16f99bcd4145a88e0444c.html">Function TransportRx_Process(uint8_t *, const uint32_t *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8c_1a0311e97ea6e16f99bcd4145a88e0444c.html">Function TransportRx_Process(uint8_t *, const uint32_t *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8h_1a9c276229394f735a28f9d4dca36eeae8.html">Function TransportTx_AccelerationBuffer(struct Adxl345Transport_Acceleration *, uint8_t, uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8c_1a9c276229394f735a28f9d4dca36eeae8.html">Function TransportTx_AccelerationBuffer(struct Adxl345Transport_Acceleration *, uint8_t, uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8h_1a570d2f85c118f4b9d6a80969e98b0e4d.html">Function TransportTx_FifoOverflow()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8c_1a570d2f85c118f4b9d6a80969e98b0e4d.html">Function TransportTx_FifoOverflow()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8h_1af00655cf92129e2a8972bc4527b47818.html">Function TransportTx_FirmwareVersion()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8c_1af00655cf92129e2a8972bc4527b47818.html">Function TransportTx_FirmwareVersion()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8h_1a498b7ad08bc757ec1c56ea73edf1980a.html">Function TransportTx_SamplingAborted()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8c_1a498b7ad08bc757ec1c56ea73edf1980a.html">Function TransportTx_SamplingAborted()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8h_1a2feb614fcdaf18d555b155174de17f0f.html">Function TransportTx_SamplingFinished()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8c_1a2feb614fcdaf18d555b155174de17f0f.html">Function TransportTx_SamplingFinished()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8h_1a998e5f1947fa6f46a73eef8cd2a7b23c.html">Function TransportTx_SamplingSetup()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8c_1a998e5f1947fa6f46a73eef8cd2a7b23c.html">Function TransportTx_SamplingSetup()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8h_1ab75d2a3a6936b68052915ad60ab54ea9.html">Function TransportTx_SamplingStarted(uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8c_1ab75d2a3a6936b68052915ad60ab54ea9.html">Function TransportTx_SamplingStarted(uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8h_1a759ec3b2ea6080fee2c76bcef9320ba6.html">Function TransportTx_SamplingStopped()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_usbd__cdc__transport_8c_1a759ec3b2ea6080fee2c76bcef9320ba6.html">Function TransportTx_SamplingStopped()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1a5a7d68a9a5e045ed6f5ae88e277fc133.html">Function writeRegister</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#variables">Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#defines">Defines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library_root.html">Library API</a></li>
+      <li class="breadcrumb-item active">Function Ringbuffer_put(struct Ringbuffer *, const uint8_t *)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="function-ringbuffer-put-struct-ringbuffer-const-uint8-t">
+<span id="exhale-function-ringbuffer-8c-1afe03ee6901cbdaca66096420c6880d52"></span><h1>Function Ringbuffer_put(struct Ringbuffer *, const uint8_t *)<a class="headerlink" href="#function-ringbuffer-put-struct-ringbuffer-const-uint8-t" title="Permalink to this headline"></a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.c.html#file-home-runner-work-controller-controller-lib-ringbuffer-src-ringbuffer-c"><span class="std std-ref">File ringbuffer.c</span></a></p></li>
+</ul>
+<section id="function-documentation">
+<h2>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this headline"></a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414Ringbuffer_putP10RingbufferPK7uint8_t">
+<span id="_CPPv314Ringbuffer_putP10RingbufferPK7uint8_t"></span><span id="_CPPv214Ringbuffer_putP10RingbufferPK7uint8_t"></span><span id="Ringbuffer_put__RingbufferP.uint8_tCP"></span><span class="target" id="ringbuffer_8h_1afe03ee6901cbdaca66096420c6880d52"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Ringbuffer_put</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structRingbuffer.html#_CPPv410Ringbuffer" title="Ringbuffer"><span class="n"><span class="pre">Ringbuffer</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">item</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414Ringbuffer_putP10RingbufferPK7uint8_t" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Stores one item to the buffer if possible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buffer</strong> – </p></li>
+<li><p><strong>item</strong> – input data </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>-EOVERFLOW if buffer is full, 0 otherwise </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 08 Jan 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

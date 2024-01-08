@@ -1,0 +1,226 @@
+
+.. _file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport_types.h:
+
+File usbd_cdc_transport_types.h
+===============================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Inc_fw>` (``/home/runner/work/controller/controller/Inc/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Inc/fw/usbd_cdc_transport_types.h``)
+------------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Inc_fw_usbd_cdc_transport_types.h.rst
+
+
+
+Detailed Description
+--------------------
+
+Types transferred from/to the IN USB endpoint (host). 
+
+
+
+
+Includes
+--------
+
+
+- ``inttypes.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_usbd_cdc_transport.c`
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structTransport__Header`
+
+- :ref:`exhale_struct_structTransportFrame`
+
+- :ref:`exhale_struct_structTransportRx__DeviceReboot`
+
+- :ref:`exhale_struct_structTransportRx__GetDeviceSetup`
+
+- :ref:`exhale_struct_structTransportRx__GetFirmwareVersion`
+
+- :ref:`exhale_struct_structTransportRx__GetOutputDataRate`
+
+- :ref:`exhale_struct_structTransportRx__GetRange`
+
+- :ref:`exhale_struct_structTransportRx__GetScale`
+
+- :ref:`exhale_struct_structTransportRx__SamplingStart`
+
+- :ref:`exhale_struct_structTransportRx__SamplingStop`
+
+- :ref:`exhale_struct_structTransportRx__SetOutputDataRate`
+
+- :ref:`exhale_struct_structTransportRx__SetRange`
+
+- :ref:`exhale_struct_structTransportRx__SetScale`
+
+- :ref:`exhale_struct_structTransportTx__Acceleration`
+
+- :ref:`exhale_struct_structTransportTx__DeviceSetup`
+
+- :ref:`exhale_struct_structTransportTx__FifoOverflow`
+
+- :ref:`exhale_struct_structTransportTx__FirmwareVersion`
+
+- :ref:`exhale_struct_structTransportTx__OutputDataRate`
+
+- :ref:`exhale_struct_structTransportTx__Range`
+
+- :ref:`exhale_struct_structTransportTx__SamplingAborted`
+
+- :ref:`exhale_struct_structTransportTx__SamplingFinished`
+
+- :ref:`exhale_struct_structTransportTx__SamplingStarted`
+
+- :ref:`exhale_struct_structTransportTx__SamplingStopped`
+
+- :ref:`exhale_struct_structTransportTx__Scale`
+
+
+Enums
+-----
+
+
+- :ref:`exhale_enum_usbd__cdc__transport__types_8h_1acdd6c68eea248e81eff3eb8f547f5204`
+
+- :ref:`exhale_enum_usbd__cdc__transport__types_8h_1a09588d2abff7c25824fe338a4cfafe63`
+
+- :ref:`exhale_enum_usbd__cdc__transport__types_8h_1aef31738b236562c4f0a18348be10fa81`
+
+- :ref:`exhale_enum_usbd__cdc__transport__types_8h_1a0f8fc7d8d585dcd04d9142be969268e5`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_usbd__cdc__transport__types_8h_1ac79abf6004596fe72a9b87b36132f2ef`
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_usbd__cdc__transport__types_8h_1ada472956f173a3e844133ac4359267c5`
+
+
+Unions
+------
+
+
+- :ref:`exhale_union_unionTransportRxFrame`
+
+- :ref:`exhale_union_unionTransportTxFrame`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1ac3cae26f5f4fd77505c5cc684f000f8b`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1aa64e81af72c0dbee197a99974cc6477f`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a3875c02c7867a24afd72c07a8e836d0c`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1aa6fa942a4aba55e671401efab0301f68`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a5468707ba0cf05d846b544d6ec5698ab`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a5189cd3671dace2454c818487957edcf`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a1d9850472cc852e0884b276ac2131a4e`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1add2e75a6243ec44bd1c9f647932d0807`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1ae2ce2ef8f1ae200a09f2d551d634f569`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1af62d06fba8293c51e03074d4cb7e4585`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a57831df9d6b0fc0b56f277d97399c5ab`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1ad0c6e0653d68ec75dcc18d34b1986578`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1ab164ff21553b40079f884e7adaaab71d`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a8d2ec4d8224fab4223a6ce5fc880c88d`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a72a394e847080e277ff32248ebb7133e`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a7b901b2ed436c9b8a5485f518cda5e02`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a4d33c777e50886258b7f902cab478d0f`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a8fb2926c1358556d1058310c1d227952`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a1af577436c0e4a90d7b84d9f1658798f`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1ac921e372c73f74e47f9df8105d6c832e`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a30ce5a792a73cde28c6eabc0d3bfb1c3`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1ab616bd38ef9b5bce0700f2f719982afe`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1ad861ce2862ef9cba24b3b950b4dd37e2`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a6cd216ab4f7b652797fef14382ed17c7`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1aa3169da96d07ddb56442e1f0219ee59d`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1aafbd65a18c302f1f153b181db80ba8fa`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1ade1fc93f9f2ad74d50761aabcbb8c58f`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1aaa2b01a5565390d6b8b8c7d4ee0ce0f1`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a852b86a2eaee9852ada7a43e61e311a2`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a5bd4e4c943762926c8f653b6224cced2`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a7092625ebce4006ef4775bf3417f3f42`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1ae6ee9be053cfc09d38936dada346162d`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1ae2f416b0a34b7beb4ed3873d791ac393`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a6215da7f38ae96ed447bb6277fe48150`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a00c54fad5fef8d31eb75c1163468005b`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a9edcde0584b2ab6c4a7b49eaec49d237`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a20ed0fb1e9a2b4e0c3ae40fc5e348962`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1a616c0a72f0e4af38b93c736773ac7210`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1ae1c2d516777e6b42af0d281c9ecc7375`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1af77b1a54442f2443cf64a4766f916bcd`
+
+- :ref:`exhale_variable_usbd__cdc__transport__types_8h_1abd938edbea27ed4f351dc19d69039222`
+

@@ -13,17 +13,17 @@
  */
 #define NUM_SAMPLES_READ_AT_ONCE ADXL345_WATERMARK_LEVEL
 
-#define STRINGIZE0(A) #A
-#define STRINGIZE(A) STRINGIZE0(A)
+#define MYSTRINGIZE0(A) #A
+#define MYSTRINGIZE(A) MYSTRINGIZE0(A)
 
 static_assert(
     NUM_SAMPLES_READ_AT_ONCE <= ADXL345_WATERMARK_LEVEL,
-    "maximum allowed read-at-once: " STRINGIZE(ADXL345_WATERMARK_LEVEL));
+    "maximum allowed read-at-once: " MYSTRINGIZE(ADXL345_WATERMARK_LEVEL));
 
 static_assert(ADXL345_WATERMARK_LEVEL > 0,
               "minimum required watermark level: 1");
-#undef STRINGIZE
-#undef STRINGIZE0
+#undef MYSTRINGIZE
+#undef MYSTRINGIZE0
 
 /**
  * Internal module state.

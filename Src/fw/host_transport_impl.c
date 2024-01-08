@@ -18,7 +18,6 @@ enum HostTransport_Status HostTransportImpl_transmit(uint8_t *buffer,
   case USBD_EMEM:
   case USBD_FAIL:
     return HostTransport_Status_Fail;
-    return HostTransport_Status_Fail;
   default:
     return HostTransport_Status_Undefined;
   }

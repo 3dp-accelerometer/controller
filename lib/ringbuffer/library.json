@@ -1,0 +1,19 @@
+{
+  "name": "Ringbuffer - Yet Another One",
+  "version": "0.0.1",
+  "description": "One ring buffer to rule them all.",
+  "keywords": [
+    "buffer",
+    "mordor"
+  ],
+  "authors": [
+    {
+      "name": "Raoul Rubien",
+      "maintainer": true
+    }
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "frameworks": "*",
+  "platforms": "*"
+}

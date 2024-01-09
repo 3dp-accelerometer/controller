@@ -19,6 +19,6 @@ enum HostTransport_Status {
  * Host communication handle.
  */
 struct HostTransport_Handle {
-  enum HostTransport_Status (*transmit)(
-      uint8_t *buffer, uint16_t len); ///< host communication pimpl
+  enum HostTransport_Status (*transmit)(uint8_t *,
+                                        uint16_t); ///< host communication pimpl
 };

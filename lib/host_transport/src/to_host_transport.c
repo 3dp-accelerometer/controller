@@ -39,9 +39,9 @@ void TransportTx_FirmwareVersion(struct HostTransport_Handle *hostHandle,
                                  struct Controller_Handle *controllerHandle) {
   struct TransportFrame tx;
   tx.header.id = Transport_HeaderId_Tx_FirmwareVersion;
-  tx.asTxFrame.asFirmwareVersion.major = controllerHandle->deviceVersionMajor;
-  tx.asTxFrame.asFirmwareVersion.minor = controllerHandle->deviceVersionMinor;
-  tx.asTxFrame.asFirmwareVersion.patch = controllerHandle->deviceVersionPatch;
+  tx.asTxFrame.asFirmwareVersion.major = controllerHandle->swVersionMajor;
+  tx.asTxFrame.asFirmwareVersion.minor = controllerHandle->swVersionMinor;
+  tx.asTxFrame.asFirmwareVersion.patch = controllerHandle->swVersionPatch;
 
   while (HostTransport_Status_Busy ==
          hostHandle->transmit(

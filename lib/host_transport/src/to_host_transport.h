@@ -9,6 +9,7 @@
 
 struct Adxl345_Handle;
 struct Controller_Handle;
+struct HostTransport_Handle;
 struct Adxl345Transport_Acceleration;
 
 /**

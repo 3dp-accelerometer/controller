@@ -22,7 +22,7 @@
 #include "stm32f4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "fw/sampling.h"
+#include <sampling.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

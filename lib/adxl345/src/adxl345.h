@@ -42,14 +42,12 @@ static_assert(ADXL345_WATERMARK_LEVEL >= 0,
  * The HW handle pointing to the underlying SPI communication implementation.
  */
 struct Adxl345_Handle {
-  int (*transmitFrame)(union Adxl345Transport_TxFrame *frame, uint8_t num_bytes,
-                       enum Adxl345Spi_Cs apply_cs,
-                       enum Adxl345Spi_RwFlags rw_flag);
+  int (*transmitFrame)(union Adxl345Transport_TxFrame *, uint8_t,
+                       enum Adxl345Spi_Cs, enum Adxl345Spi_RwFlags);
   ///< sending payload to SPI bus
 
-  int (*transmitReceiveFrame)(union Adxl345Transport_TxFrame *tx_frame,
-                              union Adxl345Transport_RxFrame *rx_frame,
-                              uint8_t num_bytes_receive);
+  int (*transmitReceiveFrame)(union Adxl345Transport_TxFrame *,
+                              union Adxl345Transport_RxFrame *, uint8_t);
   ///< reading from sensor: send request to SPI then receive from SPI
 };
 

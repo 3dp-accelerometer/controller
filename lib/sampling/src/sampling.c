@@ -1,6 +1,11 @@
-#include "fw/sampling.h"
-#include "fw/host_transport_impl.h"
-#include "tim.h"
+/**
+* \file sampling.h
+*
+* Implementation of sampling module.
+*/
+
+#include "sampling.h"
+#include "sampling_types.h"
 #include <assert.h>
 #include <controller.h>
 #include <errno.h>
@@ -60,19 +65,6 @@ static void checkStopRequest(struct Sampling_Handle *handle) {
   handle->isStarted = false;
 }
 
-static void delay5us(struct Sampling_Handle *handle) {
-  handle->waitFor5usTimer = true;
-  TIM3->CNT = 0;
-
-  // HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_SET);
-  HAL_TIM_Base_Start_IT(&htim3);
-
-  while (handle->waitFor5usTimer)
-    ;
-
-  HAL_TIM_Base_Stop_IT(&htim3);
-}
-
 void Sampling_start(struct Sampling_Handle *handle, uint16_t maxSamples) {
   handle->maxSamples = maxSamples;
   handle->doStart = true;
@@ -117,7 +109,7 @@ int Sampling_fetchForward(struct Sampling_Handle *handle) {
       // of the FIFO_STATUS register (Address 0x39). The end of reading
       // a data register is signified by the transition from Register 0x37 to
       // Register 0x38 or by the CS pin going high.
-      delay5us(handle);
+      handle->delay5us(handle);
       Adxl345_getAcceleration(&sensorHandle, &handle->rxBuffer[rxCount]);
       rxCount++;
     }

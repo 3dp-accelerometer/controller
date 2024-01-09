@@ -29,12 +29,14 @@
 #include "fw/adxl345_transport_impl.h"
 #include "fw/controller_impl.h"
 #include "fw/host_transport_impl.h"
-#include "fw/sampling.h"
+#include "fw/sampling_impl.h"
 #include "fw/version.h"
 #include "usbd_cdc_if.h"
 #include <adxl345.h>
 #include <controller.h>
 #include <host_transport.h>
+#include <sampling.h>
+#include <sampling_types.h>
 #include <sys/errno.h>
 /* USER CODE END Includes */
 
@@ -121,7 +123,7 @@ int main(void) {
       HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_SET);
       break;
     }
-    controllerHandle.deviceCheckReboot();
+    controllerHandle.controllerCheckReboot();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

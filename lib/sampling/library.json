@@ -1,0 +1,19 @@
+{
+  "name": "Acceleration Data Sampling",
+  "version": "0.0.1",
+  "description": "Acceleration data sampling API.",
+  "keywords": [
+    "accelerometer",
+    "acceleration"
+  ],
+  "authors": [
+    {
+      "name": "Raoul Rubien",
+      "maintainer": true
+    }
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "frameworks": "*",
+  "platforms": "*"
+}

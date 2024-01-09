@@ -30,11 +30,11 @@ int TransportRx_Process(struct HostTransport_Handle *hostHandle,
       struct TransportFrame response = {
           .header.id = Transport_HeaderId_Tx_FirmwareVersion,
           .asTxFrame.asFirmwareVersion.major =
-              controllerHandle->deviceVersionMajor,
+              controllerHandle->swVersionMajor,
           .asTxFrame.asFirmwareVersion.minor =
-              controllerHandle->deviceVersionMinor,
+              controllerHandle->swVersionMinor,
           .asTxFrame.asFirmwareVersion.patch =
-              controllerHandle->deviceVersionPatch};
+              controllerHandle->swVersionPatch};
 
       // send version
       while (HostTransport_Status_Busy ==
@@ -164,7 +164,7 @@ int TransportRx_Process(struct HostTransport_Handle *hostHandle,
   case Transport_HeaderId_Rx_DeviceReboot: {
     if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_DeviceReboot) ==
         *length) {
-      controllerHandle->deviceRequestReboot();
+      controllerHandle->controllerRequestReboot();
       return 0;
     }
   } break;

@@ -14,52 +14,7 @@
 #include <inttypes.h>
 #include <stdbool.h>
 
-/**
- * Configures how many samples can be maximally read at once from the sensor.
- *
- * Must be less than or equal watermark level to not read beyond buffered FiFo.
- */
-#define NUM_SAMPLES_READ_AT_ONCE ADXL345_WATERMARK_LEVEL
-
-#define MYSTRINGIZE0(A) #A
-#define MYSTRINGIZE(A) MYSTRINGIZE0(A)
-
-static_assert(
-    NUM_SAMPLES_READ_AT_ONCE <= ADXL345_WATERMARK_LEVEL,
-    "maximum allowed read-at-once: " MYSTRINGIZE(ADXL345_WATERMARK_LEVEL));
-
-static_assert(ADXL345_WATERMARK_LEVEL > 0,
-              "minimum required watermark level: 1");
-#undef MYSTRINGIZE
-#undef MYSTRINGIZE0
-
-/**
- * Internal module state.
- */
-struct Sampling_Handle {
-  volatile uint16_t maxSamples;
-  volatile bool doStart;
-  volatile bool doStop;
-  volatile bool isStarted;
-  volatile bool waitFor5usTimer;
-  struct Adxl345Transport_Acceleration rxBuffer[NUM_SAMPLES_READ_AT_ONCE];
-  volatile bool isFifoOverflowSet;
-  volatile bool isFifoWatermarkSet;
-  int transactionsCount;
-};
-
-#define SAMPLING_DECLARE_HANDLE(HANDLE_NAME)                                   \
-  struct Sampling_Handle HANDLE_NAME = {                                       \
-      .maxSamples = 0,                                                         \
-      .doStart = false,                                                        \
-      .doStop = false,                                                         \
-      .isStarted = false,                                                      \
-      .waitFor5usTimer = false,                                                \
-      .rxBuffer = {{.x = 0, .y = 0, .z = 0}},                                  \
-      .isFifoOverflowSet = false,                                              \
-      .isFifoWatermarkSet = false,                                             \
-      .transactionsCount = 0,                                                  \
-  };
+struct Sampling_Handle;
 
 /**
  * Starts sampling of up to N samples if no sampling was started so far.
@@ -70,6 +25,7 @@ struct Sampling_Handle {
  *   - sampling.c
  *   - TransportRx_Process(uint8_t *buffer, const uint32_t *length)
  *
+ * \param handle module internal state and device dependent pimpl
  * \param maxSamples amount of samples requested, infinite if 0
  */
 void Sampling_start(struct Sampling_Handle *handle, uint16_t maxSamples);
@@ -80,6 +36,8 @@ void Sampling_start(struct Sampling_Handle *handle, uint16_t maxSamples);
  * Called by:
  *   - sampling.c
  *   - TransportRx_Process(uint8_t *buffer, const uint32_t *length)
+ *
+ * \param handle module internal state and device dependent pimpl
  */
 void Sampling_stop(struct Sampling_Handle *handle);
 
@@ -94,6 +52,8 @@ void Sampling_stop(struct Sampling_Handle *handle);
  *   - -EOVERFLOW if FiFo OVL was detected
  *   - ENODATA if all data was read (see sampling_startN(uint16_t))
  *   - 0 otherwise
+ *
+* \param handle module internal state and device dependent pimpl
  */
 int Sampling_fetchForward(struct Sampling_Handle *handle);
 
@@ -102,6 +62,8 @@ int Sampling_fetchForward(struct Sampling_Handle *handle);
  *
  * Called by respective interrupt handler (on rising INT edge).
  * Handler: EXTI2_IRQHandler(void)
+ *
+ * \param handle module internal state and device dependent pimpl
  */
 void Sampling_setFifoWatermark(struct Sampling_Handle *handle);
 
@@ -110,6 +72,8 @@ void Sampling_setFifoWatermark(struct Sampling_Handle *handle);
  *
  * Called by respective interrupt handler (on falling INT edge).
  * Handler: EXTI2_IRQHandler()
+ *
+ * \param handle module internal state and device dependent pimpl
  */
 void Sampling_clearFifoWatermark(struct Sampling_Handle *handle);
 
@@ -118,6 +82,8 @@ void Sampling_clearFifoWatermark(struct Sampling_Handle *handle);
  *
  * Called by respective interrupt handler (on rising INT edge).
  * Handler: EXTI3_IRQHandler()
+ *
+ * \param handle module internal state and device dependent pimpl
  */
 void Sampling_setFifoOverflow(struct Sampling_Handle *handle);
 
@@ -126,5 +92,7 @@ void Sampling_setFifoOverflow(struct Sampling_Handle *handle);
  *
  * Called by respective timer interrupt.
  * Handler: TIM3_IRQHandler()
+ *
+ * \param handle module internal state and device dependent pimpl
  */
 void Sampling_on5usTimerExpired(struct Sampling_Handle *handle);

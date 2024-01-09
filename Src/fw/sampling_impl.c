@@ -1,5 +1,5 @@
-#include <sampling_types.h>
 #include "tim.h"
+#include <sampling_types.h>
 
 extern struct Adxl345_Handle sensorHandle;
 extern struct HostTransport_Handle hostHandle;

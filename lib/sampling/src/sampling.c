@@ -1,8 +1,8 @@
 /**
-* \file sampling.h
-*
-* Implementation of sampling module.
-*/
+ * \file sampling.h
+ *
+ * Implementation of sampling module.
+ */
 
 #include "sampling.h"
 #include "sampling_types.h"

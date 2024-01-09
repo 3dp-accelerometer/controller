@@ -29,10 +29,8 @@ int TransportRx_Process(struct HostTransport_Handle *hostHandle,
 
       struct TransportFrame response = {
           .header.id = Transport_HeaderId_Tx_FirmwareVersion,
-          .asTxFrame.asFirmwareVersion.major =
-              controllerHandle->swVersionMajor,
-          .asTxFrame.asFirmwareVersion.minor =
-              controllerHandle->swVersionMinor,
+          .asTxFrame.asFirmwareVersion.major = controllerHandle->swVersionMajor,
+          .asTxFrame.asFirmwareVersion.minor = controllerHandle->swVersionMinor,
           .asTxFrame.asFirmwareVersion.patch =
               controllerHandle->swVersionPatch};
 

@@ -53,7 +53,7 @@ void Sampling_stop(struct Sampling_Handle *handle);
  *   - ENODATA if all data was read (see sampling_startN(uint16_t))
  *   - 0 otherwise
  *
-* \param handle module internal state and device dependent pimpl
+ * \param handle module internal state and device dependent pimpl
  */
 int Sampling_fetchForward(struct Sampling_Handle *handle);
 

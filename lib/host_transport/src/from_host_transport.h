@@ -38,6 +38,5 @@ struct Controller_Handle;
  */
 int TransportRx_Process(struct HostTransport_Handle *hostHandle,
                         struct Controller_Handle *controllerHandle,
-                        struct Adxl345_Handle *sensorHandle,
-                        uint8_t *buffer,
+                        struct Adxl345_Handle *sensorHandle, uint8_t *buffer,
                         const uint32_t *length);

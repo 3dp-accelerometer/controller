@@ -16,8 +16,10 @@
  * Chip Select flags for SPI communication.
  */
 enum Adxl345Spi_Cs {
-  Adxl345Spi_Cs_modify = 0, ///< modifies chip select line before/after transaction
-  Adxl345Spi_Cs_untouched   ///< leaves chip select untouched before/after transaction
+  Adxl345Spi_Cs_modify =
+      0, ///< modifies chip select line before/after transaction
+  Adxl345Spi_Cs_untouched ///< leaves chip select untouched before/after
+                          ///< transaction
 };
 
 /**

@@ -15,7 +15,7 @@
 struct Ringbuffer_Index {
   uint16_t begin;
   uint16_t end;
-  uint16_t capacity;     ///< maximum number of items
+  uint16_t capacity; ///< maximum number of items
   bool isFull;
   bool isEmpty;
   uint8_t itemSizeBytes; ///< size of one item in bytes
@@ -34,7 +34,11 @@ struct Ringbuffer_Index {
  *
  * struct Foo storage[CAPACITY];
  * struct Ringbuffer buffer;
- * struct Ringbuffer_init(&buffer, (uint8_t*)&storage, CAPACITY, sizeof(struct Foo));
+ * struct Ringbuffer_init(
+ *   &buffer,
+ *   (uint8_t*)&storage,
+ *   CAPACITY,
+ *   sizeof(struct Foo));
  *
  * struct Foo item = {};
  * Ringbuffer_put(&buffer, (uint8_t *)&item);
@@ -46,7 +50,6 @@ struct Ringbuffer {
   uint8_t *storage; ///< index offset is mapped to
                     ///< n*sizeof(Ringbuffer_Index.itemSizeBytes)
 };
-
 
 int RingbufferIndex_init(struct Ringbuffer_Index *index, uint16_t capacity,
                          uint8_t itemSizeBytes);

@@ -12,6 +12,13 @@
 #include <controller.h>
 #include <errno.h>
 
+/**
+ * todo: this function does too much.
+ *   - it should only receive, decode package and dispatch
+ *   - move logic beyond dispatching to controller api (controller.c)
+ *     and invoke via controller handle
+ *   - this also removes dependency to sensor handle
+ */
 int TransportRx_Process(struct HostTransport_Handle *hostHandle,
                         struct Controller_Handle *controllerHandle,
                         struct Adxl345_Handle *sensorHandle, uint8_t *buffer,

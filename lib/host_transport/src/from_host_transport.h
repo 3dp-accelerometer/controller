@@ -30,11 +30,11 @@ struct Controller_Handle;
  *   - TransportHeader_Id_Rx_SamplingStop
  *
  * @param hostHandle host transport pimpl
- * @param controllerHandle controller pimpl
- * @param sensorHandle host transport pimpl
+ * @param controllerHandle controller API pimpl
+ * @param sensorHandle host transport pimpl (to be removed in future version)
  * @param buffer received package (as a whole, must not be fragmented)
  * @param length received package length
- * @return 0 on success, EINVAL otherwise
+ * @return -EINVAL on invalid arguments, 0 otherwise
  */
 int TransportRx_Process(struct HostTransport_Handle *hostHandle,
                         struct Controller_Handle *controllerHandle,

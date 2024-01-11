@@ -206,9 +206,9 @@ void EXTI2_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI2_IRQn 0 */
   if (GPIO_PIN_SET == HAL_GPIO_ReadPin(FIFO_WMARK_GPIO_Port, FIFO_WMARK_Pin))
-    controllerHandle.samplingSetFifoWatermark();
+    controllerHandle.sampling.doSetFifoWatermark();
   else
-    controllerHandle.samplingClearFifoWatermark();
+    controllerHandle.sampling.doClearFifoWatermark();
   /* USER CODE END EXTI2_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(FIFO_WMARK_Pin);
   /* USER CODE BEGIN EXTI2_IRQn 1 */
@@ -224,7 +224,7 @@ void EXTI3_IRQHandler(void)
   /* USER CODE BEGIN EXTI3_IRQn 0 */
 
   if (GPIO_PIN_SET == HAL_GPIO_ReadPin(FIFO_OVFL_GPIO_Port, FIFO_OVFL_Pin))
-    controllerHandle.samplingSetFifoOverflow();
+    controllerHandle.sampling.doSetFifoOverflow();
 
   /* USER CODE END EXTI3_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(FIFO_OVFL_Pin);
@@ -239,7 +239,7 @@ void EXTI3_IRQHandler(void)
 void TIM3_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM3_IRQn 0 */
-  controllerHandle.samplingOn5usTimerExpired();
+  controllerHandle.sampling.doSet5usTimerExpired();
   // HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_RESET);
   /* USER CODE END TIM3_IRQn 0 */
   HAL_TIM_IRQHandler(&htim3);

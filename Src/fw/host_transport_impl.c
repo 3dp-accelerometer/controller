@@ -36,33 +36,33 @@ int HostTransportImpl_onPacketReceived(uint8_t *buffer) {
 
   switch (request->header.id) {
   case Transport_HeaderId_Rx_GetFirmwareVersion:
-    return controllerHandle.hostOnRequestGetFirmwareVersion();
+    return controllerHandle.host.onRequestGetFirmwareVersion();
   case Transport_HeaderId_Rx_GetOutputDataRate:
-    return controllerHandle.hostOnRequestGetOutputDataRate();
+    return controllerHandle.host.onRequestGetOutputDataRate();
   case Transport_HeaderId_Rx_SetOutputDataRate:
-    return controllerHandle.hostOnRequestSetOutputDatatRate(
+    return controllerHandle.host.onRequestSetOutputDatatRate(
         request->asRxFrame.asSetOutputDataRate.rate);
   case Transport_HeaderId_Rx_GetRange:
-    return controllerHandle.hostOnRequestGetRange();
+    return controllerHandle.host.onRequestGetRange();
   case Transport_HeaderId_Rx_SetRange:
-    return controllerHandle.hostOnRequestSetRange(
+    return controllerHandle.host.onRequestSetRange(
         request->asRxFrame.asSetRange.range);
   case Transport_HeaderId_Rx_GetScale:
-    return controllerHandle.hostOnRequestGetScale();
+    return controllerHandle.host.onRequestGetScale();
   case Transport_HeaderId_Rx_SetScale:
-    return controllerHandle.hostOnRequestSetScale(
+    return controllerHandle.host.onRequestSetScale(
         request->asRxFrame.asSetScale.scale);
   case Transport_HeaderId_Rx_GetDeviceSetup:
-    return controllerHandle.hostOnRequestGetDeviceSetup();
+    return controllerHandle.host.onRequestGetDeviceSetup();
   case Transport_HeaderId_Rx_DeviceReboot: {
-    controllerHandle.controllerRequestReboot();
+    controllerHandle.requestReboot();
     return 0;
   }
   case Transport_HeaderId_Rx_SamplingStart:
-    return controllerHandle.hostOnRequestSamplingStart(
+    return controllerHandle.host.onRequestSamplingStart(
         request->asRxFrame.asSamplingStart.max_samples_count);
   case Transport_HeaderId_Rx_SamplingStop:
-    return controllerHandle.hostOnRequestSamplingStop();
+    return controllerHandle.host.onRequestSamplingStop();
 
   default:
     return -EINVAL;

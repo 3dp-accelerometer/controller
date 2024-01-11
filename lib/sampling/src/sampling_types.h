@@ -36,7 +36,7 @@ struct Sampling_Acceleration {
 } __attribute__((packed));
 
 /**
- * Internal module state and device specific implementation.
+ * Internal module state.
  */
 struct Sampling_State {
   volatile uint16_t maxSamples;
@@ -50,19 +50,22 @@ struct Sampling_State {
   volatile int transactionsCount;
 };
 
+/**
+ * Internal module state and device specific implementation.
+ */
 struct Sampling_Handle {
   struct Sampling_State state;
 
-  void (*delay5us)(struct Sampling_Handle *);
+  void (*doEnableSensor)();
+  void (*doDisableSensor)();
+  void (*doFetchSensorAcceleration)(struct Sampling_Acceleration *);
+  void (*doWaitDelay5us)(struct Sampling_Handle *);
+  void (*doForwardAccelerationBuffer)(const struct Sampling_Acceleration *,
+                                   uint16_t, uint16_t);
+
   void (*onSamplingStarted)();
   void (*onSamplingStopped)();
   void (*onSamplingAborted)();
   void (*onSamplingFinished)();
-  void (*onPostAccelerationBuffer)(const struct Sampling_Acceleration *,
-                                   uint16_t, uint16_t);
-
   void (*onFifoOverflow)();
-  void (*onSensorEnable)();
-  void (*onSensorDisable)();
-  void (*onFetchSensorAcceleration)(struct Sampling_Acceleration *);
 };

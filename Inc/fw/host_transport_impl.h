@@ -9,10 +9,11 @@
 
 enum HostTransport_Status;
 
-#define HOSTTRANSPORT_DECLARE_HANDLE(HANDLE_NAME)                              \
-  struct HostTransport_Handle HANDLE_NAME = {                                  \
-      .transmit = HostTransportImpl_transmit,                                  \
-      .onPacketReceived = HostTransportImpl_onPacketReceived}
+#define HOSTTRANSPORT_DECLARE_INITIALIZER                                      \
+  {                                                                            \
+    .transmit = HostTransportImpl_transmit,                                    \
+    .onPacketReceived = HostTransportImpl_onPacketReceived                     \
+  }
 
 enum HostTransport_Status HostTransportImpl_transmit(uint8_t *buffer,
                                                      uint16_t len);

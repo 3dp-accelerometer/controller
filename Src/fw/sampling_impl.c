@@ -5,7 +5,7 @@
 
 extern struct Controller_Handle controllerHandle;
 
-void SamplingImpl_delay5us(struct Sampling_Handle *handle) {
+void SamplingImpl_doWaitDelay5us(struct Sampling_Handle *handle) {
   handle->state.waitFor5usTimer = true;
   TIM3->CNT = 0;
 
@@ -16,38 +16,4 @@ void SamplingImpl_delay5us(struct Sampling_Handle *handle) {
   }
 
   HAL_TIM_Base_Stop_IT(&htim3);
-}
-
-void SamplingImpl_onSamplingStarted() { controllerHandle.samplingOnStarted(); }
-
-void SamplingImpl_onSamplingStopped() { controllerHandle.samplingOnStopped(); }
-
-void SamplingImpl_onSamplingAborted() { controllerHandle.samplingOnAborted(); }
-
-void SamplingImpl_onSamplingFinished() {
-  controllerHandle.samplingOnFinished();
-}
-
-void SamplingImpl_onPostAccelerationBuffer(
-    const struct Sampling_Acceleration *buffer, uint16_t bufferLen,
-    uint16_t startIndex) {
-  controllerHandle.samplingOnPostAccelerationBuffer(buffer, bufferLen,
-                                                    startIndex);
-}
-
-void SamplingImpl_onFifoOverflow() {
-  controllerHandle.samplingOnFifoOverflow();
-}
-
-void SamplingImpl_onSensorEnable() {
-  controllerHandle.samplingOnSensorEnable();
-}
-
-void SamplingImpl_onSensorDisable() {
-  controllerHandle.samplingOnSensorDisable();
-}
-
-void SamplingImpl_onFetchSensorAcceleration(
-    struct Sampling_Acceleration *sample) {
-  controllerHandle.samplingOnFetchSensorAcceleration(sample);
 }

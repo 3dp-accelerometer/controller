@@ -8,14 +8,57 @@
 #include <inttypes.h>
 #include <stdbool.h>
 
-struct Adxl345_Handle;
-struct HostTransport_Handle;
-struct Sampling_Handle;
-struct Sampling_Acceleration;
+#include <adxl345.h>
+#include <host_transport.h>
+#include <sampling_types.h>
 
 enum TransportRx_SetOutputDataRate_Rate;
 enum TransportRx_SetScale_Scale;
 enum TransportRx_SetRange_Range;
+
+struct Controller_Sensor {
+  struct Adxl345_Handle handle;
+
+  void (*init)();
+};
+
+struct Controller_Sampling {
+  struct Sampling_Handle handle; ///< device specific pimpl
+
+  /**
+   * Device API for sampling module.
+   *
+   * @{
+   */
+  void (*doSetFifoWatermark)();
+  void (*doClearFifoWatermark)();
+  void (*doSetFifoOverflow)();
+  void (*doSet5usTimerExpired)();
+  /// @}
+};
+
+struct Controller_Host {
+  struct HostTransport_Handle handle; ///< device specific pimpl
+
+  void (*doTakeBytes)(uint8_t *, uint16_t); ///< Device API for host-transport module.
+
+  /**
+   * Device API for Host-Transport callbacks upon doTakeBytes(uint8_t *, uint16_t).
+   *
+   * @{
+   */
+  int (*onRequestGetFirmwareVersion)();
+  int (*onRequestGetOutputDataRate)();
+  int (*onRequestSetOutputDatatRate)(enum TransportRx_SetOutputDataRate_Rate);
+  int (*onRequestGetRange)();
+  int (*onRequestSetRange)(enum TransportRx_SetRange_Range);
+  int (*onRequestGetScale)();
+  int (*onRequestSetScale)(enum TransportRx_SetScale_Scale);
+  int (*onRequestGetDeviceSetup)();
+  int (*onRequestSamplingStart)(uint16_t);
+  int (*onRequestSamplingStop)();
+  /// @}
+};
 
 /**
  * Handle for several device pointer implementations.
@@ -34,46 +77,18 @@ struct Controller_Handle {
   uint8_t swVersionMinor;
   uint8_t swVersionPatch;
 
-  struct Adxl345_Handle *sensorHandle;
-  struct Sampling_Handle *samplingHandle;
-  struct HostTransport_Handle *hostTransportHandle;
+  struct Controller_Sensor sensor; ///< Device API for sensor and sensor pimpl.
+  struct Controller_Sampling sampling; ///< Device API for sampling and sampling pimpl.
+  struct Controller_Host host; ///< Device API for host transport and host transport pimpl.
 
+  /**
+   * Basic device API.
+   * @{
+   */
   void (*init)();
   void (*loop)();
 
-  void (*sensorInit)();
-
-  void (*controllerCheckReboot)();
-  void (*controllerRequestReboot)();
-
-  void (*hostOnBytesReceived)(uint8_t *, uint16_t);
-  int (*hostOnRequestGetFirmwareVersion)();
-  int (*hostOnRequestGetOutputDataRate)();
-  int (*hostOnRequestSetOutputDatatRate)(
-      enum TransportRx_SetOutputDataRate_Rate);
-  int (*hostOnRequestGetRange)();
-  int (*hostOnRequestSetRange)(enum TransportRx_SetRange_Range);
-  int (*hostOnRequestGetScale)();
-  int (*hostOnRequestSetScale)(enum TransportRx_SetScale_Scale);
-  int (*hostOnRequestGetDeviceSetup)();
-  int (*hostOnRequestSamplingStart)(uint16_t);
-  int (*hostOnRequestSamplingStop)();
-
-  void (*samplingStart)(uint16_t);
-  void (*samplingStop)();
-  int (*samplingFetchForward)();
-  void (*samplingSetFifoWatermark)();
-  void (*samplingClearFifoWatermark)();
-  void (*samplingSetFifoOverflow)();
-  void (*samplingOn5usTimerExpired)();
-  void (*samplingOnStarted)();
-  void (*samplingOnStopped)();
-  void (*samplingOnAborted)();
-  void (*samplingOnFinished)();
-  void (*samplingOnPostAccelerationBuffer)(const struct Sampling_Acceleration *,
-                                           uint16_t, uint16_t);
-  void (*samplingOnFifoOverflow)();
-  void (*samplingOnSensorEnable)();
-  void (*samplingOnSensorDisable)();
-  void (*samplingOnFetchSensorAcceleration)(struct Sampling_Acceleration *);
+  void (*checkReboot)();
+  void (*requestReboot)();
+  ///< @}
 };

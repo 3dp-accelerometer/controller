@@ -12,10 +12,11 @@
 
 struct Adxl345_Handle;
 
-#define ADXL345_DECLARE_HANDLE(HANDLE_NAME)                                    \
-  struct Adxl345_Handle HANDLE_NAME = {                                        \
-      .transmitFrame = Adxl345TransportImpl_transmitFrame,                     \
-      .transmitReceiveFrame = Adxl345TransportImpl_transmitReceiveFrame}
+#define ADXL345_HANDLE_INITIALIZER                                             \
+  {                                                                            \
+    .transmitFrame = Adxl345TransportImpl_transmitFrame,                       \
+    .transmitReceiveFrame = Adxl345TransportImpl_transmitReceiveFrame          \
+  }
 
 /**
  * Sends one single frame to ADXL345 via SPI interface.

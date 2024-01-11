@@ -13,8 +13,8 @@
 
 extern struct Controller_Handle controllerHandle;
 
-enum HostTransport_Status HostTransportImpl_transmit(uint8_t *buffer,
-                                                     uint16_t len) {
+enum HostTransport_Status HostTransportImpl_doTransmitImpl(uint8_t *buffer,
+                                                           uint16_t len) {
   switch (CDC_Transmit_FS(buffer, len)) {
   case USBD_OK:
     return HostTransport_Status_Ok;
@@ -28,7 +28,7 @@ enum HostTransport_Status HostTransportImpl_transmit(uint8_t *buffer,
   }
 }
 
-int HostTransportImpl_onPacketReceived(uint8_t *buffer) {
+int HostTransportImpl_onTakeReceivedImpl(uint8_t *buffer) {
   if (NULL == buffer)
     return -EINVAL;
 

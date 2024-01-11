@@ -5,7 +5,7 @@
 
 extern struct Controller_Handle controllerHandle;
 
-void SamplingImpl_doWaitDelay5us(struct Sampling_Handle *handle) {
+void SamplingImpl_doWaitDelay5usImpl(struct Sampling_Handle *handle) {
   handle->state.waitFor5usTimer = true;
   TIM3->CNT = 0;
 

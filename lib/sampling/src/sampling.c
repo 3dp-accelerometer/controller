@@ -21,13 +21,13 @@ static void checkStartRequest(struct Sampling_Handle *handle) {
   if (handle->state.isStarted) {
     return;
   }
-  handle->onSamplingStarted();
+  handle->onSamplingStartedCb();
 
   handle->state.isFifoOverflowSet = false;
   handle->state.transactionsCount = 0;
   handle->state.isStarted = true;
 
-  handle->doEnableSensor();
+  handle->doEnableSensorImpl();
 }
 
 static void checkStopRequest(struct Sampling_Handle *handle) {
@@ -41,15 +41,15 @@ static void checkStopRequest(struct Sampling_Handle *handle) {
   }
 
   if (handle->state.transactionsCount < handle->state.maxSamples) {
-    handle->onSamplingAborted();
+    handle->onSamplingAbortedCb();
   }
-  handle->onSamplingStopped();
+  handle->onSamplingStoppedCb();
 
-  handle->doDisableSensor();
+  handle->doDisableSensorImpl();
 
   // clear watermark interrupt (clear whole fifo)
   for (uint8_t idx = 0; idx < ADXL345_FIFO_ENTRIES; idx++) {
-    handle->doFetchSensorAcceleration(NULL);
+    handle->doFetchSensorAccelerationImpl(NULL);
   }
 
   handle->state.isStarted = false;
@@ -102,31 +102,31 @@ int Sampling_fetchForward(struct Sampling_Handle *handle) {
       // of the FIFO_STATUS register (Address 0x39). The end of reading
       // a data register is signified by the transition from Register 0x37 to
       // Register 0x38 or by the CS pin going high.
-      handle->doWaitDelay5us(handle);
-      handle->doFetchSensorAcceleration(&handle->state.rxBuffer[rxCount]);
+      handle->doWaitDelay5usImpl(handle);
+      handle->doFetchSensorAccelerationImpl(&handle->state.rxBuffer[rxCount]);
       rxCount++;
     }
 
     // forward samples
     if (0 < rxCount) {
-      handle->doForwardAccelerationBuffer(handle->state.rxBuffer, rxCount,
-                                          handle->state.transactionsCount);
+      handle->doForwardAccelerationBufferImpl(handle->state.rxBuffer, rxCount,
+                                              handle->state.transactionsCount);
       handle->state.transactionsCount += rxCount;
     }
   }
 
   if (-EOVERFLOW == ret) {
-    handle->onFifoOverflow();
+    handle->onFifoOverflowCb();
     Sampling_stop(handle);
   }
 
   if (-ECANCELED == ret) {
-    handle->onSamplingAborted();
+    handle->onSamplingAbortedCb();
     Sampling_stop(handle);
   }
 
   if (ENODATA == ret) {
-    handle->onSamplingFinished();
+    handle->onSamplingFinishedCb();
     Sampling_stop(handle);
   }
 

@@ -47,7 +47,7 @@ struct Controller_Handle controllerHandle = {
     .swVersionPatch = VERSION_PATCH,
 
     .sensor = {.handle = ADXL345_HANDLE_INITIALIZER,
-               .init = ControllerImpl_sensor_Adxl345_init},
+               .init = ControllerImpl_sensor_Adxl345_doInitImpl},
 
     .sampling =
         {
@@ -246,25 +246,25 @@ int ControllerImpl_host_onRequestSamplingStop() {
 
 /* Sensor ------------------------------------------------------------------- */
 
-void ControllerImpl_sensor_Adxl345_init() {
+void ControllerImpl_sensor_Adxl345_doInitImpl() {
   Adxl345_init(&controllerHandle.sensor.handle);
 }
 
-int ControllerImpl_sensor_Adxl345_getOutputDataRate(uint8_t *odr) {
+int ControllerImpl_sensor_Adxl345_doGetOutputDataRateImpl(uint8_t *odr) {
   enum Adxl345Flags_BwRate_Rate orate;
   int ret = Adxl345_getOutputDataRate(&controllerHandle.sensor.handle, &orate);
   *odr = orate;
   return ret;
 }
 
-int ControllerImpl_sensor_Adxl345_getScale(uint8_t *scale) {
+int ControllerImpl_sensor_Adxl345_doGetScaleImpl(uint8_t *scale) {
   enum Adxl345Flags_DataFormat_FullResBit scl;
   int ret = Adxl345_getScale(&controllerHandle.sensor.handle, &scl);
   *scale = scl;
   return ret;
 }
 
-int ControllerImpl_sensor_Adxl345_getRange(uint8_t *range) {
+int ControllerImpl_sensor_Adxl345_doGetRangeImpl(uint8_t *range) {
   enum Adxl345Flags_DataFormat_Range rng;
   int ret = Adxl345_getRange(&controllerHandle.sensor.handle, &rng);
   *range = rng;
@@ -287,26 +287,26 @@ void ControllerImpl_sampling_on5usTimerExpired() {
   Sampling_on5usTimerExpired(&controllerHandle.sampling.handle);
 }
 
-void ControllerImpl_sampling_onSamplingStarted() {
+void ControllerImpl_sampling_onSamplingStartedCb() {
   TransportTx_FirmwareVersion(&controllerHandle.host.handle);
   TransportTx_SamplingStarted(
       &controllerHandle.host.handle,
       controllerHandle.sampling.handle.state.maxSamples);
 }
 
-void ControllerImpl_sampling_onSamplingStopped() {
+void ControllerImpl_sampling_onSamplingStoppedCb() {
   TransportTx_SamplingStopped(&controllerHandle.host.handle);
 }
 
-void ControllerImpl_sampling_onSamplingAborted() {
+void ControllerImpl_sampling_onSamplingAbortedCb() {
   TransportTx_SamplingAborted(&controllerHandle.host.handle);
 }
 
-void ControllerImpl_sampling_onSamplingFinished() {
+void ControllerImpl_sampling_onSamplingFinishedCb() {
   TransportTx_SamplingFinished(&controllerHandle.host.handle);
 }
 
-void ControllerImpl_sampling_doForwardAccelerationBuffer(
+void ControllerImpl_sampling_doForwardAccelerationBufferImpl(
     const struct Sampling_Acceleration *buffer, uint16_t bufferLen,
     uint16_t startIndex) {
 
@@ -320,16 +320,16 @@ void ControllerImpl_sampling_doForwardAccelerationBuffer(
                                  (const struct Transport_Acceleration *)buffer,
                                  bufferLen, startIndex);
 }
-void ControllerImpl_sampling_onFifoOverflow() {
+void ControllerImpl_sampling_onFifoOverflowCb() {
   TransportTx_FifoOverflow(&controllerHandle.host.handle);
 }
-void ControllerImpl_sampling_doEnableSensor() {
+void ControllerImpl_sampling_doEnableSensorImpl() {
   Adxl345_setPowerCtlMeasure(&controllerHandle.sensor.handle);
 }
-void ControllerImpl_sampling_doDisableSensor() {
+void ControllerImpl_sampling_doDisableSensorImpl() {
   Adxl345_setPowerCtlStandby(&controllerHandle.sensor.handle);
 }
-void ControllerImpl_sampling_doFetchSensorAcceleration(
+void ControllerImpl_sampling_doFetchSensorAccelerationImpl(
     struct Sampling_Acceleration *sample) {
   struct Adxl345Transport_Acceleration sensorSample;
   Adxl345_getAcceleration(&controllerHandle.sensor.handle, &sensorSample);

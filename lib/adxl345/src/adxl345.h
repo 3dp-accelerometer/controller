@@ -49,16 +49,17 @@ struct Adxl345_Handle {
    *
    * @return
    */
-  int (*const transmitFrame)(union Adxl345Transport_TxFrame *, uint8_t,
-                             enum Adxl345Spi_Cs, enum Adxl345Spi_RwFlags);
+  int (*const doTransmitFrameImpl)(union Adxl345Transport_TxFrame *, uint8_t,
+                                   enum Adxl345Spi_Cs, enum Adxl345Spi_RwFlags);
 
   /**
    * reading from sensor: send request to SPI then receive from SPI
    *
    * Context: main() and interrupts
    */
-  int (*const transmitReceiveFrame)(union Adxl345Transport_TxFrame *,
-                                    union Adxl345Transport_RxFrame *, uint8_t);
+  int (*const doTransmitReceiveFrameImpl)(union Adxl345Transport_TxFrame *,
+                                          union Adxl345Transport_RxFrame *,
+                                          uint8_t);
 };
 
 /**

@@ -16,7 +16,7 @@ static void readRegister(struct Adxl345_Handle *handle,
   union Adxl345Transport_TxFrame txFrame = {.asAddress =
                                                 addr | Adxl345Spi_RwFlags_read};
   union Adxl345Transport_RxFrame rxFrame = {0};
-  handle->transmitReceiveFrame(&txFrame, &rxFrame, 1);
+  handle->doTransmitReceiveFrameImpl(&txFrame, &rxFrame, 1);
   *reg = rxFrame.asRegister;
 }
 
@@ -25,8 +25,8 @@ static void writeRegister(struct Adxl345_Handle *handle,
                           const union Adxl345Register *reg) {
   union Adxl345Transport_TxFrame txFrame = {.asAddress = addr};
   txFrame.asPaddedRegister.asRegister = *reg;
-  handle->transmitFrame(&txFrame, 2, Adxl345Spi_Cs_modify,
-                        Adxl345Spi_RwFlags_write);
+  handle->doTransmitFrameImpl(&txFrame, 2, Adxl345Spi_Cs_modify,
+                              Adxl345Spi_RwFlags_write);
 }
 
 int Adxl345_init(struct Adxl345_Handle *handle) {
@@ -42,8 +42,8 @@ int Adxl345_init(struct Adxl345_Handle *handle) {
             .spi = Adxl345Flags_DataFormat_SpiBit_4wire,
             .selfTest = Adxl345Flags_DataFormat_SelfTest_disableForce}};
     tx_frame.asAddress = Adxl345Flags_Address_dataFormat;
-    handle->transmitFrame(&tx_frame, 2, Adxl345Spi_Cs_modify,
-                          Adxl345Spi_RwFlags_write);
+    handle->doTransmitFrameImpl(&tx_frame, 2, Adxl345Spi_Cs_modify,
+                                Adxl345Spi_RwFlags_write);
   }
 
   { // bandwidth rate
@@ -55,8 +55,8 @@ int Adxl345_init(struct Adxl345_Handle *handle) {
             ._zeroD6 = 0,
             ._zeroD7 = 0}};
     tx_frame.asAddress = Adxl345Flags_Address_bwRate;
-    handle->transmitFrame(&tx_frame, 2, Adxl345Spi_Cs_modify,
-                          Adxl345Spi_RwFlags_write);
+    handle->doTransmitFrameImpl(&tx_frame, 2, Adxl345Spi_Cs_modify,
+                                Adxl345Spi_RwFlags_write);
   }
 
   { // fifo control
@@ -66,8 +66,8 @@ int Adxl345_init(struct Adxl345_Handle *handle) {
             .trigger = Adxl345Flags_FifoCtl_Trigger_int1,
             .fifoMode = Adxl345Flags_FifoCtl_FifoMode_fifo}};
     tx_frame.asAddress = Adxl345Flags_Address_fifoCtl;
-    handle->transmitFrame(&tx_frame, 2, Adxl345Spi_Cs_modify,
-                          Adxl345Spi_RwFlags_write);
+    handle->doTransmitFrameImpl(&tx_frame, 2, Adxl345Spi_Cs_modify,
+                                Adxl345Spi_RwFlags_write);
   }
 
   { // power control
@@ -81,8 +81,8 @@ int Adxl345_init(struct Adxl345_Handle *handle) {
             ._zeroD6 = 0,
             ._zeroD7 = 0}};
     tx_frame.asAddress = Adxl345Flags_Address_powerCtl;
-    handle->transmitFrame(&tx_frame, 2, Adxl345Spi_Cs_modify,
-                          Adxl345Spi_RwFlags_write);
+    handle->doTransmitFrameImpl(&tx_frame, 2, Adxl345Spi_Cs_modify,
+                                Adxl345Spi_RwFlags_write);
   }
 
   { // interrupt map: watermark -> INT1, overrun -> INT2
@@ -97,8 +97,8 @@ int Adxl345_init(struct Adxl345_Handle *handle) {
             .singleTap = Adxl345Flags_IntMap_SingleTap_int1,
             .dataReady = Adxl345Flags_IntMap_DataReady_int1}};
     tx_frame.asAddress = Adxl345Flags_Address_intMap;
-    handle->transmitFrame(&tx_frame, 2, Adxl345Spi_Cs_modify,
-                          Adxl345Spi_RwFlags_write);
+    handle->doTransmitFrameImpl(&tx_frame, 2, Adxl345Spi_Cs_modify,
+                                Adxl345Spi_RwFlags_write);
   }
 
   { // interrupt enable: watermark + overrun
@@ -113,8 +113,8 @@ int Adxl345_init(struct Adxl345_Handle *handle) {
             .singleTap = Adxl345Flags_IntEnable_SingleTap_disable,
             .dataReady = Adxl345Flags_IntEnable_DataReady_disable}};
     tx_frame.asAddress = Adxl345Flags_Address_intEnable;
-    handle->transmitFrame(&tx_frame, 2, Adxl345Spi_Cs_modify,
-                          Adxl345Spi_RwFlags_write);
+    handle->doTransmitFrameImpl(&tx_frame, 2, Adxl345Spi_Cs_modify,
+                                Adxl345Spi_RwFlags_write);
   }
 
   return 0;
@@ -246,7 +246,7 @@ int Adxl345_getAcceleration(struct Adxl345_Handle *handle,
   union Adxl345Transport_TxFrame tx_frame = {.asAddress =
                                                  Adxl345Flags_Address_dataX0};
   union Adxl345Transport_RxFrame rx_frame = {0};
-  handle->transmitReceiveFrame(&tx_frame, &rx_frame, 6);
+  handle->doTransmitReceiveFrameImpl(&tx_frame, &rx_frame, 6);
   *acc = rx_frame.asAcceleration;
 
   return 0;

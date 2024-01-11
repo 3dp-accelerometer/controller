@@ -16,22 +16,22 @@ enum HostTransport_Status {
 };
 
 struct HostTransport_FromHostApi {
-  int (*const onPacketReceived)(
+  int (*const doTakeReceivedPacketImpl)(
       uint8_t *); ///< Context: static int8_t
                   ///< CDC_Receive_FS(uint8_t* , uint32_t *)
 };
 
 struct HostTransport_ToHostApi {
-  enum HostTransport_Status (*const transmit)(
+  enum HostTransport_Status (*const doTransmitImpl)(
       uint8_t *, uint16_t); ///< Context: main() and interrupts
 
   const uint8_t controllerVersionMajor; ///< Context: main()
   const uint8_t controllerVersionMinor; ///< Context: main()
   const uint8_t controllerVersionPatch; ///< Context: main()
 
-  int (*const getSensorOutputDataRate)(uint8_t *); ///< Context: main()
-  int (*const getSensorScale)(uint8_t *);          ///< Context: main()
-  int (*const getSensorRange)(uint8_t *);          ///< Context: main()
+  int (*const doGetSensorOutputDataRateImpl)(uint8_t *); ///< Context: main()
+  int (*const doGetSensorScaleImpl)(uint8_t *);          ///< Context: main()
+  int (*const doGetSensorRangeImpl)(uint8_t *);          ///< Context: main()
 };
 
 /**

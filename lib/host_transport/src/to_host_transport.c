@@ -12,7 +12,7 @@
 enum HostTransport_Status
 TransportTx_transmit(struct HostTransport_Handle *handle, uint8_t *buffer,
                      uint16_t len) {
-  return handle->toHost.transmit(buffer, len);
+  return handle->toHost.doTransmitImpl(buffer, len);
 }
 
 void TransportTx_SamplingSetup(struct HostTransport_Handle *handle) {
@@ -24,9 +24,9 @@ void TransportTx_SamplingSetup(struct HostTransport_Handle *handle) {
   uint8_t scale = {0};
   uint8_t range = {0};
 
-  handle->toHost.getSensorOutputDataRate(&odr);
-  handle->toHost.getSensorScale(&scale);
-  handle->toHost.getSensorRange(&range);
+  handle->toHost.doGetSensorOutputDataRateImpl(&odr);
+  handle->toHost.doGetSensorScaleImpl(&scale);
+  handle->toHost.doGetSensorRangeImpl(&range);
 
   tx.asTxFrame.asDeviceSetup.outputDataRate = odr;
   tx.asTxFrame.asDeviceSetup.scale = scale;

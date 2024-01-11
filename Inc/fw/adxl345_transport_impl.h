@@ -14,8 +14,9 @@ struct Adxl345_Handle;
 
 #define ADXL345_HANDLE_INITIALIZER                                             \
   {                                                                            \
-    .transmitFrame = Adxl345TransportImpl_transmitFrame,                       \
-    .transmitReceiveFrame = Adxl345TransportImpl_transmitReceiveFrame          \
+    .doTransmitFrameImpl = Adxl345TransportImpl_doTransmitFrameImpl,           \
+    .doTransmitReceiveFrameImpl =                                              \
+        Adxl345TransportImpl_doTransmitReceiveFrameImpl                        \
   }
 
 /**
@@ -31,10 +32,9 @@ struct Adxl345_Handle;
  *
  * @return -EINVAL if invalid args, -EIO on TX error, 0 otherwise
  */
-int Adxl345TransportImpl_transmitFrame(union Adxl345Transport_TxFrame *frame,
-                                       uint8_t numBytes,
-                                       enum Adxl345Spi_Cs applyCs,
-                                       enum Adxl345Spi_RwFlags rwRlag);
+int Adxl345TransportImpl_doTransmitFrameImpl(
+    union Adxl345Transport_TxFrame *frame, uint8_t numBytes,
+    enum Adxl345Spi_Cs applyCs, enum Adxl345Spi_RwFlags rwRlag);
 
 /**
  * Transmits and receives frames (read transaction).
@@ -48,6 +48,6 @@ int Adxl345TransportImpl_transmitFrame(union Adxl345Transport_TxFrame *frame,
  *
  * @return -EINVAL if invalid args, -EIO on TX/RX error, 0 otherwise
  */
-int Adxl345TransportImpl_transmitReceiveFrame(
+int Adxl345TransportImpl_doTransmitReceiveFrameImpl(
     union Adxl345Transport_TxFrame *txFrame,
     union Adxl345Transport_RxFrame *rxFrame, uint8_t numBytesReceive);

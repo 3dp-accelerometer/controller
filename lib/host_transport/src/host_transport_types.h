@@ -166,6 +166,18 @@ struct TransportRx_GetFirmwareVersion {
 /* TX ------------------------------------------------------------------------*/
 
 /**
+ * Code sent to host in case of error.
+ */
+enum TransportTx_ErrorCode {
+  TransportTx_ErrorCode_Undefined = 0,     ///< \see stm32f4xx_it.h
+  TransportTx_ErrorCode_UsbError,          ///< \see stm32f4xx_it.h
+  TransportTx_ErrorCode_UsageFaultHandler, ///< \see stm32f4xx_it.h
+  TransportTx_ErrorCode_BudFaultHandler,   ///< \see stm32f4xx_it.h
+  TransportTx_ErrorCode_HardFaultHandler,  ///< \see stm32f4xx_it.h
+  TransportTx_ErrorCode_ErrorHandler       ///< \see main.h
+};
+
+/**
  * TX payload response with sensor's ODR.
  */
 struct TransportTx_OutputDataRate {
@@ -257,6 +269,13 @@ struct TransportTx_Acceleration {
 } __attribute__((packed));
 
 /**
+ * TX payload transporting an error code.
+ */
+struct TransportTx_Error {
+  enum TransportTx_ErrorCode code;
+} __attribute__((packed));
+
+/**
  * TX payload transporting the firmware version.
  */
 struct TransportTx_FirmwareVersion {
@@ -282,6 +301,7 @@ union TransportTxFrame {
   struct TransportTx_SamplingAborted asSamplingAborted;
   struct TransportTx_Acceleration asAcceleration;
   struct TransportTx_FirmwareVersion asFirmwareVersion;
+  struct TransportTx_Error asError;
 } __attribute__((packed));
 
 /**

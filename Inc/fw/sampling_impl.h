@@ -24,19 +24,19 @@ struct Sampling_Handle;
               .isFifoWatermarkSet = false,                                     \
               .transactionsCount = 0},                                         \
                                                                                \
-    .doEnableSensor = ControllerImpl_sampling_doEnableSensor,                  \
-    .doDisableSensor = ControllerImpl_sampling_doDisableSensor,                \
-    .doFetchSensorAcceleration =                                               \
-        ControllerImpl_sampling_doFetchSensorAcceleration,                     \
-    .doWaitDelay5us = SamplingImpl_doWaitDelay5us,                             \
-    .doForwardAccelerationBuffer =                                             \
-        ControllerImpl_sampling_doForwardAccelerationBuffer,                   \
+    .doEnableSensorImpl = ControllerImpl_sampling_doEnableSensorImpl,          \
+    .doDisableSensorImpl = ControllerImpl_sampling_doDisableSensorImpl,        \
+    .doFetchSensorAccelerationImpl =                                           \
+        ControllerImpl_sampling_doFetchSensorAccelerationImpl,                 \
+    .doWaitDelay5usImpl = SamplingImpl_doWaitDelay5usImpl,                     \
+    .doForwardAccelerationBufferImpl =                                         \
+        ControllerImpl_sampling_doForwardAccelerationBufferImpl,               \
                                                                                \
-    .onSamplingStarted = ControllerImpl_sampling_onSamplingStarted,            \
-    .onSamplingStopped = ControllerImpl_sampling_onSamplingStopped,            \
-    .onSamplingAborted = ControllerImpl_sampling_onSamplingAborted,            \
-    .onSamplingFinished = ControllerImpl_sampling_onSamplingFinished,          \
-    .onFifoOverflow = ControllerImpl_sampling_onFifoOverflow,                  \
+    .onSamplingStartedCb = ControllerImpl_sampling_onSamplingStartedCb,        \
+    .onSamplingStoppedCb = ControllerImpl_sampling_onSamplingStoppedCb,        \
+    .onSamplingAbortedCb = ControllerImpl_sampling_onSamplingAbortedCb,        \
+    .onSamplingFinishedCb = ControllerImpl_sampling_onSamplingFinishedCb,      \
+    .onFifoOverflowCb = ControllerImpl_sampling_onFifoOverflowCb,              \
   }
 
-void SamplingImpl_doWaitDelay5us(struct Sampling_Handle *handle);
+void SamplingImpl_doWaitDelay5usImpl(struct Sampling_Handle *handle);

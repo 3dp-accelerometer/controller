@@ -45,18 +45,19 @@ struct Sampling_State {
 struct Sampling_Handle {
   struct Sampling_State state;
 
-  void (*const doEnableSensor)();  ///< Context: main()
-  void (*const doDisableSensor)(); ///< Context: main()
-  void (*const doFetchSensorAcceleration)(
-      struct Sampling_Acceleration *);                    ///< Context: main()
-  void (*const doWaitDelay5us)(struct Sampling_Handle *); ///< Context: main()
-  void (*const doForwardAccelerationBuffer)(
+  void (*const doEnableSensorImpl)();  ///< Context: main()
+  void (*const doDisableSensorImpl)(); ///< Context: main()
+  void (*const doFetchSensorAccelerationImpl)(
+      struct Sampling_Acceleration *); ///< Context: main()
+  void (*const doWaitDelay5usImpl)(
+      struct Sampling_Handle *); ///< Context: main()
+  void (*const doForwardAccelerationBufferImpl)(
       const struct Sampling_Acceleration *, uint16_t,
       uint16_t); ///< Context: main()
 
-  void (*const onSamplingStarted)();  ///< Context: main()
-  void (*const onSamplingStopped)();  ///< Context: main()
-  void (*const onSamplingAborted)();  ///< Context: main()
-  void (*const onSamplingFinished)(); ///< Context: main()
-  void (*const onFifoOverflow)();     ///< Context: main()
+  void (*const onSamplingStartedCb)();  ///< Context: main()
+  void (*const onSamplingStoppedCb)();  ///< Context: main()
+  void (*const onSamplingAbortedCb)();  ///< Context: main()
+  void (*const onSamplingFinishedCb)(); ///< Context: main()
+  void (*const onFifoOverflowCb)();     ///< Context: main()
 };

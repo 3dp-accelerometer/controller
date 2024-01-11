@@ -50,24 +50,24 @@ int ControllerImpl_host_onRequestGetDeviceSetup();
 int ControllerImpl_host_onRequestSamplingStart(uint16_t maxSamplesCount);
 int ControllerImpl_host_onRequestSamplingStop();
 
-void ControllerImpl_sensor_Adxl345_init();
-int ControllerImpl_sensor_Adxl345_getOutputDataRate(uint8_t *odr);
-int ControllerImpl_sensor_Adxl345_getScale(uint8_t *scale);
-int ControllerImpl_sensor_Adxl345_getRange(uint8_t *range);
+void ControllerImpl_sensor_Adxl345_doInitImpl();
+int ControllerImpl_sensor_Adxl345_doGetOutputDataRateImpl(uint8_t *odr);
+int ControllerImpl_sensor_Adxl345_doGetScaleImpl(uint8_t *scale);
+int ControllerImpl_sensor_Adxl345_doGetRangeImpl(uint8_t *range);
 
 void ControllerImpl_sampling_setFifoWatermark();
 void ControllerImpl_sampling_clearFifoWatermark();
 void ControllerImpl_sampling_setFifoOverflow();
 void ControllerImpl_sampling_on5usTimerExpired();
-void ControllerImpl_sampling_onSamplingStarted();
-void ControllerImpl_sampling_onSamplingStopped();
-void ControllerImpl_sampling_onSamplingAborted();
-void ControllerImpl_sampling_onSamplingFinished();
-void ControllerImpl_sampling_doForwardAccelerationBuffer(
+void ControllerImpl_sampling_onSamplingStartedCb();
+void ControllerImpl_sampling_onSamplingStoppedCb();
+void ControllerImpl_sampling_onSamplingAbortedCb();
+void ControllerImpl_sampling_onSamplingFinishedCb();
+void ControllerImpl_sampling_doForwardAccelerationBufferImpl(
     const struct Sampling_Acceleration *buffer, uint16_t bufferLen,
     uint16_t startIndex);
-void ControllerImpl_sampling_onFifoOverflow();
-void ControllerImpl_sampling_doEnableSensor();
-void ControllerImpl_sampling_doDisableSensor();
-void ControllerImpl_sampling_doFetchSensorAcceleration(
+void ControllerImpl_sampling_onFifoOverflowCb();
+void ControllerImpl_sampling_doEnableSensorImpl();
+void ControllerImpl_sampling_doDisableSensorImpl();
+void ControllerImpl_sampling_doFetchSensorAccelerationImpl(
     struct Sampling_Acceleration *sample);

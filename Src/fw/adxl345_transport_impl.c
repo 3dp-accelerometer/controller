@@ -57,10 +57,9 @@ static int receiveFrame(union Adxl345Transport_RxFrame *frame,
   return 0;
 }
 
-int Adxl345TransportImpl_transmitFrame(union Adxl345Transport_TxFrame *frame,
-                                       uint8_t numBytes,
-                                       enum Adxl345Spi_Cs applyCs,
-                                       enum Adxl345Spi_RwFlags rwFlag) {
+int Adxl345TransportImpl_doTransmitFrameImpl(
+    union Adxl345Transport_TxFrame *frame, uint8_t numBytes,
+    enum Adxl345Spi_Cs applyCs, enum Adxl345Spi_RwFlags rwFlag) {
 
   if (NULL == frame)
     return -EINVAL;
@@ -79,7 +78,7 @@ int Adxl345TransportImpl_transmitFrame(union Adxl345Transport_TxFrame *frame,
   return 0;
 }
 
-int Adxl345TransportImpl_transmitReceiveFrame(
+int Adxl345TransportImpl_doTransmitReceiveFrameImpl(
     union Adxl345Transport_TxFrame *tx_frame,
     union Adxl345Transport_RxFrame *rx_frame, uint8_t num_bytes_receive) {
 
@@ -90,8 +89,8 @@ int Adxl345TransportImpl_transmitReceiveFrame(
                                 ? Adxl345Spi_RwFlags_multiByte
                                 : Adxl345Spi_RwFlags_singleByte;
   ncsSet();
-  Adxl345TransportImpl_transmitFrame(tx_frame, 1, Adxl345Spi_Cs_untouched,
-                                     Adxl345Spi_RwFlags_read | multiByte);
+  Adxl345TransportImpl_doTransmitFrameImpl(tx_frame, 1, Adxl345Spi_Cs_untouched,
+                                           Adxl345Spi_RwFlags_read | multiByte);
   receiveFrame(rx_frame, num_bytes_receive, Adxl345Spi_Cs_untouched);
   ncsClear();
 

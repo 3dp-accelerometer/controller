@@ -11,19 +11,20 @@ enum HostTransport_Status;
 
 #define HOSTTRANSPORT_DECLARE_INITIALIZER                                      \
   {                                                                            \
-    .fromHost = {.onPacketReceived = HostTransportImpl_onPacketReceived},      \
+    .fromHost = {.doTakeReceivedPacketImpl =                                   \
+                     HostTransportImpl_onTakeReceivedImpl},                    \
     .toHost = {                                                                \
-      .transmit = HostTransportImpl_transmit,                                  \
+      .doTransmitImpl = HostTransportImpl_doTransmitImpl,                      \
       .controllerVersionMajor = VERSION_MAJOR,                                 \
       .controllerVersionMinor = VERSION_MINOR,                                 \
       .controllerVersionPatch = VERSION_PATCH,                                 \
-      .getSensorOutputDataRate =                                               \
-          ControllerImpl_sensor_Adxl345_getOutputDataRate,                     \
-      .getSensorScale = ControllerImpl_sensor_Adxl345_getScale,                \
-      .getSensorRange = ControllerImpl_sensor_Adxl345_getRange                 \
+      .doGetSensorOutputDataRateImpl =                                         \
+          ControllerImpl_sensor_Adxl345_doGetOutputDataRateImpl,               \
+      .doGetSensorScaleImpl = ControllerImpl_sensor_Adxl345_doGetScaleImpl,    \
+      .doGetSensorRangeImpl = ControllerImpl_sensor_Adxl345_doGetRangeImpl     \
     }                                                                          \
   }
 
-enum HostTransport_Status HostTransportImpl_transmit(uint8_t *buffer,
-                                                     uint16_t len);
-int HostTransportImpl_onPacketReceived(uint8_t *buffer);
+enum HostTransport_Status HostTransportImpl_doTransmitImpl(uint8_t *buffer,
+                                                           uint16_t len);
+int HostTransportImpl_onTakeReceivedImpl(uint8_t *buffer);

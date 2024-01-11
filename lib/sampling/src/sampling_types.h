@@ -7,7 +7,6 @@
 #pragma once
 
 #include <adxl345.h>
-#include <adxl345_transport_types.h>
 #include <inttypes.h>
 #include <stdbool.h>
 
@@ -30,19 +29,40 @@ static_assert(ADXL345_WATERMARK_LEVEL > 0,
 #undef MYSTRINGIZE
 #undef MYSTRINGIZE0
 
+struct Sampling_Acceleration {
+  int16_t x;
+  int16_t y;
+  int16_t z;
+} __attribute__((packed));
+
 /**
  * Internal module state and device specific implementation.
  */
-struct Sampling_Handle {
+struct Sampling_State {
   volatile uint16_t maxSamples;
   volatile bool doStart;
   volatile bool doStop;
   volatile bool isStarted;
   volatile bool waitFor5usTimer;
-  struct Adxl345Transport_Acceleration rxBuffer[NUM_SAMPLES_READ_AT_ONCE];
+  struct Sampling_Acceleration rxBuffer[NUM_SAMPLES_READ_AT_ONCE];
   volatile bool isFifoOverflowSet;
   volatile bool isFifoWatermarkSet;
-  int transactionsCount;
+  volatile int transactionsCount;
+};
+
+struct Sampling_Handle {
+  struct Sampling_State state;
 
   void (*delay5us)(struct Sampling_Handle *);
+  void (*onSamplingStarted)();
+  void (*onSamplingStopped)();
+  void (*onSamplingAborted)();
+  void (*onSamplingFinished)();
+  void (*onPostAccelerationBuffer)(const struct Sampling_Acceleration *,
+                                   uint16_t, uint16_t);
+
+  void (*onFifoOverflow)();
+  void (*onSensorEnable)();
+  void (*onSensorDisable)();
+  void (*onFetchSensorAcceleration)(struct Sampling_Acceleration *);
 };

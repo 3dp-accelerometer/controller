@@ -26,18 +26,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "fw/adxl345_transport_impl.h"
 #include "fw/controller_impl.h"
-#include "fw/host_transport_impl.h"
-#include "fw/sampling_impl.h"
-#include "fw/version.h"
-#include "usbd_cdc_if.h"
-#include <adxl345.h>
-#include <controller.h>
-#include <host_transport.h>
-#include <sampling.h>
-#include <sampling_types.h>
-#include <sys/errno.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -58,10 +47,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-ADXL345_DECLARE_HANDLE(sensorHandle);
-SAMPLING_DECLARE_HANDLE(samplingHandle);
-HOSTTRANSPORT_DECLARE_HANDLE(hostHandle);
-DEVICEIMPL_DECLARE_HANDLE(controllerHandle, sensorHandle, samplingHandle);
+extern struct Controller_Handle controllerHandle;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -108,22 +94,13 @@ int main(void) {
   MX_TIM3_Init();
   MX_USB_DEVICE_Init();
   /* USER CODE BEGIN 2 */
-  Adxl345_init(&sensorHandle);
+  controllerHandle.init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1) {
-    switch (controllerHandle.samplingFetchForward(&samplingHandle)) {
-    case -ECANCELED:
-    case -EOVERFLOW:
-      HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_RESET);
-      break;
-    case ENODATA:
-      HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_SET);
-      break;
-    }
-    controllerHandle.controllerCheckReboot();
+    controllerHandle.loop();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

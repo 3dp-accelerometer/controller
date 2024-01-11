@@ -21,4 +21,5 @@ enum HostTransport_Status {
 struct HostTransport_Handle {
   enum HostTransport_Status (*transmit)(uint8_t *,
                                         uint16_t); ///< host communication pimpl
+  int (*onPacketReceived)(uint8_t *);              ///< on-received pimpl
 };

@@ -15,7 +15,8 @@ struct Controller_Handle;
  * Processes received package from the OUT endpoint of host.
  *
  * Shall be called in CDC_Receive_FS(uint8_t* Buf, uint32_t *Len).
- * Handles requests, namely received packets with RX header ID one of:
+ * Performs simple check on the recieved buffer and forwards of the data package
+ * header ID is one of:
  *
  *   - TransportHeader_Id_Rx_GetFirmwareVersion
  *   - TransportHeader_Id_Rx_GetOutputDataRate
@@ -30,13 +31,11 @@ struct Controller_Handle;
  *   - TransportHeader_Id_Rx_SamplingStop
  *
  * @param hostHandle host transport pimpl
- * @param controllerHandle controller API pimpl
- * @param sensorHandle host transport pimpl (to be removed in future version)
  * @param buffer received package (as a whole, must not be fragmented)
  * @param length received package length
- * @return -EINVAL on invalid arguments, 0 otherwise
+ * @return
+ *   - -EINVAL on invalid arguments
+ *   - HostTransport_Handle.onReceived(uint8_t *, uint32_t *) otherwise
  */
 int TransportRx_Process(struct HostTransport_Handle *hostHandle,
-                        struct Controller_Handle *controllerHandle,
-                        struct Adxl345_Handle *sensorHandle, uint8_t *buffer,
-                        const uint32_t *length);
+                        uint8_t *buffer, uint16_t length);

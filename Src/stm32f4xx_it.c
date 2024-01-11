@@ -22,7 +22,7 @@
 #include "stm32f4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include <sampling.h>
+#include <controller.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -42,7 +42,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN PV */
-extern struct Sampling_Handle samplingHandle;
+extern struct Controller_Handle controllerHandle;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -205,13 +205,10 @@ void SysTick_Handler(void)
 void EXTI2_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI2_IRQn 0 */
-
-  if (GPIO_PIN_SET == HAL_GPIO_ReadPin(FIFO_WMARK_GPIO_Port, FIFO_WMARK_Pin)) {
-    Sampling_setFifoWatermark(&samplingHandle);
-  } else {
-    Sampling_clearFifoWatermark(&samplingHandle);
-  }
-
+  if (GPIO_PIN_SET == HAL_GPIO_ReadPin(FIFO_WMARK_GPIO_Port, FIFO_WMARK_Pin))
+    controllerHandle.samplingSetFifoWatermark();
+  else
+    controllerHandle.samplingClearFifoWatermark();
   /* USER CODE END EXTI2_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(FIFO_WMARK_Pin);
   /* USER CODE BEGIN EXTI2_IRQn 1 */
@@ -226,9 +223,8 @@ void EXTI3_IRQHandler(void)
 {
   /* USER CODE BEGIN EXTI3_IRQn 0 */
 
-  if (GPIO_PIN_SET == HAL_GPIO_ReadPin(FIFO_OVFL_GPIO_Port, FIFO_OVFL_Pin)) {
-    Sampling_setFifoOverflow(&samplingHandle);
-  }
+  if (GPIO_PIN_SET == HAL_GPIO_ReadPin(FIFO_OVFL_GPIO_Port, FIFO_OVFL_Pin))
+    controllerHandle.samplingSetFifoOverflow();
 
   /* USER CODE END EXTI3_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(FIFO_OVFL_Pin);
@@ -243,7 +239,7 @@ void EXTI3_IRQHandler(void)
 void TIM3_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM3_IRQn 0 */
-  Sampling_on5usTimerExpired(&samplingHandle);
+  controllerHandle.samplingOn5usTimerExpired();
   // HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_RESET);
   /* USER CODE END TIM3_IRQn 0 */
   HAL_TIM_IRQHandler(&htim3);

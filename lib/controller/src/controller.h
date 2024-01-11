@@ -9,7 +9,13 @@
 #include <stdbool.h>
 
 struct Adxl345_Handle;
+struct HostTransport_Handle;
 struct Sampling_Handle;
+struct Sampling_Acceleration;
+
+enum TransportRx_SetOutputDataRate_Rate;
+enum TransportRx_SetScale_Scale;
+enum TransportRx_SetRange_Range;
 
 /**
  * Handle for several device pointer implementations.
@@ -30,15 +36,44 @@ struct Controller_Handle {
 
   struct Adxl345_Handle *sensorHandle;
   struct Sampling_Handle *samplingHandle;
+  struct HostTransport_Handle *hostTransportHandle;
+
+  void (*init)();
+  void (*loop)();
+
+  void (*sensorInit)();
 
   void (*controllerCheckReboot)();
   void (*controllerRequestReboot)();
 
-  void (*samplingStart)(struct Sampling_Handle *, uint16_t);
-  void (*samplingStop)(struct Sampling_Handle *);
-  int (*samplingFetchForward)(struct Sampling_Handle *);
-  void (*samplingSetFifoWatermark)(struct Sampling_Handle *);
-  void (*samplingClearFifoWatermark)(struct Sampling_Handle *);
-  void (*samplingSetFifoOverflow)(struct Sampling_Handle *);
-  void (*samplingOn5usTimerExpired)(struct Sampling_Handle *);
+  void (*hostOnBytesReceived)(uint8_t *, uint16_t);
+  int (*hostOnRequestGetFirmwareVersion)();
+  int (*hostOnRequestGetOutputDataRate)();
+  int (*hostOnRequestSetOutputDatatRate)(
+      enum TransportRx_SetOutputDataRate_Rate);
+  int (*hostOnRequestGetRange)();
+  int (*hostOnRequestSetRange)(enum TransportRx_SetRange_Range);
+  int (*hostOnRequestGetScale)();
+  int (*hostOnRequestSetScale)(enum TransportRx_SetScale_Scale);
+  int (*hostOnRequestGetDeviceSetup)();
+  int (*hostOnRequestSamplingStart)(uint16_t);
+  int (*hostOnRequestSamplingStop)();
+
+  void (*samplingStart)(uint16_t);
+  void (*samplingStop)();
+  int (*samplingFetchForward)();
+  void (*samplingSetFifoWatermark)();
+  void (*samplingClearFifoWatermark)();
+  void (*samplingSetFifoOverflow)();
+  void (*samplingOn5usTimerExpired)();
+  void (*samplingOnStarted)();
+  void (*samplingOnStopped)();
+  void (*samplingOnAborted)();
+  void (*samplingOnFinished)();
+  void (*samplingOnPostAccelerationBuffer)(const struct Sampling_Acceleration *,
+                                           uint16_t, uint16_t);
+  void (*samplingOnFifoOverflow)();
+  void (*samplingOnSensorEnable)();
+  void (*samplingOnSensorDisable)();
+  void (*samplingOnFetchSensorAcceleration)(struct Sampling_Acceleration *);
 };

@@ -10,7 +10,21 @@
 struct Adxl345_Handle;
 struct Controller_Handle;
 struct HostTransport_Handle;
-struct Adxl345Transport_Acceleration;
+struct Sampling_Acceleration;
+
+enum HostTransport_Status;
+
+/**
+ * Transmits data to the IN endpoint of host.
+ *
+ * @param hostHandle underlying pimpl
+ * @param buffer data to transmit
+ * @param len data length
+ * @return transmission status
+ */
+enum HostTransport_Status
+TransportTx_transmit(struct HostTransport_Handle *hostHandle, uint8_t *buffer,
+                     uint16_t len);
 
 /**
  * Transmits device configuration TransportTx_DeviceSetup to the IN endpoint of
@@ -94,5 +108,5 @@ void TransportTx_FifoOverflow(struct HostTransport_Handle *hostHandle);
  *   - -EINVAL otherwise
  */
 int TransportTx_AccelerationBuffer(struct HostTransport_Handle *hostHandle,
-                                   struct Adxl345Transport_Acceleration *data,
+                                   const struct Sampling_Acceleration *data,
                                    uint8_t count, uint16_t startIndex);

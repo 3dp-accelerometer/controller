@@ -23,7 +23,7 @@ struct Sampling_Handle;
  *
  * Called by:
  *   - sampling.c
- *   - TransportRx_Process(uint8_t *buffer, const uint32_t *length)
+ *   - TransportRx_Process(uint8_t *buffer, uint16_t length)
  *
  * \param handle module internal state and device dependent pimpl
  * \param maxSamples amount of samples requested, infinite if 0
@@ -35,7 +35,7 @@ void Sampling_start(struct Sampling_Handle *handle, uint16_t maxSamples);
  *
  * Called by:
  *   - sampling.c
- *   - TransportRx_Process(uint8_t *buffer, const uint32_t *length)
+ *   - TransportRx_Process(uint8_t *buffer, uint16_t length)
  *
  * \param handle module internal state and device dependent pimpl
  */

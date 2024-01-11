@@ -11,6 +11,13 @@
 #include <adxl345_transport_types.h>
 #include <controller.h>
 #include <errno.h>
+#include <sampling_types.h>
+
+enum HostTransport_Status
+TransportTx_transmit(struct HostTransport_Handle *hostHandle, uint8_t *buffer,
+                     uint16_t len) {
+  return hostHandle->transmit(buffer, len);
+}
 
 void TransportTx_SamplingSetup(struct HostTransport_Handle *hostHandle,
                                struct Adxl345_Handle *sensorHandle) {
@@ -30,8 +37,9 @@ void TransportTx_SamplingSetup(struct HostTransport_Handle *hostHandle,
   tx.asTxFrame.asDeviceSetup.scale = scale;
 
   while (HostTransport_Status_Busy ==
-         hostHandle->transmit((uint8_t *)&tx, SIZEOF_HEADER_INCL_PAYLOAD(
-                                                  tx.asTxFrame.asDeviceSetup)))
+         TransportTx_transmit(
+             hostHandle, (uint8_t *)&tx,
+             SIZEOF_HEADER_INCL_PAYLOAD(tx.asTxFrame.asDeviceSetup)))
     ;
 }
 
@@ -44,8 +52,8 @@ void TransportTx_FirmwareVersion(struct HostTransport_Handle *hostHandle,
   tx.asTxFrame.asFirmwareVersion.patch = controllerHandle->swVersionPatch;
 
   while (HostTransport_Status_Busy ==
-         hostHandle->transmit(
-             (uint8_t *)&tx,
+         TransportTx_transmit(
+             hostHandle, (uint8_t *)&tx,
              SIZEOF_HEADER_INCL_PAYLOAD(tx.asTxFrame.asFirmwareVersion)))
     ;
 }
@@ -57,7 +65,7 @@ void TransportTx_SamplingStarted(struct HostTransport_Handle *hostHandle,
   tx.asTxFrame.asSamplingStarted.maxSamples = max_samples;
 
   while (HostTransport_Status_Busy ==
-         hostHandle->transmit((uint8_t *)&tx,
+         TransportTx_transmit(hostHandle, (uint8_t *)&tx,
                               sizeof(struct Transport_Header) +
                                   sizeof(tx.asTxFrame.asSamplingStarted)))
     ;
@@ -67,7 +75,7 @@ void TransportTx_SamplingFinished(struct HostTransport_Handle *hostHandle) {
   struct TransportFrame tx = {.header.id =
                                   Transport_HeaderId_Tx_SamplingFinished};
   while (HostTransport_Status_Busy ==
-         hostHandle->transmit((uint8_t *)&tx,
+         TransportTx_transmit(hostHandle, (uint8_t *)&tx,
                               sizeof(struct Transport_Header) +
                                   sizeof(tx.asTxFrame.asSamplingFinished)))
     ;
@@ -80,7 +88,7 @@ void TransportTx_SamplingStopped(struct HostTransport_Handle *hostHandle,
   struct TransportFrame tx = {.header.id =
                                   Transport_HeaderId_Tx_SamplingStopped};
   while (HostTransport_Status_Busy ==
-         hostHandle->transmit((uint8_t *)&tx,
+         TransportTx_transmit(hostHandle, (uint8_t *)&tx,
                               sizeof(struct Transport_Header) +
                                   sizeof(tx.asTxFrame.asSamplingStopped)))
     ;
@@ -90,7 +98,7 @@ void TransportTx_SamplingAborted(struct HostTransport_Handle *hostHandle) {
   struct TransportFrame tx = {.header.id =
                                   Transport_HeaderId_Tx_SamplingAborted};
   while (HostTransport_Status_Busy ==
-         hostHandle->transmit((uint8_t *)&tx,
+         TransportTx_transmit(hostHandle, (uint8_t *)&tx,
                               sizeof(struct Transport_Header) +
                                   sizeof(tx.asTxFrame.asSamplingAborted)))
     ;
@@ -99,14 +107,14 @@ void TransportTx_SamplingAborted(struct HostTransport_Handle *hostHandle) {
 void TransportTx_FifoOverflow(struct HostTransport_Handle *hostHandle) {
   struct TransportFrame tx = {.header.id = Transport_HeaderId_Tx_FifoOverflow};
   while (HostTransport_Status_Busy ==
-         hostHandle->transmit((uint8_t *)&tx,
+         TransportTx_transmit(hostHandle, (uint8_t *)&tx,
                               sizeof(struct Transport_Header) +
                                   sizeof(tx.asTxFrame.asFifoOverflow)))
     ;
 }
 
 int TransportTx_AccelerationBuffer(struct HostTransport_Handle *hostHandle,
-                                   struct Adxl345Transport_Acceleration *data,
+                                   const struct Sampling_Acceleration *data,
                                    uint8_t count, uint16_t startIndex) {
   // HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_SET);
   struct TransportFrame acc[ADXL345_WATERMARK_LEVEL] = {};
@@ -140,7 +148,7 @@ int TransportTx_AccelerationBuffer(struct HostTransport_Handle *hostHandle,
   //     shall call us until ENODATA
 
   while (HostTransport_Status_Busy ==
-         hostHandle->transmit((uint8_t *)acc,
+         TransportTx_transmit(hostHandle, (uint8_t *)acc,
                               count * sizeof(struct TransportFrame)))
     ;
 

@@ -6,78 +6,70 @@
 
 #include "sampling.h"
 #include "sampling_types.h"
-#include <assert.h>
-#include <controller.h>
 #include <errno.h>
-#include <to_host_transport.h>
-
-extern struct Adxl345_Handle sensorHandle;
-extern struct HostTransport_Handle hostHandle;
-extern struct Controller_Handle controllerHandle;
 
 static bool isNSamplesReadEnabled(struct Sampling_Handle *handle) {
-  return handle->maxSamples > 0;
+  return handle->state.maxSamples > 0;
 }
 
 static void checkStartRequest(struct Sampling_Handle *handle) {
-  if (!handle->doStart) {
+  if (!handle->state.doStart) {
     return;
   }
-  handle->doStart = false;
+  handle->state.doStart = false;
 
-  if (handle->isStarted) {
+  if (handle->state.isStarted) {
     return;
   }
+  handle->onSamplingStarted();
 
-  TransportTx_FirmwareVersion(&hostHandle, &controllerHandle);
-  TransportTx_SamplingStarted(&hostHandle, handle->maxSamples);
+  handle->state.isFifoOverflowSet = false;
+  handle->state.transactionsCount = 0;
+  handle->state.isStarted = true;
 
-  handle->isFifoOverflowSet = false;
-  handle->transactionsCount = 0;
-  handle->isStarted = true;
-
-  Adxl345_setPowerCtlMeasure(&sensorHandle);
+  handle->onSensorEnable();
 }
 
 static void checkStopRequest(struct Sampling_Handle *handle) {
-  if (!handle->doStop) {
+  if (!handle->state.doStop) {
     return;
   }
-  handle->doStop = false;
+  handle->state.doStop = false;
 
-  if (!handle->isStarted) {
+  if (!handle->state.isStarted) {
     return;
   }
 
-  if (handle->transactionsCount < handle->maxSamples) {
-    TransportTx_SamplingAborted(&hostHandle);
+  if (handle->state.transactionsCount < handle->state.maxSamples) {
+    handle->onSamplingAborted();
   }
-  TransportTx_SamplingStopped(&hostHandle, &sensorHandle);
+  handle->onSamplingStopped();
 
-  Adxl345_setPowerCtlStandby(&sensorHandle);
+  handle->onSensorDisable();
 
   // clear watermark interrupt (clear whole fifo)
-  struct Adxl345Transport_Acceleration devNull;
   for (uint8_t idx = 0; idx < ADXL345_FIFO_ENTRIES; idx++) {
-    Adxl345_getAcceleration(&sensorHandle, &devNull);
+    handle->onFetchSensorAcceleration(NULL);
   }
 
-  handle->isStarted = false;
+  handle->state.isStarted = false;
 }
 
 void Sampling_start(struct Sampling_Handle *handle, uint16_t maxSamples) {
-  handle->maxSamples = maxSamples;
-  handle->doStart = true;
+  handle->state.maxSamples = maxSamples;
+  handle->state.doStart = true;
 }
 
-void Sampling_stop(struct Sampling_Handle *handle) { handle->doStop = true; }
+void Sampling_stop(struct Sampling_Handle *handle) {
+  handle->state.doStop = true;
+}
 
 int Sampling_fetchForward(struct Sampling_Handle *handle) {
   int ret = {0};
 
   checkStartRequest(handle);
 
-  if (handle->isFifoWatermarkSet && handle->isStarted) {
+  if (handle->state.isFifoWatermarkSet && handle->state.isStarted) {
     uint8_t rxCount = 0;
 
     // fetch samples
@@ -85,18 +77,19 @@ int Sampling_fetchForward(struct Sampling_Handle *handle) {
 
       checkStopRequest(handle);
 
-      if (!handle->isStarted) {
+      if (!handle->state.isStarted) {
         ret = -ECANCELED;
         break;
       }
 
-      if (handle->isFifoOverflowSet) {
+      if (handle->state.isFifoOverflowSet) {
         ret = -EOVERFLOW;
         break;
       }
 
       if (isNSamplesReadEnabled(handle) &&
-          (handle->transactionsCount + rxCount) >= handle->maxSamples) {
+          (handle->state.transactionsCount + rxCount) >=
+              handle->state.maxSamples) {
         ret = ENODATA;
         break;
       }
@@ -110,30 +103,30 @@ int Sampling_fetchForward(struct Sampling_Handle *handle) {
       // a data register is signified by the transition from Register 0x37 to
       // Register 0x38 or by the CS pin going high.
       handle->delay5us(handle);
-      Adxl345_getAcceleration(&sensorHandle, &handle->rxBuffer[rxCount]);
+      handle->onFetchSensorAcceleration(&handle->state.rxBuffer[rxCount]);
       rxCount++;
     }
 
     // forward samples
     if (0 < rxCount) {
-      TransportTx_AccelerationBuffer(&hostHandle, handle->rxBuffer, rxCount,
-                                     handle->transactionsCount);
-      handle->transactionsCount += rxCount;
+      handle->onPostAccelerationBuffer(handle->state.rxBuffer, rxCount,
+                                       handle->state.transactionsCount);
+      handle->state.transactionsCount += rxCount;
     }
   }
 
   if (-EOVERFLOW == ret) {
-    TransportTx_FifoOverflow(&hostHandle);
+    handle->onFifoOverflow();
     Sampling_stop(handle);
   }
 
   if (-ECANCELED == ret) {
-    TransportTx_SamplingAborted(&hostHandle);
+    handle->onSamplingAborted();
     Sampling_stop(handle);
   }
 
   if (ENODATA == ret) {
-    TransportTx_SamplingFinished(&hostHandle);
+    handle->onSamplingFinished();
     Sampling_stop(handle);
   }
 
@@ -142,17 +135,17 @@ int Sampling_fetchForward(struct Sampling_Handle *handle) {
 }
 
 void Sampling_setFifoWatermark(struct Sampling_Handle *handle) {
-  handle->isFifoWatermarkSet = true;
+  handle->state.isFifoWatermarkSet = true;
 }
 
 void Sampling_clearFifoWatermark(struct Sampling_Handle *handle) {
-  handle->isFifoWatermarkSet = false;
+  handle->state.isFifoWatermarkSet = false;
 }
 
 void Sampling_setFifoOverflow(struct Sampling_Handle *handle) {
-  handle->isFifoOverflowSet = true;
+  handle->state.isFifoOverflowSet = true;
 }
 
 void Sampling_on5usTimerExpired(struct Sampling_Handle *handle) {
-  handle->waitFor5usTimer = false;
+  handle->state.waitFor5usTimer = false;
 }

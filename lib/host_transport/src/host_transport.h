@@ -15,11 +15,26 @@ enum HostTransport_Status {
   HostTransport_Status_Undefined
 };
 
+struct HostTransport_FromHostApi {
+  int (*onPacketReceived)(uint8_t *);
+};
+
+struct HostTransport_ToHostApi {
+  enum HostTransport_Status (*transmit)(uint8_t *, uint16_t);
+
+  uint8_t controllerVersionMajor;
+  uint8_t controllerVersionMinor;
+  uint8_t controllerVersionPatch;
+
+  int (*getSensorOutputDataRate)(uint8_t *);
+  int (*getSensorScale)(uint8_t *);
+  int (*getSensorRange)(uint8_t *);
+};
+
 /**
  * Host communication handle.
  */
 struct HostTransport_Handle {
-  enum HostTransport_Status (*transmit)(uint8_t *,
-                                        uint16_t); ///< host communication pimpl
-  int (*onPacketReceived)(uint8_t *);              ///< on-received pimpl
+  struct HostTransport_FromHostApi fromHost;
+  struct HostTransport_ToHostApi toHost;
 };

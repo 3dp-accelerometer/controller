@@ -73,7 +73,7 @@ int Sampling_fetchForward(struct Sampling_Handle *handle) {
     uint8_t rxCount = 0;
 
     // fetch samples
-    while (rxCount < NUM_SAMPLES_READ_AT_ONCE) {
+    while (rxCount < SAMPLING_NUM_SAMPLES_READ_AT_ONCE) {
 
       checkStopRequest(handle);
 

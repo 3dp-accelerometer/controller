@@ -34,9 +34,9 @@ enum Adxl345Flags_DataFormat_FullResBit;
 //@}
 
 static_assert(ADXL345_WATERMARK_LEVEL <= 32,
-              "maximum allowed watermark level: 32");
+              "ERROR: maximum allowed watermark level: 32");
 static_assert(ADXL345_WATERMARK_LEVEL >= 0,
-              "minimum allowed watermark level: 0");
+              "ERROR: minimum allowed watermark level: 0");
 
 /**
  * The HW handle pointing to the underlying SPI communication implementation.

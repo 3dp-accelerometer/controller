@@ -9,10 +9,6 @@
 
 /*----------------------------------------------------------------------------*/
 
-struct Adxl345_Acceleration;
-
-/*----------------------------------------------------------------------------*/
-
 /**
  * Computes size of package, namely size of header type + size of package type.
  */
@@ -246,11 +242,18 @@ struct TransportTx_SamplingAborted {
 /**
  * TX payload transporting an acceleration sample.
  */
-struct TransportTx_Acceleration {
-  uint16_t index; ///< running sample index
+struct Transport_Acceleration {
   int16_t x;      ///< raw sampling value in x-axis as seen from sensor
   int16_t y;      ///< raw sampling value in y-axis as seen from sensor
   int16_t z;      ///< raw sampling value in z-axis as seen from sensor
+} __attribute__((packed));
+
+/**
+ * TX payload transporting an acceleration sample.
+ */
+struct TransportTx_Acceleration {
+  uint16_t index; ///< running sample index
+  struct Transport_Acceleration values;
 } __attribute__((packed));
 
 /**

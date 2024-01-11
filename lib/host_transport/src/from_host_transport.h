@@ -7,9 +7,7 @@
 #pragma once
 #include <inttypes.h>
 
-struct Adxl345_Handle;
 struct HostTransport_Handle;
-struct Controller_Handle;
 
 /**
  * Processes received package from the OUT endpoint of host.
@@ -30,12 +28,12 @@ struct Controller_Handle;
  *   - TransportHeader_Id_Rx_SamplingStart
  *   - TransportHeader_Id_Rx_SamplingStop
  *
- * @param hostHandle host transport pimpl
+ * @param handle host transport pimpl
  * @param buffer received package (as a whole, must not be fragmented)
  * @param length received package length
  * @return
  *   - -EINVAL on invalid arguments
  *   - HostTransport_Handle.onReceived(uint8_t *, uint32_t *) otherwise
  */
-int TransportRx_Process(struct HostTransport_Handle *hostHandle,
-                        uint8_t *buffer, uint16_t length);
+int TransportRx_Process(struct HostTransport_Handle *handle, uint8_t *buffer,
+                        uint16_t length);

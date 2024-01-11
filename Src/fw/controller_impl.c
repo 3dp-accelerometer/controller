@@ -22,6 +22,25 @@
 #include <stm32f4xx_hal.h>
 #include <to_host_transport.h>
 
+#define MYSTRINGIZE0(A) #A
+#define MYSTRINGIZE(A) MYSTRINGIZE0(A)
+
+// clang-format off
+static_assert(
+  SAMPLING_NUM_SAMPLES_READ_AT_ONCE <= ADXL345_WATERMARK_LEVEL,
+  "ERROR: maximum allowed read-at-once buffer: "
+  MYSTRINGIZE( ADXL345_WATERMARK_LEVEL));
+
+static_assert(
+  TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER == ADXL345_WATERMARK_LEVEL,
+  "ERROR: TransportTx transmit buffer and ADXL345 watermark level must be same: "
+  MYSTRINGIZE(TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER) " vs. "
+  MYSTRINGIZE(ADXL345_WATERMARK_LEVEL));
+// clang-format on
+
+#undef MYSTRINGIZE
+#undef MYSTRINGIZE0
+
 struct Controller_Handle controllerHandle = {
     .swVersionMajor = VERSION_MAJOR,
     .swVersionMinor = VERSION_MINOR,
@@ -231,6 +250,27 @@ void ControllerImpl_sensor_Adxl345_init() {
   Adxl345_init(&controllerHandle.sensor.handle);
 }
 
+int ControllerImpl_sensor_Adxl345_getOutputDataRate(uint8_t *odr) {
+  enum Adxl345Flags_BwRate_Rate orate;
+  int ret = Adxl345_getOutputDataRate(&controllerHandle.sensor.handle, &orate);
+  *odr = orate;
+  return ret;
+}
+
+int ControllerImpl_sensor_Adxl345_getScale(uint8_t *scale) {
+  enum Adxl345Flags_DataFormat_FullResBit scl;
+  int ret = Adxl345_getScale(&controllerHandle.sensor.handle, &scl);
+  *scale = scl;
+  return ret;
+}
+
+int ControllerImpl_sensor_Adxl345_getRange(uint8_t *range) {
+  enum Adxl345Flags_DataFormat_Range rng;
+  int ret = Adxl345_getRange(&controllerHandle.sensor.handle, &rng);
+  *range = rng;
+  return ret;
+}
+
 void ControllerImpl_sampling_setFifoWatermark() {
   Sampling_setFifoWatermark(&controllerHandle.sampling.handle);
 }
@@ -248,15 +288,14 @@ void ControllerImpl_sampling_on5usTimerExpired() {
 }
 
 void ControllerImpl_sampling_onSamplingStarted() {
-  TransportTx_FirmwareVersion(&controllerHandle.host.handle, &controllerHandle);
+  TransportTx_FirmwareVersion(&controllerHandle.host.handle);
   TransportTx_SamplingStarted(
       &controllerHandle.host.handle,
       controllerHandle.sampling.handle.state.maxSamples);
 }
 
 void ControllerImpl_sampling_onSamplingStopped() {
-  TransportTx_SamplingStopped(&controllerHandle.host.handle,
-                              &controllerHandle.sensor.handle);
+  TransportTx_SamplingStopped(&controllerHandle.host.handle);
 }
 
 void ControllerImpl_sampling_onSamplingAborted() {
@@ -270,7 +309,15 @@ void ControllerImpl_sampling_onSamplingFinished() {
 void ControllerImpl_sampling_doForwardAccelerationBuffer(
     const struct Sampling_Acceleration *buffer, uint16_t bufferLen,
     uint16_t startIndex) {
-  TransportTx_AccelerationBuffer(&controllerHandle.host.handle, buffer,
+
+  // type conversion in favour of loose dependencies in between transport- and
+  // sampling-module.
+  static_assert(sizeof(struct Sampling_Acceleration) ==
+                    sizeof(struct Transport_Acceleration),
+                "Error: acceleration structs must match in size!");
+
+  TransportTx_AccelerationBuffer(&controllerHandle.host.handle,
+                                 (const struct Transport_Acceleration *)buffer,
                                  bufferLen, startIndex);
 }
 void ControllerImpl_sampling_onFifoOverflow() {

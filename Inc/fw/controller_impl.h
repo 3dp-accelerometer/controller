@@ -51,6 +51,9 @@ int ControllerImpl_host_onRequestSamplingStart(uint16_t maxSamplesCount);
 int ControllerImpl_host_onRequestSamplingStop();
 
 void ControllerImpl_sensor_Adxl345_init();
+int ControllerImpl_sensor_Adxl345_getOutputDataRate(uint8_t *odr);
+int ControllerImpl_sensor_Adxl345_getScale(uint8_t *scale);
+int ControllerImpl_sensor_Adxl345_getRange(uint8_t *range);
 
 void ControllerImpl_sampling_setFifoWatermark();
 void ControllerImpl_sampling_clearFifoWatermark();

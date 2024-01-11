@@ -9,8 +9,6 @@
 
 #pragma once
 
-#include <adxl345.h>
-#include <adxl345_transport_types.h>
 #include <inttypes.h>
 #include <stdbool.h>
 

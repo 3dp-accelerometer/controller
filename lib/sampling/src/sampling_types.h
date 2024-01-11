@@ -15,19 +15,7 @@
  *
  * Must be less than or equal watermark level to not read beyond buffered FiFo.
  */
-#define NUM_SAMPLES_READ_AT_ONCE ADXL345_WATERMARK_LEVEL
-
-#define MYSTRINGIZE0(A) #A
-#define MYSTRINGIZE(A) MYSTRINGIZE0(A)
-
-static_assert(
-    NUM_SAMPLES_READ_AT_ONCE <= ADXL345_WATERMARK_LEVEL,
-    "maximum allowed read-at-once: " MYSTRINGIZE(ADXL345_WATERMARK_LEVEL));
-
-static_assert(ADXL345_WATERMARK_LEVEL > 0,
-              "minimum required watermark level: 1");
-#undef MYSTRINGIZE
-#undef MYSTRINGIZE0
+#define SAMPLING_NUM_SAMPLES_READ_AT_ONCE 24
 
 struct Sampling_Acceleration {
   int16_t x;
@@ -44,7 +32,7 @@ struct Sampling_State {
   volatile bool doStop;
   volatile bool isStarted;
   volatile bool waitFor5usTimer;
-  struct Sampling_Acceleration rxBuffer[NUM_SAMPLES_READ_AT_ONCE];
+  struct Sampling_Acceleration rxBuffer[SAMPLING_NUM_SAMPLES_READ_AT_ONCE];
   volatile bool isFifoOverflowSet;
   volatile bool isFifoWatermarkSet;
   volatile int transactionsCount;

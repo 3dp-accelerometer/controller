@@ -1,5 +1,5 @@
 /**
  * \file controller.c
  *
- * Implements controller API.
+ * Implements generic parts of the controller API.
  */

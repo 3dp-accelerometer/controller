@@ -1,7 +1,7 @@
 /**
  * \file adxl345_transport_impl.c
  *
- * Implementation of the underlying SPI communication to the ADXL345 sensor.
+ * Implements hardware specific ADXL345 API.
  */
 
 #include "fw/adxl345_transport_impl.h"

@@ -1,7 +1,7 @@
 /**
  * \file host_transport_impl.c
  *
- * Controller to IN USB endpoint (host) transport implementation.
+ * Implements hardware specific transport to the IN USB endpoint of the host.
  */
 
 #include "fw/host_transport_impl.h"

@@ -1,7 +1,7 @@
 /**
  * \file device_impl.h
  *
- * API of device implementation.
+ * Hardware specific controller implementation API.
  */
 
 #pragma once

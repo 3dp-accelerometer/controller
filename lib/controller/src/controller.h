@@ -1,7 +1,12 @@
 /**
  * \file controller.h
  *
- * API of controller.
+ * The controller module aims at abstracting the whole device API.
+ *
+ * The device API consists of the following APIs:
+ *   - host transport API
+ *   - sensor API
+ *   - sampling API
  */
 
 #pragma once

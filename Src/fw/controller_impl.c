@@ -1,7 +1,7 @@
 /**
  * \file device_impl.c
  *
- * Implements device API.
+ * Implements hardware specific controller implementation API.
  */
 
 #include "fw/controller_impl.h"

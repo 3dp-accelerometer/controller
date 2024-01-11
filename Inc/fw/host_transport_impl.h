@@ -1,7 +1,7 @@
 /**
  * \file host_transport_impl.h
  *
- * API Controller to IN USB endpoint (host) transport.
+ * Hardware specific transport to the IN USB endpoint of the host.
  */
 
 #pragma once

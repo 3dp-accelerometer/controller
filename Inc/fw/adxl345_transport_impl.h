@@ -51,11 +51,3 @@ int Adxl345TransportImpl_transmitFrame(union Adxl345Transport_TxFrame *frame,
 int Adxl345TransportImpl_transmitReceiveFrame(
     union Adxl345Transport_TxFrame *txFrame,
     union Adxl345Transport_RxFrame *rxFrame, uint8_t numBytesReceive);
-
-/**
- * Initializes the handle's read/write pimpl.
- *
- * @param handle
- * @return -EINVAL or error, 0 otherwise
- */
-int Adxl345TransportImpl_initHandle(struct Adxl345_Handle *handle);

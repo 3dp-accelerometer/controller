@@ -19,7 +19,7 @@ enum TransportRx_SetRange_Range;
 struct Controller_Sensor {
   struct Adxl345_Handle handle;
 
-  void (*init)();
+  void (*const init)(); ///< Context: main()
 };
 
 struct Controller_Sampling {
@@ -30,35 +30,41 @@ struct Controller_Sampling {
    *
    * @{
    */
-  void (*doSetFifoWatermark)();
-  void (*doClearFifoWatermark)();
-  void (*doSetFifoOverflow)();
-  void (*doSet5usTimerExpired)();
+  void (*const doSetFifoWatermark)();   ///< Context: EXTI2_IRQHandler()
+  void (*const doClearFifoWatermark)(); ///< Context: EXTI2_IRQHandler()
+  void (*const doSetFifoOverflow)();    ///< Context: EXTI3_IRQHandler()
+  void (*const doSet5usTimerExpired)(); ///< Context: TIM3_IRQHandler()
   /// @}
 };
 
 struct Controller_Host {
   struct HostTransport_Handle handle; ///< device specific pimpl
 
-  void (*doTakeBytes)(uint8_t *,
-                      uint16_t); ///< Device API for host-transport module.
+  /**
+   * Device API for host-transport module.
+   *
+   * Context: CDC_Receive_FS(uint8_t*, uint32_t *)
+   */
+  void (*const doTakeBytes)(uint8_t *, uint16_t);
 
   /**
    * Device API for Host-Transport callbacks upon doTakeBytes(uint8_t *,
    * uint16_t).
    *
+   * Context: CDC_Receive_FS(uint8_t*, uint32_t *)
    * @{
    */
-  int (*onRequestGetFirmwareVersion)();
-  int (*onRequestGetOutputDataRate)();
-  int (*onRequestSetOutputDatatRate)(enum TransportRx_SetOutputDataRate_Rate);
-  int (*onRequestGetRange)();
-  int (*onRequestSetRange)(enum TransportRx_SetRange_Range);
-  int (*onRequestGetScale)();
-  int (*onRequestSetScale)(enum TransportRx_SetScale_Scale);
-  int (*onRequestGetDeviceSetup)();
-  int (*onRequestSamplingStart)(uint16_t);
-  int (*onRequestSamplingStop)();
+  int (*const onRequestGetFirmwareVersion)();
+  int (*const onRequestGetOutputDataRate)();
+  int (*const onRequestSetOutputDatatRate)(
+      enum TransportRx_SetOutputDataRate_Rate);
+  int (*const onRequestGetRange)();
+  int (*const onRequestSetRange)(enum TransportRx_SetRange_Range);
+  int (*const onRequestGetScale)();
+  int (*const onRequestSetScale)(enum TransportRx_SetScale_Scale);
+  int (*const onRequestGetDeviceSetup)();
+  int (*const onRequestSamplingStart)(uint16_t);
+  int (*const onRequestSamplingStop)();
   /// @}
 };
 
@@ -70,29 +76,35 @@ struct Controller_Host {
  * runtime.Underlying fields may be changed though. These shall be marked as
  * volatile and properly synchronized.
  *
- * todo: mark underlying fields as volatile
- * todo: introduce locks for synchronization
- * todo: read the docs if parallel interrupts exist on stm32
  */
 struct Controller_Handle {
-  uint8_t swVersionMajor;
-  uint8_t swVersionMinor;
-  uint8_t swVersionPatch;
-
-  struct Controller_Sensor sensor; ///< Device API for sensor and sensor pimpl.
-  struct Controller_Sampling
-      sampling; ///< Device API for sampling and sampling pimpl.
-  struct Controller_Host
-      host; ///< Device API for host transport and host transport pimpl.
+  const uint8_t swVersionMajor; ///< Context: main() and interrupts
+  const uint8_t swVersionMinor; ///< Context: main() and interrupts
+  const uint8_t swVersionPatch; ///< Context: main() and interrupts
 
   /**
-   * Basic device API.
+   * Device API for sensor and sensor pimpl.
+   */
+  struct Controller_Sensor sensor;
+
+  /**
+   * Device API for sampling and sampling pimpl.
+   */
+  struct Controller_Sampling sampling;
+
+  /**
+   * Device API for host transport and host transport pimpl.
+   */
+  struct Controller_Host host;
+
+  /**
+   * Device API.
    * @{
    */
-  void (*init)();
-  void (*loop)();
+  void (*init)(); ///< Context: main()
+  void (*loop)(); ///< Context: main()
 
-  void (*checkReboot)();
-  void (*requestReboot)();
+  void (*checkReboot)();   ///< Context: main()
+  void (*requestReboot)(); ///< Context: main()
   ///< @}
 };

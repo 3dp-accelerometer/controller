@@ -44,16 +44,18 @@ struct Sampling_State {
 struct Sampling_Handle {
   struct Sampling_State state;
 
-  void (*doEnableSensor)();
-  void (*doDisableSensor)();
-  void (*doFetchSensorAcceleration)(struct Sampling_Acceleration *);
-  void (*doWaitDelay5us)(struct Sampling_Handle *);
-  void (*doForwardAccelerationBuffer)(const struct Sampling_Acceleration *,
-                                      uint16_t, uint16_t);
+  void (*const doEnableSensor)();  ///< Context: main()
+  void (*const doDisableSensor)(); ///< Context: main()
+  void (*const doFetchSensorAcceleration)(
+      struct Sampling_Acceleration *);                    ///< Context: main()
+  void (*const doWaitDelay5us)(struct Sampling_Handle *); ///< Context: main()
+  void (*const doForwardAccelerationBuffer)(
+      const struct Sampling_Acceleration *, uint16_t,
+      uint16_t); ///< Context: main()
 
-  void (*onSamplingStarted)();
-  void (*onSamplingStopped)();
-  void (*onSamplingAborted)();
-  void (*onSamplingFinished)();
-  void (*onFifoOverflow)();
+  void (*const onSamplingStarted)();  ///< Context: main()
+  void (*const onSamplingStopped)();  ///< Context: main()
+  void (*const onSamplingAborted)();  ///< Context: main()
+  void (*const onSamplingFinished)(); ///< Context: main()
+  void (*const onFifoOverflow)();     ///< Context: main()
 };

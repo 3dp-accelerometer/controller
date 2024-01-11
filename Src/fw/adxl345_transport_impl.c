@@ -7,7 +7,6 @@
 #include "fw/adxl345_transport_impl.h"
 #include "gpio.h"
 #include "spi.h"
-#include <adxl345.h>
 #include <adxl345_spi_types.h>
 #include <adxl345_transport_types.h>
 #include <errno.h>
@@ -95,17 +94,6 @@ int Adxl345TransportImpl_transmitReceiveFrame(
                                      Adxl345Spi_RwFlags_read | multiByte);
   receiveFrame(rx_frame, num_bytes_receive, Adxl345Spi_Cs_untouched);
   ncsClear();
-
-  return 0;
-}
-
-int Adxl345TransportImpl_initHandle(struct Adxl345_Handle *handle) {
-
-  if (NULL == handle)
-    return -EINVAL;
-
-  handle->transmitFrame = Adxl345TransportImpl_transmitFrame;
-  handle->transmitReceiveFrame = Adxl345TransportImpl_transmitReceiveFrame;
 
   return 0;
 }

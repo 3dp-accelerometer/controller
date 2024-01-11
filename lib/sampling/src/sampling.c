@@ -110,7 +110,7 @@ int Sampling_fetchForward(struct Sampling_Handle *handle) {
     // forward samples
     if (0 < rxCount) {
       handle->doForwardAccelerationBuffer(handle->state.rxBuffer, rxCount,
-                                       handle->state.transactionsCount);
+                                          handle->state.transactionsCount);
       handle->state.transactionsCount += rxCount;
     }
   }

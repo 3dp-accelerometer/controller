@@ -40,10 +40,12 @@ struct Controller_Sampling {
 struct Controller_Host {
   struct HostTransport_Handle handle; ///< device specific pimpl
 
-  void (*doTakeBytes)(uint8_t *, uint16_t); ///< Device API for host-transport module.
+  void (*doTakeBytes)(uint8_t *,
+                      uint16_t); ///< Device API for host-transport module.
 
   /**
-   * Device API for Host-Transport callbacks upon doTakeBytes(uint8_t *, uint16_t).
+   * Device API for Host-Transport callbacks upon doTakeBytes(uint8_t *,
+   * uint16_t).
    *
    * @{
    */
@@ -78,8 +80,10 @@ struct Controller_Handle {
   uint8_t swVersionPatch;
 
   struct Controller_Sensor sensor; ///< Device API for sensor and sensor pimpl.
-  struct Controller_Sampling sampling; ///< Device API for sampling and sampling pimpl.
-  struct Controller_Host host; ///< Device API for host transport and host transport pimpl.
+  struct Controller_Sampling
+      sampling; ///< Device API for sampling and sampling pimpl.
+  struct Controller_Host
+      host; ///< Device API for host transport and host transport pimpl.
 
   /**
    * Basic device API.

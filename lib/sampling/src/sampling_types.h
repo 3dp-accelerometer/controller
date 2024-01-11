@@ -49,7 +49,7 @@ struct Sampling_Handle {
   void (*doFetchSensorAcceleration)(struct Sampling_Acceleration *);
   void (*doWaitDelay5us)(struct Sampling_Handle *);
   void (*doForwardAccelerationBuffer)(const struct Sampling_Acceleration *,
-                                   uint16_t, uint16_t);
+                                      uint16_t, uint16_t);
 
   void (*onSamplingStarted)();
   void (*onSamplingStopped)();

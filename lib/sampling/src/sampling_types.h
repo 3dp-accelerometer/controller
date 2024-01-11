@@ -27,15 +27,16 @@ struct Sampling_Acceleration {
  * Internal module state.
  */
 struct Sampling_State {
-  volatile uint16_t maxSamples;
-  volatile bool doStart;
-  volatile bool doStop;
-  volatile bool isStarted;
-  volatile bool waitFor5usTimer;
-  struct Sampling_Acceleration rxBuffer[SAMPLING_NUM_SAMPLES_READ_AT_ONCE];
-  volatile bool isFifoOverflowSet;
-  volatile bool isFifoWatermarkSet;
-  volatile int transactionsCount;
+  volatile uint16_t maxSamples;  ///< Context: main() and interrupts
+  bool doStart;                  ///< Context: main()
+  bool doStop;                   ///< Context: main()
+  bool isStarted;                ///< Context: main()
+  volatile bool waitFor5usTimer; ///< Context: main() and interrupts
+  struct Sampling_Acceleration
+      rxBuffer[SAMPLING_NUM_SAMPLES_READ_AT_ONCE]; ///< Context: main()
+  volatile bool isFifoOverflowSet;  ///< Context: main() and interrupts
+  volatile bool isFifoWatermarkSet; ///< Context: main() and interrupts
+  int transactionsCount;            ///< Context: main()
 };
 
 /**

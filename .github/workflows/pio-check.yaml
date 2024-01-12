@@ -39,4 +39,4 @@ jobs:
           cd utils
           source .venv/bin/activate
           cd -
-          platformio check --fail-on-defect=high --fail-on-defect=medium --fail-on-defect=low --verbose
+          platformio check --fail-on-defect=high --fail-on-defect=medium --fail-on-defect=low

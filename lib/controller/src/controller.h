@@ -70,6 +70,7 @@ struct Controller_Host {
   int (*const onRequestGetDeviceSetup)();
   int (*const onRequestSamplingStart)(uint16_t);
   int (*const onRequestSamplingStop)();
+  int (*const onRequestUptime)();
   /// @}
 };
 

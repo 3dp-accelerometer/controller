@@ -41,44 +41,121 @@ static_assert(
 #undef MYSTRINGIZE
 #undef MYSTRINGIZE0
 
+void ControllerImpl_init();
+void ControllerImpl_loop();
+
+void ControllerImpl_device_checkReboot();
+void ControllerImpl_device_requestAsyncReboot();
+
+static void host_doTakeBytes(uint8_t *buffer, uint16_t len);
+static int host_onRequestGetFirmwareVersion();
+static int host_onRequestGetOutputDataRate();
+static int
+host_onRequestSetOutputDatatRate(enum TransportRx_SetOutputDataRate_Rate odr);
+static int host_onRequestGetRange();
+static int host_onRequestSetRange(enum TransportRx_SetRange_Range range);
+static int host_onRequestGetScale();
+static int host_onRequestSetScale(enum TransportRx_SetScale_Scale scale);
+static int host_onRequestGetDeviceSetup();
+static int host_onRequestSamplingStart(uint16_t maxSamplesCount);
+static int host_onRequestSamplingStop();
+static int host_onRequestGetUptime();
+
+static void sensor_Adxl345_doInitImpl();
+static int sensor_Adxl345_doGetOutputDataRateImpl(uint8_t *odr);
+static int sensor_Adxl345_doGetScaleImpl(uint8_t *scale);
+static int sensor_Adxl345_doGetRangeImpl(uint8_t *range);
+
+static void sampling_setFifoWatermark();
+static void sampling_clearFifoWatermark();
+static void sampling_setFifoOverflow();
+static void sampling_on5usTimerExpired();
+static void sampling_onSamplingStartedCb();
+static void sampling_onSamplingStoppedCb();
+static void sampling_onSamplingAbortedCb();
+static void sampling_onSamplingFinishedCb();
+static void sampling_doForwardAccelerationBufferImpl(
+    const struct Sampling_Acceleration *buffer, uint16_t bufferLen,
+    uint16_t startIndex);
+static void sampling_onFifoOverflowCb();
+static void sampling_doEnableSensorImpl();
+static void sampling_doDisableSensorImpl();
+static void
+sampling_doFetchSensorAccelerationImpl(struct Sampling_Acceleration *sample);
+
+#define SAMPLING_DECLARE_INITIALIZER                                           \
+  {                                                                            \
+    .state = {.maxSamples = 0,                                                 \
+              .doStart = false,                                                \
+              .doStop = false,                                                 \
+              .isStarted = false,                                              \
+              .waitFor5usTimer = false,                                        \
+              .rxBuffer = {{.x = 0, .y = 0, .z = 0}},                          \
+              .isFifoOverflowSet = false,                                      \
+              .isFifoWatermarkSet = false,                                     \
+              .transactionsCount = 0},                                         \
+                                                                               \
+    .doEnableSensorImpl = sampling_doEnableSensorImpl,                         \
+    .doDisableSensorImpl = sampling_doDisableSensorImpl,                       \
+    .doFetchSensorAccelerationImpl = sampling_doFetchSensorAccelerationImpl,   \
+    .doWaitDelay5usImpl = SamplingImpl_doWaitDelay5usImpl,                     \
+    .doForwardAccelerationBufferImpl =                                         \
+        sampling_doForwardAccelerationBufferImpl,                              \
+                                                                               \
+    .onSamplingStartedCb = sampling_onSamplingStartedCb,                       \
+    .onSamplingStoppedCb = sampling_onSamplingStoppedCb,                       \
+    .onSamplingAbortedCb = sampling_onSamplingAbortedCb,                       \
+    .onSamplingFinishedCb = sampling_onSamplingFinishedCb,                     \
+    .onFifoOverflowCb = sampling_onFifoOverflowCb,                             \
+  }
+
+#define HOSTTRANSPORT_DECLARE_INITIALIZER                                      \
+  {                                                                            \
+    .fromHost = {.doTakeReceivedPacketImpl =                                   \
+                     HostTransportImpl_onTakeReceivedImpl},                    \
+    .toHost = {                                                                \
+      .doTransmitImpl = HostTransportImpl_doTransmitImpl,                      \
+      .controllerVersionMajor = VERSION_MAJOR,                                 \
+      .controllerVersionMinor = VERSION_MINOR,                                 \
+      .controllerVersionPatch = VERSION_PATCH,                                 \
+      .doGetSensorOutputDataRateImpl = sensor_Adxl345_doGetOutputDataRateImpl, \
+      .doGetSensorScaleImpl = sensor_Adxl345_doGetScaleImpl,                   \
+      .doGetSensorRangeImpl = sensor_Adxl345_doGetRangeImpl,                   \
+      .doGetUptimeMsImpl = HostTransportImpl_doGetUptimeMsImpl                 \
+    }                                                                          \
+  }
+
 struct Controller_Handle controllerHandle = {
     .swVersionMajor = VERSION_MAJOR,
     .swVersionMinor = VERSION_MINOR,
     .swVersionPatch = VERSION_PATCH,
 
     .sensor = {.handle = ADXL345_HANDLE_INITIALIZER,
-               .init = ControllerImpl_sensor_Adxl345_doInitImpl},
+               .init = sensor_Adxl345_doInitImpl},
 
     .sampling =
         {
             .handle = SAMPLING_DECLARE_INITIALIZER,
-            .doSetFifoWatermark = ControllerImpl_sampling_setFifoWatermark,
-            .doClearFifoWatermark = ControllerImpl_sampling_clearFifoWatermark,
-            .doSetFifoOverflow = ControllerImpl_sampling_setFifoOverflow,
-            .doSet5usTimerExpired = ControllerImpl_sampling_on5usTimerExpired,
+            .doSetFifoWatermark = sampling_setFifoWatermark,
+            .doClearFifoWatermark = sampling_clearFifoWatermark,
+            .doSetFifoOverflow = sampling_setFifoOverflow,
+            .doSet5usTimerExpired = sampling_on5usTimerExpired,
 
         },
 
-    .host =
-        {
-            .handle = HOSTTRANSPORT_DECLARE_INITIALIZER,
-            .doTakeBytes = ControllerImpl_host_doTakeBytes,
-            .onRequestGetFirmwareVersion =
-                ControllerImpl_host_onRequestGetFirmwareVersion,
-            .onRequestGetOutputDataRate =
-                ControllerImpl_host_onRequestGetOutputDataRate,
-            .onRequestSetOutputDatatRate =
-                ControllerImpl_host_onRequestSetOutputDatatRate,
-            .onRequestGetRange = ControllerImpl_host_onRequestGetRange,
-            .onRequestSetRange = ControllerImpl_host_onRequestSetRange,
-            .onRequestGetScale = ControllerImpl_host_onRequestGetScale,
-            .onRequestSetScale = ControllerImpl_host_onRequestSetScale,
-            .onRequestGetDeviceSetup =
-                ControllerImpl_host_onRequestGetDeviceSetup,
-            .onRequestSamplingStart =
-                ControllerImpl_host_onRequestSamplingStart,
-            .onRequestSamplingStop = ControllerImpl_host_onRequestSamplingStop,
-        },
+    .host = {.handle = HOSTTRANSPORT_DECLARE_INITIALIZER,
+             .doTakeBytes = host_doTakeBytes,
+             .onRequestGetFirmwareVersion = host_onRequestGetFirmwareVersion,
+             .onRequestGetOutputDataRate = host_onRequestGetOutputDataRate,
+             .onRequestSetOutputDatatRate = host_onRequestSetOutputDatatRate,
+             .onRequestGetRange = host_onRequestGetRange,
+             .onRequestSetRange = host_onRequestSetRange,
+             .onRequestGetScale = host_onRequestGetScale,
+             .onRequestSetScale = host_onRequestSetScale,
+             .onRequestGetDeviceSetup = host_onRequestGetDeviceSetup,
+             .onRequestSamplingStart = host_onRequestSamplingStart,
+             .onRequestSamplingStop = host_onRequestSamplingStop,
+             .onRequestUptime = host_onRequestGetUptime},
 
     .init = ControllerImpl_init,
     .loop = ControllerImpl_loop,
@@ -121,192 +198,137 @@ void ControllerImpl_device_requestAsyncReboot() {
 
 /* Host RX data ------------------------------------------------------------- */
 
-void ControllerImpl_host_doTakeBytes(uint8_t *buffer, uint16_t len) {
+/**
+ * Handles incoming bytes (unfragmented data packet).
+ *
+ * Calls generic TransportRx_Process(uint8_t *buffer, uint16_t length)
+ * implementation which performs basic checks only. Further
+ * processing/dispatching is delegated to the respective pimpl. \see
+ * host_transport_impl.h
+ *
+ * @param buffer received byte buffer (must not be fragmented)
+ * @param len received data length
+ */
+static void host_doTakeBytes(uint8_t *buffer, uint16_t len) {
   TransportRx_Process(&controllerHandle.host.handle, buffer, len);
 }
 
-int ControllerImpl_host_onRequestGetFirmwareVersion() {
-
-  struct TransportFrame response = {
-      .header.id = Transport_HeaderId_Tx_FirmwareVersion,
-      .asTxFrame.asFirmwareVersion.major = controllerHandle.swVersionMajor,
-      .asTxFrame.asFirmwareVersion.minor = controllerHandle.swVersionMinor,
-      .asTxFrame.asFirmwareVersion.patch = controllerHandle.swVersionPatch};
-
-  // send version
-  while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             &controllerHandle.host.handle, (uint8_t *)&response,
-             SIZEOF_HEADER_INCL_PAYLOAD(response.asTxFrame.asFirmwareVersion)))
-    ;
-
+static int host_onRequestGetFirmwareVersion() {
+  TransportTx_TxFirmwareVersion(&controllerHandle.host.handle);
   return 0;
 }
 
-int ControllerImpl_host_onRequestGetOutputDataRate() {
-  enum Adxl345Flags_BwRate_Rate rate;
-  Adxl345_getOutputDataRate(&controllerHandle.sensor.handle, &rate);
-
-  struct TransportFrame response = {.header.id =
-                                        Transport_HeaderId_Tx_OutputDataRate};
-  response.asTxFrame.asOutputDataRate.rate =
-      (enum TransportRx_SetOutputDataRate_Rate)rate;
-  // send ODR
-  while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             &controllerHandle.host.handle, (uint8_t *)&response,
-             SIZEOF_HEADER_INCL_PAYLOAD(response.asTxFrame.asOutputDataRate)))
-    ;
+static int host_onRequestGetOutputDataRate() {
+  TransportTx_TxOutputDataRate(&controllerHandle.host.handle);
   return 0;
 }
 
-int ControllerImpl_host_onRequestSetOutputDatatRate(
-    enum TransportRx_SetOutputDataRate_Rate odr) {
+static int
+host_onRequestSetOutputDatatRate(enum TransportRx_SetOutputDataRate_Rate odr) {
   return Adxl345_setOutputDataRate(&controllerHandle.sensor.handle, odr);
 }
 
-int ControllerImpl_host_onRequestGetRange() {
-  enum Adxl345Flags_DataFormat_Range range;
-  Adxl345_getRange(&controllerHandle.sensor.handle, &range);
-
-  struct TransportFrame response = {.header.id = Transport_HeaderId_Tx_Range};
-  response.asTxFrame.asRange.range = (enum TransportRx_SetRange_Range)range;
-
-  // send range
-  while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             &controllerHandle.host.handle, (uint8_t *)&response,
-             SIZEOF_HEADER_INCL_PAYLOAD(response.asTxFrame.asRange)))
-    ;
+static int host_onRequestGetRange() {
+  TransportTx_TxRange(&controllerHandle.host.handle);
   return 0;
 }
 
-int ControllerImpl_host_onRequestSetRange(
-    enum TransportRx_SetRange_Range range) {
+static int host_onRequestSetRange(enum TransportRx_SetRange_Range range) {
   return Adxl345_setRange(&controllerHandle.sensor.handle, range);
 }
 
-int ControllerImpl_host_onRequestGetScale() {
-  enum Adxl345Flags_DataFormat_FullResBit scale;
-  Adxl345_getScale(&controllerHandle.sensor.handle, &scale);
-
-  struct TransportFrame response = {.header.id = Transport_HeaderId_Tx_Scale};
-  response.asTxFrame.asScale.scale = (enum TransportRx_SetScale_Scale)scale;
-
-  // send scale
-  while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             &controllerHandle.host.handle, (uint8_t *)&response,
-             SIZEOF_HEADER_INCL_PAYLOAD(response.asTxFrame.asScale)))
-    ;
+static int host_onRequestGetScale() {
+  TransportTx_TxScale(&controllerHandle.host.handle);
   return 0;
 }
 
-int ControllerImpl_host_onRequestSetScale(
-    enum TransportRx_SetScale_Scale scale) {
+static int host_onRequestSetScale(enum TransportRx_SetScale_Scale scale) {
   return Adxl345_setScale(&controllerHandle.sensor.handle, scale);
 }
 
-int ControllerImpl_host_onRequestGetDeviceSetup() {
-  enum Adxl345Flags_BwRate_Rate rate;
-  enum Adxl345Flags_DataFormat_Range range;
-  enum Adxl345Flags_DataFormat_FullResBit scale;
-
-  Adxl345_getOutputDataRate(&controllerHandle.sensor.handle, &rate);
-  Adxl345_getRange(&controllerHandle.sensor.handle, &range);
-  Adxl345_getScale(&controllerHandle.sensor.handle, &scale);
-
-  struct TransportFrame response = {.header.id =
-                                        Transport_HeaderId_Tx_DeviceSetup};
-  response.asTxFrame.asDeviceSetup.outputDataRate =
-      (enum TransportRx_SetOutputDataRate_Rate)rate;
-  response.asTxFrame.asDeviceSetup.range =
-      (enum TransportRx_SetRange_Range)range;
-  response.asTxFrame.asDeviceSetup.scale =
-      (enum TransportRx_SetScale_Scale)scale;
-
-  // send scale
-  while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             &controllerHandle.host.handle, (uint8_t *)&response,
-             SIZEOF_HEADER_INCL_PAYLOAD(response.asTxFrame.asDeviceSetup)))
-    ;
+static int host_onRequestGetDeviceSetup() {
+  TransportTx_TxSamplingSetup(&controllerHandle.host.handle);
   return 0;
 }
 
-int ControllerImpl_host_onRequestSamplingStart(uint16_t maxSamplesCount) {
+static int host_onRequestSamplingStart(uint16_t maxSamplesCount) {
   Sampling_start(&controllerHandle.sampling.handle, maxSamplesCount);
   return 0;
 }
 
-int ControllerImpl_host_onRequestSamplingStop() {
+static int host_onRequestSamplingStop() {
   Sampling_stop(&controllerHandle.sampling.handle);
+  return 0;
+}
+
+static int host_onRequestGetUptime() {
+  TransportTx_TxUptime(&controllerHandle.host.handle);
   return 0;
 }
 
 /* Sensor ------------------------------------------------------------------- */
 
-void ControllerImpl_sensor_Adxl345_doInitImpl() {
+static void sensor_Adxl345_doInitImpl() {
   Adxl345_init(&controllerHandle.sensor.handle);
 }
 
-int ControllerImpl_sensor_Adxl345_doGetOutputDataRateImpl(uint8_t *odr) {
+static int sensor_Adxl345_doGetOutputDataRateImpl(uint8_t *odr) {
   enum Adxl345Flags_BwRate_Rate orate;
   int ret = Adxl345_getOutputDataRate(&controllerHandle.sensor.handle, &orate);
   *odr = orate;
   return ret;
 }
 
-int ControllerImpl_sensor_Adxl345_doGetScaleImpl(uint8_t *scale) {
+static int sensor_Adxl345_doGetScaleImpl(uint8_t *scale) {
   enum Adxl345Flags_DataFormat_FullResBit scl;
   int ret = Adxl345_getScale(&controllerHandle.sensor.handle, &scl);
   *scale = scl;
   return ret;
 }
 
-int ControllerImpl_sensor_Adxl345_doGetRangeImpl(uint8_t *range) {
+static int sensor_Adxl345_doGetRangeImpl(uint8_t *range) {
   enum Adxl345Flags_DataFormat_Range rng;
   int ret = Adxl345_getRange(&controllerHandle.sensor.handle, &rng);
   *range = rng;
   return ret;
 }
 
-void ControllerImpl_sampling_setFifoWatermark() {
+static void sampling_setFifoWatermark() {
   Sampling_setFifoWatermark(&controllerHandle.sampling.handle);
 }
 
-void ControllerImpl_sampling_clearFifoWatermark() {
+static void sampling_clearFifoWatermark() {
   Sampling_clearFifoWatermark(&controllerHandle.sampling.handle);
 }
 
-void ControllerImpl_sampling_setFifoOverflow() {
+static void sampling_setFifoOverflow() {
   Sampling_setFifoOverflow(&controllerHandle.sampling.handle);
 }
 
-void ControllerImpl_sampling_on5usTimerExpired() {
+static void sampling_on5usTimerExpired() {
   Sampling_on5usTimerExpired(&controllerHandle.sampling.handle);
 }
 
-void ControllerImpl_sampling_onSamplingStartedCb() {
-  TransportTx_FirmwareVersion(&controllerHandle.host.handle);
-  TransportTx_SamplingStarted(
+static void sampling_onSamplingStartedCb() {
+  TransportTx_TxFirmwareVersion(&controllerHandle.host.handle);
+  TransportTx_TxSamplingStarted(
       &controllerHandle.host.handle,
       controllerHandle.sampling.handle.state.maxSamples);
 }
 
-void ControllerImpl_sampling_onSamplingStoppedCb() {
-  TransportTx_SamplingStopped(&controllerHandle.host.handle);
+static void sampling_onSamplingStoppedCb() {
+  TransportTx_TxSamplingStopped(&controllerHandle.host.handle);
 }
 
-void ControllerImpl_sampling_onSamplingAbortedCb() {
-  TransportTx_SamplingAborted(&controllerHandle.host.handle);
+static void sampling_onSamplingAbortedCb() {
+  TransportTx_TxSamplingAborted(&controllerHandle.host.handle);
 }
 
-void ControllerImpl_sampling_onSamplingFinishedCb() {
-  TransportTx_SamplingFinished(&controllerHandle.host.handle);
+static void sampling_onSamplingFinishedCb() {
+  TransportTx_TxSamplingFinished(&controllerHandle.host.handle);
 }
 
-void ControllerImpl_sampling_doForwardAccelerationBufferImpl(
+static void sampling_doForwardAccelerationBufferImpl(
     const struct Sampling_Acceleration *buffer, uint16_t bufferLen,
     uint16_t startIndex) {
 
@@ -316,21 +338,25 @@ void ControllerImpl_sampling_doForwardAccelerationBufferImpl(
                     sizeof(struct Transport_Acceleration),
                 "Error: acceleration structs must match in size!");
 
-  TransportTx_AccelerationBuffer(&controllerHandle.host.handle,
-                                 (const struct Transport_Acceleration *)buffer,
-                                 bufferLen, startIndex);
+  TransportTx_TxAccelerationBuffer(
+      &controllerHandle.host.handle,
+      (const struct Transport_Acceleration *)buffer, bufferLen, startIndex);
 }
-void ControllerImpl_sampling_onFifoOverflowCb() {
-  TransportTx_FifoOverflow(&controllerHandle.host.handle);
+
+static void sampling_onFifoOverflowCb() {
+  TransportTx_TxFifoOverflow(&controllerHandle.host.handle);
 }
-void ControllerImpl_sampling_doEnableSensorImpl() {
+
+static void sampling_doEnableSensorImpl() {
   Adxl345_setPowerCtlMeasure(&controllerHandle.sensor.handle);
 }
-void ControllerImpl_sampling_doDisableSensorImpl() {
+
+static void sampling_doDisableSensorImpl() {
   Adxl345_setPowerCtlStandby(&controllerHandle.sensor.handle);
 }
-void ControllerImpl_sampling_doFetchSensorAccelerationImpl(
-    struct Sampling_Acceleration *sample) {
+
+static void
+sampling_doFetchSensorAccelerationImpl(struct Sampling_Acceleration *sample) {
   struct Adxl345Transport_Acceleration sensorSample;
   Adxl345_getAcceleration(&controllerHandle.sensor.handle, &sensorSample);
 

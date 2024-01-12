@@ -47,7 +47,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-extern struct Controller_Handle controllerHandle;
+// extern struct Controller_Handle controllerHandle;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/

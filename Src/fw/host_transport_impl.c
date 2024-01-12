@@ -63,8 +63,12 @@ int HostTransportImpl_onTakeReceivedImpl(uint8_t *buffer) {
         request->asRxFrame.asSamplingStart.max_samples_count);
   case Transport_HeaderId_Rx_SamplingStop:
     return controllerHandle.host.onRequestSamplingStop();
+  case Transport_HeaderId_Rx_GetUptime:
+    return controllerHandle.host.onRequestUptime();
 
   default:
     return -EINVAL;
   }
 }
+
+uint32_t HostTransportImpl_doGetUptimeMsImpl() { return HAL_GetTick(); }

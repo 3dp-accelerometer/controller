@@ -31,6 +31,7 @@ enum Transport_HeaderId {
   Transport_HeaderId_Rx_GetScale,
   Transport_HeaderId_Rx_GetDeviceSetup,
   Transport_HeaderId_Rx_GetFirmwareVersion,
+  Transport_HeaderId_Rx_GetUptime,
 
   Transport_HeaderId_Rx_DeviceReboot = 17,
   Transport_HeaderId_Rx_SamplingStart,
@@ -41,6 +42,7 @@ enum Transport_HeaderId {
   Transport_HeaderId_Tx_Scale,
   Transport_HeaderId_Tx_DeviceSetup,
   Transport_HeaderId_Tx_FirmwareVersion,
+  Transport_HeaderId_Tx_Uptime,
 
   Transport_HeaderId_Tx_FifoOverflow = 33,
   Transport_HeaderId_Tx_SamplingStarted,
@@ -48,6 +50,7 @@ enum Transport_HeaderId {
   Transport_HeaderId_Tx_SamplingStopped,
   Transport_HeaderId_Tx_SamplingAborted,
   Transport_HeaderId_Tx_Acceleration,
+  Transport_HeaderId_Tx_Error,
 };
 
 /**
@@ -163,6 +166,12 @@ struct TransportRx_GetDeviceSetup {
 struct TransportRx_GetFirmwareVersion {
 } __attribute__((packed));
 
+/**
+ * RX payload for retrieving the uptime since last boot.
+ */
+struct TransportRx_GetUptime {
+} __attribute__((packed));
+
 /* TX ------------------------------------------------------------------------*/
 
 /**
@@ -172,7 +181,7 @@ enum TransportTx_ErrorCode {
   TransportTx_ErrorCode_Undefined = 0,     ///< \see stm32f4xx_it.h
   TransportTx_ErrorCode_UsbError,          ///< \see stm32f4xx_it.h
   TransportTx_ErrorCode_UsageFaultHandler, ///< \see stm32f4xx_it.h
-  TransportTx_ErrorCode_BudFaultHandler,   ///< \see stm32f4xx_it.h
+  TransportTx_ErrorCode_BusFaultHandler,   ///< \see stm32f4xx_it.h
   TransportTx_ErrorCode_HardFaultHandler,  ///< \see stm32f4xx_it.h
   TransportTx_ErrorCode_ErrorHandler       ///< \see main.h
 };
@@ -276,6 +285,13 @@ struct TransportTx_Error {
 } __attribute__((packed));
 
 /**
+ * TX payload transporting the elapsed microsecond since last boot.
+ */
+struct TransportTx_Uptime {
+  uint32_t elapsedMs;
+} __attribute__((packed));
+
+/**
  * TX payload transporting the firmware version.
  */
 struct TransportTx_FirmwareVersion {
@@ -302,6 +318,7 @@ union TransportTxFrame {
   struct TransportTx_Acceleration asAcceleration;
   struct TransportTx_FirmwareVersion asFirmwareVersion;
   struct TransportTx_Error asError;
+  struct TransportTx_Uptime asUptime;
 } __attribute__((packed));
 
 /**
@@ -319,6 +336,7 @@ union TransportRxFrame {
   struct TransportRx_SamplingStart asSamplingStart;
   struct TransportRx_SamplingStop asSamplingStop;
   struct TransportRx_GetFirmwareVersion asGetFirmwareVersion;
+  struct TransportRx_GetUptime asGetUptime;
 } __attribute__((packed));
 
 /**

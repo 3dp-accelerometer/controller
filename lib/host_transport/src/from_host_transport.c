@@ -83,6 +83,11 @@ int TransportRx_Process(struct HostTransport_Handle *handle, uint8_t *buffer,
       return handle->fromHost.doTakeReceivedPacketImpl(buffer);
   } break;
 
+    // sampling stop requested
+  case Transport_HeaderId_Rx_GetUptime: {
+    if (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_GetUptime) == length)
+      return handle->fromHost.doTakeReceivedPacketImpl(buffer);
+  } break;
   default:
     return -EINVAL;
   }

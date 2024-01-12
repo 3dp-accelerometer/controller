@@ -11,17 +11,19 @@
 enum HostTransport_Status {
   HostTransport_Status_Ok = 0,
   HostTransport_Status_Busy,
+  HostTransport_Status_Again,
+  HostTransport_Status_BufferOverflow,
   HostTransport_Status_Fail,
   HostTransport_Status_Undefined
 };
 
 struct HostTransport_FromHostApi {
   int (*const doTakeReceivedPacketImpl)(
-      uint8_t *); ///< Context: static int8_t
-                  ///< CDC_Receive_FS(uint8_t* , uint32_t *)
+      uint8_t *); ///< Context: CDC_Receive_FS(uint8_t* , uint32_t *)
 };
 
 struct HostTransport_ToHostApi {
+  uint8_t *transmissionBuffer; ///< Context: main() (and usb tx interrupt?)
   enum HostTransport_Status (*const doTransmitImpl)(
       uint8_t *, uint16_t); ///< Context: main() and interrupts
 
@@ -32,6 +34,8 @@ struct HostTransport_ToHostApi {
   int (*const doGetSensorOutputDataRateImpl)(uint8_t *); ///< Context: main()
   int (*const doGetSensorScaleImpl)(uint8_t *);          ///< Context: main()
   int (*const doGetSensorRangeImpl)(uint8_t *);          ///< Context: main()
+  uint32_t (*const doGetUptimeMsImpl)(); ///< Context: CDC_Receive_FS(uint8_t* ,
+                                         ///< uint32_t *)
 };
 
 /**

@@ -112,5 +112,5 @@ struct Controller_Handle {
 
   void (*checkReboot)();   ///< Context: main()
   void (*requestReboot)(); ///< Context: main()
-  ///< @}
+  /// @}
 };

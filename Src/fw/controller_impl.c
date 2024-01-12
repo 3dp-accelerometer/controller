@@ -26,16 +26,20 @@
 #define MYSTRINGIZE(A) MYSTRINGIZE0(A)
 
 // clang-format off
+
+// NOLINTNEXTLINE(readability-redundant-declaration)
 static_assert(
   SAMPLING_NUM_SAMPLES_READ_AT_ONCE <= ADXL345_WATERMARK_LEVEL,
   "ERROR: maximum allowed read-at-once buffer: "
   MYSTRINGIZE( ADXL345_WATERMARK_LEVEL));
 
+// NOLINTNEXTLINE(readability-redundant-declaration)
 static_assert(
   TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER == ADXL345_WATERMARK_LEVEL,
   "ERROR: TransportTx transmit buffer and ADXL345 watermark level must be same: "
   MYSTRINGIZE(TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER) " vs. "
   MYSTRINGIZE(ADXL345_WATERMARK_LEVEL));
+
 // clang-format on
 
 #undef MYSTRINGIZE
@@ -76,7 +80,7 @@ static void sampling_onSamplingAbortedCb();
 static void sampling_onSamplingFinishedCb();
 static void sampling_doForwardAccelerationBufferImpl(
     const struct Sampling_Acceleration *buffer, uint16_t bufferLen,
-    uint16_t startIndex);
+    uint16_t firstIndex);
 static void sampling_onFifoOverflowCb();
 static void sampling_doEnableSensorImpl();
 static void sampling_doDisableSensorImpl();
@@ -125,6 +129,7 @@ sampling_doFetchSensorAccelerationImpl(struct Sampling_Acceleration *sample);
     }                                                                          \
   }
 
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 struct Controller_Handle controllerHandle = {
     .swVersionMajor = VERSION_MAJOR,
     .swVersionMinor = VERSION_MINOR,
@@ -164,37 +169,42 @@ struct Controller_Handle controllerHandle = {
     .requestReboot = ControllerImpl_device_requestAsyncReboot};
 
 /* Device ------------------------------------------------------------------- */
+
 /**
  * Flag indicating a device reboot was requested.
  *
  * \see ControllerImpl_device_requestAsyncReboot()
+ *
+ * @{
  */
-static bool Controller_rebootRequested = false;
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
+static bool rebootRequested = false;
+/// @}
 
 void ControllerImpl_init() { controllerHandle.sensor.init(); }
 
 void ControllerImpl_loop() {
   switch (Sampling_fetchForward(&controllerHandle.sampling.handle)) {
-  case -ECANCELED:
-  case -EOVERFLOW:
+  case -ECANCELED: // NOLINT(bugprone-branch-clone)
+  case -EOVERFLOW: // NOLINT(bugprone-branch-clone)
     HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_RESET);
     break;
   case ENODATA:
     HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_SET);
+    break;
+  default:
     break;
   }
   controllerHandle.checkReboot();
 }
 
 void ControllerImpl_device_checkReboot() {
-  if (Controller_rebootRequested) {
+  if (rebootRequested) {
     NVIC_SystemReset();
   }
 }
 
-void ControllerImpl_device_requestAsyncReboot() {
-  Controller_rebootRequested = true;
-}
+void ControllerImpl_device_requestAsyncReboot() { rebootRequested = true; }
 
 /* Host RX data ------------------------------------------------------------- */
 
@@ -273,23 +283,24 @@ static void sensor_Adxl345_doInitImpl() {
 }
 
 static int sensor_Adxl345_doGetOutputDataRateImpl(uint8_t *odr) {
-  enum Adxl345Flags_BwRate_Rate orate;
-  int ret = Adxl345_getOutputDataRate(&controllerHandle.sensor.handle, &orate);
-  *odr = orate;
+  enum Adxl345Flags_BwRate_Rate adxlOdr = {0};
+  int ret =
+      Adxl345_getOutputDataRate(&controllerHandle.sensor.handle, &adxlOdr);
+  *odr = adxlOdr;
   return ret;
 }
 
 static int sensor_Adxl345_doGetScaleImpl(uint8_t *scale) {
-  enum Adxl345Flags_DataFormat_FullResBit scl;
-  int ret = Adxl345_getScale(&controllerHandle.sensor.handle, &scl);
-  *scale = scl;
+  enum Adxl345Flags_DataFormat_FullResBit adxlScale = {0};
+  int ret = Adxl345_getScale(&controllerHandle.sensor.handle, &adxlScale);
+  *scale = adxlScale;
   return ret;
 }
 
 static int sensor_Adxl345_doGetRangeImpl(uint8_t *range) {
-  enum Adxl345Flags_DataFormat_Range rng;
-  int ret = Adxl345_getRange(&controllerHandle.sensor.handle, &rng);
-  *range = rng;
+  enum Adxl345Flags_DataFormat_Range adxlRange = {0};
+  int ret = Adxl345_getRange(&controllerHandle.sensor.handle, &adxlRange);
+  *range = adxlRange;
   return ret;
 }
 
@@ -330,7 +341,7 @@ static void sampling_onSamplingFinishedCb() {
 
 static void sampling_doForwardAccelerationBufferImpl(
     const struct Sampling_Acceleration *buffer, uint16_t bufferLen,
-    uint16_t startIndex) {
+    uint16_t firstIndex) {
 
   // type conversion in favour of loose dependencies in between transport- and
   // sampling-module.
@@ -340,7 +351,7 @@ static void sampling_doForwardAccelerationBufferImpl(
 
   TransportTx_TxAccelerationBuffer(
       &controllerHandle.host.handle,
-      (const struct Transport_Acceleration *)buffer, bufferLen, startIndex);
+      (const struct Transport_Acceleration *)buffer, bufferLen, firstIndex);
 }
 
 static void sampling_onFifoOverflowCb() {

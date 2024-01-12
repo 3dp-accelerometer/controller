@@ -5,6 +5,7 @@
  */
 
 #pragma once
+#include <assert.h>
 #include <inttypes.h>
 
 /*----------------------------------------------------------------------------*/
@@ -12,8 +13,8 @@
 /**
  * Computes size of package, namely size of header type + size of package type.
  */
-#define SIZEOF_HEADER_INCL_PAYLOAD(packageType)                                \
-  (sizeof(struct Transport_Header) + sizeof(packageType))
+#define SIZEOF_HEADER_INCL_PAYLOAD(payloadType)                                \
+  (sizeof(struct Transport_Header) + sizeof(payloadType))
 
 /* Transport Header ----------------------------------------------------------*/
 
@@ -23,7 +24,7 @@
  * Each package's header ID must be one of these.
  */
 enum Transport_HeaderId {
-  Transport_HeaderId_Rx_SetOutputDataRate = 1,
+  Transport_HeaderId_Rx_SetOutputDataRate = 1U,
   Transport_HeaderId_Rx_GetOutputDataRate,
   Transport_HeaderId_Rx_SetRange,
   Transport_HeaderId_Rx_GetRange,
@@ -33,25 +34,30 @@ enum Transport_HeaderId {
   Transport_HeaderId_Rx_GetFirmwareVersion,
   Transport_HeaderId_Rx_GetUptime,
 
-  Transport_HeaderId_Rx_DeviceReboot = 17,
+  Transport_HeaderId_Rx_DeviceReboot = 17U,
   Transport_HeaderId_Rx_SamplingStart,
   Transport_HeaderId_Rx_SamplingStop,
 
-  Transport_HeaderId_Tx_OutputDataRate = 25,
+  Transport_HeaderId_Tx_OutputDataRate = 25U,
   Transport_HeaderId_Tx_Range,
   Transport_HeaderId_Tx_Scale,
   Transport_HeaderId_Tx_DeviceSetup,
   Transport_HeaderId_Tx_FirmwareVersion,
   Transport_HeaderId_Tx_Uptime,
 
-  Transport_HeaderId_Tx_FifoOverflow = 33,
+  Transport_HeaderId_Tx_FifoOverflow = 33U,
   Transport_HeaderId_Tx_SamplingStarted,
   Transport_HeaderId_Tx_SamplingFinished,
   Transport_HeaderId_Tx_SamplingStopped,
   Transport_HeaderId_Tx_SamplingAborted,
   Transport_HeaderId_Tx_Acceleration,
   Transport_HeaderId_Tx_Error,
-};
+
+} __attribute__((__packed__));
+
+//  NOLINTNEXTLINE(clang-diagnostic-implicit-int)
+static_assert(sizeof(enum Transport_HeaderId) == 1,
+              "Error: unexpected size of Transport_HeaderId");
 
 /**
  * TX/RX package header.
@@ -67,25 +73,33 @@ struct Transport_Header {
  * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)
  */
 enum TransportRx_SetOutputDataRate_Rate {
-  TransportRx_SetOutputDataRate_Rate3200 = 0b1111,
-  TransportRx_SetOutputDataRate_Rate1600 = 0b1110,
-  TransportRx_SetOutputDataRate_Rate_800 = 0b1101,
-  TransportRx_SetOutputDataRate_Rate_400 = 0b1100,
-  TransportRx_SetOutputDataRate_Rate_200 = 0b1011,
-  TransportRx_SetOutputDataRate_Rate_100 = 0b1010,
-  TransportRx_SetOutputDataRate_Rate_50 = 0b1001
-};
+  TransportRx_SetOutputDataRate_Rate3200 = 0b1111U,
+  TransportRx_SetOutputDataRate_Rate1600 = 0b1110U,
+  TransportRx_SetOutputDataRate_Rate_800 = 0b1101U,
+  TransportRx_SetOutputDataRate_Rate_400 = 0b1100U,
+  TransportRx_SetOutputDataRate_Rate_200 = 0b1011U,
+  TransportRx_SetOutputDataRate_Rate_100 = 0b1010U,
+  TransportRx_SetOutputDataRate_Rate_50 = 0b1001U
+} __attribute__((__packed__));
+
+// NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)
+static_assert(sizeof(enum TransportRx_SetOutputDataRate_Rate) == 1,
+              "Error: unexpected size of TransportRx_SetOutputDataRate_Rate");
 
 /**
  * Range flags as described in data sheet.
  * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)
  */
 enum TransportRx_SetRange_Range {
-  TransportRx_SetRange_Range_2g = 0b00,
-  TransportRx_SetRange_Range_4g = 0b01,
-  TransportRx_SetRange_Range_8g = 0b10,
-  TransportRx_SetRange_Range_16g = 0b11
-};
+  TransportRx_SetRange_Range_2g = 0b00U,
+  TransportRx_SetRange_Range_4g = 0b01U,
+  TransportRx_SetRange_Range_8g = 0b10U,
+  TransportRx_SetRange_Range_16g = 0b11U
+} __attribute__((__packed__));
+
+// NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)
+static_assert(sizeof(enum TransportRx_SetRange_Range) == 1,
+              "Error: unexpected size of TransportRx_SetRange_Range");
 
 /**
  * Scale flags as described in data sheet.
@@ -93,8 +107,12 @@ enum TransportRx_SetRange_Range {
  */
 enum TransportRx_SetScale_Scale {
   TransportRx_SetScale_Scale_10bit = 0,
-  TransportRx_SetScale_Scale_full4mg
-};
+  TransportRx_SetScale_Scale_full4mg = 1U
+} __attribute__((__packed__));
+
+// NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)
+static_assert(sizeof(enum TransportRx_SetScale_Scale) == 1,
+              "Error: unexpected size of TransportRx_SetScale_Scale");
 
 /**
  * RX payload for retrieving sensor's ODR.
@@ -184,7 +202,11 @@ enum TransportTx_ErrorCode {
   TransportTx_ErrorCode_BusFaultHandler,   ///< \see stm32f4xx_it.h
   TransportTx_ErrorCode_HardFaultHandler,  ///< \see stm32f4xx_it.h
   TransportTx_ErrorCode_ErrorHandler       ///< \see main.h
-};
+} __attribute__((packed));
+
+// NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)
+static_assert(sizeof(enum TransportTx_ErrorCode) == 1U,
+              "Error: unexpected size of TransportTx_ErrorCode");
 
 /**
  * TX payload response with sensor's ODR.

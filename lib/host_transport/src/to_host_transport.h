@@ -7,7 +7,8 @@
 #pragma once
 #include <inttypes.h>
 
-#define TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER 24
+// NOLINTNEXTLINE(modernize-macro-to-enum)
+#define TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER 24U
 
 struct HostTransport_Handle;
 struct Transport_Acceleration;
@@ -93,7 +94,8 @@ void TransportTx_TxFifoOverflow(struct HostTransport_Handle *handle);
  * @param handle host transport pimpl
  * @param data tx buffer or NULL to consume buffered data
  * @param count buffer size or 0 to consume buffered data
- * @param startIndex where to start from within data
+ * @param firstIndex the tracked index number of the first acceleration in data
+ * buffer
  * @return
  *   - 0 on success (data send in first run),
  *   - EBUSY if data was buffered,
@@ -102,4 +104,4 @@ void TransportTx_TxFifoOverflow(struct HostTransport_Handle *handle);
  */
 int TransportTx_TxAccelerationBuffer(struct HostTransport_Handle *handle,
                                      const struct Transport_Acceleration *data,
-                                     uint8_t count, uint16_t startIndex);
+                                     uint8_t count, uint16_t firstIndex);

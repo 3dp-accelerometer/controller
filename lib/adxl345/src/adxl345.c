@@ -13,8 +13,8 @@
 static void readRegister(struct Adxl345_Handle *handle,
                          enum Adxl345Flags_Address addr,
                          union Adxl345Register *reg) {
-  union Adxl345Transport_TxFrame txFrame = {.asAddress =
-                                                addr | Adxl345Spi_RwFlags_read};
+  union Adxl345Transport_TxFrame txFrame = {
+      .asAddress = addr | (uint8_t)Adxl345Spi_RwFlags_read};
   union Adxl345Transport_RxFrame rxFrame = {0};
   handle->doTransmitReceiveFrameImpl(&txFrame, &rxFrame, 1);
   *reg = rxFrame.asRegister;
@@ -154,8 +154,9 @@ int Adxl345_setOutputDataRate(struct Adxl345_Handle *handle, uint8_t rate) {
 int Adxl345_getOutputDataRate(struct Adxl345_Handle *handle,
                               enum Adxl345Flags_BwRate_Rate *rate) {
 
-  if (NULL == rate)
+  if (NULL == rate) {
     return -EINVAL;
+  }
 
   union Adxl345Register reg = {0};
   readRegister(handle, Adxl345Flags_Address_bwRate, &reg);
@@ -185,8 +186,9 @@ int Adxl345_setRange(struct Adxl345_Handle *handle, uint8_t range) {
 
 int Adxl345_getRange(struct Adxl345_Handle *handle,
                      enum Adxl345Flags_DataFormat_Range *range) {
-  if (NULL == range)
+  if (NULL == range) {
     return -EINVAL;
+  }
 
   union Adxl345Register reg = {0};
   readRegister(handle, Adxl345Flags_Address_dataFormat, &reg);
@@ -197,8 +199,9 @@ int Adxl345_getRange(struct Adxl345_Handle *handle,
 
 int Adxl345_getScale(struct Adxl345_Handle *handle,
                      enum Adxl345Flags_DataFormat_FullResBit *scale) {
-  if (NULL == scale)
+  if (NULL == scale) {
     return -EINVAL;
+  }
 
   union Adxl345Register reg = {0};
   readRegister(handle, Adxl345Flags_Address_dataFormat, &reg);
@@ -240,13 +243,15 @@ void Adxl345_setPowerCtlMeasure(struct Adxl345_Handle *handle) {
 
 int Adxl345_getAcceleration(struct Adxl345_Handle *handle,
                             struct Adxl345Transport_Acceleration *acc) {
-  if (NULL == acc)
+  if (NULL == acc) {
     return -EINVAL;
+  }
 
   union Adxl345Transport_TxFrame tx_frame = {.asAddress =
                                                  Adxl345Flags_Address_dataX0};
   union Adxl345Transport_RxFrame rx_frame = {0};
-  handle->doTransmitReceiveFrameImpl(&tx_frame, &rx_frame, 6);
+  handle->doTransmitReceiveFrameImpl(
+      &tx_frame, &rx_frame, sizeof(struct Adxl345Transport_Acceleration));
   *acc = rx_frame.asAcceleration;
 
   return 0;

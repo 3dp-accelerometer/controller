@@ -48,9 +48,9 @@ def _generate_c_files(major: int, minor: int, patch: int):
 #pragma once
 
 #define VERSION "{major}.{minor}.{patch}"
-#define VERSION_MAJOR {major}
-#define VERSION_MINOR {minor}
-#define VERSION_PATCH {patch}
+#define VERSION_MAJOR {major} // NOLINT(modernize-macro-to-enum)
+#define VERSION_MINOR {minor} // NOLINT(modernize-macro-to-enum)
+#define VERSION_PATCH {patch} // NOLINT(modernize-macro-to-enum)
 """
 
     with open(h_file, "w") as f:

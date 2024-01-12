@@ -11,6 +11,7 @@
 #include <host_transport.h>
 #include <host_transport_types.h>
 
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 extern struct Controller_Handle controllerHandle;
 
 enum HostTransport_Status HostTransportImpl_doTransmitImpl(uint8_t *buffer,
@@ -29,8 +30,9 @@ enum HostTransport_Status HostTransportImpl_doTransmitImpl(uint8_t *buffer,
 }
 
 int HostTransportImpl_onTakeReceivedImpl(uint8_t *buffer) {
-  if (NULL == buffer)
+  if (NULL == buffer) {
     return -EINVAL;
+  }
 
   struct TransportFrame *request = (struct TransportFrame *)buffer;
 

@@ -26,7 +26,7 @@ struct Adxl345_Handle;
  * @param numBytes size of frame
  * @param applyCs whether or not to set nCS before and clear nCS after
  * transmission
- * @param rwRlag flag to indicate whether this transaction is write or read
+ * @param rwFlag flag to indicate whether this transaction is write or read
  *   \see Adxl345TransportImpl_transmitReceiveFrame(union Adxl345TP_TxFrame *,
  * union Adxl345TP_RxFrame *, uint8_t)
  *
@@ -34,7 +34,7 @@ struct Adxl345_Handle;
  */
 int Adxl345TransportImpl_doTransmitFrameImpl(
     union Adxl345Transport_TxFrame *frame, uint8_t numBytes,
-    enum Adxl345Spi_Cs applyCs, enum Adxl345Spi_RwFlags rwRlag);
+    enum Adxl345Spi_Cs applyCs, enum Adxl345Spi_RwFlags rwFlag);
 
 /**
  * Transmits and receives frames (read transaction).

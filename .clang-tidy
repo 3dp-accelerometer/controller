@@ -1,0 +1,8 @@
+Checks:          '*,-llvm-header-guard,-altera-struct-pack-align,-altera-unroll-loops'
+WarningsAsErrors: '*'
+HeaderFilterRegex: ''
+FormatStyle:     none
+User:            Mr. Dr. Foo Bar
+CheckOptions:
+  - key: llvmlibc-restrict-system-libc-headers.Includes
+    value: "-*,errno.h,string.h,inttypes.h,assert.h"

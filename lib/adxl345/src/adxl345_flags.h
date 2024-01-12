@@ -15,37 +15,37 @@
  */
 enum Adxl345Flags_Address {
   Adxl345Flags_Address_devId = 0x00, // expected 0b11100101
-  Adxl345Flags_Address_reserved_01 = 0x01,
-  Adxl345Flags_Address_reserved_1C = 0x1C,
-  Adxl345Flags_Address_thresTap = 0x1D,
-  Adxl345Flags_Address_offsX = 0x1E,
-  Adxl345Flags_Address_offsY = 0x1F,
-  Adxl345Flags_Address_offsZ = 0x20,
-  Adxl345Flags_Address_dur = 0x21,
-  Adxl345Flags_Address_latent = 0x22,
-  Adxl345Flags_Address_window = 0x23,
-  Adxl345Flags_Address_thresAct = 0x24,
-  Adxl345Flags_Address_thresInact = 0x25,
-  Adxl345Flags_Address_timeInact = 0x26,
-  Adxl345Flags_Address_actInactCtl = 0x27,
-  Adxl345Flags_Address_thresFf = 0x28,
-  Adxl345Flags_Address_timeFf = 0x29,
-  Adxl345Flags_Address_tapAxes = 0x2A,
-  Adxl345Flags_Address_actTapStatus = 0x2B,
-  Adxl345Flags_Address_bwRate = 0x2C,
-  Adxl345Flags_Address_powerCtl = 0x2D,
-  Adxl345Flags_Address_intEnable = 0x2E,
-  Adxl345Flags_Address_intMap = 0x2F,
-  Adxl345Flags_Address_intSource = 0x30,
-  Adxl345Flags_Address_dataFormat = 0x31,
-  Adxl345Flags_Address_dataX0 = 0x32,
-  Adxl345Flags_Address_dataX1 = 0x33,
-  Adxl345Flags_Address_dataY0 = 0x34,
-  Adxl345Flags_Address_dataY1 = 0x35,
-  Adxl345Flags_Address_dataZ0 = 0x36,
-  Adxl345Flags_Address_dataZ1 = 0x37,
-  Adxl345Flags_Address_fifoCtl = 0x38,
-  Adxl345Flags_Address_fifoStatus = 0x39,
+  Adxl345Flags_Address_reserved_01 = 0x01U,
+  Adxl345Flags_Address_reserved_1C = 0x1CU,
+  Adxl345Flags_Address_thresTap = 0x1DU,
+  Adxl345Flags_Address_offsX = 0x1EU,
+  Adxl345Flags_Address_offsY = 0x1FU,
+  Adxl345Flags_Address_offsZ = 0x20U,
+  Adxl345Flags_Address_dur = 0x21U,
+  Adxl345Flags_Address_latent = 0x22U,
+  Adxl345Flags_Address_window = 0x23U,
+  Adxl345Flags_Address_thresAct = 0x24U,
+  Adxl345Flags_Address_thresInact = 0x25U,
+  Adxl345Flags_Address_timeInact = 0x26U,
+  Adxl345Flags_Address_actInactCtl = 0x27U,
+  Adxl345Flags_Address_thresFf = 0x28U,
+  Adxl345Flags_Address_timeFf = 0x29U,
+  Adxl345Flags_Address_tapAxes = 0x2AU,
+  Adxl345Flags_Address_actTapStatus = 0x2BU,
+  Adxl345Flags_Address_bwRate = 0x2CU,
+  Adxl345Flags_Address_powerCtl = 0x2DU,
+  Adxl345Flags_Address_intEnable = 0x2EU,
+  Adxl345Flags_Address_intMap = 0x2FU,
+  Adxl345Flags_Address_intSource = 0x30U,
+  Adxl345Flags_Address_dataFormat = 0x31U,
+  Adxl345Flags_Address_dataX0 = 0x32U,
+  Adxl345Flags_Address_dataX1 = 0x33U,
+  Adxl345Flags_Address_dataY0 = 0x34U,
+  Adxl345Flags_Address_dataY1 = 0x35U,
+  Adxl345Flags_Address_dataZ0 = 0x36U,
+  Adxl345Flags_Address_dataZ1 = 0x37U,
+  Adxl345Flags_Address_fifoCtl = 0x38U,
+  Adxl345Flags_Address_fifoStatus = 0x39U
 };
 
 /* ADXL345 Register Flags ----------------------------------------------------*/
@@ -56,10 +56,10 @@ enum Adxl345Flags_Address {
  * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)
  */
 enum Adxl345Flags_PowerCtl_Wakeup {
-  Adxl345Flags_PowerCtl_Wakeup_8Hz = 0b00,
-  Adxl345Flags_PowerCtl_Wakeup_4Hz = 0b01,
-  Adxl345Flags_PowerCtl_Wakeup_2Hz = 0b10,
-  Adxl345Flags_PowerCtl_Wakeup_1Hz = 0b11,
+  Adxl345Flags_PowerCtl_Wakeup_8Hz = 0b00U,
+  Adxl345Flags_PowerCtl_Wakeup_4Hz = 0b01U,
+  Adxl345Flags_PowerCtl_Wakeup_2Hz = 0b10U,
+  Adxl345Flags_PowerCtl_Wakeup_1Hz = 0b11U
 };
 
 /**
@@ -69,7 +69,7 @@ enum Adxl345Flags_PowerCtl_Wakeup {
  */
 enum Adxl345Flags_PowerCtl_Sleep {
   Adxl345Flags_PowerCtl_Sleep_normalMode = 0,
-  Adxl345Flags_PowerCtl_Sleep_sleepMode
+  Adxl345Flags_PowerCtl_Sleep_sleepMode = 1U
 };
 
 /**
@@ -79,7 +79,7 @@ enum Adxl345Flags_PowerCtl_Sleep {
  */
 enum Adxl345Flags_PowerCtl_Measure {
   Adxl345Flags_PowerCtl_Measure_standby = 0,
-  Adxl345Flags_PowerCtl_Measure_measure
+  Adxl345Flags_PowerCtl_Measure_measure = 1U
 };
 
 /**
@@ -89,7 +89,7 @@ enum Adxl345Flags_PowerCtl_Measure {
  */
 enum Adxl345Flags_PowerCtl_AutoSleep {
   Adxl345Flags_PowerCtl_AutoSleep_disabled = 0,
-  Adxl345Flags_PowerCtl_AutoSleep_function
+  Adxl345Flags_PowerCtl_AutoSleep_function = 1U
 };
 
 /**
@@ -99,7 +99,7 @@ enum Adxl345Flags_PowerCtl_AutoSleep {
  */
 enum Adxl345Flags_PowerCtl_Link {
   Adxl345Flags_PowerCtl_Link_concurrent = 0,
-  Adxl345Flags_PowerCtl_Link_serial
+  Adxl345Flags_PowerCtl_Link_serial = 1U
 };
 
 /**
@@ -109,7 +109,7 @@ enum Adxl345Flags_PowerCtl_Link {
  */
 enum Adxl345Flags_IntEnable_Overrun {
   Adxl345Flags_IntEnable_Overrun_disable = 0,
-  Adxl345Flags_IntEnable_Overrun_enable
+  Adxl345Flags_IntEnable_Overrun_enable = 1U
 };
 
 /**
@@ -119,7 +119,7 @@ enum Adxl345Flags_IntEnable_Overrun {
  */
 enum Adxl345Flags_IntEnable_Watermark {
   Adxl345Flags_IntEnable_Watermark_disable = 0,
-  Adxl345Flags_IntEnable_Watermark_enable
+  Adxl345Flags_IntEnable_Watermark_enable = 1U
 };
 
 /**
@@ -129,7 +129,7 @@ enum Adxl345Flags_IntEnable_Watermark {
  */
 enum Adxl345Flags_IntEnable_FreeFall {
   Adxl345Flags_IntEnable_FreeFall_disable = 0,
-  Adxl345Flags_IntEnable_FreeFall_enable
+  Adxl345Flags_IntEnable_FreeFall_enable = 1U
 };
 
 /**
@@ -139,7 +139,7 @@ enum Adxl345Flags_IntEnable_FreeFall {
  */
 enum Adxl345Flags_IntEnable_Inactivity {
   Adxl345Flags_IntEnable_Inactivity_disable = 0,
-  Adxl345Flags_IntEnable_Inactivity_enable
+  Adxl345Flags_IntEnable_Inactivity_enable = 1U
 };
 
 /**
@@ -149,7 +149,7 @@ enum Adxl345Flags_IntEnable_Inactivity {
  */
 enum Adxl345Flags_IntEnable_Activity {
   Adxl345Flags_IntEnable_Activity_disable = 0,
-  Adxl345Flags_IntEnable_Activity_enable
+  Adxl345Flags_IntEnable_Activity_enable = 1U
 };
 
 /**
@@ -159,7 +159,7 @@ enum Adxl345Flags_IntEnable_Activity {
  */
 enum Adxl345Flags_IntEnable_DoubleTap {
   Adxl345Flags_IntEnable_DoubleTap_disable = 0,
-  Adxl345Flags_IntEnable_DoubleTap_enable
+  Adxl345Flags_IntEnable_DoubleTap_enable = 1U
 };
 
 /**
@@ -169,7 +169,7 @@ enum Adxl345Flags_IntEnable_DoubleTap {
  */
 enum Adxl345Flags_IntEnable_SingleTap {
   Adxl345Flags_IntEnable_SingleTap_disable = 0,
-  Adxl345Flags_IntEnable_SingleTap_enable
+  Adxl345Flags_IntEnable_SingleTap_enable = 1U
 };
 
 /**
@@ -179,7 +179,7 @@ enum Adxl345Flags_IntEnable_SingleTap {
  */
 enum Adxl345Flags_IntEnable_DataReady {
   Adxl345Flags_IntEnable_DataReady_disable = 0,
-  Adxl345Flags_IntEnable_DataReady_enable
+  Adxl345Flags_IntEnable_DataReady_enable = 1U
 };
 
 /**
@@ -189,7 +189,7 @@ enum Adxl345Flags_IntEnable_DataReady {
  */
 enum Adxl345Flags_IntMap_Overrun {
   Adxl345Flags_IntMap_Overrun_int1 = 0,
-  Adxl345Flags_IntMap_Overrun_int2
+  Adxl345Flags_IntMap_Overrun_int2 = 1U
 };
 
 /**
@@ -199,7 +199,7 @@ enum Adxl345Flags_IntMap_Overrun {
  */
 enum Adxl345Flags_IntMap_Watermark {
   Adxl345Flags_IntMap_Watermark_int1 = 0,
-  Adxl345Flags_IntMap_Watermark_int2
+  Adxl345Flags_IntMap_Watermark_int2 = 1U
 };
 
 /**
@@ -209,7 +209,7 @@ enum Adxl345Flags_IntMap_Watermark {
  */
 enum Adxl345Flags_IntMap_FreeFall {
   Adxl345Flags_IntMap_FreeFall_int1 = 0,
-  Adxl345Flags_IntMap_FreeFall_int2
+  Adxl345Flags_IntMap_FreeFall_int2 = 1U
 };
 
 /**
@@ -219,7 +219,7 @@ enum Adxl345Flags_IntMap_FreeFall {
  */
 enum Adxl345Flags_IntMap_Inactivity {
   Adxl345Flags_IntMap_Inactivity_int1 = 0,
-  Adxl345Flags_IntMap_Inactivity_int2
+  Adxl345Flags_IntMap_Inactivity_int2 = 1U
 };
 
 /**
@@ -229,7 +229,7 @@ enum Adxl345Flags_IntMap_Inactivity {
  */
 enum Adxl345Flags_IntMap_Activity {
   Adxl345Flags_IntMap_Activity_int1 = 0,
-  Adxl345Flags_IntMap_Activity_int2
+  Adxl345Flags_IntMap_Activity_int2 = 1U
 };
 
 /**
@@ -239,7 +239,7 @@ enum Adxl345Flags_IntMap_Activity {
  */
 enum Adxl345Flags_IntMap_DoubleTap {
   Adxl345Flags_IntMap_DoubleTap_int1 = 0,
-  Adxl345Flags_IntMap_DoubleTap_int2
+  Adxl345Flags_IntMap_DoubleTap_int2 = 1U
 };
 
 /**
@@ -249,7 +249,7 @@ enum Adxl345Flags_IntMap_DoubleTap {
  */
 enum Adxl345Flags_IntMap_SingleTap {
   Adxl345Flags_IntMap_SingleTap_int1 = 0,
-  Adxl345Flags_IntMap_SingleTap_int2
+  Adxl345Flags_IntMap_SingleTap_int2 = 1U
 };
 
 /**
@@ -259,7 +259,7 @@ enum Adxl345Flags_IntMap_SingleTap {
  */
 enum Adxl345Flags_IntMap_DataReady {
   Adxl345Flags_IntMap_DataReady_int1 = 0,
-  Adxl345Flags_IntMap_DataReady_int2
+  Adxl345Flags_IntMap_DataReady_int2 = 1U
 };
 
 /**
@@ -269,7 +269,7 @@ enum Adxl345Flags_IntMap_DataReady {
  */
 enum Adxl345Flags_DataFormat_SelfTest {
   Adxl345Flags_DataFormat_SelfTest_disableForce = 0,
-  Adxl345Flags_DataFormat_SelfTest_enableForce
+  Adxl345Flags_DataFormat_SelfTest_enableForce = 1U
 };
 
 /**
@@ -278,7 +278,7 @@ enum Adxl345Flags_DataFormat_SelfTest {
  * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)
  */
 enum Adxl345Flags_DataFormat_SpiBit {
-  Adxl345Flags_DataFormat_SpiBit_3wire = 1,
+  Adxl345Flags_DataFormat_SpiBit_3wire = 1U,
   Adxl345Flags_DataFormat_SpiBit_4wire = 0
 };
 
@@ -289,7 +289,7 @@ enum Adxl345Flags_DataFormat_SpiBit {
  */
 enum Adxl345Flags_DataFormat_IntInvert {
   Adxl345Flags_DataFormat_IntInvert_activeHigh = 0,
-  Adxl345Flags_DataFormat_IntInvert_activeLow
+  Adxl345Flags_DataFormat_IntInvert_activeLow = 1U
 };
 
 /**
@@ -301,7 +301,7 @@ enum Adxl345Flags_DataFormat_FullResBit {
   // full range 10bit: each range scales to 10 bit output
   Adxl345Flags_DataFormat_FullResBit_10bit = 0,
   // full resolution (16 bit): each range maintains 4mg/LSB
-  Adxl345Flags_DataFormat_FullResBit_fullRes_4mg
+  Adxl345Flags_DataFormat_FullResBit_fullRes_4mg = 1U
 };
 
 /**
@@ -311,7 +311,7 @@ enum Adxl345Flags_DataFormat_FullResBit {
  */
 enum Adxl345Flags_DataFormat_Justify {
   Adxl345Flags_DataFormat_Justify_lsbRight = 0, ///< intuitive ordering
-  Adxl345Flags_DataFormat_Justify_msbLeft       ///< left aligned
+  Adxl345Flags_DataFormat_Justify_msbLeft = 1U  ///< left aligned
 };
 
 /**
@@ -320,10 +320,10 @@ enum Adxl345Flags_DataFormat_Justify {
  * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)
  */
 enum Adxl345Flags_DataFormat_Range {
-  Adxl345Flags_DataFormat_Range_2g = 0b00,
-  Adxl345Flags_DataFormat_Range_4g = 0b01,
-  Adxl345Flags_DataFormat_Range_8g = 0b10,
-  Adxl345Flags_DataFormat_Range_16g = 0b11
+  Adxl345Flags_DataFormat_Range_2g = 0b00U,
+  Adxl345Flags_DataFormat_Range_4g = 0b01U,
+  Adxl345Flags_DataFormat_Range_8g = 0b10U,
+  Adxl345Flags_DataFormat_Range_16g = 0b11U
 };
 
 /**
@@ -332,28 +332,28 @@ enum Adxl345Flags_DataFormat_Range {
  * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)
  */
 enum Adxl345Flags_BwRate_Rate {
-  Adxl345Flags_BwRate_Rate_normalPowerOdr3200 = 0b1111,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr1600 = 0b1110,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr800 = 0b1101,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr400 = 0b1100,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr200 = 0b1011,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr100 = 0b1010,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr50 = 0b1001,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr25 = 0b1000,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr12_5 = 0b0111,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr6_25 = 0b0110,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr3_13 = 0b0101,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr1_56 = 0b0100,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr0_78 = 0b0011,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr0_39 = 0b0010,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr0_20 = 0b0001,
-  Adxl345Flags_BwRate_Rate_normalPowerOdr0_10 = 0b0000,
-  Adxl345Flags_BwRate_Rate_reducedPowerOdr400 = 0b1100,
-  Adxl345Flags_BwRate_Rate_reducedPowerOdr200 = 0b1011,
-  Adxl345Flags_BwRate_Rate_reducedPowerOdr100 = 0b1010,
-  Adxl345Flags_BwRate_Rate_reducedPowerOdr50 = 0b1001,
-  Adxl345Flags_BwRate_Rate_reducedPowerOdr25 = 0b1000,
-  Adxl345Flags_BwRate_Rate_reducedPowerOdr12_5 = 0b0111
+  Adxl345Flags_BwRate_Rate_normalPowerOdr3200 = 0b1111U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr1600 = 0b1110U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr800 = 0b1101U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr400 = 0b1100U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr200 = 0b1011U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr100 = 0b1010U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr50 = 0b1001U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr25 = 0b1000U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr12_5 = 0b0111U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr6_25 = 0b0110U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr3_13 = 0b0101U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr1_56 = 0b0100U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr0_78 = 0b0011U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr0_39 = 0b0010U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr0_20 = 0b0001U,
+  Adxl345Flags_BwRate_Rate_normalPowerOdr0_10 = 0b0000U,
+  Adxl345Flags_BwRate_Rate_reducedPowerOdr400 = 0b1100U,
+  Adxl345Flags_BwRate_Rate_reducedPowerOdr200 = 0b1011U,
+  Adxl345Flags_BwRate_Rate_reducedPowerOdr100 = 0b1010U,
+  Adxl345Flags_BwRate_Rate_reducedPowerOdr50 = 0b1001U,
+  Adxl345Flags_BwRate_Rate_reducedPowerOdr25 = 0b1000U,
+  Adxl345Flags_BwRate_Rate_reducedPowerOdr12_5 = 0b0111U
 };
 
 /**
@@ -363,7 +363,7 @@ enum Adxl345Flags_BwRate_Rate {
  */
 enum Adxl345Flags_BwRate_LowPower {
   Adxl345Flags_BwRate_LowPower_normal = 0,
-  Adxl345Flags_BwRate_LowPower_reduced
+  Adxl345Flags_BwRate_LowPower_reduced = 1U
 };
 
 /**
@@ -373,7 +373,7 @@ enum Adxl345Flags_BwRate_LowPower {
  */
 enum Adxl345Flags_FifoCtl_Trigger {
   Adxl345Flags_FifoCtl_Trigger_int1 = 0,
-  Adxl345Flags_FifoCtl_Trigger_int2
+  Adxl345Flags_FifoCtl_Trigger_int2 = 1U
 };
 
 /**
@@ -382,10 +382,10 @@ enum Adxl345Flags_FifoCtl_Trigger {
  * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)
  */
 enum Adxl345Flags_FifoCtl_FifoMode {
-  Adxl345Flags_FifoCtl_FifoMode_bypass = 0b00,
-  Adxl345Flags_FifoCtl_FifoMode_fifo = 0b01,
-  Adxl345Flags_FifoCtl_FifoMode_stream = 0b10,
-  Adxl345Flags_FifoCtl_FifoMode_trigger = 0b11
+  Adxl345Flags_FifoCtl_FifoMode_bypass = 0b00U,
+  Adxl345Flags_FifoCtl_FifoMode_fifo = 0b01U,
+  Adxl345Flags_FifoCtl_FifoMode_stream = 0b10U,
+  Adxl345Flags_FifoCtl_FifoMode_trigger = 0b11U
 };
 
 /**
@@ -395,5 +395,5 @@ enum Adxl345Flags_FifoCtl_FifoMode {
  */
 enum Adxl345Flags_FifoStatus_FifoTrig {
   Adxl345Flags_FifoStatus_FifoTrig_triggered = 0,
-  Adxl345Flags_FifoStatus_FifoTrig_notTriggered
+  Adxl345Flags_FifoStatus_FifoTrig_notTriggered = 1U
 };

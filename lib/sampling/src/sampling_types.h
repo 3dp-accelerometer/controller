@@ -15,7 +15,7 @@
  *
  * Must be less than or equal watermark level to not read beyond buffered FiFo.
  */
-#define SAMPLING_NUM_SAMPLES_READ_AT_ONCE 24
+#define SAMPLING_NUM_SAMPLES_READ_AT_ONCE 24U // NOLINT(modernize-macro-to-enum)
 
 struct Sampling_Acceleration {
   int16_t x;

@@ -8,8 +8,6 @@
 #include <errno.h>
 #include <string.h>
 
-#define BUFFER_CAPACITY_ACC_DATA 64
-
 /**
  * Advances the end index by one if possible.
  *
@@ -17,8 +15,9 @@
  * @return -EOVERFLOW if buffer is already full, 0 otherwise
  */
 static int advanceEnd(struct Ringbuffer_Index *index) {
-  if (index->isFull)
+  if (index->isFull) {
     return -EOVERFLOW;
+  }
 
   const uint16_t nextEndIndex = (index->end + 1) % index->capacity;
   index->end = nextEndIndex;
@@ -34,8 +33,9 @@ static int advanceEnd(struct Ringbuffer_Index *index) {
  * @return -ENODATA if buffer is already empty, 0 otherwise
  */
 static int advanceBegin(struct Ringbuffer_Index *index) {
-  if (index->isEmpty)
+  if (index->isEmpty) {
     return -ENODATA;
+  }
 
   const uint16_t nextBeginIndex = (index->begin + 1) % index->capacity;
   index->begin = nextBeginIndex;
@@ -55,10 +55,12 @@ static uint8_t *itemAtIndex(struct Ringbuffer *buffer, uint16_t index) {
   return buffer->storage + (index * buffer->index.itemSizeBytes);
 }
 
+// NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
 int RingbufferIndex_init(struct Ringbuffer_Index *index, uint16_t capacity,
                          uint8_t itemSizeBytes) {
-  if (NULL == index)
+  if (NULL == index) {
     return -EINVAL;
+  }
 
   index->begin = 0;
   index->end = 0;
@@ -72,19 +74,22 @@ int RingbufferIndex_init(struct Ringbuffer_Index *index, uint16_t capacity,
 
 int Ringbuffer_init(struct Ringbuffer *buffer, uint8_t *storage,
                     uint16_t itemsCount, uint8_t itemSizeBytes) {
-  if (NULL == buffer)
+  if (NULL == buffer) {
     return -EINVAL;
+  }
 
-  if (0 != RingbufferIndex_init(&buffer->index, itemsCount, itemSizeBytes))
+  if (0 != RingbufferIndex_init(&buffer->index, itemsCount, itemSizeBytes)) {
     return -EINVAL;
+  }
 
   buffer->storage = storage;
   return 0;
 }
 
 int Ringbuffer_put(struct Ringbuffer *buffer, const uint8_t *item) {
-  if (Ringbuffer_isFull(buffer))
+  if (Ringbuffer_isFull(buffer)) {
     return -EOVERFLOW;
+  }
 
   buffer->index.isEmpty = false;
   memcpy(itemAtIndex(buffer, buffer->index.end), item,
@@ -95,8 +100,9 @@ int Ringbuffer_put(struct Ringbuffer *buffer, const uint8_t *item) {
 }
 
 int Ringbuffer_take(struct Ringbuffer *buffer, uint8_t *item) {
-  if (Ringbuffer_isEmpty(buffer))
+  if (Ringbuffer_isEmpty(buffer)) {
     return -ENODATA;
+  }
 
   buffer->index.isFull = false;
   memcpy(item, itemAtIndex(buffer, buffer->index.begin),

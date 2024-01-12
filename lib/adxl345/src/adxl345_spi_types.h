@@ -26,8 +26,8 @@ enum Adxl345Spi_Cs {
  * Read/write flags for SPI communication
  */
 enum Adxl345Spi_RwFlags {
-  Adxl345Spi_RwFlags_read = 0x80,       ///< indicates SPI read
-  Adxl345Spi_RwFlags_write = 0x00,      ///< indicates SPI write
-  Adxl345Spi_RwFlags_multiByte = 0x40,  ///< indicates multibyte transfer
-  Adxl345Spi_RwFlags_singleByte = 0x00, ///< indicates single byte transfer
+  Adxl345Spi_RwFlags_read = 0x80U,       ///< indicates SPI read
+  Adxl345Spi_RwFlags_write = 0x00U,      ///< indicates SPI write
+  Adxl345Spi_RwFlags_multiByte = 0x40U,  ///< indicates multibyte transfer
+  Adxl345Spi_RwFlags_singleByte = 0x00U, ///< indicates single byte transfer
 };

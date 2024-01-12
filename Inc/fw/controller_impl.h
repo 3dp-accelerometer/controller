@@ -8,4 +8,5 @@
 
 #include <controller.h>
 
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 extern struct Controller_Handle controllerHandle;

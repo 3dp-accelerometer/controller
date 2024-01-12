@@ -3,6 +3,7 @@
 #include <controller.h>
 #include <sampling_types.h>
 
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 extern struct Controller_Handle controllerHandle;
 
 void SamplingImpl_doWaitDelay5usImpl(struct Sampling_Handle *handle) {

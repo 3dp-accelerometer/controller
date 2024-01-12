@@ -29,12 +29,17 @@ enum Adxl345Flags_DataFormat_FullResBit;
  * This might increases the probability of FiFo overflow (which is asserted
  * anyway).
  */
-#define ADXL345_FIFO_ENTRIES 32 // 32 * (X, Y, Z); 2 bytes each coordinate
-#define ADXL345_WATERMARK_LEVEL 24
+// NOLINTNEXTLINE(modernize-macro-to-enum)
+#define ADXL345_FIFO_ENTRIES 32U ///< 32 * (X, Y, Z); 2 bytes each coordinate
+// NOLINTNEXTLINE(modernize-macro-to-enum)
+#define ADXL345_WATERMARK_LEVEL 24U ///< about 75% of FiFo
 //@}
 
-static_assert(ADXL345_WATERMARK_LEVEL <= 32,
-              "ERROR: maximum allowed watermark level: 32");
+// NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)
+static_assert(ADXL345_WATERMARK_LEVEL <= ADXL345_FIFO_ENTRIES,
+              "ERROR: maximum allowed watermark level: ADXL345_FIFO_ENTRIES");
+
+// NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)
 static_assert(ADXL345_WATERMARK_LEVEL >= 0,
               "ERROR: minimum allowed watermark level: 0");
 

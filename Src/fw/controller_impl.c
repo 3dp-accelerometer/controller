@@ -4,12 +4,12 @@
  * Implements hardware specific controller implementation API.
  */
 
-#include "fw/controller_impl.h"
 #include "fw/adxl345_transport_impl.h"
 #include "fw/host_transport_impl.h"
 #include "fw/sampling_impl.h"
 #include "fw/version.h"
 #include "main.h"
+#include "usbd_cdc_if.h"
 #include <adxl345.h>
 #include <adxl345_flags.h>
 #include <adxl345_transport_types.h>
@@ -21,6 +21,9 @@
 #include <sampling_types.h>
 #include <stm32f4xx_hal.h>
 #include <to_host_transport.h>
+
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
+extern uint8_t UserTxBufferFS[APP_TX_DATA_SIZE];
 
 #define MYSTRINGIZE0(A) #A
 #define MYSTRINGIZE(A) MYSTRINGIZE0(A)
@@ -118,6 +121,8 @@ sampling_doFetchSensorAccelerationImpl(struct Sampling_Acceleration *sample);
     .fromHost = {.doTakeReceivedPacketImpl =                                   \
                      HostTransportImpl_onTakeReceivedImpl},                    \
     .toHost = {                                                                \
+      .txBuffer = UserTxBufferFS,                                              \
+      .txBufferSize = APP_TX_DATA_SIZE,                                        \
       .doTransmitImpl = HostTransportImpl_doTransmitImpl,                      \
       .controllerVersionMajor = VERSION_MAJOR,                                 \
       .controllerVersionMinor = VERSION_MINOR,                                 \

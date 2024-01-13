@@ -23,7 +23,20 @@ struct HostTransport_FromHostApi {
 };
 
 struct HostTransport_ToHostApi {
-  uint8_t *transmissionBuffer; ///< Context: main() (and usb tx interrupt?)
+  /**
+   * Buffer used to transmit chinks of acceleration data.
+   *
+   * This buffer is applied to send acceleration chunks only.
+   * Other transport TX packets do not apply this buffer.
+   *
+   * Context: main()
+   *
+   * @{
+   */
+  const uint8_t *txBuffer;
+  const uint16_t txBufferSize;
+  /// @}
+
   enum HostTransport_Status (*const doTransmitImpl)(
       uint8_t *, uint16_t); ///< Context: main() and interrupts
 

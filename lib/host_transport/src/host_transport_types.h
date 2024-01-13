@@ -76,7 +76,7 @@ enum Transport_HeaderId {
   Transport_HeaderId_Tx_SamplingStopped,
   Transport_HeaderId_Tx_SamplingAborted,
   Transport_HeaderId_Tx_Acceleration,
-  Transport_HeaderId_Tx_Error,
+  Transport_HeaderId_Tx_Fault,
   /// @}
 
 } __attribute__((__packed__));
@@ -227,18 +227,17 @@ struct TransportRx_GetBufferStatus {
 /**
  * Code sent to host in case of error.
  */
-enum TransportTx_ErrorCode {
-  TransportTx_ErrorCode_Undefined = 0,     ///< \see stm32f4xx_it.h
-  TransportTx_ErrorCode_UsbError,          ///< \see stm32f4xx_it.h
-  TransportTx_ErrorCode_UsageFaultHandler, ///< \see stm32f4xx_it.h
-  TransportTx_ErrorCode_BusFaultHandler,   ///< \see stm32f4xx_it.h
-  TransportTx_ErrorCode_HardFaultHandler,  ///< \see stm32f4xx_it.h
-  TransportTx_ErrorCode_ErrorHandler       ///< \see main.h
+enum TransportTx_FaultCode {
+  TransportTx_FaultCode_NmiHandler,        ///< \see stm32f4xx_it.h
+  TransportTx_FaultCode_UsageFaultHandler, ///< \see stm32f4xx_it.h
+  TransportTx_FaultCode_BusFaultHandler,   ///< \see stm32f4xx_it.h
+  TransportTx_FaultCode_HardFaultHandler,  ///< \see stm32f4xx_it.h
+  TransportTx_FaultCode_ErrorHandler       ///< \see main.h
 } __attribute__((packed));
 
 // NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)
-static_assert(sizeof(enum TransportTx_ErrorCode) == 1U,
-              "ERROR: unexpected size of TransportTx_ErrorCode");
+static_assert(sizeof(enum TransportTx_FaultCode) == 1U,
+              "ERROR: unexpected size of TransportTx_FaultCode");
 
 /**
  * TX payload response with sensor's ODR.
@@ -343,8 +342,8 @@ struct TransportTx_FirmwareVersion {
 /**
  * TX payload transporting an error code.
  */
-struct TransportTx_Error {
-  enum TransportTx_ErrorCode code;
+struct TransportTx_Fault {
+  enum TransportTx_FaultCode code;
 } __attribute__((packed));
 
 /**
@@ -380,7 +379,7 @@ union TransportTxFrame {
   struct TransportTx_SamplingAborted asSamplingAborted;
   struct TransportTx_Acceleration asAcceleration;
   struct TransportTx_FirmwareVersion asFirmwareVersion;
-  struct TransportTx_Error asError;
+  struct TransportTx_Fault asFault;
   struct TransportTx_Uptime asUptime;
   struct TransportTx_BufferStatus asBufferStatus;
 } __attribute__((packed));

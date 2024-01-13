@@ -14,7 +14,7 @@ struct HostTransport_Handle;
 struct Transport_Acceleration;
 
 enum HostTransport_Status;
-enum TransportTx_ErrorCode;
+enum TransportTx_FaultCode;
 
 /**
  * Transmits sensor configuration TransportTx_DeviceSetup to the IN endpoint of
@@ -167,14 +167,14 @@ void TransportTx_TxUptime(struct HostTransport_Handle *handle,
                           uint32_t uptimeMs);
 
 /**
- * Transmits device error state TransportTx_Error to the IN endpoint of host.
+ * Transmits device error state TransportTx_TxFault to the IN endpoint of host.
  *
  * Transmission will block this function from returning until completion.
  * @param handle
  * @param code
  */
-void TransportTx_TxError(struct HostTransport_Handle *handle,
-                         enum TransportTx_ErrorCode code);
+void TransportTx_TxFault(struct HostTransport_Handle *handle,
+                         enum TransportTx_FaultCode code);
 
 /**
  * Transmits device buffer status TransportTx_BufferStatus to the IN endpoint of

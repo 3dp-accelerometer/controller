@@ -50,12 +50,29 @@ static_assert(
 #undef MYSTRINGIZE
 #undef MYSTRINGIZE0
 
-void ControllerImpl_init();
-void ControllerImpl_loop();
+/**
+ * Controller public API implementation.
+ *
+ * @{
+ */
+static void ControllerImpl_init();
+static void ControllerImpl_loop();
+/// @}
 
-void ControllerImpl_device_checkReboot();
-void ControllerImpl_device_requestAsyncReboot();
+/**
+ * Device specific controller implementation.
+ *
+ * @{
+ */
+static void ControllerImpl_device_checkReboot();
+static void ControllerImpl_device_requestAsyncReboot();
+/// @}
 
+/**
+ * Device specific controller implementation for host communication.
+ *
+ * @{
+ */
 static void host_doTakeBytes(const uint8_t *buffer, uint16_t len);
 static int host_onRequestGetFirmwareVersion();
 static int host_onRequestGetOutputDataRate();
@@ -70,12 +87,25 @@ static int host_onRequestSamplingStart(uint16_t maxSamplesCount);
 static int host_onRequestSamplingStop();
 static int host_onRequestGetUptime();
 static int host_onRequestGetBufferStatus();
+/// @}
 
-static void sensor_Adxl345_doInitImpl();
-static int sensor_Adxl345_doGetOutputDataRateImpl(uint8_t *odr);
-static int sensor_Adxl345_doGetScaleImpl(uint8_t *scale);
-static int sensor_Adxl345_doGetRangeImpl(uint8_t *range);
+/**
+ * Device specific controller implementation for acceleration sensor
+ * manipulation.
+ *
+ * @{
+ */
+static void sensor_doInitImpl();
+static int sensor_doGetOutputDataRateImpl(uint8_t *odr);
+static int sensor_doGetScaleImpl(uint8_t *scale);
+static int sensor_doGetRangeImpl(uint8_t *range);
+/// @}
 
+/**
+ * Device specific controller implementation for the sampling module.
+ *
+ * @{
+ */
 static void sampling_setFifoWatermark();
 static void sampling_clearFifoWatermark();
 static void sampling_setFifoOverflow();
@@ -92,6 +122,18 @@ static void sampling_doEnableSensorImpl();
 static void sampling_doDisableSensorImpl();
 static void
 sampling_doFetchSensorAccelerationImpl(struct Sampling_Acceleration *sample);
+/// @}
+
+/**
+ * Device specific controller implementation for fault handlers.
+ * @{
+ */
+static void fault_onNmiFaultHandler();
+static void fault_onUsageFaultHandler();
+static void fault_onBusFaultHandler();
+static void fault_onHardFaultHandler();
+static void fault_onErrorHandler();
+/// @}
 
 #define SAMPLING_DECLARE_INITIALIZER                                           \
   {                                                                            \
@@ -134,8 +176,7 @@ sampling_doFetchSensorAccelerationImpl(struct Sampling_Acceleration *sample);
 
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 struct Controller_Handle controllerHandle = {
-    .sensor = {.handle = ADXL345_HANDLE_INITIALIZER,
-               .init = sensor_Adxl345_doInitImpl},
+    .sensor = {.handle = ADXL345_HANDLE_INITIALIZER, .init = sensor_doInitImpl},
 
     .sampling =
         {
@@ -166,7 +207,13 @@ struct Controller_Handle controllerHandle = {
     .loop = ControllerImpl_loop,
 
     .checkReboot = ControllerImpl_device_checkReboot,
-    .requestReboot = ControllerImpl_device_requestAsyncReboot};
+    .requestReboot = ControllerImpl_device_requestAsyncReboot,
+    .fault_onNmiFaultHandler = fault_onNmiFaultHandler,
+    .fault_onUsageFaultHandler = fault_onUsageFaultHandler,
+    .fault_onBusFaultHandler = fault_onBusFaultHandler,
+    .fault_onHardFaultHandler = fault_onHardFaultHandler,
+    .fault_onErrorHandler = fault_onErrorHandler,
+};
 
 /* Device ------------------------------------------------------------------- */
 
@@ -231,7 +278,7 @@ static int host_onRequestGetFirmwareVersion() {
 
 static int host_onRequestGetOutputDataRate() {
   uint8_t odr = {0};
-  sensor_Adxl345_doGetOutputDataRateImpl(&odr);
+  sensor_doGetOutputDataRateImpl(&odr);
   TransportTx_TxOutputDataRate(&controllerHandle.host.handle, odr);
   return 0;
 }
@@ -243,7 +290,7 @@ host_onRequestSetOutputDatatRate(enum TransportRx_SetOutputDataRate_Rate odr) {
 
 static int host_onRequestGetRange() {
   uint8_t range = {0};
-  sensor_Adxl345_doGetRangeImpl(&range);
+  sensor_doGetRangeImpl(&range);
   TransportTx_TxRange(&controllerHandle.host.handle, range);
   return 0;
 }
@@ -254,7 +301,7 @@ static int host_onRequestSetRange(enum TransportRx_SetRange_Range range) {
 
 static int host_onRequestGetScale() {
   uint8_t scale = {0};
-  sensor_Adxl345_doGetScaleImpl(&scale);
+  sensor_doGetScaleImpl(&scale);
   TransportTx_TxScale(&controllerHandle.host.handle, scale);
   return 0;
 }
@@ -268,9 +315,9 @@ static int host_onRequestGetDeviceSetup() {
   uint8_t scale = {0};
   uint8_t range = {0};
 
-  sensor_Adxl345_doGetOutputDataRateImpl(&odr);
-  sensor_Adxl345_doGetScaleImpl(&scale);
-  sensor_Adxl345_doGetRangeImpl(&range);
+  sensor_doGetOutputDataRateImpl(&odr);
+  sensor_doGetScaleImpl(&scale);
+  sensor_doGetRangeImpl(&range);
 
   TransportTx_TxSamplingSetup(&controllerHandle.host.handle, odr, scale, range);
   return 0;
@@ -302,11 +349,11 @@ static int host_onRequestGetBufferStatus() {
 
 /* Sensor ------------------------------------------------------------------- */
 
-static void sensor_Adxl345_doInitImpl() {
+static void sensor_doInitImpl() {
   Adxl345_init(&controllerHandle.sensor.handle);
 }
 
-static int sensor_Adxl345_doGetOutputDataRateImpl(uint8_t *odr) {
+static int sensor_doGetOutputDataRateImpl(uint8_t *odr) {
   enum Adxl345Flags_BwRate_Rate adxlOdr = {0};
   int ret =
       Adxl345_getOutputDataRate(&controllerHandle.sensor.handle, &adxlOdr);
@@ -314,14 +361,14 @@ static int sensor_Adxl345_doGetOutputDataRateImpl(uint8_t *odr) {
   return ret;
 }
 
-static int sensor_Adxl345_doGetScaleImpl(uint8_t *scale) {
+static int sensor_doGetScaleImpl(uint8_t *scale) {
   enum Adxl345Flags_DataFormat_FullResBit adxlScale = {0};
   int ret = Adxl345_getScale(&controllerHandle.sensor.handle, &adxlScale);
   *scale = adxlScale;
   return ret;
 }
 
-static int sensor_Adxl345_doGetRangeImpl(uint8_t *range) {
+static int sensor_doGetRangeImpl(uint8_t *range) {
   enum Adxl345Flags_DataFormat_Range adxlRange = {0};
   int ret = Adxl345_getRange(&controllerHandle.sensor.handle, &adxlRange);
   *range = adxlRange;
@@ -358,9 +405,9 @@ static void sampling_onSamplingStoppedCb() {
   uint8_t scale = {0};
   uint8_t range = {0};
 
-  sensor_Adxl345_doGetOutputDataRateImpl(&odr);
-  sensor_Adxl345_doGetScaleImpl(&scale);
-  sensor_Adxl345_doGetRangeImpl(&range);
+  sensor_doGetOutputDataRateImpl(&odr);
+  sensor_doGetScaleImpl(&scale);
+  sensor_doGetRangeImpl(&range);
 
   TransportTx_TxSamplingStopped(&controllerHandle.host.handle, odr, scale,
                                 range);
@@ -411,4 +458,29 @@ sampling_doFetchSensorAccelerationImpl(struct Sampling_Acceleration *sample) {
     sample->y = sensorSample.y;
     sample->z = sensorSample.z;
   }
+}
+
+static void fault_onNmiFaultHandler() {
+  TransportTx_TxFault(&controllerHandle.host.handle,
+                      TransportTx_FaultCode_NmiHandler);
+}
+
+static void fault_onUsageFaultHandler() {
+  TransportTx_TxFault(&controllerHandle.host.handle,
+                      TransportTx_FaultCode_UsageFaultHandler);
+}
+
+static void fault_onBusFaultHandler() {
+  TransportTx_TxFault(&controllerHandle.host.handle,
+                      TransportTx_FaultCode_BusFaultHandler);
+}
+
+static void fault_onHardFaultHandler() {
+  TransportTx_TxFault(&controllerHandle.host.handle,
+                      TransportTx_FaultCode_HardFaultHandler);
+}
+
+static void fault_onErrorHandler() {
+  TransportTx_TxFault(&controllerHandle.host.handle,
+                      TransportTx_FaultCode_ErrorHandler);
 }

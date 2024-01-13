@@ -110,5 +110,11 @@ struct Controller_Handle {
   void (*const checkReboot)();   ///< Context: main()
   void (*const requestReboot)(); ///< Context: main()
 
+  void (*const fault_onNmiFaultHandler)();   ///< \see stm32f4xx_it.h
+  void (*const fault_onUsageFaultHandler)(); ///< \see stm32f4xx_it.h
+  void (*const fault_onBusFaultHandler)();   ///< \see stm32f4xx_it.h
+  void (*const fault_onHardFaultHandler)();  ///< \see stm32f4xx_it.h
+  void (*const fault_onErrorHandler)();      ///< \see main.h
+
   /// @}
 };

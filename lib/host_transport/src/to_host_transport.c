@@ -251,15 +251,15 @@ void TransportTx_TxUptime(struct HostTransport_Handle *handle,
   }
 }
 
-void TransportTx_TxError(struct HostTransport_Handle *handle,
-                         enum TransportTx_ErrorCode code) {
+void TransportTx_TxFault(struct HostTransport_Handle *handle,
+                         enum TransportTx_FaultCode code) {
   struct TransportFrame data;
-  data.header.id = Transport_HeaderId_Tx_Error;
-  data.asTxFrame.asError.code = code;
+  data.header.id = Transport_HeaderId_Tx_Fault;
+  data.asTxFrame.asFault.code = code;
   while (HostTransport_Status_Busy ==
          TransportTx_transmit(
              handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asError))) {
+             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asFault))) {
   }
 }
 

@@ -226,11 +226,11 @@ void EXTI3_IRQHandler(void)
 
   if (GPIO_PIN_SET == HAL_GPIO_ReadPin(FIFO_OVFL_GPIO_Port, FIFO_OVFL_Pin))
   {
-    USER_DEBUG1_HIGH;
+    USER_DEBUG1_HIGH; // mark start of FiFo overflow
     controllerHandle.sampling.doSetFifoOverflow();
   } else
   {
-    USER_DEBUG1_LOW;
+    USER_DEBUG1_LOW; // mark end of FiFo overflow
   }
 
   /* USER CODE END EXTI3_IRQn 0 */
@@ -247,7 +247,6 @@ void TIM3_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM3_IRQn 0 */
   controllerHandle.sampling.doSet5usTimerExpired();
-  // USER_DEBUG0_LOW;
   /* USER CODE END TIM3_IRQn 0 */
   HAL_TIM_IRQHandler(&htim3);
   /* USER CODE BEGIN TIM3_IRQn 1 */

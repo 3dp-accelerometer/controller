@@ -25,22 +25,31 @@ TransportTx_transmit(struct HostTransport_Handle *handle, uint8_t *buffer,
 }
 
 /**
- * Transmits data to the IN endpoint of host.
+ * Transmits or buffers acceleration data blocks to the IN endpoint of host or
+ * in ringbuffer.
  *
- * @param handle underlying pimpl
- * @param buffer data to transmit
- * @param len data length
- * @return transmission status
- */
-
-/**
- * Transmits or buffers acceleration data blocks until next invocation.
- *
- * This implementation does not insist on completed transmission but buffers
- * instead.
+ * This implementation either transmits or buffers data but does not insist on
+ * completed transmission.
  * The USB host will poll the usb client's IN endpoint about every 1ms
  * or lesser.
- * This is even slower on weak hardware such as raspberry pi or similar.
+ * This is even slower on weak hardware such as Raspberry Pi or similar.
+ *
+ * Notes:
+ *   - UserTxBufferFS must remain untouched by any other function
+ *   - UserTxBufferFS is only modified by this implementation
+ *
+ * Findings:
+ *   - on RPi 4B the Pyserial performance is a bottleneck when receiving with
+ *     ODR1600 or higher
+ *   - hiccups of about 20ms have been observed where Pyserial did not consume
+ *     bytes from the serial device;
+ *     this in turn blocks the device when sending (USB device is busy on TX)
+ *   - USB host or kernel driver are not expected to be subjects of performance
+ *     issues (at the time of writing)
+ *   - before tinkering with the Python performance, buffering on the controller
+ *     is a reasonable mitigation strategy
+ *   - Example: a buffer of about 1s at highest sample rate cold be as follows
+ *     3200kS/s * (1+2+6)B * 1s = 28800B
  *
  * @param handle
  * @param buffer the acceleration data block to transmit
@@ -49,28 +58,19 @@ TransportTx_transmit(struct HostTransport_Handle *handle, uint8_t *buffer,
  *   - HostTransport_Status_Again if data is still buffered,
  *   - any other value of HostTransport_Status otherwise
  */
-enum HostTransport_Status TransportTx_transmitAccelerationBuffered(
+static enum HostTransport_Status TransportTx_transmitAccelerationBuffered(
     struct HostTransport_Handle *handle,
     struct TransportFrame *accelerationsChunk, uint16_t dataCount) {
   // todo: replace naive forwarding with a buffered approach
-  //   - for number of defined retries (i.e. 3x) do
-  //     - if USB status is not busy
-  //       1. if ringbuffer is not empty
-  //          1.a pop data from ringbuffer to UserTxBufferFS
-  //       2. if ringbuffer is empty
-  //         2.a store new data directly in UserTxBufferFS
-  //       3. transmit data from UserTxBufferFS
-  //       4. reduce the retry counter by one
-  //   done
-  //   - if new data was not stored anywhere store in UserTxBufferFS if in ring
-  //   buffer is empty,
-  //     otherwise in ringbuffer or return HostTransport_Status_BufferOverflow
-  //     accordingly
+  //   1 store new data to ringbuffer
+  //   2 while number of defined retries (i.e. 3x) > 0 do:
+  //     2.a reduce the retry counter by one
+  //     2.b while ringbuffer is not empty:
+  //       2.b.1 if USB status is busy: continue
+  //       2.b.2 pop data from ringbuffer to UserTxBufferFS
+  //       2.b.3 start transmission from UserTxBufferFS
 
-  // todo: document that the buffer UserTxBufferFS must remain untouched
-  //    (only manipulated by this implementation)
-
-  USER_DEBUG0_HIGH;
+  USER_DEBUG0_HIGH; // mark the start of transmission
   while (HostTransport_Status_Busy ==
          handle->toHost.doTransmitImpl(
              (uint8_t *)accelerationsChunk,
@@ -78,7 +78,6 @@ enum HostTransport_Status TransportTx_transmitAccelerationBuffered(
                              struct TransportTx_Acceleration)))) {
   }
 
-  // USER_DEBUG0_LOW;
   return HostTransport_Status_Ok;
 }
 

@@ -130,6 +130,7 @@ A constant time separation in between samples is a key aspect for later Fourier 
       |                   |   RCC_OSC32_OUT |--PC15-+                            |
       |                   |                 |                                    |
       |                   |     USER_DEBUG0 |--PA1-- optional for debugging      |
+      |                   |     USER_DEBUG1 |--PB0-- optional for debugging      |
       |                   |             MCO |--PA8-- optional for debugging      |
       |                   +-----------------+                                    |
       +--------------------------------------------------------------------------+                

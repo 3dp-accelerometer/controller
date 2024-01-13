@@ -6,6 +6,7 @@
 
 #include "fw/adxl345_transport_impl.h"
 #include "fw/host_transport_impl.h"
+#include "fw/led.h"
 #include "fw/sampling_impl.h"
 #include "fw/version.h"
 #include "main.h"
@@ -192,10 +193,10 @@ void ControllerImpl_loop() {
   switch (Sampling_fetchForward(&controllerHandle.sampling.handle)) {
   case -ECANCELED: // NOLINT(bugprone-branch-clone)
   case -EOVERFLOW: // NOLINT(bugprone-branch-clone)
-    HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_RESET);
+    USER_LED0_ON;
     break;
   case ENODATA:
-    HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_SET);
+    USER_LED0_OFF;
     break;
   default:
     break;

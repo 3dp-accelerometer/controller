@@ -22,6 +22,7 @@
 #include "stm32f4xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "fw/debug.h"
 #include <controller.h>
 /* USER CODE END Includes */
 
@@ -224,7 +225,13 @@ void EXTI3_IRQHandler(void)
   /* USER CODE BEGIN EXTI3_IRQn 0 */
 
   if (GPIO_PIN_SET == HAL_GPIO_ReadPin(FIFO_OVFL_GPIO_Port, FIFO_OVFL_Pin))
+  {
+    USER_DEBUG1_HIGH;
     controllerHandle.sampling.doSetFifoOverflow();
+  } else
+  {
+    USER_DEBUG1_LOW;
+  }
 
   /* USER CODE END EXTI3_IRQn 0 */
   HAL_GPIO_EXTI_IRQHandler(FIFO_OVFL_Pin);
@@ -240,7 +247,7 @@ void TIM3_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM3_IRQn 0 */
   controllerHandle.sampling.doSet5usTimerExpired();
-  // HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_RESET);
+  // USER_DEBUG0_LOW;
   /* USER CODE END TIM3_IRQn 0 */
   HAL_TIM_IRQHandler(&htim3);
   /* USER CODE BEGIN TIM3_IRQn 1 */

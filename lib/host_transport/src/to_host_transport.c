@@ -5,6 +5,7 @@
  */
 
 #include "to_host_transport.h"
+#include "fw/debug.h"
 #include "host_transport.h"
 #include "host_transport_types.h"
 #include <errno.h>
@@ -69,7 +70,7 @@ enum HostTransport_Status TransportTx_transmitAccelerationBuffered(
   // todo: document that the buffer UserTxBufferFS must remain untouched
   //    (only manipulated by this implementation)
 
-  // HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_SET);
+  USER_DEBUG0_HIGH;
   while (HostTransport_Status_Busy ==
          handle->toHost.doTransmitImpl(
              (uint8_t *)accelerationsChunk,
@@ -77,7 +78,7 @@ enum HostTransport_Status TransportTx_transmitAccelerationBuffered(
                              struct TransportTx_Acceleration)))) {
   }
 
-  // HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_RESET);
+  // USER_DEBUG0_LOW;
   return HostTransport_Status_Ok;
 }
 

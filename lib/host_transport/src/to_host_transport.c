@@ -81,21 +81,16 @@ static enum HostTransport_Status TransportTx_transmitAccelerationBuffered(
   return HostTransport_Status_Ok;
 }
 
-void TransportTx_TxSamplingSetup(struct HostTransport_Handle *handle) {
+void TransportTx_TxSamplingSetup(
+    struct HostTransport_Handle *handle,
+    // NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
+    uint8_t sensorOdr, uint8_t sensorScale, uint8_t sensorRange) {
   struct TransportFrame data;
   data.header.id = Transport_HeaderId_Tx_DeviceSetup;
 
-  uint8_t odr = {0};
-  uint8_t scale = {0};
-  uint8_t range = {0};
-
-  handle->toHost.doGetSensorOutputDataRateImpl(&odr);
-  handle->toHost.doGetSensorScaleImpl(&scale);
-  handle->toHost.doGetSensorRangeImpl(&range);
-
-  data.asTxFrame.asDeviceSetup.outputDataRate = odr;
-  data.asTxFrame.asDeviceSetup.scale = scale;
-  data.asTxFrame.asDeviceSetup.range = range;
+  data.asTxFrame.asDeviceSetup.outputDataRate = sensorOdr;
+  data.asTxFrame.asDeviceSetup.scale = sensorScale;
+  data.asTxFrame.asDeviceSetup.range = sensorRange;
 
   while (HostTransport_Status_Busy ==
          TransportTx_transmit(
@@ -104,12 +99,11 @@ void TransportTx_TxSamplingSetup(struct HostTransport_Handle *handle) {
   }
 }
 
-void TransportTx_TxScale(struct HostTransport_Handle *handle) {
+void TransportTx_TxScale(struct HostTransport_Handle *handle,
+                         uint8_t sensorScale) {
   struct TransportFrame data;
   data.header.id = Transport_HeaderId_Tx_Scale;
-  uint8_t scale = {0};
-  handle->toHost.doGetSensorScaleImpl(&scale);
-  data.asTxFrame.asScale.scale = scale;
+  data.asTxFrame.asScale.scale = sensorScale;
 
   while (HostTransport_Status_Busy ==
          TransportTx_transmit(
@@ -118,12 +112,11 @@ void TransportTx_TxScale(struct HostTransport_Handle *handle) {
   }
 }
 
-void TransportTx_TxRange(struct HostTransport_Handle *handle) {
+void TransportTx_TxRange(struct HostTransport_Handle *handle,
+                         uint8_t sensorRange) {
   struct TransportFrame data;
   data.header.id = Transport_HeaderId_Tx_Range;
-  uint8_t range = {0};
-  handle->toHost.doGetSensorRangeImpl(&range);
-  data.asTxFrame.asRange.range = range;
+  data.asTxFrame.asRange.range = sensorRange;
 
   while (HostTransport_Status_Busy ==
          TransportTx_transmit(
@@ -132,12 +125,11 @@ void TransportTx_TxRange(struct HostTransport_Handle *handle) {
   }
 }
 
-void TransportTx_TxOutputDataRate(struct HostTransport_Handle *handle) {
+void TransportTx_TxOutputDataRate(struct HostTransport_Handle *handle,
+                                  uint8_t sensorOdr) {
   struct TransportFrame data;
   data.header.id = Transport_HeaderId_Tx_OutputDataRate;
-  uint8_t odr = {0};
-  handle->toHost.doGetSensorOutputDataRateImpl(&odr);
-  data.asTxFrame.asOutputDataRate.rate = odr;
+  data.asTxFrame.asOutputDataRate.rate = sensorOdr;
 
   while (HostTransport_Status_Busy ==
          TransportTx_transmit(
@@ -146,10 +138,11 @@ void TransportTx_TxOutputDataRate(struct HostTransport_Handle *handle) {
   }
 }
 
-void TransportTx_TxUptime(struct HostTransport_Handle *handle) {
+void TransportTx_TxUptime(struct HostTransport_Handle *handle,
+                          uint32_t uptimeMs) {
   struct TransportFrame data;
   data.header.id = Transport_HeaderId_Tx_Uptime;
-  data.asTxFrame.asUptime.elapsedMs = handle->toHost.doGetUptimeMsImpl();
+  data.asTxFrame.asUptime.elapsedMs = uptimeMs;
   while (HostTransport_Status_Busy ==
          TransportTx_transmit(
              handle, (uint8_t *)&data,
@@ -169,15 +162,15 @@ void TransportTx_TxError(struct HostTransport_Handle *handle,
   }
 }
 
-void TransportTx_TxFirmwareVersion(struct HostTransport_Handle *handle) {
+void TransportTx_TxFirmwareVersion(
+    struct HostTransport_Handle *handle,
+    // NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
+    uint8_t major, uint8_t minor, uint8_t patch) {
   struct TransportFrame data;
   data.header.id = Transport_HeaderId_Tx_FirmwareVersion;
-  data.asTxFrame.asFirmwareVersion.major =
-      handle->toHost.controllerVersionMajor;
-  data.asTxFrame.asFirmwareVersion.minor =
-      handle->toHost.controllerVersionMinor;
-  data.asTxFrame.asFirmwareVersion.patch =
-      handle->toHost.controllerVersionPatch;
+  data.asTxFrame.asFirmwareVersion.major = major;
+  data.asTxFrame.asFirmwareVersion.minor = minor;
+  data.asTxFrame.asFirmwareVersion.patch = patch;
 
   while (HostTransport_Status_Busy ==
          TransportTx_transmit(
@@ -209,8 +202,10 @@ void TransportTx_TxSamplingFinished(struct HostTransport_Handle *handle) {
   }
 }
 
-void TransportTx_TxSamplingStopped(struct HostTransport_Handle *handle) {
-  TransportTx_TxSamplingSetup(handle);
+void TransportTx_TxSamplingStopped(struct HostTransport_Handle *handle,
+                                   uint8_t sensorOdr, uint8_t sensorScale,
+                                   uint8_t sensorRange) {
+  TransportTx_TxSamplingSetup(handle, sensorOdr, sensorScale, sensorRange);
 
   struct TransportFrame data = {.header.id =
                                     Transport_HeaderId_Tx_SamplingStopped};

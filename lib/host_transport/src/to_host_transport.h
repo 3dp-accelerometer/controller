@@ -21,16 +21,25 @@ enum TransportTx_ErrorCode;
  * host.
  *
  * @param handle host transport pimpl
+ * @param sensorOdr sensor output data rate
+ * @param sensorRange sensor scale
+ * @param sensorScale sensor range
  */
-void TransportTx_TxSamplingSetup(struct HostTransport_Handle *handle);
+void TransportTx_TxSamplingSetup(struct HostTransport_Handle *handle,
+                                 uint8_t sensorOdr, uint8_t sensorScale,
+                                 uint8_t sensorRange);
 
-void TransportTx_TxScale(struct HostTransport_Handle *handle);
+void TransportTx_TxScale(struct HostTransport_Handle *handle,
+                         uint8_t sensorScale);
 
-void TransportTx_TxRange(struct HostTransport_Handle *handle);
+void TransportTx_TxRange(struct HostTransport_Handle *handle,
+                         uint8_t sensorRange);
 
-void TransportTx_TxOutputDataRate(struct HostTransport_Handle *handle);
+void TransportTx_TxOutputDataRate(struct HostTransport_Handle *handle,
+                                  uint8_t sensorOdr);
 
-void TransportTx_TxUptime(struct HostTransport_Handle *handle);
+void TransportTx_TxUptime(struct HostTransport_Handle *handle,
+                          uint32_t uptimeMs);
 
 void TransportTx_TxError(struct HostTransport_Handle *handle,
                          enum TransportTx_ErrorCode code);
@@ -39,8 +48,12 @@ void TransportTx_TxError(struct HostTransport_Handle *handle,
  * host.
  *
  * @param handle host transport pimpl
+ * @param major firmware version
+ * @param minor  firmware version
+ * @param patch  firmware version
  */
-void TransportTx_TxFirmwareVersion(struct HostTransport_Handle *handle);
+void TransportTx_TxFirmwareVersion(struct HostTransport_Handle *handle,
+                                   uint8_t major, uint8_t minor, uint8_t patch);
 
 /**
  * Transmits sampling started package TransportTx_SamplingStarted to the IN
@@ -64,8 +77,13 @@ void TransportTx_TxSamplingFinished(struct HostTransport_Handle *handle);
  * endpoint of host.
  *
  * @param handle host transport pimpl
+ * @param sensorOdr
+ * @param sensorScale
+ * @param sensorRange
  */
-void TransportTx_TxSamplingStopped(struct HostTransport_Handle *handle);
+void TransportTx_TxSamplingStopped(struct HostTransport_Handle *handle,
+                                   uint8_t sensorOdr, uint8_t sensorScale,
+                                   uint8_t sensorRange);
 
 /**
  * Transmits sampling aborted package TransportTx_SamplingAborted to the IN

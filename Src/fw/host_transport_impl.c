@@ -72,5 +72,3 @@ int HostTransportImpl_onTakeReceivedImpl(uint8_t *buffer) {
     return -EINVAL;
   }
 }
-
-uint32_t HostTransportImpl_doGetUptimeMsImpl() { return HAL_GetTick(); }

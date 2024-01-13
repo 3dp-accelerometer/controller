@@ -125,13 +125,6 @@ sampling_doFetchSensorAccelerationImpl(struct Sampling_Acceleration *sample);
       .txBuffer = UserTxBufferFS,                                              \
       .txBufferSize = APP_TX_DATA_SIZE,                                        \
       .doTransmitImpl = HostTransportImpl_doTransmitImpl,                      \
-      .controllerVersionMajor = VERSION_MAJOR,                                 \
-      .controllerVersionMinor = VERSION_MINOR,                                 \
-      .controllerVersionPatch = VERSION_PATCH,                                 \
-      .doGetSensorOutputDataRateImpl = sensor_Adxl345_doGetOutputDataRateImpl, \
-      .doGetSensorScaleImpl = sensor_Adxl345_doGetScaleImpl,                   \
-      .doGetSensorRangeImpl = sensor_Adxl345_doGetRangeImpl,                   \
-      .doGetUptimeMsImpl = HostTransportImpl_doGetUptimeMsImpl                 \
     }                                                                          \
   }
 
@@ -230,12 +223,15 @@ static void host_doTakeBytes(uint8_t *buffer, uint16_t len) {
 }
 
 static int host_onRequestGetFirmwareVersion() {
-  TransportTx_TxFirmwareVersion(&controllerHandle.host.handle);
+  TransportTx_TxFirmwareVersion(&controllerHandle.host.handle, VERSION_MAJOR,
+                                VERSION_MINOR, VERSION_PATCH);
   return 0;
 }
 
 static int host_onRequestGetOutputDataRate() {
-  TransportTx_TxOutputDataRate(&controllerHandle.host.handle);
+  uint8_t odr = {0};
+  sensor_Adxl345_doGetOutputDataRateImpl(&odr);
+  TransportTx_TxOutputDataRate(&controllerHandle.host.handle, odr);
   return 0;
 }
 
@@ -245,7 +241,9 @@ host_onRequestSetOutputDatatRate(enum TransportRx_SetOutputDataRate_Rate odr) {
 }
 
 static int host_onRequestGetRange() {
-  TransportTx_TxRange(&controllerHandle.host.handle);
+  uint8_t range = {0};
+  sensor_Adxl345_doGetRangeImpl(&range);
+  TransportTx_TxRange(&controllerHandle.host.handle, range);
   return 0;
 }
 
@@ -254,7 +252,9 @@ static int host_onRequestSetRange(enum TransportRx_SetRange_Range range) {
 }
 
 static int host_onRequestGetScale() {
-  TransportTx_TxScale(&controllerHandle.host.handle);
+  uint8_t scale = {0};
+  sensor_Adxl345_doGetScaleImpl(&scale);
+  TransportTx_TxScale(&controllerHandle.host.handle, scale);
   return 0;
 }
 
@@ -263,7 +263,15 @@ static int host_onRequestSetScale(enum TransportRx_SetScale_Scale scale) {
 }
 
 static int host_onRequestGetDeviceSetup() {
-  TransportTx_TxSamplingSetup(&controllerHandle.host.handle);
+  uint8_t odr = {0};
+  uint8_t scale = {0};
+  uint8_t range = {0};
+
+  sensor_Adxl345_doGetOutputDataRateImpl(&odr);
+  sensor_Adxl345_doGetScaleImpl(&scale);
+  sensor_Adxl345_doGetRangeImpl(&range);
+
+  TransportTx_TxSamplingSetup(&controllerHandle.host.handle, odr, scale, range);
   return 0;
 }
 
@@ -278,7 +286,8 @@ static int host_onRequestSamplingStop() {
 }
 
 static int host_onRequestGetUptime() {
-  TransportTx_TxUptime(&controllerHandle.host.handle);
+  uint32_t tickMs = {HAL_GetTick()};
+  TransportTx_TxUptime(&controllerHandle.host.handle, tickMs);
   return 0;
 }
 
@@ -327,14 +336,24 @@ static void sampling_on5usTimerExpired() {
 }
 
 static void sampling_onSamplingStartedCb() {
-  TransportTx_TxFirmwareVersion(&controllerHandle.host.handle);
+  TransportTx_TxFirmwareVersion(&controllerHandle.host.handle, VERSION_MAJOR,
+                                VERSION_MINOR, VERSION_PATCH);
   TransportTx_TxSamplingStarted(
       &controllerHandle.host.handle,
       controllerHandle.sampling.handle.state.maxSamples);
 }
 
 static void sampling_onSamplingStoppedCb() {
-  TransportTx_TxSamplingStopped(&controllerHandle.host.handle);
+  uint8_t odr = {0};
+  uint8_t scale = {0};
+  uint8_t range = {0};
+
+  sensor_Adxl345_doGetOutputDataRateImpl(&odr);
+  sensor_Adxl345_doGetScaleImpl(&scale);
+  sensor_Adxl345_doGetRangeImpl(&range);
+
+  TransportTx_TxSamplingStopped(&controllerHandle.host.handle, odr, scale,
+                                range);
 }
 
 static void sampling_onSamplingAbortedCb() {

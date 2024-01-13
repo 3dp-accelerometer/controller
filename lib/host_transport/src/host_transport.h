@@ -39,16 +39,6 @@ struct HostTransport_ToHostApi {
 
   enum HostTransport_Status (*const doTransmitImpl)(
       uint8_t *, uint16_t); ///< Context: main() and interrupts
-
-  const uint8_t controllerVersionMajor; ///< Context: main()
-  const uint8_t controllerVersionMinor; ///< Context: main()
-  const uint8_t controllerVersionPatch; ///< Context: main()
-
-  int (*const doGetSensorOutputDataRateImpl)(uint8_t *); ///< Context: main()
-  int (*const doGetSensorScaleImpl)(uint8_t *);          ///< Context: main()
-  int (*const doGetSensorRangeImpl)(uint8_t *);          ///< Context: main()
-  uint32_t (*const doGetUptimeMsImpl)(); ///< Context: CDC_Receive_FS(uint8_t* ,
-                                         ///< uint32_t *)
 };
 
 /**

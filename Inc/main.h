@@ -71,6 +71,8 @@ void Error_Handler(void);
 #define FIFO_OVFL_EXTI_IRQn EXTI3_IRQn
 #define SPI1_SS_Pin GPIO_PIN_4
 #define SPI1_SS_GPIO_Port GPIOA
+#define USER_DEBUG1_Pin GPIO_PIN_0
+#define USER_DEBUG1_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

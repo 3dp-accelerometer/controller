@@ -7,6 +7,7 @@
 #include "fw/adxl345_transport_impl.h"
 #include "fw/host_transport_impl.h"
 #include "fw/led.h"
+#include "fw/ringbuffer_impl.h"
 #include "fw/sampling_impl.h"
 #include "fw/version.h"
 #include "main.h"
@@ -124,6 +125,8 @@ sampling_doFetchSensorAccelerationImpl(struct Sampling_Acceleration *sample);
     .toHost = {                                                                \
       .txBuffer = UserTxBufferFS,                                              \
       .txBufferSize = APP_TX_DATA_SIZE,                                        \
+      .ringbuffer = RINGBUFFER_DECLARE_INITIALIZER,                            \
+      .ringbufferMaxItemsUtilization = 0,                                      \
       .doTransmitImpl = HostTransportImpl_doTransmitImpl,                      \
     }                                                                          \
   }

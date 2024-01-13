@@ -69,6 +69,7 @@ static int host_onRequestGetDeviceSetup();
 static int host_onRequestSamplingStart(uint16_t maxSamplesCount);
 static int host_onRequestSamplingStop();
 static int host_onRequestGetUptime();
+static int host_onRequestGetBufferStatus();
 
 static void sensor_Adxl345_doInitImpl();
 static int sensor_Adxl345_doGetOutputDataRateImpl(uint8_t *odr);
@@ -162,7 +163,8 @@ struct Controller_Handle controllerHandle = {
              .onRequestGetDeviceSetup = host_onRequestGetDeviceSetup,
              .onRequestSamplingStart = host_onRequestSamplingStart,
              .onRequestSamplingStop = host_onRequestSamplingStop,
-             .onRequestUptime = host_onRequestGetUptime},
+             .onRequestUptime = host_onRequestGetUptime,
+             .onRequestBufferStatus = host_onRequestGetBufferStatus},
 
     .init = ControllerImpl_init,
     .loop = ControllerImpl_loop,
@@ -294,6 +296,14 @@ static int host_onRequestGetUptime() {
   return 0;
 }
 
+static int host_onRequestGetBufferStatus() {
+  TransportTx_BufferStatus(
+      &controllerHandle.host.handle, RINGBUFFER_STORAGE_SIZE_BYTES,
+      RINGBUFFER_STORAGE_ITEMS,
+      controllerHandle.host.handle.toHost.ringbufferMaxItemsUtilization);
+  return 0;
+}
+
 /* Sensor ------------------------------------------------------------------- */
 
 static void sensor_Adxl345_doInitImpl() {
@@ -339,14 +349,15 @@ static void sampling_on5usTimerExpired() {
 }
 
 static void sampling_onSamplingStartedCb() {
-  TransportTx_TxFirmwareVersion(&controllerHandle.host.handle, VERSION_MAJOR,
-                                VERSION_MINOR, VERSION_PATCH);
   TransportTx_TxSamplingStarted(
       &controllerHandle.host.handle,
       controllerHandle.sampling.handle.state.maxSamples);
 }
 
 static void sampling_onSamplingStoppedCb() {
+  host_onRequestGetFirmwareVersion();
+  host_onRequestGetBufferStatus();
+
   uint8_t odr = {0};
   uint8_t scale = {0};
   uint8_t range = {0};

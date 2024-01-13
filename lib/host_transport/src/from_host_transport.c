@@ -64,6 +64,10 @@ int TransportRx_Process(struct HostTransport_Handle *handle, uint8_t *buffer,
   case Transport_HeaderId_Rx_GetUptime:
     sizeOk = SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_GetUptime) == length;
     break;
+  case Transport_HeaderId_Rx_GetBufferStatus:
+    sizeOk = SIZEOF_HEADER_INCL_PAYLOAD(struct TransportRx_GetBufferStatus) ==
+             length;
+    break;
 
   default:
     return -EINVAL;

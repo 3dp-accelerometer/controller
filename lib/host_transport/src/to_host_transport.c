@@ -138,30 +138,6 @@ void TransportTx_TxOutputDataRate(struct HostTransport_Handle *handle,
   }
 }
 
-void TransportTx_TxUptime(struct HostTransport_Handle *handle,
-                          uint32_t uptimeMs) {
-  struct TransportFrame data;
-  data.header.id = Transport_HeaderId_Tx_Uptime;
-  data.asTxFrame.asUptime.elapsedMs = uptimeMs;
-  while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asUptime))) {
-  }
-}
-
-void TransportTx_TxError(struct HostTransport_Handle *handle,
-                         enum TransportTx_ErrorCode code) {
-  struct TransportFrame data;
-  data.header.id = Transport_HeaderId_Tx_Error;
-  data.asTxFrame.asError.code = code;
-  while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asError))) {
-  }
-}
-
 void TransportTx_TxFirmwareVersion(
     struct HostTransport_Handle *handle,
     // NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
@@ -261,4 +237,44 @@ int TransportTx_TxAccelerationBuffer(
 
   return TransportTx_transmitAccelerationBuffered(handle, accelerationsChunk,
                                                   count);
+}
+
+void TransportTx_TxUptime(struct HostTransport_Handle *handle,
+                          uint32_t uptimeMs) {
+  struct TransportFrame data;
+  data.header.id = Transport_HeaderId_Tx_Uptime;
+  data.asTxFrame.asUptime.elapsedMs = uptimeMs;
+  while (HostTransport_Status_Busy ==
+         TransportTx_transmit(
+             handle, (uint8_t *)&data,
+             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asUptime))) {
+  }
+}
+
+void TransportTx_TxError(struct HostTransport_Handle *handle,
+                         enum TransportTx_ErrorCode code) {
+  struct TransportFrame data;
+  data.header.id = Transport_HeaderId_Tx_Error;
+  data.asTxFrame.asError.code = code;
+  while (HostTransport_Status_Busy ==
+         TransportTx_transmit(
+             handle, (uint8_t *)&data,
+             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asError))) {
+  }
+}
+
+void TransportTx_BufferStatus(
+    struct HostTransport_Handle *handle,
+    // NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
+    uint16_t sizeBytes, uint16_t capacity, uint16_t maxItemsCount) {
+  struct TransportFrame data;
+  data.header.id = Transport_HeaderId_Tx_BufferStatus;
+  data.asTxFrame.asBufferStatus.sizeBytes = sizeBytes;
+  data.asTxFrame.asBufferStatus.capacity = capacity;
+  data.asTxFrame.asBufferStatus.maxItemsCount = maxItemsCount;
+  while (HostTransport_Status_Busy ==
+         TransportTx_transmit(
+             handle, (uint8_t *)&data,
+             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asBufferStatus))) {
+  }
 }

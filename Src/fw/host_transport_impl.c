@@ -29,12 +29,12 @@ enum HostTransport_Status HostTransportImpl_doTransmitImpl(uint8_t *buffer,
   }
 }
 
-int HostTransportImpl_onTakeReceivedImpl(uint8_t *buffer) {
+int HostTransportImpl_onTakeReceivedImpl(const uint8_t *buffer) {
   if (NULL == buffer) {
     return -EINVAL;
   }
 
-  struct TransportFrame *request = (struct TransportFrame *)buffer;
+  const struct TransportFrame *request = (struct TransportFrame *)buffer;
 
   switch (request->header.id) {
   case Transport_HeaderId_Rx_GetFirmwareVersion:
@@ -67,6 +67,8 @@ int HostTransportImpl_onTakeReceivedImpl(uint8_t *buffer) {
     return controllerHandle.host.onRequestSamplingStop();
   case Transport_HeaderId_Rx_GetUptime:
     return controllerHandle.host.onRequestUptime();
+  case Transport_HeaderId_Rx_GetBufferStatus:
+    return controllerHandle.host.onRequestBufferStatus();
 
   default:
     return -EINVAL;

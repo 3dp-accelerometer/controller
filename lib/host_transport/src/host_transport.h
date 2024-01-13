@@ -20,7 +20,7 @@ enum HostTransport_Status {
 
 struct HostTransport_FromHostApi {
   int (*const doTakeReceivedPacketImpl)(
-      uint8_t *); ///< Context: CDC_Receive_FS(uint8_t* , uint32_t *)
+      const uint8_t *); ///< Context: CDC_Receive_FS(uint8_t* , uint32_t *)
 };
 
 struct HostTransport_ToHostApi {

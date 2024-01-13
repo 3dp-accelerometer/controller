@@ -2,6 +2,10 @@
  * \file usbd_cdc_transport_types.h
  *
  * Types transferred from/to the IN USB endpoint (host).
+ *
+ * Transmission and reception frames are composed of header-id and subsequent
+ * payload, hence respective enum/unions/structs must pe packed by
+ * __attribute__((__packed__)).
  */
 
 #pragma once
@@ -24,6 +28,10 @@
  * Each package's header ID must be one of these.
  */
 enum Transport_HeaderId {
+  /**
+   * Request with dedicated unique response.
+   * @{
+   */
   Transport_HeaderId_Rx_SetOutputDataRate = 1U,
   Transport_HeaderId_Rx_GetOutputDataRate,
   Transport_HeaderId_Rx_SetRange,
@@ -33,18 +41,35 @@ enum Transport_HeaderId {
   Transport_HeaderId_Rx_GetDeviceSetup,
   Transport_HeaderId_Rx_GetFirmwareVersion,
   Transport_HeaderId_Rx_GetUptime,
+  Transport_HeaderId_Rx_GetBufferStatus,
+  /// @}
 
+  /**
+   * Request with no unique response or no response at all.
+   * @{
+   */
   Transport_HeaderId_Rx_DeviceReboot = 17U,
   Transport_HeaderId_Rx_SamplingStart,
   Transport_HeaderId_Rx_SamplingStop,
+  /// @}
 
+  /**
+   * Unique response for request with dedicated response.
+   * @{
+   */
   Transport_HeaderId_Tx_OutputDataRate = 25U,
   Transport_HeaderId_Tx_Range,
   Transport_HeaderId_Tx_Scale,
   Transport_HeaderId_Tx_DeviceSetup,
   Transport_HeaderId_Tx_FirmwareVersion,
   Transport_HeaderId_Tx_Uptime,
+  Transport_HeaderId_Tx_BufferStatus,
+  /// @}
 
+  /**
+   * Responses with no dedicated or indirect request.
+   * @{
+   */
   Transport_HeaderId_Tx_FifoOverflow = 33U,
   Transport_HeaderId_Tx_SamplingStarted,
   Transport_HeaderId_Tx_SamplingFinished,
@@ -52,6 +77,7 @@ enum Transport_HeaderId {
   Transport_HeaderId_Tx_SamplingAborted,
   Transport_HeaderId_Tx_Acceleration,
   Transport_HeaderId_Tx_Error,
+  /// @}
 
 } __attribute__((__packed__));
 
@@ -190,6 +216,12 @@ struct TransportRx_GetFirmwareVersion {
 struct TransportRx_GetUptime {
 } __attribute__((packed));
 
+/**
+ * RX payload for retrieving the buffer status.
+ */
+struct TransportRx_GetBufferStatus {
+} __attribute__((packed));
+
 /* TX ------------------------------------------------------------------------*/
 
 /**
@@ -300,6 +332,15 @@ struct TransportTx_Acceleration {
 } __attribute__((packed));
 
 /**
+ * TX payload transporting the firmware version.
+ */
+struct TransportTx_FirmwareVersion {
+  uint8_t major; ///< major version
+  uint8_t minor; ///< minor version
+  uint8_t patch; ///< patch version
+} __attribute__((packed));
+
+/**
  * TX payload transporting an error code.
  */
 struct TransportTx_Error {
@@ -314,12 +355,12 @@ struct TransportTx_Uptime {
 } __attribute__((packed));
 
 /**
- * TX payload transporting the firmware version.
+ * TX payload transporting buffer status.
  */
-struct TransportTx_FirmwareVersion {
-  uint8_t major; ///< major version
-  uint8_t minor; ///< minor version
-  uint8_t patch; ///< patch version
+struct TransportTx_BufferStatus {
+  uint16_t sizeBytes; ///< buffer size in bytes
+  uint16_t capacity; ///< buffer capacity in terms of items (structs)
+  uint16_t maxItemsCount; ///< maximum utilization since last sampling-start
 } __attribute__((packed));
 
 /* Frames --------------------------------------------------------------------*/
@@ -341,6 +382,7 @@ union TransportTxFrame {
   struct TransportTx_FirmwareVersion asFirmwareVersion;
   struct TransportTx_Error asError;
   struct TransportTx_Uptime asUptime;
+  struct TransportTx_BufferStatus asBufferStatus;
 } __attribute__((packed));
 
 /**
@@ -359,10 +401,16 @@ union TransportRxFrame {
   struct TransportRx_SamplingStop asSamplingStop;
   struct TransportRx_GetFirmwareVersion asGetFirmwareVersion;
   struct TransportRx_GetUptime asGetUptime;
+  struct TransportRx_GetBufferStatus asGetBufferStatus;
 } __attribute__((packed));
 
 /**
  * Generic package (TX/RX) including header and payload.
+ *
+ * Notes:
+ *  - this struct must be packed
+ *  - Transport_Header must directly followed by TransportTxFrame and
+ *    TransportRxFrame without spacing
  */
 struct TransportFrame {
   struct Transport_Header header;

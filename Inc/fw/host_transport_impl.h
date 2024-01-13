@@ -12,4 +12,4 @@ enum HostTransport_Status;
 
 enum HostTransport_Status HostTransportImpl_doTransmitImpl(uint8_t *buffer,
                                                            uint16_t len);
-int HostTransportImpl_onTakeReceivedImpl(uint8_t *buffer);
+int HostTransportImpl_onTakeReceivedImpl(const uint8_t *buffer);

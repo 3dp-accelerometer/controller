@@ -50,7 +50,7 @@ struct Controller_Host {
    *
    * Context: CDC_Receive_FS(uint8_t*, uint32_t *)
    */
-  void (*const doTakeBytes)(uint8_t *, uint16_t);
+  void (*const doTakeBytes)(const uint8_t *, uint16_t);
 
   /**
    * Device API for Host-Transport callbacks upon doTakeBytes(uint8_t *,
@@ -85,10 +85,6 @@ struct Controller_Host {
  *
  */
 struct Controller_Handle {
-  const uint8_t swVersionMajor; ///< Context: main() and interrupts
-  const uint8_t swVersionMinor; ///< Context: main() and interrupts
-  const uint8_t swVersionPatch; ///< Context: main() and interrupts
-
   /**
    * Device API for sensor and sensor pimpl.
    */
@@ -105,13 +101,14 @@ struct Controller_Handle {
   struct Controller_Host host;
 
   /**
-   * Device API.
+   * Public device API.
    * @{
    */
-  void (*init)(); ///< Context: main()
-  void (*loop)(); ///< Context: main()
+  void (*const init)(); ///< Context: main()
+  void (*const loop)(); ///< Context: main()
 
-  void (*checkReboot)();   ///< Context: main()
-  void (*requestReboot)(); ///< Context: main()
+  void (*const checkReboot)();   ///< Context: main()
+  void (*const requestReboot)(); ///< Context: main()
+
   /// @}
 };

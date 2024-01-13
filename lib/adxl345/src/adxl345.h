@@ -54,7 +54,7 @@ struct Adxl345_Handle {
    *
    * @return
    */
-  int (*const doTransmitFrameImpl)(union Adxl345Transport_TxFrame *, uint8_t,
+  int (*const doTransmitFrameImpl)(const union Adxl345Transport_TxFrame *, uint8_t,
                                    enum Adxl345Spi_Cs, enum Adxl345Spi_RwFlags);
 
   /**
@@ -62,7 +62,7 @@ struct Adxl345_Handle {
    *
    * Context: main() and interrupts
    */
-  int (*const doTransmitReceiveFrameImpl)(union Adxl345Transport_TxFrame *,
+  int (*const doTransmitReceiveFrameImpl)(const union Adxl345Transport_TxFrame *,
                                           union Adxl345Transport_RxFrame *,
                                           uint8_t);
 };

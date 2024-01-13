@@ -42,6 +42,10 @@ union Adxl345Transport_TxFrame {
       asPaddedRegister; ///< cast to Adxl345DataPaddedRegister
 } __attribute__((packed));
 
+// NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)
+static_assert(sizeof(union Adxl345Transport_TxFrame) == 2U,
+              "ERROR: Adxl345Transport_TxFrame must be 2B large.");
+
 /* RX Frame ------------------------------------------------------------------*/
 
 /**

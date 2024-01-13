@@ -33,7 +33,7 @@ struct Adxl345_Handle;
  * @return -EINVAL if invalid args, -EIO on TX error, 0 otherwise
  */
 int Adxl345TransportImpl_doTransmitFrameImpl(
-    union Adxl345Transport_TxFrame *frame, uint8_t numBytes,
+    const union Adxl345Transport_TxFrame *frame, uint8_t numBytes,
     enum Adxl345Spi_Cs applyCs, enum Adxl345Spi_RwFlags rwFlag);
 
 /**
@@ -49,5 +49,5 @@ int Adxl345TransportImpl_doTransmitFrameImpl(
  * @return -EINVAL if invalid args, -EIO on TX/RX error, 0 otherwise
  */
 int Adxl345TransportImpl_doTransmitReceiveFrameImpl(
-    union Adxl345Transport_TxFrame *txFrame,
+    const union Adxl345Transport_TxFrame *txFrame,
     union Adxl345Transport_RxFrame *rxFrame, uint8_t numBytesReceive);

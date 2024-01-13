@@ -83,7 +83,7 @@ enum Transport_HeaderId {
 
 //  NOLINTNEXTLINE(clang-diagnostic-implicit-int)
 static_assert(sizeof(enum Transport_HeaderId) == 1,
-              "Error: unexpected size of Transport_HeaderId");
+              "ERROR: unexpected size of Transport_HeaderId");
 
 /**
  * TX/RX package header.
@@ -110,7 +110,7 @@ enum TransportRx_SetOutputDataRate_Rate {
 
 // NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)
 static_assert(sizeof(enum TransportRx_SetOutputDataRate_Rate) == 1,
-              "Error: unexpected size of TransportRx_SetOutputDataRate_Rate");
+              "ERROR: unexpected size of TransportRx_SetOutputDataRate_Rate");
 
 /**
  * Range flags as described in data sheet.
@@ -125,7 +125,7 @@ enum TransportRx_SetRange_Range {
 
 // NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)
 static_assert(sizeof(enum TransportRx_SetRange_Range) == 1,
-              "Error: unexpected size of TransportRx_SetRange_Range");
+              "ERROR: unexpected size of TransportRx_SetRange_Range");
 
 /**
  * Scale flags as described in data sheet.
@@ -138,7 +138,7 @@ enum TransportRx_SetScale_Scale {
 
 // NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)
 static_assert(sizeof(enum TransportRx_SetScale_Scale) == 1,
-              "Error: unexpected size of TransportRx_SetScale_Scale");
+              "ERROR: unexpected size of TransportRx_SetScale_Scale");
 
 /**
  * RX payload for retrieving sensor's ODR.
@@ -238,7 +238,7 @@ enum TransportTx_ErrorCode {
 
 // NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)
 static_assert(sizeof(enum TransportTx_ErrorCode) == 1U,
-              "Error: unexpected size of TransportTx_ErrorCode");
+              "ERROR: unexpected size of TransportTx_ErrorCode");
 
 /**
  * TX payload response with sensor's ODR.
@@ -358,8 +358,8 @@ struct TransportTx_Uptime {
  * TX payload transporting buffer status.
  */
 struct TransportTx_BufferStatus {
-  uint16_t sizeBytes; ///< buffer size in bytes
-  uint16_t capacity; ///< buffer capacity in terms of items (structs)
+  uint16_t sizeBytes;     ///< buffer size in bytes
+  uint16_t capacity;      ///< buffer capacity in terms of items (structs)
   uint16_t maxItemsCount; ///< maximum utilization since last sampling-start
 } __attribute__((packed));
 

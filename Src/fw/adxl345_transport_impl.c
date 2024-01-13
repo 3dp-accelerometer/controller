@@ -64,24 +64,28 @@ static int receiveFrame(union Adxl345Transport_RxFrame *frame,
 
 int Adxl345TransportImpl_doTransmitFrameImpl(
     // NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
-    union Adxl345Transport_TxFrame *frame, uint8_t numBytes,
+    const union Adxl345Transport_TxFrame *frame, uint8_t numBytes,
     enum Adxl345Spi_Cs applyCs, enum Adxl345Spi_RwFlags rwFlag) {
 
   if (NULL == frame) {
     return -EINVAL;
   }
 
+  union Adxl345Transport_TxFrame tx_frame = {.asWord = frame->asWord};
+
   const uint32_t timeoutMs = 10;
-  frame->asAddress |= rwFlag;
+  tx_frame.asAddress |= rwFlag;
 
   if (Adxl345Spi_Cs_modify == applyCs) {
     ncsSet();
-    if (0 != HAL_SPI_Transmit(&hspi1, (uint8_t *)frame, numBytes, timeoutMs)) {
+    if (0 !=
+        HAL_SPI_Transmit(&hspi1, (uint8_t *)&tx_frame, numBytes, timeoutMs)) {
       return -EIO;
     }
     ncsClear();
   } else {
-    if (0 != HAL_SPI_Transmit(&hspi1, (uint8_t *)frame, numBytes, timeoutMs)) {
+    if (0 !=
+        HAL_SPI_Transmit(&hspi1, (uint8_t *)&tx_frame, numBytes, timeoutMs)) {
       return -EIO;
     }
   }
@@ -89,7 +93,7 @@ int Adxl345TransportImpl_doTransmitFrameImpl(
 }
 
 int Adxl345TransportImpl_doTransmitReceiveFrameImpl(
-    union Adxl345Transport_TxFrame *txFrame,
+    const union Adxl345Transport_TxFrame *txFrame,
     union Adxl345Transport_RxFrame *rxFrame, uint8_t numBytesReceive) {
 
   if (NULL == txFrame || NULL == rxFrame) {

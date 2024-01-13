@@ -9,7 +9,7 @@
 #include <errno.h>
 #include <stdbool.h>
 
-int TransportRx_Process(struct HostTransport_Handle *handle, uint8_t *buffer,
+int TransportRx_Process(struct HostTransport_Handle *handle, const uint8_t *buffer,
                         uint16_t length) {
   if (NULL == buffer) {
     return -EINVAL;

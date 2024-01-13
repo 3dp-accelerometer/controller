@@ -35,5 +35,5 @@ struct HostTransport_Handle;
  *   - -EINVAL on invalid arguments
  *   - HostTransport_Handle.onReceived(uint8_t *, uint32_t *) otherwise
  */
-int TransportRx_Process(struct HostTransport_Handle *handle, uint8_t *buffer,
+int TransportRx_Process(struct HostTransport_Handle *handle, const uint8_t *buffer,
                         uint16_t length);

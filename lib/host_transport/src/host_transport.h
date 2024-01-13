@@ -41,7 +41,7 @@ struct HostTransport_ToHostApi {
    *
    * @{
    */
-  const uint8_t *txBuffer;
+  uint8_t *txBuffer;
   const uint16_t txBufferSize;
   /// @}
 

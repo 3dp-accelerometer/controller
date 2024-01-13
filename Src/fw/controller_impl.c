@@ -56,7 +56,7 @@ void ControllerImpl_loop();
 void ControllerImpl_device_checkReboot();
 void ControllerImpl_device_requestAsyncReboot();
 
-static void host_doTakeBytes(uint8_t *buffer, uint16_t len);
+static void host_doTakeBytes(const uint8_t *buffer, uint16_t len);
 static int host_onRequestGetFirmwareVersion();
 static int host_onRequestGetOutputDataRate();
 static int
@@ -134,10 +134,6 @@ sampling_doFetchSensorAccelerationImpl(struct Sampling_Acceleration *sample);
 
 // NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 struct Controller_Handle controllerHandle = {
-    .swVersionMajor = VERSION_MAJOR,
-    .swVersionMinor = VERSION_MINOR,
-    .swVersionPatch = VERSION_PATCH,
-
     .sensor = {.handle = ADXL345_HANDLE_INITIALIZER,
                .init = sensor_Adxl345_doInitImpl},
 
@@ -223,7 +219,7 @@ void ControllerImpl_device_requestAsyncReboot() { rebootRequested = true; }
  * @param buffer received byte buffer (must not be fragmented)
  * @param len received data length
  */
-static void host_doTakeBytes(uint8_t *buffer, uint16_t len) {
+static void host_doTakeBytes(const uint8_t *buffer, uint16_t len) {
   TransportRx_Process(&controllerHandle.host.handle, buffer, len);
 }
 
@@ -386,7 +382,7 @@ static void sampling_doForwardAccelerationBufferImpl(
   // sampling-module.
   static_assert(sizeof(struct Sampling_Acceleration) ==
                     sizeof(struct Transport_Acceleration),
-                "Error: acceleration structs must match in size!");
+                "ERROR: acceleration structs must match in size!");
 
   TransportTx_TxAccelerationBuffer(
       &controllerHandle.host.handle,

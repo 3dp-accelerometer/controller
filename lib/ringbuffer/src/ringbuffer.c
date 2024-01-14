@@ -86,7 +86,7 @@ int Ringbuffer_init(struct Ringbuffer *buffer, uint8_t *storage,
   return 0;
 }
 
-int Ringbuffer_put(struct Ringbuffer *buffer, const uint8_t *item) {
+int Ringbuffer_put(struct Ringbuffer *buffer, const void *item) {
   if (Ringbuffer_isFull(buffer)) {
     return -EOVERFLOW;
   }
@@ -99,7 +99,7 @@ int Ringbuffer_put(struct Ringbuffer *buffer, const uint8_t *item) {
   return 0;
 }
 
-int Ringbuffer_take(struct Ringbuffer *buffer, uint8_t *item) {
+int Ringbuffer_take(struct Ringbuffer *buffer, void *item) {
   if (Ringbuffer_isEmpty(buffer)) {
     return -ENODATA;
   }

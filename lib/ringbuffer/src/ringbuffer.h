@@ -1,7 +1,7 @@
 /**
  * \file buffer.h
  *
- * Simple ringbuffer implementation for generic types.
+ * Naive ringbuffer implementation for storing items in slots of constant size.
  */
 
 #pragma once
@@ -48,7 +48,8 @@ struct Ringbuffer_Index {
 struct Ringbuffer {
   struct Ringbuffer_Index index;
   uint8_t *storage; ///< index offset is mapped to
-                    ///< n*sizeof(Ringbuffer_Index.itemSizeBytes)
+                    ///< n*sizeof(Ringbuffer_Index.itemSizeBytes);
+                    ///< must be uint8_t for proper pointer arithmetics
 };
 
 int RingbufferIndex_init(struct Ringbuffer_Index *index, uint16_t capacity,
@@ -64,7 +65,7 @@ int Ringbuffer_init(struct Ringbuffer *buffer, uint8_t *storage,
  * @param item input data
  * @return -EOVERFLOW if buffer is full, 0 otherwise
  */
-int Ringbuffer_put(struct Ringbuffer *buffer, const uint8_t *item);
+int Ringbuffer_put(struct Ringbuffer *buffer, const void *item);
 
 /**
  * Takes one item from the buffer if possible.
@@ -73,7 +74,7 @@ int Ringbuffer_put(struct Ringbuffer *buffer, const uint8_t *item);
  * @param item output buffer
  * @return -ENODATA if buffer is empty, 0 otherwise
  */
-int Ringbuffer_take(struct Ringbuffer *buffer, uint8_t *item);
+int Ringbuffer_take(struct Ringbuffer *buffer, void *item);
 
 bool Ringbuffer_isEmpty(const struct Ringbuffer *buffer);
 

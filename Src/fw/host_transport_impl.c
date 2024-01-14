@@ -29,6 +29,10 @@ enum HostTransport_Status HostTransportImpl_doTransmitImpl(uint8_t *buffer,
   }
 }
 
+bool HostTransportImpl_isTransmitBusyImpl() {
+  return HostTransport_Status_Busy == HostTransportImpl_doTransmitImpl(NULL, 0);
+}
+
 int HostTransportImpl_onTakeReceivedImpl(const uint8_t *buffer) {
   if (NULL == buffer) {
     return -EINVAL;

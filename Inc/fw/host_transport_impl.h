@@ -7,9 +7,12 @@
 #pragma once
 
 #include <inttypes.h>
+#include <stdbool.h>
 
 enum HostTransport_Status;
 
 enum HostTransport_Status HostTransportImpl_doTransmitImpl(uint8_t *buffer,
                                                            uint16_t len);
+bool HostTransportImpl_isTransmitBusyImpl();
+
 int HostTransportImpl_onTakeReceivedImpl(const uint8_t *buffer);

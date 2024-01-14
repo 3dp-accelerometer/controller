@@ -10,17 +10,24 @@
 #include "host_transport_types.h"
 #include <errno.h>
 
+static volatile bool
+isTransmitComplete(const struct HostTransport_ToHostApi *toHostApi) {
+  return !toHostApi->isTransmitBusyImpl();
+}
+
 /**
  * Transmits data to the IN endpoint of host.
+ *
+ * The transmission blocks this function from returning until the transmission
+ * has completely finished.
  *
  * @param handle underlying pimpl
  * @param buffer data to transmit
  * @param len data length
  * @return transmission status
  */
-static enum HostTransport_Status
-TransportTx_transmit(struct HostTransport_Handle *handle, uint8_t *buffer,
-                     uint16_t len) {
+uint8_t transmit(struct HostTransport_Handle *handle, uint8_t *buffer,
+                 uint16_t len) {
   return handle->toHost.doTransmitImpl(buffer, len);
 }
 
@@ -52,33 +59,86 @@ TransportTx_transmit(struct HostTransport_Handle *handle, uint8_t *buffer,
  *     3200kS/s * (1+2+6)B * 1s = 28800B
  *
  * @param handle
- * @param buffer the acceleration data block to transmit
- * @param len
+ * @param accelerationsChunk the acceleration data block to transmit, NULL to
+ * send pending data; Note: the buffer must be packed and contain only data of
+ * type: Transport_Header + TransportTx_Acceleration.
+ * @param dataCount amount of items in buffer (Transport_Header +
+ * TransportTx_Acceleration)
  * @return
- *   - HostTransport_Status_Again if data is still buffered,
- *   - any other value of HostTransport_Status otherwise
+ *   - -ENOMEM if ringbuffer is exhausted
+ *   - -ENODATA if all data is sent
+ *   - -EAGAIN if a subsequent call would send pending data
  */
-static enum HostTransport_Status TransportTx_transmitAccelerationBuffered(
-    struct HostTransport_Handle *handle,
-    struct TransportFrame *accelerationsChunk, uint16_t dataCount) {
-  // todo: replace naive forwarding with a buffered approach
-  //   1 store new data to ringbuffer
-  //   2 while number of defined retries (i.e. 3x) > 0 do:
-  //     2.a reduce the retry counter by one
-  //     2.b while ringbuffer is not empty:
-  //       2.b.1 if USB status is busy: continue
-  //       2.b.2 pop data from ringbuffer to UserTxBufferFS
-  //       2.b.3 start transmission from UserTxBufferFS
+static int
+transmitAccelerationBuffered(struct HostTransport_Handle *handle,
+                             struct TransportFrame *accelerationsChunk,
+                             uint16_t dataCount) {
 
-  USER_DEBUG0_HIGH; // mark the start of transmission
-  while (HostTransport_Status_Busy ==
-         handle->toHost.doTransmitImpl(
-             (uint8_t *)accelerationsChunk,
-             dataCount * (SIZEOF_HEADER_INCL_PAYLOAD(
-                             struct TransportTx_Acceleration)))) {
+  static uint16_t ringbufferUtilization = {0};
+
+  // copy whole acceleration data chunk to ringbuffer
+
+  for (uint16_t idx = 0; idx < dataCount; idx++) {
+    if (Ringbuffer_isFull(&handle->toHost.ringbuffer)) {
+      return -ENOMEM;
+    }
+    Ringbuffer_put(&handle->toHost.ringbuffer, &accelerationsChunk[idx]);
+    ringbufferUtilization++;
   }
 
-  return HostTransport_Status_Ok;
+  // update ringbuffer utilization
+  handle->toHost.ringbufferMaxItemsUtilization =
+      (ringbufferUtilization > handle->toHost.ringbufferMaxItemsUtilization)
+          ? ringbufferUtilization
+          : handle->toHost.ringbufferMaxItemsUtilization;
+
+  if (Ringbuffer_isEmpty(&handle->toHost.ringbuffer)) {
+    return -ENODATA;
+  }
+
+  if (!isTransmitComplete(&handle->toHost)) {
+    return -EAGAIN;
+  }
+
+  // pop data from buffer and store to TX-buffer
+
+  // todo: in the meanwhile the xmission could be ongoing again
+  //   reasons:
+  //   - fault handler: neglect-able bcs. those usually run into endless loops
+  //   - response upon user request:
+  //     - controller shall not accept host commands while sampling (except
+  //     reboot command)
+  //     - alternatively introduce locks
+
+  const uint8_t sizeofItem = {
+      SIZEOF_HEADER_INCL_PAYLOAD(struct TransportTx_Acceleration)};
+
+  static_assert(__builtin_types_compatible_p(typeof(uint8_t *),
+                                             typeof(handle->toHost.txBuffer)),
+                "ERROR: pointer arithmetic will fail if types are not same. "
+                "Required buffer type: uint8_t.");
+  uint8_t *byteBuffer = handle->toHost.txBuffer;
+
+  uint8_t poppedItemsCount = 0;
+  while ((poppedItemsCount * sizeofItem < handle->toHost.txBufferSize) &&
+         (!Ringbuffer_isEmpty(&handle->toHost.ringbuffer))) {
+    struct TransportTx_Acceleration *nextInTxBuffer =
+        (struct TransportTx_Acceleration
+             *)&byteBuffer[(uint8_t)(sizeofItem * poppedItemsCount)];
+    Ringbuffer_take(&handle->toHost.ringbuffer, nextInTxBuffer);
+    ringbufferUtilization--;
+    poppedItemsCount++;
+  }
+
+  // transmit tx buffer
+
+  if (poppedItemsCount > 0) {
+    USER_DEBUG0_HIGH; // mark the start of transmission
+    handle->toHost.doTransmitImpl(handle->toHost.txBuffer,
+                                  poppedItemsCount * sizeofItem);
+  }
+
+  return -EAGAIN;
 }
 
 void TransportTx_TxSamplingSetup(
@@ -93,9 +153,8 @@ void TransportTx_TxSamplingSetup(
   data.asTxFrame.asDeviceSetup.range = sensorRange;
 
   while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asDeviceSetup))) {
+         transmit(handle, (uint8_t *)&data,
+                  SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asDeviceSetup))) {
   }
 }
 
@@ -106,9 +165,8 @@ void TransportTx_TxScale(struct HostTransport_Handle *handle,
   data.asTxFrame.asScale.scale = sensorScale;
 
   while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asScale))) {
+         transmit(handle, (uint8_t *)&data,
+                  SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asScale))) {
   }
 }
 
@@ -119,9 +177,8 @@ void TransportTx_TxRange(struct HostTransport_Handle *handle,
   data.asTxFrame.asRange.range = sensorRange;
 
   while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asRange))) {
+         transmit(handle, (uint8_t *)&data,
+                  SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asRange))) {
   }
 }
 
@@ -131,10 +188,10 @@ void TransportTx_TxOutputDataRate(struct HostTransport_Handle *handle,
   data.header.id = Transport_HeaderId_Tx_OutputDataRate;
   data.asTxFrame.asOutputDataRate.rate = sensorOdr;
 
-  while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asOutputDataRate))) {
+  while (
+      HostTransport_Status_Busy ==
+      transmit(handle, (uint8_t *)&data,
+               SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asOutputDataRate))) {
   }
 }
 
@@ -148,10 +205,10 @@ void TransportTx_TxFirmwareVersion(
   data.asTxFrame.asFirmwareVersion.minor = minor;
   data.asTxFrame.asFirmwareVersion.patch = patch;
 
-  while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asFirmwareVersion))) {
+  while (
+      HostTransport_Status_Busy ==
+      transmit(handle, (uint8_t *)&data,
+               SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asFirmwareVersion))) {
   }
 }
 
@@ -161,20 +218,20 @@ void TransportTx_TxSamplingStarted(struct HostTransport_Handle *handle,
   data.header.id = Transport_HeaderId_Tx_SamplingStarted;
   data.asTxFrame.asSamplingStarted.maxSamples = max_samples;
 
-  while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asSamplingStarted))) {
+  while (
+      HostTransport_Status_Busy ==
+      transmit(handle, (uint8_t *)&data,
+               SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asSamplingStarted))) {
   }
 }
 
 void TransportTx_TxSamplingFinished(struct HostTransport_Handle *handle) {
   struct TransportFrame data = {.header.id =
                                     Transport_HeaderId_Tx_SamplingFinished};
-  while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asSamplingFinished))) {
+  while (
+      HostTransport_Status_Busy ==
+      transmit(handle, (uint8_t *)&data,
+               SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asSamplingFinished))) {
   }
 }
 
@@ -185,20 +242,20 @@ void TransportTx_TxSamplingStopped(struct HostTransport_Handle *handle,
 
   struct TransportFrame data = {.header.id =
                                     Transport_HeaderId_Tx_SamplingStopped};
-  while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asSamplingStopped))) {
+  while (
+      HostTransport_Status_Busy ==
+      transmit(handle, (uint8_t *)&data,
+               SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asSamplingStopped))) {
   }
 }
 
 void TransportTx_TxSamplingAborted(struct HostTransport_Handle *handle) {
   struct TransportFrame data = {.header.id =
                                     Transport_HeaderId_Tx_SamplingAborted};
-  while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asSamplingAborted))) {
+  while (
+      HostTransport_Status_Busy ==
+      transmit(handle, (uint8_t *)&data,
+               SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asSamplingAborted))) {
   }
 }
 
@@ -206,9 +263,18 @@ void TransportTx_TxFifoOverflow(struct HostTransport_Handle *handle) {
   struct TransportFrame data = {.header.id =
                                     Transport_HeaderId_Tx_FifoOverflow};
   while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asFifoOverflow))) {
+         transmit(handle, (uint8_t *)&data,
+                  SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asFifoOverflow))) {
+  }
+}
+
+void TransportTx_TxBufferOverflow(struct HostTransport_Handle *handle) {
+  struct TransportFrame data = {.header.id =
+                                    Transport_HeaderId_Tx_BufferOverflow};
+  while (
+      HostTransport_Status_Busy ==
+      transmit(handle, (uint8_t *)&data,
+               SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asBufferOverflow))) {
   }
 }
 
@@ -217,26 +283,30 @@ int TransportTx_TxAccelerationBuffer(
     const struct Transport_Acceleration *data,
     // NOLINTNEXTLINE(bugprone-easily-swappable-parameters)
     uint8_t count, uint16_t firstIndex) {
-  if (TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER < count || NULL == data) {
-    return -EINVAL;
+
+  if (TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER_BYTES < count || NULL == data) {
+    return transmitAccelerationBuffered(handle, NULL, 0);
   }
 
+  // packed buffer containing: Transport_Header + TransportTx_Acceleration
   uint8_t
-      rawBuffer[TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER *
-                (SIZEOF_HEADER_INCL_PAYLOAD(struct TransportTx_Acceleration))];
-  struct TransportFrame *accelerationsChunk =
-      (struct TransportFrame *)rawBuffer;
+      byteBuffer[TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER_BYTES *
+                 SIZEOF_HEADER_INCL_PAYLOAD(struct TransportTx_Acceleration)];
 
+  // packed copy of samples inclusive  sequence numbering
   for (uint8_t idx = 0; idx < count; idx++) {
-    accelerationsChunk[idx].asTxFrame.asAcceleration.index = firstIndex++;
-    accelerationsChunk[idx].asTxFrame.asAcceleration.values.x = data[idx].x;
-    accelerationsChunk[idx].asTxFrame.asAcceleration.values.y = data[idx].y;
-    accelerationsChunk[idx].asTxFrame.asAcceleration.values.z = data[idx].z;
-    accelerationsChunk[idx].header.id = Transport_HeaderId_Tx_Acceleration;
+    uint8_t sizeofItem = {
+        SIZEOF_HEADER_INCL_PAYLOAD(struct TransportTx_Acceleration)};
+    struct TransportFrame *frame = {
+        (struct TransportFrame *)&byteBuffer[(uint8_t)(idx * sizeofItem)]};
+    frame->asTxFrame.asAcceleration.index = firstIndex++;
+    frame->asTxFrame.asAcceleration.values.x = data[idx].x;
+    frame->asTxFrame.asAcceleration.values.y = data[idx].y;
+    frame->asTxFrame.asAcceleration.values.z = data[idx].z;
+    frame->header.id = Transport_HeaderId_Tx_Acceleration;
   }
-
-  return TransportTx_transmitAccelerationBuffered(handle, accelerationsChunk,
-                                                  count);
+  return transmitAccelerationBuffered(
+      handle, (struct TransportFrame *)&byteBuffer[0], count);
 }
 
 void TransportTx_TxUptime(struct HostTransport_Handle *handle,
@@ -245,9 +315,8 @@ void TransportTx_TxUptime(struct HostTransport_Handle *handle,
   data.header.id = Transport_HeaderId_Tx_Uptime;
   data.asTxFrame.asUptime.elapsedMs = uptimeMs;
   while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asUptime))) {
+         transmit(handle, (uint8_t *)&data,
+                  SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asUptime))) {
   }
 }
 
@@ -257,9 +326,8 @@ void TransportTx_TxFault(struct HostTransport_Handle *handle,
   data.header.id = Transport_HeaderId_Tx_Fault;
   data.asTxFrame.asFault.code = code;
   while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asFault))) {
+         transmit(handle, (uint8_t *)&data,
+                  SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asFault))) {
   }
 }
 
@@ -273,8 +341,7 @@ void TransportTx_BufferStatus(
   data.asTxFrame.asBufferStatus.capacity = capacity;
   data.asTxFrame.asBufferStatus.maxItemsCount = maxItemsCount;
   while (HostTransport_Status_Busy ==
-         TransportTx_transmit(
-             handle, (uint8_t *)&data,
-             SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asBufferStatus))) {
+         transmit(handle, (uint8_t *)&data,
+                  SIZEOF_HEADER_INCL_PAYLOAD(data.asTxFrame.asBufferStatus))) {
   }
 }

@@ -1,8 +1,9 @@
 /**
- * \file host_transport_types.h
+ * \file host_transport.h
  */
 
 #pragma once
+
 #include <inttypes.h>
 #include <ringbuffer.h>
 
@@ -68,6 +69,8 @@ struct HostTransport_ToHostApi {
 
   enum HostTransport_Status (*const doTransmitImpl)(
       uint8_t *, uint16_t); ///< Context: main() and interrupts
+
+  bool (*const isTransmitBusyImpl)(); ///< Context: main() and interrupts
 };
 
 /**
@@ -77,3 +80,12 @@ struct HostTransport_Handle {
   struct HostTransport_FromHostApi fromHost;
   struct HostTransport_ToHostApi toHost;
 };
+
+/**
+ * Resets internal ringbuffer state.
+ *
+ * Usually called when new sampling is requested by user.
+ *
+ * @param handle
+ */
+void Transport_resetBuffer(struct HostTransport_Handle *handle);

@@ -77,6 +77,7 @@ enum Transport_HeaderId {
   Transport_HeaderId_Tx_SamplingAborted,
   Transport_HeaderId_Tx_Acceleration,
   Transport_HeaderId_Tx_Fault,
+  Transport_HeaderId_Tx_BufferOverflow,
   /// @}
 
 } __attribute__((__packed__));
@@ -267,6 +268,12 @@ struct TransportTx_FifoOverflow {
 } __attribute__((packed));
 
 /**
+ * TX payload indicating ringbuffer overrun occurred.
+ */
+struct TransportTx_BufferOverflow {
+} __attribute__((packed));
+
+/**
  * TX payload indicating sampling started.
  */
 struct TransportTx_SamplingStarted {
@@ -373,6 +380,7 @@ union TransportTxFrame {
   struct TransportTx_Scale asScale;
   struct TransportTx_DeviceSetup asDeviceSetup;
   struct TransportTx_FifoOverflow asFifoOverflow;
+  struct TransportTx_BufferOverflow asBufferOverflow;
   struct TransportTx_SamplingStarted asSamplingStarted;
   struct TransportTx_SamplingFinished asSamplingFinished;
   struct TransportTx_SamplingStopped asSamplingStopped;

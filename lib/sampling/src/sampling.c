@@ -64,8 +64,14 @@ void Sampling_stop(struct Sampling_Handle *handle) {
   handle->state.doStop = true;
 }
 
+static void transmitPending(struct Sampling_Handle *handle) {
+  while (-EAGAIN == handle->doForwardAccelerationBufferImpl(NULL, 0, 0)) {
+  }
+}
+
 int Sampling_fetchForward(struct Sampling_Handle *handle) {
-  int ret = {0};
+  int retState = {0};
+  int retTx = {0};
 
   checkStartRequest(handle);
 
@@ -78,19 +84,19 @@ int Sampling_fetchForward(struct Sampling_Handle *handle) {
       checkStopRequest(handle);
 
       if (!handle->state.isStarted) {
-        ret = -ECANCELED;
+        retState = -ECANCELED;
         break;
       }
 
       if (handle->state.isFifoOverflowSet) {
-        ret = -EOVERFLOW;
+        retState = -EOVERFLOW;
         break;
       }
 
       if (isNSamplesReadEnabled(handle) &&
           (handle->state.transactionsCount + rxCount) >=
               handle->state.maxSamples) {
-        ret = ENODATA;
+        retState = ENODATA;
         break;
       }
 
@@ -109,29 +115,37 @@ int Sampling_fetchForward(struct Sampling_Handle *handle) {
 
     // forward samples
     if (0 < rxCount) {
-      handle->doForwardAccelerationBufferImpl(handle->state.rxBuffer, rxCount,
-                                              handle->state.transactionsCount);
+      retTx = handle->doForwardAccelerationBufferImpl(
+          handle->state.rxBuffer, rxCount, handle->state.transactionsCount);
       handle->state.transactionsCount += rxCount;
     }
+  } else {
+    transmitPending(handle);
   }
 
-  if (-EOVERFLOW == ret) {
+  if (-ENOMEM == retTx) {
+    handle->onBufferOverflowCb();
+    Sampling_stop(handle);
+  }
+
+  if (-EOVERFLOW == retState) {
     handle->onFifoOverflowCb();
     Sampling_stop(handle);
   }
 
-  if (-ECANCELED == ret) {
+  if (-ECANCELED == retState) {
     handle->onSamplingAbortedCb();
     Sampling_stop(handle);
   }
 
-  if (ENODATA == ret) {
+  if (ENODATA == retState) {
+    transmitPending(handle);
     handle->onSamplingFinishedCb();
     Sampling_stop(handle);
   }
 
   checkStopRequest(handle);
-  return ret;
+  return retTx ? retState == 0 : retState;
 }
 
 void Sampling_setFifoWatermark(struct Sampling_Handle *handle) {

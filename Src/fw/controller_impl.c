@@ -40,9 +40,9 @@ static_assert(
 
 // NOLINTNEXTLINE(readability-redundant-declaration)
 static_assert(
-  TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER == ADXL345_WATERMARK_LEVEL,
+  TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER_BYTES == ADXL345_WATERMARK_LEVEL,
   "ERROR: TransportTx transmit buffer and ADXL345 watermark level must be same: "
-  MYSTRINGIZE(TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER) " vs. "
+  MYSTRINGIZE(TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER_BYTES) " vs. "
   MYSTRINGIZE(ADXL345_WATERMARK_LEVEL));
 
 // clang-format on
@@ -114,10 +114,11 @@ static void sampling_onSamplingStartedCb();
 static void sampling_onSamplingStoppedCb();
 static void sampling_onSamplingAbortedCb();
 static void sampling_onSamplingFinishedCb();
-static void sampling_doForwardAccelerationBufferImpl(
+static int sampling_doForwardAccelerationBufferImpl(
     const struct Sampling_Acceleration *buffer, uint16_t bufferLen,
     uint16_t firstIndex);
 static void sampling_onFifoOverflowCb();
+static void sampling_onBufferOverflowCb();
 static void sampling_doEnableSensorImpl();
 static void sampling_doDisableSensorImpl();
 static void
@@ -159,6 +160,7 @@ static void fault_onErrorHandler();
     .onSamplingAbortedCb = sampling_onSamplingAbortedCb,                       \
     .onSamplingFinishedCb = sampling_onSamplingFinishedCb,                     \
     .onFifoOverflowCb = sampling_onFifoOverflowCb,                             \
+    .onBufferOverflowCb = sampling_onBufferOverflowCb,                         \
   }
 
 #define HOSTTRANSPORT_DECLARE_INITIALIZER                                      \
@@ -171,6 +173,7 @@ static void fault_onErrorHandler();
       .ringbuffer = RINGBUFFER_DECLARE_INITIALIZER,                            \
       .ringbufferMaxItemsUtilization = 0,                                      \
       .doTransmitImpl = HostTransportImpl_doTransmitImpl,                      \
+      .isTransmitBusyImpl = HostTransportImpl_isTransmitBusyImpl,              \
     }                                                                          \
   }
 
@@ -188,20 +191,23 @@ struct Controller_Handle controllerHandle = {
 
         },
 
-    .host = {.handle = HOSTTRANSPORT_DECLARE_INITIALIZER,
-             .doTakeBytes = host_doTakeBytes,
-             .onRequestGetFirmwareVersion = host_onRequestGetFirmwareVersion,
-             .onRequestGetOutputDataRate = host_onRequestGetOutputDataRate,
-             .onRequestSetOutputDatatRate = host_onRequestSetOutputDatatRate,
-             .onRequestGetRange = host_onRequestGetRange,
-             .onRequestSetRange = host_onRequestSetRange,
-             .onRequestGetScale = host_onRequestGetScale,
-             .onRequestSetScale = host_onRequestSetScale,
-             .onRequestGetDeviceSetup = host_onRequestGetDeviceSetup,
-             .onRequestSamplingStart = host_onRequestSamplingStart,
-             .onRequestSamplingStop = host_onRequestSamplingStop,
-             .onRequestUptime = host_onRequestGetUptime,
-             .onRequestBufferStatus = host_onRequestGetBufferStatus},
+    .host =
+        {
+            .handle = HOSTTRANSPORT_DECLARE_INITIALIZER,
+            .doTakeBytes = host_doTakeBytes,
+            .onRequestGetFirmwareVersion = host_onRequestGetFirmwareVersion,
+            .onRequestGetOutputDataRate = host_onRequestGetOutputDataRate,
+            .onRequestSetOutputDatatRate = host_onRequestSetOutputDatatRate,
+            .onRequestGetRange = host_onRequestGetRange,
+            .onRequestSetRange = host_onRequestSetRange,
+            .onRequestGetScale = host_onRequestGetScale,
+            .onRequestSetScale = host_onRequestSetScale,
+            .onRequestGetDeviceSetup = host_onRequestGetDeviceSetup,
+            .onRequestSamplingStart = host_onRequestSamplingStart,
+            .onRequestSamplingStop = host_onRequestSamplingStop,
+            .onRequestUptime = host_onRequestGetUptime,
+            .onRequestBufferStatus = host_onRequestGetBufferStatus,
+        },
 
     .init = ControllerImpl_init,
     .loop = ControllerImpl_loop,
@@ -392,6 +398,7 @@ static void sampling_on5usTimerExpired() {
 }
 
 static void sampling_onSamplingStartedCb() {
+  Transport_resetBuffer(&controllerHandle.host.handle);
   TransportTx_TxSamplingStarted(
       &controllerHandle.host.handle,
       controllerHandle.sampling.handle.state.maxSamples);
@@ -421,23 +428,28 @@ static void sampling_onSamplingFinishedCb() {
   TransportTx_TxSamplingFinished(&controllerHandle.host.handle);
 }
 
-static void sampling_doForwardAccelerationBufferImpl(
+static int sampling_doForwardAccelerationBufferImpl(
     const struct Sampling_Acceleration *buffer, uint16_t bufferLen,
     uint16_t firstIndex) {
 
-  // type conversion in favour of loose dependencies in between transport- and
-  // sampling-module.
+  // type conversion in favour of weak dependencies in between
+  // transport-module and sampling-module
+
   static_assert(sizeof(struct Sampling_Acceleration) ==
                     sizeof(struct Transport_Acceleration),
                 "ERROR: acceleration structs must match in size!");
 
-  TransportTx_TxAccelerationBuffer(
+  return TransportTx_TxAccelerationBuffer(
       &controllerHandle.host.handle,
       (const struct Transport_Acceleration *)buffer, bufferLen, firstIndex);
 }
 
 static void sampling_onFifoOverflowCb() {
   TransportTx_TxFifoOverflow(&controllerHandle.host.handle);
+}
+
+static void sampling_onBufferOverflowCb() {
+  TransportTx_TxBufferOverflow(&controllerHandle.host.handle);
 }
 
 static void sampling_doEnableSensorImpl() {

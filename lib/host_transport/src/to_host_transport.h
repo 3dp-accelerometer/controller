@@ -8,7 +8,7 @@
 #include <inttypes.h>
 
 // NOLINTNEXTLINE(modernize-macro-to-enum)
-#define TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER 24U
+#define TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER_BYTES 24U
 
 struct HostTransport_Handle;
 struct Transport_Acceleration;
@@ -133,17 +133,19 @@ void TransportTx_TxSamplingAborted(struct HostTransport_Handle *handle);
  */
 void TransportTx_TxFifoOverflow(struct HostTransport_Handle *handle);
 
+void TransportTx_TxBufferOverflow(struct HostTransport_Handle *handle);
+
 /**
  * Forwards acceleration data block to the IN endpoint of host.
  *
  * Triggers sending data to the the IN endpoint.
  * If USB is busy the data is buffered for a later transmission.
- * To consume all buffered data this function shall be called until ENODATA is
- * returned (data and count must be NULL and 0).
+ * To consume all buffered data this function shall be called until -ENODATA is
+ * returned (with data and/or count being NULL and/or 0).
  *
  * @param handle host transport pimpl
- * @param data tx buffer or NULL to consume buffered data
- * @param count buffer size or 0 to consume buffered data
+ * @param data tx buffer or NULL to consume remaining buffered data
+ * @param count buffer size or 0 to consume remaining buffered data
  * @param firstIndex the tracked index number of the first acceleration in data
  * buffer
  * @return

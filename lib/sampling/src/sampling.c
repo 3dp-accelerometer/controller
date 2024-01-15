@@ -70,8 +70,8 @@ void Sampling_stop(struct Sampling_Handle *handle) {
 }
 
 static bool transmitPending(struct Sampling_Handle *handle) {
-
-  const int ret = handle->doForwardAccelerationBufferImpl(NULL, 0, 0);
+  // NOLINTNEXTLINE(cppcoreguidelines-init-variables)
+  const int ret = {handle->doForwardAccelerationBufferImpl(NULL, 0, 0)};
 
   if (ret == -EAGAIN) {
     return true;

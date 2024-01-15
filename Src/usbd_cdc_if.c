@@ -286,17 +286,13 @@ uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len)
   uint8_t result = USBD_OK;
   /* USER CODE BEGIN 7 */
   USBD_CDC_HandleTypeDef *hcdc = (USBD_CDC_HandleTypeDef*)hUsbDeviceFS.pClassData;
-
-  // check only busy-state of no data was provided
-  if (NULL == Buf || 0 == Len) {
-    return (hcdc->TxState != 0) ? USBD_BUSY : USBD_OK;
-  }
-
   if (hcdc->TxState != 0){
     return USBD_BUSY;
   }
-  USBD_CDC_SetTxBuffer(&hUsbDeviceFS, Buf, Len);
-  result = USBD_CDC_TransmitPacket(&hUsbDeviceFS);
+  if ((NULL != Buf) && (0 != Len)) {
+    USBD_CDC_SetTxBuffer(&hUsbDeviceFS, Buf, Len);
+    result = USBD_CDC_TransmitPacket(&hUsbDeviceFS);
+  }
   /* USER CODE END 7 */
   return result;
 }
@@ -317,7 +313,7 @@ static int8_t CDC_TransmitCplt_FS(uint8_t *Buf, uint32_t *Len, uint8_t epnum)
 {
   uint8_t result = USBD_OK;
   /* USER CODE BEGIN 13 */
-  USER_DEBUG0_LOW; // mark end of transmission
+  // USER_DEBUG0_LOW; // mark end of transmission
   UNUSED(Buf);
   UNUSED(Len);
   UNUSED(epnum);

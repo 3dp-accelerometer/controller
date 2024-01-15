@@ -55,10 +55,11 @@ struct Sampling_Handle {
       const struct Sampling_Acceleration *, uint16_t,
       uint16_t); ///< Context: main()
 
-  void (*const onSamplingStartedCb)();  ///< Context: main()
-  void (*const onSamplingStoppedCb)();  ///< Context: main()
-  void (*const onSamplingAbortedCb)();  ///< Context: main()
-  void (*const onSamplingFinishedCb)(); ///< Context: main()
-  void (*const onFifoOverflowCb)();     ///< Context: main()
-  void (*const onBufferOverflowCb)();   ///< Context: main()
+  void (*const onSamplingStartedCb)();   ///< Context: main()
+  void (*const onSamplingStoppedCb)();   ///< Context: main()
+  void (*const onSamplingAbortedCb)();   ///< Context: main()
+  void (*const onSamplingFinishedCb)();  ///< Context: main()
+  void (*const onFifoOverflowCb)();      ///< Context: main()
+  void (*const onBufferOverflowCb)();    ///< Context: main()
+  void (*const onTransmissionErrorCb)(); ///< Context: main()
 };

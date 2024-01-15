@@ -29,7 +29,7 @@ enum HostTransport_Status HostTransportImpl_doTransmitImpl(uint8_t *buffer,
   }
 }
 
-bool HostTransportImpl_isTransmitBusyImpl() {
+volatile bool HostTransportImpl_isTransmitBusyImpl() {
   return HostTransport_Status_Busy == HostTransportImpl_doTransmitImpl(NULL, 0);
 }
 

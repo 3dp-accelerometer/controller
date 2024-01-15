@@ -66,6 +66,7 @@ static void ControllerImpl_loop();
  */
 static void ControllerImpl_device_checkReboot();
 static void ControllerImpl_device_requestAsyncReboot();
+static void ControllerImpl_transmitPendingResponses();
 /// @}
 
 /**
@@ -75,18 +76,27 @@ static void ControllerImpl_device_requestAsyncReboot();
  */
 static void host_doTakeBytes(const uint8_t *buffer, uint16_t len);
 static int host_onRequestGetFirmwareVersion();
+static int host_responseGetFirmwareVersion();
 static int host_onRequestGetOutputDataRate();
+static int host_responseGetOutputDataRate();
 static int
 host_onRequestSetOutputDatatRate(enum TransportRx_SetOutputDataRate_Rate odr);
 static int host_onRequestGetRange();
+static int host_responseGetRange();
 static int host_onRequestSetRange(enum TransportRx_SetRange_Range range);
 static int host_onRequestGetScale();
+static int host_responseGetScale();
 static int host_onRequestSetScale(enum TransportRx_SetScale_Scale scale);
 static int host_onRequestGetDeviceSetup();
+static int host_responseGetDeviceSetup();
 static int host_onRequestSamplingStart(uint16_t maxSamplesCount);
 static int host_onRequestSamplingStop();
 static int host_onRequestGetUptime();
+static int host_responseGetUptime();
 static int host_onRequestGetBufferStatus();
+static int host_responseGetBufferStatus();
+static void sampling_onTransmissionErrorCb();
+static void sampling_responseTransmissionError();
 /// @}
 
 /**
@@ -111,14 +121,20 @@ static void sampling_clearFifoWatermark();
 static void sampling_setFifoOverflow();
 static void sampling_on5usTimerExpired();
 static void sampling_onSamplingStartedCb();
+static void sampling_responseSamplingStarted();
 static void sampling_onSamplingStoppedCb();
+static void sampling_responseSamplingStopped();
 static void sampling_onSamplingAbortedCb();
+static void sampling_responseSamplingAborted();
 static void sampling_onSamplingFinishedCb();
+static void sampling_responseSamplingFinished();
 static int sampling_doForwardAccelerationBufferImpl(
     const struct Sampling_Acceleration *buffer, uint16_t bufferLen,
     uint16_t firstIndex);
 static void sampling_onFifoOverflowCb();
+static void sampling_responseFifoOverflow();
 static void sampling_onBufferOverflowCb();
+static void sampling_responseBufferOverflow();
 static void sampling_doEnableSensorImpl();
 static void sampling_doDisableSensorImpl();
 static void
@@ -135,6 +151,26 @@ static void fault_onBusFaultHandler();
 static void fault_onHardFaultHandler();
 static void fault_onErrorHandler();
 /// @}
+
+struct Transport_ResponseFlags {
+  bool host_responseGetFirmwareVersion;
+  bool host_responseGetOutputDataRate;
+  bool host_responseGetRange;
+  bool host_responseGetScale;
+  bool host_responseGetDeviceSetup;
+  bool host_responseGetUptime;
+  bool host_responseGetBufferStatus;
+  bool sampling_responseSamplingStarted;
+  bool sampling_responseSamplingStopped;
+  bool sampling_responseSamplingAborted;
+  bool sampling_responseSamplingFinished;
+  bool sampling_responseFifoOverflow;
+  bool sampling_responseBufferOverflow;
+  bool sampling_responseTransmissionError;
+};
+
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
+struct Transport_ResponseFlags pendingResponses = {0};
 
 #define SAMPLING_DECLARE_INITIALIZER                                           \
   {                                                                            \
@@ -161,6 +197,7 @@ static void fault_onErrorHandler();
     .onSamplingFinishedCb = sampling_onSamplingFinishedCb,                     \
     .onFifoOverflowCb = sampling_onFifoOverflowCb,                             \
     .onBufferOverflowCb = sampling_onBufferOverflowCb,                         \
+    .onTransmissionErrorCb = sampling_onTransmissionErrorCb,                   \
   }
 
 #define HOSTTRANSPORT_DECLARE_INITIALIZER                                      \
@@ -212,7 +249,6 @@ struct Controller_Handle controllerHandle = {
     .init = ControllerImpl_init,
     .loop = ControllerImpl_loop,
 
-    .checkReboot = ControllerImpl_device_checkReboot,
     .requestReboot = ControllerImpl_device_requestAsyncReboot,
     .fault_onNmiFaultHandler = fault_onNmiFaultHandler,
     .fault_onUsageFaultHandler = fault_onUsageFaultHandler,
@@ -248,7 +284,8 @@ void ControllerImpl_loop() {
   default:
     break;
   }
-  controllerHandle.checkReboot();
+  ControllerImpl_device_checkReboot();
+  ControllerImpl_transmitPendingResponses();
 }
 
 void ControllerImpl_device_checkReboot() {
@@ -258,6 +295,61 @@ void ControllerImpl_device_checkReboot() {
 }
 
 void ControllerImpl_device_requestAsyncReboot() { rebootRequested = true; }
+
+/**
+ * Decouples possible interrupt context from execution which is performed in
+ * in main() context.
+ *
+ * Example: each user request, handled in ISR, sets a flag so that the
+ * it can be handled later in context of main().
+ */
+static void ControllerImpl_transmitPendingResponses() {
+  if (pendingResponses.host_responseGetFirmwareVersion) {
+    host_responseGetFirmwareVersion();
+  }
+  if (pendingResponses.host_responseGetOutputDataRate) {
+    host_responseGetOutputDataRate();
+  }
+  if (pendingResponses.host_responseGetRange) {
+    host_responseGetRange();
+  }
+  if (pendingResponses.host_responseGetScale) {
+    host_responseGetScale();
+  }
+  if (pendingResponses.host_responseGetDeviceSetup) {
+    host_responseGetDeviceSetup();
+  }
+  if (pendingResponses.host_responseGetUptime) {
+    host_responseGetUptime();
+  }
+  if (pendingResponses.host_responseGetBufferStatus) {
+    host_responseGetBufferStatus();
+  }
+
+  if (pendingResponses.sampling_responseSamplingStarted) {
+    sampling_responseSamplingStarted();
+  }
+  if (pendingResponses.sampling_responseSamplingStopped) {
+    sampling_responseSamplingStopped();
+  }
+  if (pendingResponses.sampling_responseSamplingAborted) {
+    sampling_responseSamplingAborted();
+  }
+  if (pendingResponses.sampling_responseSamplingFinished) {
+    sampling_responseSamplingFinished();
+  }
+  if (pendingResponses.sampling_responseFifoOverflow) {
+    sampling_responseFifoOverflow();
+  }
+  if (pendingResponses.sampling_responseBufferOverflow) {
+    sampling_responseBufferOverflow();
+  }
+  if (pendingResponses.sampling_responseTransmissionError) {
+    sampling_responseTransmissionError();
+  }
+
+  memset(&pendingResponses, 0, sizeof(struct Transport_ResponseFlags));
+}
 
 /* Host RX data ------------------------------------------------------------- */
 
@@ -277,12 +369,26 @@ static void host_doTakeBytes(const uint8_t *buffer, uint16_t len) {
 }
 
 static int host_onRequestGetFirmwareVersion() {
+  // todo: bug!
+  // pendingResponses.host_responseGetFirmwareVersion = true;
+  host_responseGetFirmwareVersion();
+  return 0;
+}
+
+static int host_responseGetFirmwareVersion() {
   TransportTx_TxFirmwareVersion(&controllerHandle.host.handle, VERSION_MAJOR,
                                 VERSION_MINOR, VERSION_PATCH);
   return 0;
 }
 
 static int host_onRequestGetOutputDataRate() {
+  // todo: bug!
+  // pendingResponses.host_responseGetOutputDataRate = true;
+  host_responseGetOutputDataRate();
+  return 0;
+}
+
+static int host_responseGetOutputDataRate() {
   uint8_t odr = {0};
   sensor_doGetOutputDataRateImpl(&odr);
   TransportTx_TxOutputDataRate(&controllerHandle.host.handle, odr);
@@ -295,6 +401,13 @@ host_onRequestSetOutputDatatRate(enum TransportRx_SetOutputDataRate_Rate odr) {
 }
 
 static int host_onRequestGetRange() {
+  // todo: bug!
+  // pendingResponses.host_responseGetRange = true;
+  host_responseGetRange();
+  return 0;
+}
+
+static int host_responseGetRange() {
   uint8_t range = {0};
   sensor_doGetRangeImpl(&range);
   TransportTx_TxRange(&controllerHandle.host.handle, range);
@@ -306,6 +419,13 @@ static int host_onRequestSetRange(enum TransportRx_SetRange_Range range) {
 }
 
 static int host_onRequestGetScale() {
+  // todo: bug!
+  // pendingResponses.host_responseGetScale = true;
+  host_responseGetScale();
+  return 0;
+}
+
+static int host_responseGetScale() {
   uint8_t scale = {0};
   sensor_doGetScaleImpl(&scale);
   TransportTx_TxScale(&controllerHandle.host.handle, scale);
@@ -317,6 +437,13 @@ static int host_onRequestSetScale(enum TransportRx_SetScale_Scale scale) {
 }
 
 static int host_onRequestGetDeviceSetup() {
+  // todo: bug!
+  // pendingResponses.host_responseGetDeviceSetup = true;
+  host_responseGetDeviceSetup();
+  return 0;
+}
+
+static int host_responseGetDeviceSetup() {
   uint8_t odr = {0};
   uint8_t scale = {0};
   uint8_t range = {0};
@@ -340,13 +467,30 @@ static int host_onRequestSamplingStop() {
 }
 
 static int host_onRequestGetUptime() {
-  uint32_t tickMs = {HAL_GetTick()};
-  TransportTx_TxUptime(&controllerHandle.host.handle, tickMs);
+  // todo: bug!
+  //  - works if called here from interrupt context but tends to transmit
+  //  garbage data
+  //    if called in main() context
+  //  - investigation needed
+  // pendingResponses.host_responseGetUptime = true;
+  host_responseGetUptime();
+  return 0;
+}
+
+static int host_responseGetUptime() {
+  TransportTx_TxUptime(&controllerHandle.host.handle, HAL_GetTick());
   return 0;
 }
 
 static int host_onRequestGetBufferStatus() {
-  TransportTx_BufferStatus(
+  // todo: bug!
+  // pendingResponses.host_responseGetBufferStatus = true;
+  host_responseGetBufferStatus();
+  return 0;
+}
+
+static int host_responseGetBufferStatus() {
+  TransportTx_TxBufferStatus(
       &controllerHandle.host.handle, RINGBUFFER_STORAGE_SIZE_BYTES,
       RINGBUFFER_STORAGE_ITEMS,
       controllerHandle.host.handle.toHost.ringbufferMaxItemsUtilization);
@@ -399,32 +543,47 @@ static void sampling_on5usTimerExpired() {
 
 static void sampling_onSamplingStartedCb() {
   Transport_resetBuffer(&controllerHandle.host.handle);
+
   TransportTx_TxSamplingStarted(
       &controllerHandle.host.handle,
       controllerHandle.sampling.handle.state.maxSamples);
+
+  // todo: bug!
+  pendingResponses.sampling_responseSamplingStarted = true;
 }
 
+static void sampling_responseSamplingStarted() {}
+
 static void sampling_onSamplingStoppedCb() {
-  host_onRequestGetFirmwareVersion();
-  host_onRequestGetBufferStatus();
+  // todo: bug!
+  // pendingResponses.sampling_responseSamplingStopped = true;
+  sampling_responseSamplingStopped();
+}
 
-  uint8_t odr = {0};
-  uint8_t scale = {0};
-  uint8_t range = {0};
-
-  sensor_doGetOutputDataRateImpl(&odr);
-  sensor_doGetScaleImpl(&scale);
-  sensor_doGetRangeImpl(&range);
-
-  TransportTx_TxSamplingStopped(&controllerHandle.host.handle, odr, scale,
-                                range);
+static void sampling_responseSamplingStopped() {
+  host_responseGetFirmwareVersion();
+  host_responseGetBufferStatus();
+  host_responseGetDeviceSetup();
+  TransportTx_TxSamplingStopped(&controllerHandle.host.handle);
 }
 
 static void sampling_onSamplingAbortedCb() {
+  // todo: bug!
+  // pendingResponses.sampling_responseSamplingAborted = true;
+  sampling_responseSamplingAborted();
+}
+
+static void sampling_responseSamplingAborted() {
   TransportTx_TxSamplingAborted(&controllerHandle.host.handle);
 }
 
 static void sampling_onSamplingFinishedCb() {
+  // todo: bug!
+  // pendingResponses.sampling_responseSamplingFinished = true;
+  sampling_responseSamplingFinished();
+}
+
+static void sampling_responseSamplingFinished() {
   TransportTx_TxSamplingFinished(&controllerHandle.host.handle);
 }
 
@@ -445,11 +604,33 @@ static int sampling_doForwardAccelerationBufferImpl(
 }
 
 static void sampling_onFifoOverflowCb() {
+  // todo: bug!
+  // pendingResponses.sampling_responseFifoOverflow = true;
+  sampling_responseFifoOverflow();
+}
+
+static void sampling_responseFifoOverflow() {
   TransportTx_TxFifoOverflow(&controllerHandle.host.handle);
 }
 
 static void sampling_onBufferOverflowCb() {
+  // todo: bug!
+  // pendingResponses.host_responseGetBufferStatus = true;
+  sampling_responseBufferOverflow();
+}
+
+static void sampling_responseBufferOverflow() {
   TransportTx_TxBufferOverflow(&controllerHandle.host.handle);
+}
+
+static void sampling_onTransmissionErrorCb() {
+  // todo: bug!
+  // pendingResponses.sampling_responseTransmissionError = true;
+  sampling_responseTransmissionError();
+}
+
+static void sampling_responseTransmissionError() {
+  TransportTx_TxTransmissionError(&controllerHandle.host.handle);
 }
 
 static void sampling_doEnableSensorImpl() {

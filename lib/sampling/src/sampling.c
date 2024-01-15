@@ -12,14 +12,15 @@ static bool isNSamplesReadEnabled(struct Sampling_Handle *handle) {
   return handle->state.maxSamples > 0;
 }
 
-static void checkStartRequest(struct Sampling_Handle *handle) {
+static bool checkStartRequest(struct Sampling_Handle *handle) {
   if (!handle->state.doStart) {
-    return;
+    return false;
   }
   handle->state.doStart = false;
 
   if (handle->state.isStarted) {
-    return;
+    Sampling_stop(handle);
+    return false;
   }
   handle->onSamplingStartedCb();
 
@@ -28,16 +29,18 @@ static void checkStartRequest(struct Sampling_Handle *handle) {
   handle->state.isStarted = true;
 
   handle->doEnableSensorImpl();
+
+  return true;
 }
 
-static void checkStopRequest(struct Sampling_Handle *handle) {
+static bool checkStopRequest(struct Sampling_Handle *handle) {
   if (!handle->state.doStop) {
-    return;
+    return false;
   }
   handle->state.doStop = false;
 
   if (!handle->state.isStarted) {
-    return;
+    return false;
   }
 
   if (handle->state.transactionsCount < handle->state.maxSamples) {
@@ -47,12 +50,14 @@ static void checkStopRequest(struct Sampling_Handle *handle) {
 
   handle->doDisableSensorImpl();
 
-  // clear watermark interrupt (clear whole fifo)
+  // clear watermark interrupt (fetch complete fifo)
   for (uint8_t idx = 0; idx < ADXL345_FIFO_ENTRIES; idx++) {
     handle->doFetchSensorAccelerationImpl(NULL);
   }
 
   handle->state.isStarted = false;
+
+  return true;
 }
 
 void Sampling_start(struct Sampling_Handle *handle, uint16_t maxSamples) {
@@ -64,11 +69,28 @@ void Sampling_stop(struct Sampling_Handle *handle) {
   handle->state.doStop = true;
 }
 
-static void transmitPending(struct Sampling_Handle *handle) {
-  while (-EAGAIN == handle->doForwardAccelerationBufferImpl(NULL, 0, 0)) {
+static bool transmitPending(struct Sampling_Handle *handle) {
+
+  const int ret = handle->doForwardAccelerationBufferImpl(NULL, 0, 0);
+
+  if (ret == -EAGAIN) {
+    return true;
   }
+
+  if (ret == -ENOMEM) {
+    handle->onBufferOverflowCb();
+    Sampling_stop(handle);
+  }
+
+  if (ret == -EIO) {
+    handle->onTransmissionErrorCb();
+    Sampling_stop(handle);
+  }
+
+  return false;
 }
 
+// NOLINTNEXTLINE(readability-function-cognitive-complexity)
 int Sampling_fetchForward(struct Sampling_Handle *handle) {
   int retState = {0};
   int retTx = {0};
@@ -81,7 +103,9 @@ int Sampling_fetchForward(struct Sampling_Handle *handle) {
     // fetch samples
     while (rxCount < SAMPLING_NUM_SAMPLES_READ_AT_ONCE) {
 
-      checkStopRequest(handle);
+      if (checkStopRequest(handle)) {
+        break;
+      }
 
       if (!handle->state.isStarted) {
         retState = -ECANCELED;
@@ -113,19 +137,21 @@ int Sampling_fetchForward(struct Sampling_Handle *handle) {
       rxCount++;
     }
 
-    // forward samples
-    if (0 < rxCount) {
+    // forward chunk of samples
+    if ((0 < rxCount) && handle->state.isStarted) {
       retTx = handle->doForwardAccelerationBufferImpl(
           handle->state.rxBuffer, rxCount, handle->state.transactionsCount);
       handle->state.transactionsCount += rxCount;
     }
-  } else {
-    transmitPending(handle);
   }
 
   if (-ENOMEM == retTx) {
     handle->onBufferOverflowCb();
     Sampling_stop(handle);
+  }
+
+  if (handle->state.isStarted) {
+    transmitPending(handle);
   }
 
   if (-EOVERFLOW == retState) {
@@ -139,7 +165,8 @@ int Sampling_fetchForward(struct Sampling_Handle *handle) {
   }
 
   if (ENODATA == retState) {
-    transmitPending(handle);
+    while (transmitPending(handle)) {
+    }
     handle->onSamplingFinishedCb();
     Sampling_stop(handle);
   }

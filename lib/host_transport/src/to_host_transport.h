@@ -109,9 +109,7 @@ void TransportTx_TxSamplingFinished(struct HostTransport_Handle *handle);
  * @param sensorScale
  * @param sensorRange
  */
-void TransportTx_TxSamplingStopped(struct HostTransport_Handle *handle,
-                                   uint8_t sensorOdr, uint8_t sensorScale,
-                                   uint8_t sensorRange);
+void TransportTx_TxSamplingStopped(struct HostTransport_Handle *handle);
 
 /**
  * Transmits sampling aborted package TransportTx_SamplingAborted to the IN
@@ -135,28 +133,7 @@ void TransportTx_TxFifoOverflow(struct HostTransport_Handle *handle);
 
 void TransportTx_TxBufferOverflow(struct HostTransport_Handle *handle);
 
-/**
- * Forwards acceleration data block to the IN endpoint of host.
- *
- * Triggers sending data to the the IN endpoint.
- * If USB is busy the data is buffered for a later transmission.
- * To consume all buffered data this function shall be called until -ENODATA is
- * returned (with data and/or count being NULL and/or 0).
- *
- * @param handle host transport pimpl
- * @param data tx buffer or NULL to consume remaining buffered data
- * @param count buffer size or 0 to consume remaining buffered data
- * @param firstIndex the tracked index number of the first acceleration in data
- * buffer
- * @return
- *   - 0 on success (data send in first run),
- *   - EBUSY if data was buffered,
- *   - ENODATA if no buffered data available (all data sent),
- *   - -EINVAL otherwise
- */
-int TransportTx_TxAccelerationBuffer(struct HostTransport_Handle *handle,
-                                     const struct Transport_Acceleration *data,
-                                     uint8_t count, uint16_t firstIndex);
+void TransportTx_TxTransmissionError(struct HostTransport_Handle *handle);
 
 /**
  * Transmits device uptime TransportTx_Uptime to the IN endpoint of host.
@@ -189,6 +166,29 @@ void TransportTx_TxFault(struct HostTransport_Handle *handle,
  * @param capacity maximum items capacity
  * @param maxItemsCount maximum items utilization
  */
-void TransportTx_BufferStatus(struct HostTransport_Handle *handle,
-                              uint16_t sizeBytes, uint16_t capacity,
-                              uint16_t maxItemsCount);
+void TransportTx_TxBufferStatus(struct HostTransport_Handle *handle,
+                                uint16_t sizeBytes, uint16_t capacity,
+                                uint16_t maxItemsCount);
+
+/**
+ * Forwards acceleration data block to the IN endpoint of host.
+ *
+ * Triggers sending data to the the IN endpoint.
+ * If USB is busy the data is buffered for a later transmission.
+ * To consume all buffered data this function shall be called until -ENODATA is
+ * returned (with data and/or count being NULL and/or 0).
+ *
+ * @param handle host transport pimpl
+ * @param data tx buffer or NULL to consume remaining buffered data
+ * @param count buffer size or 0 to consume remaining buffered data
+ * @param firstIndex the tracked index number of the first acceleration in data
+ * buffer
+ * @return
+ *   - 0 on success (data send in first run),
+ *   - EBUSY if data was buffered,
+ *   - ENODATA if no buffered data available (all data sent),
+ *   - -EINVAL otherwise
+ */
+int TransportTx_TxAccelerationBuffer(struct HostTransport_Handle *handle,
+                                     const struct Transport_Acceleration *data,
+                                     uint8_t count, uint16_t firstIndex);

@@ -16,7 +16,7 @@ struct Ringbuffer;
   (sizeof(struct Transport_Header) + sizeof(struct TransportTx_Acceleration))
 
 // NOLINTNEXTLINE(modernize-macro-to-enum)
-#define RINGBUFFER_STORAGE_ITEMS 3200
+#define RINGBUFFER_STORAGE_ITEMS 3200U
 
 // NOLINTNEXTLINE(modernize-macro-to-enum)
 #define RINGBUFFER_STORAGE_SIZE_BYTES                                          \
@@ -27,14 +27,14 @@ extern uint8_t ringbufferStorage[RINGBUFFER_STORAGE_SIZE_BYTES];
 
 #define RINGBUFFER_INDEX_INITIALIZER(CAPACITY, ITEM_SIZE_BYTES)                \
   {                                                                            \
-    .begin = 0, .end = 0, .capacity = (CAPACITY), .isFull = false,             \
-    .isEmpty = true, .itemSizeBytes = (ITEM_SIZE_BYTES)                        \
+    .begin = 0, .end = 0, .capacity = (CAPACITY), .itemsCount = 0,             \
+    .isFull = false, .isEmpty = true, .itemSizeBytes = (ITEM_SIZE_BYTES),      \
   }
 
 #define RINGBUFFER_INITIALIZER(STORAGE_NAME, CAPACITY, ITEM_SIZE_BYTES)        \
   {                                                                            \
     .index = RINGBUFFER_INDEX_INITIALIZER(CAPACITY, ITEM_SIZE_BYTES),          \
-    .storage = (STORAGE_NAME)                                                  \
+    .storage = (STORAGE_NAME),                                                 \
   }
 
 #define RINGBUFFER_DECLARE_INITIALIZER                                         \

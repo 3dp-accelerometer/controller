@@ -107,7 +107,6 @@ struct Controller_Handle {
   void (*const init)(); ///< Context: main()
   void (*const loop)(); ///< Context: main()
 
-  void (*const checkReboot)();   ///< Context: main()
   void (*const requestReboot)(); ///< Context: main()
 
   void (*const fault_onNmiFaultHandler)();   ///< \see stm32f4xx_it.h

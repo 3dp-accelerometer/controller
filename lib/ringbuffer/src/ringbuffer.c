@@ -95,6 +95,7 @@ int Ringbuffer_put(struct Ringbuffer *buffer, const void *item) {
   memcpy(itemAtIndex(buffer, buffer->index.end), item,
          buffer->index.itemSizeBytes);
   advanceEnd(&buffer->index);
+  buffer->index.itemsCount++;
 
   return 0;
 }
@@ -108,6 +109,7 @@ int Ringbuffer_take(struct Ringbuffer *buffer, void *item) {
   memcpy(item, itemAtIndex(buffer, buffer->index.begin),
          buffer->index.itemSizeBytes);
   advanceBegin(&buffer->index);
+  buffer->index.itemsCount--;
 
   return 0;
 }
@@ -120,7 +122,12 @@ bool Ringbuffer_isFull(const struct Ringbuffer *buffer) {
   return buffer->index.isFull;
 }
 
+uint16_t Ringbuffer_itemsCount(const struct Ringbuffer *buffer) {
+  return buffer->index.itemsCount;
+}
+
 void Ringbuffer_reset(struct Ringbuffer *buffer) {
   buffer->index.begin = 0;
   buffer->index.end = 0;
+  buffer->index.itemsCount = 0;
 }

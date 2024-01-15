@@ -13,8 +13,6 @@
 enum HostTransport_Status {
   HostTransport_Status_Ok = 0,
   HostTransport_Status_Busy,
-  HostTransport_Status_Again,
-  HostTransport_Status_BufferOverflow,
   HostTransport_Status_Fail,
   HostTransport_Status_Undefined
 };
@@ -70,7 +68,8 @@ struct HostTransport_ToHostApi {
   enum HostTransport_Status (*const doTransmitImpl)(
       uint8_t *, uint16_t); ///< Context: main() and interrupts
 
-  bool (*const isTransmitBusyImpl)(); ///< Context: main() and interrupts
+  volatile bool (
+          *const isTransmitBusyImpl)(); ///< Context: main() and interrupts
 };
 
 /**

@@ -33,15 +33,15 @@ enum Transport_HeaderId {
    * @{
    */
   Transport_HeaderId_Rx_SetOutputDataRate = 1U,
-  Transport_HeaderId_Rx_GetOutputDataRate,
-  Transport_HeaderId_Rx_SetRange,
-  Transport_HeaderId_Rx_GetRange,
-  Transport_HeaderId_Rx_SetScale,
-  Transport_HeaderId_Rx_GetScale,
-  Transport_HeaderId_Rx_GetDeviceSetup,
-  Transport_HeaderId_Rx_GetFirmwareVersion,
-  Transport_HeaderId_Rx_GetUptime,
-  Transport_HeaderId_Rx_GetBufferStatus,
+  Transport_HeaderId_Rx_GetOutputDataRate = 2U,
+  Transport_HeaderId_Rx_SetRange = 3U,
+  Transport_HeaderId_Rx_GetRange = 4U,
+  Transport_HeaderId_Rx_SetScale = 5U,
+  Transport_HeaderId_Rx_GetScale = 6U,
+  Transport_HeaderId_Rx_GetDeviceSetup = 7U,
+  Transport_HeaderId_Rx_GetFirmwareVersion = 8U,
+  Transport_HeaderId_Rx_GetUptime = 9U,
+  Transport_HeaderId_Rx_GetBufferStatus = 10U,
   /// @}
 
   /**
@@ -49,8 +49,8 @@ enum Transport_HeaderId {
    * @{
    */
   Transport_HeaderId_Rx_DeviceReboot = 17U,
-  Transport_HeaderId_Rx_SamplingStart,
-  Transport_HeaderId_Rx_SamplingStop,
+  Transport_HeaderId_Rx_SamplingStart = 18U,
+  Transport_HeaderId_Rx_SamplingStop = 19U,
   /// @}
 
   /**
@@ -58,12 +58,12 @@ enum Transport_HeaderId {
    * @{
    */
   Transport_HeaderId_Tx_OutputDataRate = 25U,
-  Transport_HeaderId_Tx_Range,
-  Transport_HeaderId_Tx_Scale,
-  Transport_HeaderId_Tx_DeviceSetup,
-  Transport_HeaderId_Tx_FirmwareVersion,
-  Transport_HeaderId_Tx_Uptime,
-  Transport_HeaderId_Tx_BufferStatus,
+  Transport_HeaderId_Tx_Range = 26U,
+  Transport_HeaderId_Tx_Scale = 27U,
+  Transport_HeaderId_Tx_DeviceSetup = 28U,
+  Transport_HeaderId_Tx_FirmwareVersion = 29U,
+  Transport_HeaderId_Tx_Uptime = 30U,
+  Transport_HeaderId_Tx_BufferStatus = 31U,
   /// @}
 
   /**
@@ -71,13 +71,14 @@ enum Transport_HeaderId {
    * @{
    */
   Transport_HeaderId_Tx_FifoOverflow = 33U,
-  Transport_HeaderId_Tx_SamplingStarted,
-  Transport_HeaderId_Tx_SamplingFinished,
-  Transport_HeaderId_Tx_SamplingStopped,
-  Transport_HeaderId_Tx_SamplingAborted,
-  Transport_HeaderId_Tx_Acceleration,
-  Transport_HeaderId_Tx_Fault,
-  Transport_HeaderId_Tx_BufferOverflow,
+  Transport_HeaderId_Tx_SamplingStarted = 34U,
+  Transport_HeaderId_Tx_SamplingFinished = 35U,
+  Transport_HeaderId_Tx_SamplingStopped = 36U,
+  Transport_HeaderId_Tx_SamplingAborted = 37U,
+  Transport_HeaderId_Tx_Acceleration = 38U,
+  Transport_HeaderId_Tx_Fault = 39U,
+  Transport_HeaderId_Tx_BufferOverflow = 40U,
+  Transport_HeaderId_Tx_TransmissionError = 41U,
   /// @}
 
 } __attribute__((__packed__));
@@ -361,6 +362,12 @@ struct TransportTx_Uptime {
 } __attribute__((packed));
 
 /**
+ * TX payload transmitted on transmission error while sampling.
+ */
+struct TransportTx_TransmissionError {
+} __attribute__((packed));
+
+/**
  * TX payload transporting buffer status.
  */
 struct TransportTx_BufferStatus {
@@ -389,6 +396,7 @@ union TransportTxFrame {
   struct TransportTx_FirmwareVersion asFirmwareVersion;
   struct TransportTx_Fault asFault;
   struct TransportTx_Uptime asUptime;
+  struct TransportTx_TransmissionError asTransmissionError;
   struct TransportTx_BufferStatus asBufferStatus;
 } __attribute__((packed));
 

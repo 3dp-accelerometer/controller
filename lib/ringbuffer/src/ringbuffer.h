@@ -15,7 +15,9 @@
 struct Ringbuffer_Index {
   uint16_t begin;
   uint16_t end;
-  uint16_t capacity; ///< maximum number of items
+  uint16_t capacity;   ///< maximum number of items
+  uint16_t itemsCount; ///< currently stored items
+
   bool isFull;
   bool isEmpty;
   uint8_t itemSizeBytes; ///< size of one item in bytes
@@ -76,9 +78,28 @@ int Ringbuffer_put(struct Ringbuffer *buffer, const void *item);
  */
 int Ringbuffer_take(struct Ringbuffer *buffer, void *item);
 
+/**
+ * Tests whether the buffer is empty.
+ *
+ * @param buffer
+ * @return true if buffer is empty
+ */
 bool Ringbuffer_isEmpty(const struct Ringbuffer *buffer);
 
+/**
+ * Tests whether the buffer is full.
+ *
+ * @param buffer
+ * @return true if capacity is exhausted
+ */
 bool Ringbuffer_isFull(const struct Ringbuffer *buffer);
+
+/**
+ * Returns amount of stored items (used slots).
+ * @param buffer
+ * @return number of items stored in buffer; between 0 and 65535
+ */
+uint16_t Ringbuffer_itemsCount(const struct Ringbuffer *buffer);
 
 /**
  * Invalidates the start/end indices without zeroing out the buffer.

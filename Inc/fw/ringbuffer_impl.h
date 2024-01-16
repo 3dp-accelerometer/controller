@@ -15,8 +15,13 @@ struct Ringbuffer;
 #define RINGBUFFER_STORAGE_ITEM_SIZE_BYTES                                     \
   (sizeof(struct Transport_Header) + sizeof(struct TransportTx_Acceleration))
 
+#if defined(STM32F401xC)
 // NOLINTNEXTLINE(modernize-macro-to-enum)
-#define RINGBUFFER_STORAGE_ITEMS 3200U
+#define RINGBUFFER_STORAGE_ITEMS 3200U // about 30kB RAM
+#elif defined(STM32F411xE)
+// NOLINTNEXTLINE(modernize-macro-to-enum)
+#define RINGBUFFER_STORAGE_ITEMS 7260U // about 65kB RAM
+#endif
 
 // NOLINTNEXTLINE(modernize-macro-to-enum)
 #define RINGBUFFER_STORAGE_SIZE_BYTES                                          \

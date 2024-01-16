@@ -15,12 +15,18 @@
 struct Ringbuffer_Index {
   uint16_t begin;
   uint16_t end;
-  uint16_t capacity;   ///< maximum number of items
-  uint16_t itemsCount; ///< currently stored items
+  uint16_t capacity; ///< maximum number of storable items
 
   bool isFull;
   bool isEmpty;
   uint8_t itemSizeBytes; ///< size of one item in bytes
+
+  uint16_t itemsCount;      ///< statistic: currently stored items
+  uint16_t maxCapacityUsed; ///< statistic: maximum stored items since reset
+  uint16_t putCount;  ///< statistic: total amount of successfully stored items
+                      ///< since reset
+  uint16_t takeCount; ///< statistic: total amount of successfully taken items
+                      ///< since reset
 };
 
 /**
@@ -96,10 +102,43 @@ bool Ringbuffer_isFull(const struct Ringbuffer *buffer);
 
 /**
  * Returns amount of stored items (used slots).
+ *
  * @param buffer
  * @return number of items stored in buffer; between 0 and 65535
  */
 uint16_t Ringbuffer_itemsCount(const struct Ringbuffer *buffer);
+
+/**
+ * Returns the maximum utilized capacity as seen since last reset.
+ *
+ * @param buffer
+ * @return maximum number of items stored since last reset
+ */
+uint16_t Ringbuffer_maxCapacityUsed(const struct Ringbuffer *buffer);
+
+/**
+ * Returns counter tracking the amount of successful stored items since last
+ * reset.
+ *
+ * @param buffer
+ * @return number of successful "put" attempts since last reset
+ */
+uint16_t Ringbuffer_putCount(const struct Ringbuffer *buffer);
+
+/**
+ * Returns counter tracking the amount of successful removed items since last
+ * reset.
+ *
+ * @param buffer
+ * @return number of successful "take" attempts since last reset
+ */
+uint16_t Ringbuffer_takeCount(const struct Ringbuffer *buffer);
+
+/**
+ * @param buffer
+ * @return size of item (slot) in bytes
+ */
+uint16_t Ringbuffer_itemSizeBytes(const struct Ringbuffer *buffer);
 
 /**
  * Invalidates the start/end indices without zeroing out the buffer.

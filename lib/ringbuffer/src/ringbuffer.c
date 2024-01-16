@@ -96,6 +96,11 @@ int Ringbuffer_put(struct Ringbuffer *buffer, const void *item) {
          buffer->index.itemSizeBytes);
   advanceEnd(&buffer->index);
   buffer->index.itemsCount++;
+  buffer->index.maxCapacityUsed =
+      (buffer->index.itemsCount > buffer->index.maxCapacityUsed)
+          ? buffer->index.itemsCount
+          : buffer->index.maxCapacityUsed;
+  buffer->index.putCount++;
 
   return 0;
 }
@@ -110,6 +115,7 @@ int Ringbuffer_take(struct Ringbuffer *buffer, void *item) {
          buffer->index.itemSizeBytes);
   advanceBegin(&buffer->index);
   buffer->index.itemsCount--;
+  buffer->index.takeCount++;
 
   return 0;
 }
@@ -126,8 +132,31 @@ uint16_t Ringbuffer_itemsCount(const struct Ringbuffer *buffer) {
   return buffer->index.itemsCount;
 }
 
+uint16_t Ringbuffer_maxCapacityUsed(const struct Ringbuffer *buffer) {
+  return buffer->index.maxCapacityUsed;
+}
+
+uint16_t Ringbuffer_putCount(const struct Ringbuffer *buffer) {
+  return buffer->index.putCount;
+}
+
+uint16_t Ringbuffer_takeCount(const struct Ringbuffer *buffer) {
+  return buffer->index.takeCount;
+}
+
+uint16_t Ringbuffer_itemSizeBytes(const struct Ringbuffer *buffer) {
+  return buffer->index.itemSizeBytes;
+}
+
 void Ringbuffer_reset(struct Ringbuffer *buffer) {
   buffer->index.begin = 0;
   buffer->index.end = 0;
+
+  buffer->index.isFull = false;
+  buffer->index.isEmpty = true;
+
   buffer->index.itemsCount = 0;
+  buffer->index.maxCapacityUsed = 0;
+  buffer->index.putCount = 0;
+  buffer->index.takeCount = 0;
 }

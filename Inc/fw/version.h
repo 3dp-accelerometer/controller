@@ -13,7 +13,7 @@
 
 #pragma once
 
-#define VERSION "0.1.9"
+#define VERSION "0.1.10"
 #define VERSION_MAJOR 0 // NOLINT(modernize-macro-to-enum)
 #define VERSION_MINOR 1 // NOLINT(modernize-macro-to-enum)
-#define VERSION_PATCH 9 // NOLINT(modernize-macro-to-enum)
+#define VERSION_PATCH 10 // NOLINT(modernize-macro-to-enum)

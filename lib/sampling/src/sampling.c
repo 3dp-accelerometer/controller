@@ -166,6 +166,7 @@ int Sampling_fetchForward(struct Sampling_Handle *handle) {
 
   if (ENODATA == retState) {
     // todo: refactor retries counter and optionally introduce delay
+    // NOLINTNEXTLINE(cppcoreguidelines-avoid-magic-numbers,readability-magic-numbers)
     uint16_t retries = 10000U;
     while (transmitPending(handle) && retries != 0) {
       retries--;

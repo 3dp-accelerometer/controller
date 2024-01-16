@@ -92,8 +92,12 @@ int Ringbuffer_put(struct Ringbuffer *buffer, const void *item) {
   }
 
   buffer->index.isEmpty = false;
-  memcpy(itemAtIndex(buffer, buffer->index.end), item,
-         buffer->index.itemSizeBytes);
+  // avoid memcpy until clear where allowed to use due to un-alignment issues
+  uint8_t *slot = {itemAtIndex(buffer, buffer->index.end)};
+  for (size_t idx = 0; idx < buffer->index.itemSizeBytes; idx++) {
+    slot[idx] = ((uint8_t *)item)[idx];
+  }
+
   advanceEnd(&buffer->index);
   buffer->index.itemsCount++;
   buffer->index.maxCapacityUsed =
@@ -111,8 +115,12 @@ int Ringbuffer_take(struct Ringbuffer *buffer, void *item) {
   }
 
   buffer->index.isFull = false;
-  memcpy(item, itemAtIndex(buffer, buffer->index.begin),
-         buffer->index.itemSizeBytes);
+  // avoid memcpy until clear where allowed to use due to un-alignment issues
+  const uint8_t *slot = {itemAtIndex(buffer, buffer->index.begin)};
+  for (size_t idx = 0; idx < buffer->index.itemSizeBytes; idx++) {
+    ((uint8_t *)item)[idx] = slot[idx];
+  }
+
   advanceBegin(&buffer->index);
   buffer->index.itemsCount--;
   buffer->index.takeCount++;

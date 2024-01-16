@@ -352,6 +352,8 @@ static void ControllerImpl_transmitPendingResponses() {
     pendingResponses.sampling_responseTransmissionError = false;
     sampling_responseTransmissionError();
   }
+
+  // note: avoid memset to clear flags of this struct due un-alignment issue
 }
 
 /* Host RX data ------------------------------------------------------------- */

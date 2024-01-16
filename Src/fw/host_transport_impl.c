@@ -42,37 +42,47 @@ int HostTransportImpl_onTakeReceivedImpl(const uint8_t *buffer) {
 
   switch (request->header.id) {
   case Transport_HeaderId_Rx_GetFirmwareVersion:
-    return controllerHandle.host.onRequestGetFirmwareVersion();
+    controllerHandle.host.onRequestGetFirmwareVersion();
+    return 0;
   case Transport_HeaderId_Rx_GetOutputDataRate:
-    return controllerHandle.host.onRequestGetOutputDataRate();
+    controllerHandle.host.onRequestGetOutputDataRate();
+    return 0;
   case Transport_HeaderId_Rx_SetOutputDataRate:
-    return controllerHandle.host.onRequestSetOutputDatatRate(
+    controllerHandle.host.onRequestSetOutputDatatRate(
         request->asRxFrame.asSetOutputDataRate.rate);
+    return 0;
   case Transport_HeaderId_Rx_GetRange:
-    return controllerHandle.host.onRequestGetRange();
+    controllerHandle.host.onRequestGetRange();
+    return 0;
   case Transport_HeaderId_Rx_SetRange:
-    return controllerHandle.host.onRequestSetRange(
+    controllerHandle.host.onRequestSetRange(
         request->asRxFrame.asSetRange.range);
+    return 0;
   case Transport_HeaderId_Rx_GetScale:
-    return controllerHandle.host.onRequestGetScale();
+    controllerHandle.host.onRequestGetScale();
+    return 0;
   case Transport_HeaderId_Rx_SetScale:
     return controllerHandle.host.onRequestSetScale(
         request->asRxFrame.asSetScale.scale);
   case Transport_HeaderId_Rx_GetDeviceSetup:
-    return controllerHandle.host.onRequestGetDeviceSetup();
-  case Transport_HeaderId_Rx_DeviceReboot: {
+    controllerHandle.host.onRequestGetDeviceSetup();
+    return 0;
+  case Transport_HeaderId_Rx_DeviceReboot:
     controllerHandle.requestReboot();
     return 0;
-  }
   case Transport_HeaderId_Rx_SamplingStart:
-    return controllerHandle.host.onRequestSamplingStart(
+    controllerHandle.host.onRequestSamplingStart(
         request->asRxFrame.asSamplingStart.max_samples_count);
+    return 0;
   case Transport_HeaderId_Rx_SamplingStop:
-    return controllerHandle.host.onRequestSamplingStop();
+    controllerHandle.host.onRequestSamplingStop();
+    return 0;
   case Transport_HeaderId_Rx_GetUptime:
-    return controllerHandle.host.onRequestUptime();
+    controllerHandle.host.onRequestUptime();
+    return 0;
   case Transport_HeaderId_Rx_GetBufferStatus:
-    return controllerHandle.host.onRequestBufferStatus();
+    controllerHandle.host.onRequestBufferStatus();
+    return 0;
 
   default:
     return -EINVAL;

@@ -59,19 +59,19 @@ struct Controller_Host {
    * Context: CDC_Receive_FS(uint8_t*, uint32_t *)
    * @{
    */
-  int (*const onRequestGetFirmwareVersion)();
-  int (*const onRequestGetOutputDataRate)();
+  void (*const onRequestGetFirmwareVersion)();
+  void (*const onRequestGetOutputDataRate)();
   int (*const onRequestSetOutputDatatRate)(
       enum TransportRx_SetOutputDataRate_Rate);
-  int (*const onRequestGetRange)();
+  void (*const onRequestGetRange)();
   int (*const onRequestSetRange)(enum TransportRx_SetRange_Range);
-  int (*const onRequestGetScale)();
+  void (*const onRequestGetScale)();
   int (*const onRequestSetScale)(enum TransportRx_SetScale_Scale);
-  int (*const onRequestGetDeviceSetup)();
-  int (*const onRequestSamplingStart)(uint16_t);
-  int (*const onRequestSamplingStop)();
-  int (*const onRequestUptime)();
-  int (*const onRequestBufferStatus)();
+  void (*const onRequestGetDeviceSetup)();
+  void (*const onRequestSamplingStart)(uint16_t);
+  void (*const onRequestSamplingStop)();
+  void (*const onRequestUptime)();
+  void (*const onRequestBufferStatus)();
   /// @}
 };
 

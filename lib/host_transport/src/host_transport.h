@@ -7,6 +7,9 @@
 #include <inttypes.h>
 #include <ringbuffer.h>
 
+// NOLINTNEXTLINE(modernize-macro-to-enum)
+#define TRANSPORTTX_TRANSMIT_TX_DATA_CHUNK_BUFFER_BYTES 2048U
+
 /**
  * Status returned by HostTransport_Handle.transmit(uint8_t *, uint16_t);
  */
@@ -24,27 +27,6 @@ struct HostTransport_FromHostApi {
 
 struct HostTransport_ToHostApi {
   /**
-   * Buffer used to transmit chunks of acceleration data.
-   *
-   * This buffer is modified and then provided to the underlying transmit
-   * implementation.
-   * As long the transmission is ongoing, namely USB TX-busy flag is set,
-   * this buffer must not be modified.
-   * The buffer must only be utilized by TransportTx_TxAccelerationBuffer(
-   * struct HostTransport_Handle *, const struct Transport_Acceleration *,
-   * uint8_t, uint16_t).
-   *
-   * \see HostTransport_ToHostApi.ringbuffer
-   *
-   * Context: main()
-   *
-   * @{
-   */
-  uint8_t *txBuffer;
-  const uint16_t txBufferSize;
-  /// @}
-
-  /**
    * Circular buffer for buffering outgoing acceleration packets.
    *
    * This buffer is used to pile up acceleration chunks when USB is busy and
@@ -60,16 +42,28 @@ struct HostTransport_ToHostApi {
   struct Ringbuffer ringbuffer;
 
   /**
-   * Buffer performance indicator representing the maximum buffer level since
-   * last sampling-start.
+   * Keeps track of the largest chunk size transmitted at once since sampling
+   * stream started.
+   *
+   * Maximum possible chunk size is 2kB.
    */
-  uint16_t ringbufferMaxItemsUtilization;
+  uint16_t largestTxChunkBytes;
 
-  enum HostTransport_Status (*const doTransmitImpl)(
-      uint8_t *, uint16_t); ///< Context: main() and interrupts
+  /**
+   * Copies over buffer and goes into transmit mode.
+   *
+   * Context: main() and interrupts
+   *
+   * @return HostTransport_Status_Busy until transmission is finished
+   */
+  enum HostTransport_Status (*const doTransmitImpl)(uint8_t *, uint16_t);
 
-  volatile bool (
-          *const isTransmitBusyImpl)(); ///< Context: main() and interrupts
+  /**
+   * Context: main() and interrupts
+   *
+   * @return true until transmission is finished.
+   */
+  volatile bool (*const isTransmitBusyImpl)();
 };
 
 /**
@@ -83,7 +77,7 @@ struct HostTransport_Handle {
 /**
  * Resets internal ringbuffer state.
  *
- * Usually called when new sampling is requested by user.
+ * Usually called when new sampling stream is started upon user request.
  *
  * @param handle
  */

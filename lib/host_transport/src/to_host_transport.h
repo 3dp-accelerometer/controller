@@ -162,13 +162,16 @@ void TransportTx_TxFault(struct HostTransport_Handle *handle,
  * Transmission will block this function from returning until completion.
  *
  * @param handle
- * @param sizeBytes total size in bytes
- * @param capacity maximum items capacity
- * @param maxItemsCount maximum items utilization
+ * @param sizeBytes total buffer size in bytes
+ * @param capacityTotal maximum capacity (items/slots)
+ * @param capacityUsedMax greatest items utilization since sampling start
+ * @param largestTxChunkBytes largest chunk sent at once since sampling start
  */
 void TransportTx_TxBufferStatus(struct HostTransport_Handle *handle,
-                                uint16_t sizeBytes, uint16_t capacity,
-                                uint16_t maxItemsCount);
+                                uint16_t sizeBytes, uint16_t capacityTotal,
+                                uint16_t capacityUsedMax, uint16_t putCount,
+                                uint16_t takeCount,
+                                uint16_t largestTxChunkBytes);
 
 /**
  * Forwards acceleration data block to the IN endpoint of host.

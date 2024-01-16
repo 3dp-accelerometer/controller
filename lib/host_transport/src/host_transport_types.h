@@ -371,9 +371,13 @@ struct TransportTx_TransmissionError {
  * TX payload transporting buffer status.
  */
 struct TransportTx_BufferStatus {
-  uint16_t sizeBytes;     ///< buffer size in bytes
-  uint16_t capacity;      ///< buffer capacity in terms of items (structs)
-  uint16_t maxItemsCount; ///< maximum utilization since last sampling-start
+  uint16_t sizeBytes;       ///< buffer size in bytes
+  uint16_t capacityTotal;   ///< buffer capacity in terms of items (structs)
+  uint16_t capacityUsedMax; ///< maximum utilization since last sampling start
+  uint16_t putCount;        ///< total number of successful put() to buffer
+  uint16_t takeCount;       ///< total number of successful take() from buffer
+  uint16_t largestTxChunkBytes; ///< largest chunk sent at once since last
+                                ///< sampling start
 } __attribute__((packed));
 
 /* Frames --------------------------------------------------------------------*/

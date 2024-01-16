@@ -264,9 +264,11 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
   /* USER CODE BEGIN 6 */
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
-  if (NULL != Len && *Len <= 65335)
+  if (NULL != Len && *Len <= UINT16_MAX) {
     controllerHandle.host.doTakeBytes(Buf, *Len);
-  return (USBD_OK);
+    return USBD_OK;
+  }
+  return USBD_EMEM;
   /* USER CODE END 6 */
 }
 
@@ -289,7 +291,15 @@ uint8_t CDC_Transmit_FS(uint8_t* Buf, uint16_t Len)
   if (hcdc->TxState != 0){
     return USBD_BUSY;
   }
+
+  static_assert(
+      __builtin_types_compatible_p(typeof(uint8_t[]), typeof(UserTxBufferFS)),
+      "ERROR: pointer arithmetic will fail if type is not uint8_t.");
+
   if ((NULL != Buf) && (0 != Len)) {
+    for (uint16_t idx = Len; idx > 0; idx--) {
+      UserTxBufferFS[idx - 1] = Buf[idx - 1];
+    }
     USBD_CDC_SetTxBuffer(&hUsbDeviceFS, Buf, Len);
     result = USBD_CDC_TransmitPacket(&hUsbDeviceFS);
   }

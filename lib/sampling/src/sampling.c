@@ -165,8 +165,12 @@ int Sampling_fetchForward(struct Sampling_Handle *handle) {
   }
 
   if (ENODATA == retState) {
-    while (transmitPending(handle)) {
+    // todo: refactor retries counter and optionally introduce delay
+    uint16_t retries = 10000U;
+    while (transmitPending(handle) && retries != 0) {
+      retries--;
     }
+    // todo: cancel current transmission (if possible)
     handle->onSamplingFinishedCb();
     Sampling_stop(handle);
   }

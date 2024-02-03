@@ -36,6 +36,7 @@ void test_cap1_full() {
   DECLARE_BUFFER_CAPACITY1;
   struct Foo item = {.data = 42};
 
+  TEST_ASSERT_EQUAL(0, Ringbuffer_itemsCount(&buffer));
   TEST_ASSERT_EQUAL(0, Ringbuffer_put(&buffer, (uint8_t *)&item));
   TEST_ASSERT_EQUAL(false, Ringbuffer_isEmpty(&buffer));
   TEST_ASSERT_EQUAL(true, Ringbuffer_isFull(&buffer));

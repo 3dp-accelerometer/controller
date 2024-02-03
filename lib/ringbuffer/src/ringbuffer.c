@@ -68,6 +68,10 @@ int RingbufferIndex_init(struct Ringbuffer_Index *index, uint16_t capacity,
   index->isFull = false;
   index->isEmpty = true;
   index->itemSizeBytes = itemSizeBytes;
+  index->itemsCount = 0;
+  index->maxCapacityUsed = 0;
+  index->putCount = 0;
+  index->takeCount = 0;
 
   return 0;
 }

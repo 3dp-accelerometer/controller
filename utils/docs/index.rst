@@ -8,6 +8,11 @@ Welcome to 3dpaxxel firmware documentation!
    readme.md
 
 .. toctree::
+   :maxdepth: 1
+
+   readme-wireshark.md
+
+.. toctree::
    :maxdepth: 2
    :caption: Contents
 

@@ -1,0 +1,14 @@
+.. _exhale_variable_sampling__impl_8c_1a927bf38d871c85f0d1e0ee9eaa1351d0:
+
+Variable controllerHandle
+=========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_sampling_impl.c`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: controllerHandle
+   :project: My Proj

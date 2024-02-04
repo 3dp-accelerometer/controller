@@ -1,0 +1,14 @@
+.. _exhale_define_ringbuffer__impl_8h_1a1973b18f985517b2dd4328bb7ad4ab62:
+
+Define RINGBUFFER_DECLARE_INITIALIZER
+=====================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_ringbuffer_impl.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: RINGBUFFER_DECLARE_INITIALIZER
+   :project: My Proj

@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345_8c_1a5a7d68a9a5e045ed6f5ae88e277fc133:
+
+Function writeRegister
+======================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: writeRegister(struct Adxl345_Handle *, enum Adxl345Flags_Address, const union Adxl345Register *)
+   :project: My Proj

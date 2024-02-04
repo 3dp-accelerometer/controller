@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1a32054bbd4957faf54027c3806f0572d9:
+
+Variable Transport_HeaderId_Tx_Acceleration
+===========================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: Transport_HeaderId_Tx_Acceleration
+   :project: My Proj

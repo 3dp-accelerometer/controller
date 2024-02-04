@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a894fc5e10c664f2bc59e4852680c2902:
+
+Function sensor_doGetScaleImpl
+==============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: sensor_doGetScaleImpl()
+   :project: My Proj

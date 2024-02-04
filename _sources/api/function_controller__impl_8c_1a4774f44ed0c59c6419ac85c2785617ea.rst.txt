@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a4774f44ed0c59c6419ac85c2785617ea:
+
+Function host_onRequestGetBufferStatus
+======================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: host_onRequestGetBufferStatus()
+   :project: My Proj

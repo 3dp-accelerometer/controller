@@ -1,0 +1,224 @@
+
+.. _file__home_runner_work_controller_controller_Src_fw_controller_impl.c:
+
+File controller_impl.c
+======================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Src_fw>` (``/home/runner/work/controller/controller/Src/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Src/fw/controller_impl.c``)
+---------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Src_fw_controller_impl.c.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``adxl345.h`` (:ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h`)
+
+- ``adxl345_flags.h`` (:ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h`)
+
+- ``adxl345_transport_types.h`` (:ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h`)
+
+- ``controller.h`` (:ref:`file__home_runner_work_controller_controller_lib_controller_src_controller.h`)
+
+- ``errno.h``
+
+- ``from_host_transport.h`` (:ref:`file__home_runner_work_controller_controller_lib_host_transport_src_from_host_transport.h`)
+
+- ``fw/adxl345_transport_impl.h`` (:ref:`file__home_runner_work_controller_controller_Inc_fw_adxl345_transport_impl.h`)
+
+- ``fw/host_transport_impl.h`` (:ref:`file__home_runner_work_controller_controller_Inc_fw_host_transport_impl.h`)
+
+- ``fw/led.h`` (:ref:`file__home_runner_work_controller_controller_Inc_fw_led.h`)
+
+- ``fw/ringbuffer_impl.h`` (:ref:`file__home_runner_work_controller_controller_Inc_fw_ringbuffer_impl.h`)
+
+- ``fw/sampling_impl.h`` (:ref:`file__home_runner_work_controller_controller_Inc_fw_sampling_impl.h`)
+
+- ``fw/version.h`` (:ref:`file__home_runner_work_controller_controller_Inc_fw_version.h`)
+
+- ``host_transport_types.h`` (:ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`)
+
+- ``main.h``
+
+- ``sampling.h`` (:ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling.h`)
+
+- ``sampling_types.h`` (:ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling_types.h`)
+
+- ``stm32f4xx_hal.h``
+
+- ``to_host_transport.h`` (:ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.h`)
+
+
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structTransport__ResponseFlags`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_controller__impl_8c_1ab479e2e5d14e4185269d967fe17ddc45`
+
+- :ref:`exhale_function_controller__impl_8c_1ab4cac79cff838678a94ab8fc5f28d2b8`
+
+- :ref:`exhale_function_controller__impl_8c_1abef59c1b09c873e25dcf7cd2296ba2d4`
+
+- :ref:`exhale_function_controller__impl_8c_1a5836fa9015aac1fba7d702bdc6493d8a`
+
+- :ref:`exhale_function_controller__impl_8c_1ab4fe78e742d301249bf03da3c58eb442`
+
+- :ref:`exhale_function_controller__impl_8c_1a686368da9cd9160885612d45ff18930b`
+
+- :ref:`exhale_function_controller__impl_8c_1a8fc86217766450df200f8c3cfe1da74e`
+
+- :ref:`exhale_function_controller__impl_8c_1a8e2c4873bd3748d4efcd610b113f203d`
+
+- :ref:`exhale_function_controller__impl_8c_1acb0c07a81f605dfc5c00031018e8f757`
+
+- :ref:`exhale_function_controller__impl_8c_1a49fc3195b070e4905bb67597d6cfea70`
+
+- :ref:`exhale_function_controller__impl_8c_1ac8d926da4731b4d105f3e8f07c61577a`
+
+- :ref:`exhale_function_controller__impl_8c_1a9c1bde924f90fffba888f4e323c1346b`
+
+- :ref:`exhale_function_controller__impl_8c_1a4774f44ed0c59c6419ac85c2785617ea`
+
+- :ref:`exhale_function_controller__impl_8c_1af128666cf06641bc21734e78ee596d90`
+
+- :ref:`exhale_function_controller__impl_8c_1ae5507b8d85d6929ffb2c4f70698ef8a4`
+
+- :ref:`exhale_function_controller__impl_8c_1a8f394894ddf5ffcb0699b352b4095f53`
+
+- :ref:`exhale_function_controller__impl_8c_1ac40697a0744d47795ebe700126afc962`
+
+- :ref:`exhale_function_controller__impl_8c_1aa6fc1a711ac0cda42f023ddfe9ded04d`
+
+- :ref:`exhale_function_controller__impl_8c_1a3cc3a5ce4a78ca23e9b994dda2c89637`
+
+- :ref:`exhale_function_controller__impl_8c_1a7652251f5077fd27a96f519aac4c29ce`
+
+- :ref:`exhale_function_controller__impl_8c_1aa4859365e6ad62258d64537030a92cf4`
+
+- :ref:`exhale_function_controller__impl_8c_1a9df7ad7339bfa68bc2fd90bfbb2ee326`
+
+- :ref:`exhale_function_controller__impl_8c_1a73449c33b8e903c9b6e9de4d16be0064`
+
+- :ref:`exhale_function_controller__impl_8c_1af209ccce35a98bf6f271478cd8ea3c68`
+
+- :ref:`exhale_function_controller__impl_8c_1a66c51aa031796dbb5efb4f0717146e44`
+
+- :ref:`exhale_function_controller__impl_8c_1a4ec7e05708eabb0c4b421911b947e8f9`
+
+- :ref:`exhale_function_controller__impl_8c_1a372e46bbe50ec2e0aa793ed5bafa3257`
+
+- :ref:`exhale_function_controller__impl_8c_1adbaedf7e92176b7b33afc0ff2fed9a19`
+
+- :ref:`exhale_function_controller__impl_8c_1a66048ba7308a1ff1f0db78dc160c5360`
+
+- :ref:`exhale_function_controller__impl_8c_1a755320ba0c169d3697009b13d3d99e87`
+
+- :ref:`exhale_function_controller__impl_8c_1a22cb33c193020641a0b8be69deb13546`
+
+- :ref:`exhale_function_controller__impl_8c_1a649d2c598862d77ddb0b08efdd88a740`
+
+- :ref:`exhale_function_controller__impl_8c_1ae2b7bd69ad57ae7b4634f7cd1672ff72`
+
+- :ref:`exhale_function_controller__impl_8c_1a2ee729cc36a6cda22ee6ddfb5129aba9`
+
+- :ref:`exhale_function_controller__impl_8c_1add5d5708782076868b58766b5b2fbc99`
+
+- :ref:`exhale_function_controller__impl_8c_1a9ace065330cb7cedcef975583b11c0ff`
+
+- :ref:`exhale_function_controller__impl_8c_1ada37b4670349e284523369e4980833c2`
+
+- :ref:`exhale_function_controller__impl_8c_1a7482fe02c4be77534060addf3a93ee31`
+
+- :ref:`exhale_function_controller__impl_8c_1af9e9572b6249611db186b7647b71babb`
+
+- :ref:`exhale_function_controller__impl_8c_1a791c278018effd03c2d785f4f0c25d61`
+
+- :ref:`exhale_function_controller__impl_8c_1a89b1d736b2d2afc3d37552260579c0d1`
+
+- :ref:`exhale_function_controller__impl_8c_1a894fc5e10c664f2bc59e4852680c2902`
+
+- :ref:`exhale_function_controller__impl_8c_1a88fe47f4a0a879b25e03c39c2297f312`
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_controller__impl_8c_1a2da97cdb974bd8ee7a33fe39e255feb1`
+
+- :ref:`exhale_define_controller__impl_8c_1ad8047974c1ca16e65db118ef91ebfc7e`
+
+- :ref:`exhale_define_controller__impl_8c_1ab0975b1538786e46b8e4b5fa869e7fcd`
+
+- :ref:`exhale_define_controller__impl_8c_1ab1832f23d06d7eadbdb5e9370e4454a5`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_controller__impl_8c_1ab56ab2a03c4aa0c3ae17befc6a6f7afe`
+
+- :ref:`exhale_variable_controller__impl_8c_1a8ffa4b52c49fc859a7142a3f64ac9aa5`
+
+- :ref:`exhale_variable_controller__impl_8c_1a927bf38d871c85f0d1e0ee9eaa1351d0`
+
+- :ref:`exhale_variable_controller__impl_8c_1a6b1f2d72702bb2bb2c3d5072fcbae9fa`
+
+- :ref:`exhale_variable_controller__impl_8c_1af327710382584c99df792b222881c0d7`
+
+- :ref:`exhale_variable_controller__impl_8c_1ae5f021b6cf2bb304ad61a6a3c3791b61`
+
+- :ref:`exhale_variable_controller__impl_8c_1a3acb0dee90a133ab0ce3b566a9a5da63`
+
+- :ref:`exhale_variable_controller__impl_8c_1aadd7a9adc675bc15aa20fb8ba2935402`
+
+- :ref:`exhale_variable_controller__impl_8c_1a87462955bf03d8174675e67e95010fab`
+
+- :ref:`exhale_variable_controller__impl_8c_1a671da16d0358339c993f4ad04da9e616`
+
+- :ref:`exhale_variable_controller__impl_8c_1a39216c9e6e4fb47623e07bd6d66d49e7`
+
+- :ref:`exhale_variable_controller__impl_8c_1a7bec0fed17edfcb64950f5d06bd2a005`
+
+- :ref:`exhale_variable_controller__impl_8c_1a0101c712ca279fbf03f282d62b3b61d4`
+
+- :ref:`exhale_variable_controller__impl_8c_1a7b038d75e0abe4eed60070914677ee73`
+
+- :ref:`exhale_variable_controller__impl_8c_1a895a28596514d13d23e8e7c282cc4b76`
+
+- :ref:`exhale_variable_controller__impl_8c_1a84fe37258413abba127b115521aebed9`
+
+- :ref:`exhale_variable_controller__impl_8c_1a5d3f1ea9386237fcc79eea2647e808f9`
+
+- :ref:`exhale_variable_controller__impl_8c_1ab0a6c321e93f7f315e38a82d7235acab`
+

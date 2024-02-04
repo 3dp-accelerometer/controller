@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File adxl345.h &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File adxl345.h</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-adxl345-h">
+<span id="program-listing-file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-h"></span><h1>Program Listing for File adxl345.h<a class="headerlink" href="#program-listing-for-file-adxl345-h" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h.html#file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/adxl345/src/adxl345.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * \file adxl345.h</span>
+<span class="cm"> *</span>
+<span class="cm"> * API for manipulating the ADXL345 accelerometer sensor.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;inttypes.h&gt;</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345Transport_Acceleration</span><span class="p">;</span>
+<span class="k">union</span><span class="w"> </span><span class="nc">Adxl345Transport_TxFrame</span><span class="p">;</span>
+<span class="k">union</span><span class="w"> </span><span class="nc">Adxl345Transport_RxFrame</span><span class="p">;</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Spi_Cs</span><span class="p">;</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Spi_RwFlags</span><span class="p">;</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_BwRate_Rate</span><span class="p">;</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_Range</span><span class="p">;</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_FullResBit</span><span class="p">;</span>
+
+<span class="c1">//@{</span>
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 watermark configuration.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Sensor provides 32 FiFo entries 2-bytes each.</span>
+<span class="cm"> * Recommended watermark level is about 75% of FiFo.</span>
+<span class="cm"> * Setting the watermark level too high might leave too little room</span>
+<span class="cm"> * for buffering until respective routine clears the FiFo.</span>
+<span class="cm"> * This might increases the probability of FiFo overflow (which is asserted</span>
+<span class="cm"> * anyway).</span>
+<span class="cm"> */</span>
+<span class="c1">// NOLINTNEXTLINE(modernize-macro-to-enum)</span>
+<span class="cp">#define ADXL345_FIFO_ENTRIES 32U </span><span class="c1">///&lt; 32 * (X, Y, Z); 2 bytes each coordinate</span>
+<span class="c1">// NOLINTNEXTLINE(modernize-macro-to-enum)</span>
+<span class="cp">#define ADXL345_WATERMARK_LEVEL 24U </span><span class="c1">///&lt; about 75% of FiFo</span>
+<span class="c1">//@}</span>
+
+<span class="c1">// NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="n">ADXL345_WATERMARK_LEVEL</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">ADXL345_FIFO_ENTRIES</span><span class="p">,</span>
+<span class="w">              </span><span class="s">&quot;ERROR: maximum allowed watermark level: ADXL345_FIFO_ENTRIES&quot;</span><span class="p">);</span>
+
+<span class="c1">// NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="n">ADXL345_WATERMARK_LEVEL</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">              </span><span class="s">&quot;ERROR: minimum allowed watermark level: 0&quot;</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * The HW handle pointing to the underlying SPI communication implementation.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345_Handle</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Sending payload to SPI bus.</span>
+<span class="cm">   *</span>
+<span class="cm">   * Context: main() and interrupts</span>
+<span class="cm">   *</span>
+<span class="cm">   * @return</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">doTransmitFrameImpl</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="nc">Adxl345Transport_TxFrame</span><span class="w"> </span><span class="o">*</span><span class="p">,</span>
+<span class="w">                                   </span><span class="kt">uint8_t</span><span class="p">,</span><span class="w"> </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Spi_Cs</span><span class="p">,</span>
+<span class="w">                                   </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Spi_RwFlags</span><span class="p">);</span>
+
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * reading from sensor: send request to SPI then receive from SPI</span>
+<span class="cm">   *</span>
+<span class="cm">   * Context: main() and interrupts</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">doTransmitReceiveFrameImpl</span><span class="p">)(</span>
+<span class="w">      </span><span class="k">const</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="nc">Adxl345Transport_TxFrame</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="k">union</span><span class="w"> </span><span class="nc">Adxl345Transport_RxFrame</span><span class="w"> </span><span class="o">*</span><span class="p">,</span>
+<span class="w">      </span><span class="kt">uint8_t</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Sensor initialization.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Shall be called after sensor power cycle.</span>
+<span class="cm"> * Might be called at runtime as well.</span>
+<span class="cm"> */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">Adxl345_init</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="c1">//@{</span>
+<span class="cm">/**</span>
+<span class="cm"> * Output data rate (ODR) setter/getter.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \see Adxl345Flags_BwRate_Rate</span>
+<span class="cm"> */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">Adxl345_getOutputDataRate</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                              </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_BwRate_Rate</span><span class="w"> </span><span class="o">*</span><span class="n">rate</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">Adxl345_setOutputDataRate</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">rate</span><span class="p">);</span>
+<span class="c1">//@}</span>
+
+<span class="c1">//@{</span>
+<span class="cm">/**</span>
+<span class="cm"> * Range setter/getter.</span>
+<span class="cm"> *</span>
+<span class="cm"> * The range specifies which bandwidth of acceleration the sensor is going to</span>
+<span class="cm"> * measure (i.e. +/-4g).</span>
+<span class="cm"> * \see Adxl345Flags_DataFormat_Range</span>
+<span class="cm"> */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">Adxl345_getRange</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                     </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_Range</span><span class="w"> </span><span class="o">*</span><span class="n">range</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">Adxl345_setRange</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">range</span><span class="p">);</span>
+<span class="c1">//@}</span>
+
+<span class="c1">//@{</span>
+<span class="cm">/**</span>
+<span class="cm"> * Scale setter/getter.</span>
+<span class="cm"> *</span>
+<span class="cm"> * The scale denotes the amount of acceleration per bit.</span>
+<span class="cm"> * For example: 1LSB=4mg if Adxl345Register_DataFormat_FullResBit_fullRes_4mg</span>
+<span class="cm"> * is configured.</span>
+<span class="cm"> * \see Adxl345Flags_DataFormat_FullResBit</span>
+<span class="cm"> */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">Adxl345_getScale</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                     </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_FullResBit</span><span class="w"> </span><span class="o">*</span><span class="n">scale</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">Adxl345_setScale</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">scale</span><span class="p">);</span>
+<span class="c1">//@}</span>
+
+<span class="c1">//@{</span>
+<span class="cm">/**</span>
+<span class="cm"> * Sensor power mode.</span>
+<span class="cm"> *</span>
+<span class="cm"> * If sensor should be operational then power mode &quot;measure&quot; shall be</span>
+<span class="cm"> * configured.</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">Adxl345_setPowerCtlStandby</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">Adxl345_setPowerCtlMeasure</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+<span class="c1">//@}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Read next acceleration from FiFo.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \see Adxl345Transport_Acceleration</span>
+<span class="cm"> */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">Adxl345_getAcceleration</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                            </span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345Transport_Acceleration</span><span class="w"> </span><span class="o">*</span><span class="n">acc</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1ae2f416b0a34b7beb4ed3873d791ac393:
+
+Variable minor
+==============
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: minor
+   :project: My Proj

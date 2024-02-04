@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345_8c_1ab9baf97a44fa18d98ba816b1ba85f680:
+
+Function Adxl345_setScale(struct Adxl345_Handle \*, uint8_t)
+============================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Adxl345_setScale(struct Adxl345_Handle *, uint8_t)
+   :project: My Proj

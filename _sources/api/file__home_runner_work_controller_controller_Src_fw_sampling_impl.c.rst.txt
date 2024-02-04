@@ -1,0 +1,58 @@
+
+.. _file__home_runner_work_controller_controller_Src_fw_sampling_impl.c:
+
+File sampling_impl.c
+====================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Src_fw>` (``/home/runner/work/controller/controller/Src/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Src/fw/sampling_impl.c``)
+-------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Src_fw_sampling_impl.c.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``controller.h`` (:ref:`file__home_runner_work_controller_controller_lib_controller_src_controller.h`)
+
+- ``fw/sampling_impl.h`` (:ref:`file__home_runner_work_controller_controller_Inc_fw_sampling_impl.h`)
+
+- ``sampling_types.h`` (:ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling_types.h`)
+
+- ``tim.h``
+
+
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_sampling__impl_8c_1a0de7f15197d79f90ae4d0ae89147cccd`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_sampling__impl_8c_1a927bf38d871c85f0d1e0ee9eaa1351d0`
+

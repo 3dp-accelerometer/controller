@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1a57831df9d6b0fc0b56f277d97399c5ab:
+
+Variable asGetRange
+===================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asGetRange
+   :project: My Proj

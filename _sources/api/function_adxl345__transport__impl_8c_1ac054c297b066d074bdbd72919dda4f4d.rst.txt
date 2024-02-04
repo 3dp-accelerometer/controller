@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345__transport__impl_8c_1ac054c297b066d074bdbd72919dda4f4d:
+
+Function ncsSet
+===============
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_adxl345_transport_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: ncsSet()
+   :project: My Proj

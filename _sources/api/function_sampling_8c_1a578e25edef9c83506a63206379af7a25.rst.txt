@@ -1,0 +1,14 @@
+.. _exhale_function_sampling_8c_1a578e25edef9c83506a63206379af7a25:
+
+Function checkStartRequest
+==========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: checkStartRequest(struct Sampling_Handle *)
+   :project: My Proj

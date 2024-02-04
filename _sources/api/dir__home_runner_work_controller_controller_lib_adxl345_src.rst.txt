@@ -1,0 +1,26 @@
+.. _dir__home_runner_work_controller_controller_lib_adxl345_src:
+
+
+Directory src
+=============
+
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_lib_adxl345>` (``/home/runner/work/controller/controller/lib/adxl345``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+*Directory path:* ``/home/runner/work/controller/controller/lib/adxl345/src``
+
+
+Files
+-----
+
+- :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c`
+- :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h`
+- :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h`
+- :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`
+- :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_spi_types.h`
+- :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h`
+
+

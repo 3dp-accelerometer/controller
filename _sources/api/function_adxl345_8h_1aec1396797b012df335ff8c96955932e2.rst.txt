@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345_8h_1aec1396797b012df335ff8c96955932e2:
+
+Function Adxl345_getScale(struct Adxl345_Handle \*, enum Adxl345Flags_DataFormat_FullResBit \*)
+===============================================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Adxl345_getScale(struct Adxl345_Handle *, enum Adxl345Flags_DataFormat_FullResBit *)
+   :project: My Proj

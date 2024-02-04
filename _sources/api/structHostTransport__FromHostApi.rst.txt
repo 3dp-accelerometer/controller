@@ -1,0 +1,17 @@
+.. _exhale_struct_structHostTransport__FromHostApi:
+
+Struct HostTransport_FromHostApi
+================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport.h`
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: HostTransport_FromHostApi
+   :project: My Proj
+   :members:
+   :protected-members:
+   :undoc-members:

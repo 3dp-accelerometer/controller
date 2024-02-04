@@ -1,0 +1,22 @@
+
+.. _program_listing_file__home_runner_work_controller_controller_lib_host_transport_src_host_transport.c:
+
+Program Listing for File host_transport.c
+=========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_controller_controller_lib_host_transport_src_host_transport.c>` (``/home/runner/work/controller/controller/lib/host_transport/src/host_transport.c``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   /**
+    * \file host_transport.c
+    */
+   
+   #include "host_transport.h"
+   
+   void Transport_resetBuffer(struct HostTransport_Handle *handle) {
+     handle->toHost.largestTxChunkBytes = 0;
+     Ringbuffer_reset(&handle->toHost.ringbuffer);
+   }

@@ -1,0 +1,14 @@
+.. _exhale_define_debug_8h_1a646e5c6a686c1e4cc559a7cc68bc005d:
+
+Define USER_DEBUG1_TOGGLE
+=========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_debug.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: USER_DEBUG1_TOGGLE
+   :project: My Proj

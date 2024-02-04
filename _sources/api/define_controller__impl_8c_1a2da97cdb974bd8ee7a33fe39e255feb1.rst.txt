@@ -1,0 +1,14 @@
+.. _exhale_define_controller__impl_8c_1a2da97cdb974bd8ee7a33fe39e255feb1:
+
+Define HOSTTRANSPORT_DECLARE_INITIALIZER
+========================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: HOSTTRANSPORT_DECLARE_INITIALIZER
+   :project: My Proj

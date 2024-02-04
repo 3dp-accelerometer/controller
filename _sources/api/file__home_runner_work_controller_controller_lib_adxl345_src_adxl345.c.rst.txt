@@ -1,0 +1,75 @@
+
+.. _file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c:
+
+File adxl345.c
+==============
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_lib_adxl345_src>` (``/home/runner/work/controller/controller/lib/adxl345/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/lib/adxl345/src/adxl345.c``)
+----------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``adxl345.h`` (:ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h`)
+
+- ``adxl345_flags.h`` (:ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h`)
+
+- ``adxl345_spi_types.h`` (:ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_spi_types.h`)
+
+- ``adxl345_transport_types.h`` (:ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h`)
+
+- ``errno.h``
+
+
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_adxl345_8c_1a5605a71e07edcc370b027a668f393615`
+
+- :ref:`exhale_function_adxl345_8c_1af238689828fad86568f32caac567fc01`
+
+- :ref:`exhale_function_adxl345_8c_1a67d00841116cfecf53a7ca6352209df4`
+
+- :ref:`exhale_function_adxl345_8c_1aec1396797b012df335ff8c96955932e2`
+
+- :ref:`exhale_function_adxl345_8c_1a92f47a5a55daaa4f0b7c0952fef0a2d1`
+
+- :ref:`exhale_function_adxl345_8c_1ad38f932fb6fbb6056e9258b9179abdbd`
+
+- :ref:`exhale_function_adxl345_8c_1a0ef617ec05f613283d155d0de4d37e53`
+
+- :ref:`exhale_function_adxl345_8c_1ab61b3d92785c6a11acb64cb5b1b9d630`
+
+- :ref:`exhale_function_adxl345_8c_1a3460885ccd5cf674d0a8b1ec161114ce`
+
+- :ref:`exhale_function_adxl345_8c_1ab9baf97a44fa18d98ba816b1ba85f680`
+
+- :ref:`exhale_function_adxl345_8c_1a901e7705ca34646d41fe7db11c8b2ba6`
+
+- :ref:`exhale_function_adxl345_8c_1a5a7d68a9a5e045ed6f5ae88e277fc133`
+

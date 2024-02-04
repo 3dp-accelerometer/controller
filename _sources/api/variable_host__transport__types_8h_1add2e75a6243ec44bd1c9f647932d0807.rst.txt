@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1add2e75a6243ec44bd1c9f647932d0807:
+
+Variable asGetDeviceSetup
+=========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asGetDeviceSetup
+   :project: My Proj

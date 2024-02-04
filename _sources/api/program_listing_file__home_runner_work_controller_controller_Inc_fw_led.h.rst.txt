@@ -1,0 +1,32 @@
+
+.. _program_listing_file__home_runner_work_controller_controller_Inc_fw_led.h:
+
+Program Listing for File led.h
+==============================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_controller_controller_Inc_fw_led.h>` (``/home/runner/work/controller/controller/Inc/fw/led.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   /** \file led.h
+    *
+    * LED pin macros for convenient GPIO manipulation.
+    *
+    **/
+   
+   #include "main.h"
+   
+   #pragma once
+   
+   /**
+    * LED 0: PC13
+    * @{
+    */
+   #define USER_LED0_ON                                                           \
+     HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_RESET)
+   #define USER_LED0_OFF                                                          \
+     HAL_GPIO_WritePin(USER_LED0_GPIO_Port, USER_LED0_Pin, GPIO_PIN_SET)
+   #define USER_LED0_TOGGLE HAL_GPIO_TogglePin(USER_LED0_GPIO_Port, USER_LED0_Pin)
+   /// @}

@@ -1,0 +1,14 @@
+.. _exhale_define_adxl345_8h_1a1a3b84c4d742fe051f12eb8e9d7db58c:
+
+Define ADXL345_WATERMARK_LEVEL
+==============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: ADXL345_WATERMARK_LEVEL
+   :project: My Proj

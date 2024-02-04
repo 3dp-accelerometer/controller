@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1aa4859365e6ad62258d64537030a92cf4:
+
+Function host_onRequestSamplingStop
+===================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: host_onRequestSamplingStop()
+   :project: My Proj

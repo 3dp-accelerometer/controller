@@ -1,0 +1,14 @@
+.. _exhale_define_to__host__transport_8h_1a88f66998421f186a13c59a27c011e76f:
+
+Define TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER_BYTES
+=====================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER_BYTES
+   :project: My Proj

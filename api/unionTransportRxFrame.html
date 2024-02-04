@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Union TransportRxFrame &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Union TransportTxFrame" href="unionTransportTxFrame.html" />
+    <link rel="prev" title="Union Adxl345Transport_TxFrame" href="unionAdxl345Transport__TxFrame.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="library_root.html">Library API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="library_root.html#full-api">Full API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#classes-and-structs">Classes and Structs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#enums">Enums</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="library_root.html#unions">Unions</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="unionAdxl345Register.html">Union Adxl345Register</a></li>
+<li class="toctree-l4"><a class="reference internal" href="unionAdxl345Transport__RxFrame.html">Union Adxl345Transport_RxFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="unionAdxl345Transport__TxFrame.html">Union Adxl345Transport_TxFrame</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Union TransportRxFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="unionTransportTxFrame.html">Union TransportTxFrame</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#variables">Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#defines">Defines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library_root.html">Library API</a></li>
+      <li class="breadcrumb-item active">Union TransportRxFrame</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="union-transportrxframe">
+<span id="exhale-union-uniontransportrxframe"></span><h1>Union TransportRxFrame<a class="headerlink" href="#union-transportrxframe" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h.html#file-home-runner-work-controller-controller-lib-host-transport-src-host-transport-types-h"><span class="std std-ref">File host_transport_types.h</span></a></p></li>
+</ul>
+<section id="union-documentation">
+<h2>Union Documentation<a class="headerlink" href="#union-documentation" title="Link to this heading"></a></h2>
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv416TransportRxFrame">
+<span id="_CPPv316TransportRxFrame"></span><span id="_CPPv216TransportRxFrame"></span><span class="target" id="unionTransportRxFrame"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">TransportRxFrame</span></span></span><a class="headerlink" href="#_CPPv416TransportRxFrame" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;host_transport_types.h&gt;</em></div>
+<p>Union for convenient casting to respective RX type without c-style cast. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16TransportRxFrame19asSetOutputDataRateE">
+<span id="_CPPv3N16TransportRxFrame19asSetOutputDataRateE"></span><span id="_CPPv2N16TransportRxFrame19asSetOutputDataRateE"></span><span id="TransportRxFrame::asSetOutputDataRate__TransportRx_SetOutputDataRate"></span><span class="target" id="unionTransportRxFrame_1ac1622dcc2c57935bfdc6af8a81562091"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structTransportRx__SetOutputDataRate.html#_CPPv429TransportRx_SetOutputDataRate" title="TransportRx_SetOutputDataRate"><span class="n"><span class="pre">TransportRx_SetOutputDataRate</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asSetOutputDataRate</span></span></span><a class="headerlink" href="#_CPPv4N16TransportRxFrame19asSetOutputDataRateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16TransportRxFrame19asGetOutputDataRateE">
+<span id="_CPPv3N16TransportRxFrame19asGetOutputDataRateE"></span><span id="_CPPv2N16TransportRxFrame19asGetOutputDataRateE"></span><span id="TransportRxFrame::asGetOutputDataRate__TransportRx_GetOutputDataRate"></span><span class="target" id="unionTransportRxFrame_1a90a64d77e7c853ea695fefa853234788"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structTransportRx__GetOutputDataRate.html#_CPPv429TransportRx_GetOutputDataRate" title="TransportRx_GetOutputDataRate"><span class="n"><span class="pre">TransportRx_GetOutputDataRate</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asGetOutputDataRate</span></span></span><a class="headerlink" href="#_CPPv4N16TransportRxFrame19asGetOutputDataRateE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16TransportRxFrame10asSetRangeE">
+<span id="_CPPv3N16TransportRxFrame10asSetRangeE"></span><span id="_CPPv2N16TransportRxFrame10asSetRangeE"></span><span id="TransportRxFrame::asSetRange__TransportRx_SetRange"></span><span class="target" id="unionTransportRxFrame_1ada0be6b479fa9e05fe12c5a281532f38"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structTransportRx__SetRange.html#_CPPv420TransportRx_SetRange" title="TransportRx_SetRange"><span class="n"><span class="pre">TransportRx_SetRange</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asSetRange</span></span></span><a class="headerlink" href="#_CPPv4N16TransportRxFrame10asSetRangeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16TransportRxFrame10asGetRangeE">
+<span id="_CPPv3N16TransportRxFrame10asGetRangeE"></span><span id="_CPPv2N16TransportRxFrame10asGetRangeE"></span><span id="TransportRxFrame::asGetRange__TransportRx_GetRange"></span><span class="target" id="unionTransportRxFrame_1a1415b7b268bd984186af0ddcb7861801"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structTransportRx__GetRange.html#_CPPv420TransportRx_GetRange" title="TransportRx_GetRange"><span class="n"><span class="pre">TransportRx_GetRange</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asGetRange</span></span></span><a class="headerlink" href="#_CPPv4N16TransportRxFrame10asGetRangeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16TransportRxFrame10asSetScaleE">
+<span id="_CPPv3N16TransportRxFrame10asSetScaleE"></span><span id="_CPPv2N16TransportRxFrame10asSetScaleE"></span><span id="TransportRxFrame::asSetScale__TransportRx_SetScale"></span><span class="target" id="unionTransportRxFrame_1a4808ac1cc57d519845b9100abba35c00"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structTransportRx__SetScale.html#_CPPv420TransportRx_SetScale" title="TransportRx_SetScale"><span class="n"><span class="pre">TransportRx_SetScale</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asSetScale</span></span></span><a class="headerlink" href="#_CPPv4N16TransportRxFrame10asSetScaleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16TransportRxFrame10asGetScaleE">
+<span id="_CPPv3N16TransportRxFrame10asGetScaleE"></span><span id="_CPPv2N16TransportRxFrame10asGetScaleE"></span><span id="TransportRxFrame::asGetScale__TransportRx_GetScale"></span><span class="target" id="unionTransportRxFrame_1a7b37af2f6e611abd75ceda488fb38fef"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structTransportRx__GetScale.html#_CPPv420TransportRx_GetScale" title="TransportRx_GetScale"><span class="n"><span class="pre">TransportRx_GetScale</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asGetScale</span></span></span><a class="headerlink" href="#_CPPv4N16TransportRxFrame10asGetScaleE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16TransportRxFrame16asGetDeviceSetupE">
+<span id="_CPPv3N16TransportRxFrame16asGetDeviceSetupE"></span><span id="_CPPv2N16TransportRxFrame16asGetDeviceSetupE"></span><span id="TransportRxFrame::asGetDeviceSetup__TransportRx_GetDeviceSetup"></span><span class="target" id="unionTransportRxFrame_1a8bd420bfffc9065608befa64d734b8cd"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structTransportRx__GetDeviceSetup.html#_CPPv426TransportRx_GetDeviceSetup" title="TransportRx_GetDeviceSetup"><span class="n"><span class="pre">TransportRx_GetDeviceSetup</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asGetDeviceSetup</span></span></span><a class="headerlink" href="#_CPPv4N16TransportRxFrame16asGetDeviceSetupE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16TransportRxFrame14asDeviceRebootE">
+<span id="_CPPv3N16TransportRxFrame14asDeviceRebootE"></span><span id="_CPPv2N16TransportRxFrame14asDeviceRebootE"></span><span id="TransportRxFrame::asDeviceReboot__TransportRx_DeviceReboot"></span><span class="target" id="unionTransportRxFrame_1a464d3fd996c4b7fc5eb73c1e8c6dd19c"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structTransportRx__DeviceReboot.html#_CPPv424TransportRx_DeviceReboot" title="TransportRx_DeviceReboot"><span class="n"><span class="pre">TransportRx_DeviceReboot</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asDeviceReboot</span></span></span><a class="headerlink" href="#_CPPv4N16TransportRxFrame14asDeviceRebootE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16TransportRxFrame15asSamplingStartE">
+<span id="_CPPv3N16TransportRxFrame15asSamplingStartE"></span><span id="_CPPv2N16TransportRxFrame15asSamplingStartE"></span><span id="TransportRxFrame::asSamplingStart__TransportRx_SamplingStart"></span><span class="target" id="unionTransportRxFrame_1a85c4cdfe8229b327b22d793068899bfa"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structTransportRx__SamplingStart.html#_CPPv425TransportRx_SamplingStart" title="TransportRx_SamplingStart"><span class="n"><span class="pre">TransportRx_SamplingStart</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asSamplingStart</span></span></span><a class="headerlink" href="#_CPPv4N16TransportRxFrame15asSamplingStartE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16TransportRxFrame14asSamplingStopE">
+<span id="_CPPv3N16TransportRxFrame14asSamplingStopE"></span><span id="_CPPv2N16TransportRxFrame14asSamplingStopE"></span><span id="TransportRxFrame::asSamplingStop__TransportRx_SamplingStop"></span><span class="target" id="unionTransportRxFrame_1a79e72bb56190a59984e04194bb3f7a94"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structTransportRx__SamplingStop.html#_CPPv424TransportRx_SamplingStop" title="TransportRx_SamplingStop"><span class="n"><span class="pre">TransportRx_SamplingStop</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asSamplingStop</span></span></span><a class="headerlink" href="#_CPPv4N16TransportRxFrame14asSamplingStopE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16TransportRxFrame20asGetFirmwareVersionE">
+<span id="_CPPv3N16TransportRxFrame20asGetFirmwareVersionE"></span><span id="_CPPv2N16TransportRxFrame20asGetFirmwareVersionE"></span><span id="TransportRxFrame::asGetFirmwareVersion__TransportRx_GetFirmwareVersion"></span><span class="target" id="unionTransportRxFrame_1a70bd5b78932cb1d15fa113511d77d6bc"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structTransportRx__GetFirmwareVersion.html#_CPPv430TransportRx_GetFirmwareVersion" title="TransportRx_GetFirmwareVersion"><span class="n"><span class="pre">TransportRx_GetFirmwareVersion</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asGetFirmwareVersion</span></span></span><a class="headerlink" href="#_CPPv4N16TransportRxFrame20asGetFirmwareVersionE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16TransportRxFrame11asGetUptimeE">
+<span id="_CPPv3N16TransportRxFrame11asGetUptimeE"></span><span id="_CPPv2N16TransportRxFrame11asGetUptimeE"></span><span id="TransportRxFrame::asGetUptime__TransportRx_GetUptime"></span><span class="target" id="unionTransportRxFrame_1ae2152f1b79fbdb5c9a42483015198d4d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structTransportRx__GetUptime.html#_CPPv421TransportRx_GetUptime" title="TransportRx_GetUptime"><span class="n"><span class="pre">TransportRx_GetUptime</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asGetUptime</span></span></span><a class="headerlink" href="#_CPPv4N16TransportRxFrame11asGetUptimeE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N16TransportRxFrame17asGetBufferStatusE">
+<span id="_CPPv3N16TransportRxFrame17asGetBufferStatusE"></span><span id="_CPPv2N16TransportRxFrame17asGetBufferStatusE"></span><span id="TransportRxFrame::asGetBufferStatus__TransportRx_GetBufferStatus"></span><span class="target" id="unionTransportRxFrame_1a12b53bf70ccd20dec24e3081d5915601"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structTransportRx__GetBufferStatus.html#_CPPv427TransportRx_GetBufferStatus" title="TransportRx_GetBufferStatus"><span class="n"><span class="pre">TransportRx_GetBufferStatus</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asGetBufferStatus</span></span></span><a class="headerlink" href="#_CPPv4N16TransportRxFrame17asGetBufferStatusE" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

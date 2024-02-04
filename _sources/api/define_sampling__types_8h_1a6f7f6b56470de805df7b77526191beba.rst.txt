@@ -1,0 +1,14 @@
+.. _exhale_define_sampling__types_8h_1a6f7f6b56470de805df7b77526191beba:
+
+Define SAMPLING_NUM_SAMPLES_READ_AT_ONCE
+========================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling_types.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: SAMPLING_NUM_SAMPLES_READ_AT_ONCE
+   :project: My Proj

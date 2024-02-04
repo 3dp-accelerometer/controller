@@ -1,0 +1,14 @@
+.. _exhale_enum_adxl345__flags_8h_1aeacaafb4990ff34e9fc4199e0e3ef82a:
+
+Enum Adxl345Flags_DataFormat_SpiBit
+===================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: Adxl345Flags_DataFormat_SpiBit
+   :project: My Proj

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File controller_impl.c &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File controller_impl.c</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-controller-impl-c">
+<span id="file-home-runner-work-controller-controller-src-fw-controller-impl-c"></span><h1>File controller_impl.c<a class="headerlink" href="#file-controller-impl-c" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="dir__home_runner_work_controller_controller_Src_fw.html#dir-home-runner-work-controller-controller-src-fw"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Src/fw</span></code>)</p>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-home-runner-work-controller-controller-src-fw-controller-impl-c" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Src/fw/controller_impl.c</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id3">Classes</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id4">Functions</a></p></li>
+<li><p><a class="reference internal" href="#defines" id="id5">Defines</a></p></li>
+<li><p><a class="reference internal" href="#variables" id="id6">Variables</a></p></li>
+</ul>
+</nav>
+<section id="definition-home-runner-work-controller-controller-src-fw-controller-impl-c">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Src/fw/controller_impl.c</span></code>)<a class="headerlink" href="#definition-home-runner-work-controller-controller-src-fw-controller-impl-c" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file__home_runner_work_controller_controller_Src_fw_controller_impl.c.html">Program Listing for File controller_impl.c</a></li>
+</ul>
+</div>
+</section>
+<section id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">adxl345.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h.html#file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-h"><span class="std std-ref">File adxl345.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">adxl345_flags.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h.html#file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-flags-h"><span class="std std-ref">File adxl345_flags.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">adxl345_transport_types.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h.html#file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-transport-types-h"><span class="std std-ref">File adxl345_transport_types.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">controller.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_controller_src_controller.h.html#file-home-runner-work-controller-controller-lib-controller-src-controller-h"><span class="std std-ref">File controller.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">errno.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">from_host_transport.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_host_transport_src_from_host_transport.h.html#file-home-runner-work-controller-controller-lib-host-transport-src-from-host-transport-h"><span class="std std-ref">File from_host_transport.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fw/adxl345_transport_impl.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_adxl345_transport_impl.h.html#file-home-runner-work-controller-controller-inc-fw-adxl345-transport-impl-h"><span class="std std-ref">File adxl345_transport_impl.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fw/host_transport_impl.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_host_transport_impl.h.html#file-home-runner-work-controller-controller-inc-fw-host-transport-impl-h"><span class="std std-ref">File host_transport_impl.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fw/led.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_led.h.html#file-home-runner-work-controller-controller-inc-fw-led-h"><span class="std std-ref">File led.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fw/ringbuffer_impl.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_ringbuffer_impl.h.html#file-home-runner-work-controller-controller-inc-fw-ringbuffer-impl-h"><span class="std std-ref">File ringbuffer_impl.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fw/sampling_impl.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_sampling_impl.h.html#file-home-runner-work-controller-controller-inc-fw-sampling-impl-h"><span class="std std-ref">File sampling_impl.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fw/version.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_version.h.html#file-home-runner-work-controller-controller-inc-fw-version-h"><span class="std std-ref">File version.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">host_transport_types.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h.html#file-home-runner-work-controller-controller-lib-host-transport-src-host-transport-types-h"><span class="std std-ref">File host_transport_types.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">main.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sampling.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_sampling_src_sampling.h.html#file-home-runner-work-controller-controller-lib-sampling-src-sampling-h"><span class="std std-ref">File sampling.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sampling_types.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_sampling_src_sampling_types.h.html#file-home-runner-work-controller-controller-lib-sampling-src-sampling-types-h"><span class="std std-ref">File sampling_types.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stm32f4xx_hal.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to_host_transport.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.h.html#file-home-runner-work-controller-controller-lib-host-transport-src-to-host-transport-h"><span class="std std-ref">File to_host_transport.h</span></a>)</p></li>
+</ul>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="structTransport__ResponseFlags.html#exhale-struct-structtransport-responseflags"><span class="std std-ref">Struct Transport_ResponseFlags</span></a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_controller__impl_8c_1ab479e2e5d14e4185269d967fe17ddc45.html#exhale-function-controller-impl-8c-1ab479e2e5d14e4185269d967fe17ddc45"><span class="std std-ref">Function __attribute__((packed))</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1ab4cac79cff838678a94ab8fc5f28d2b8.html#exhale-function-controller-impl-8c-1ab4cac79cff838678a94ab8fc5f28d2b8"><span class="std std-ref">Function ControllerImpl_device_checkReboot</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1abef59c1b09c873e25dcf7cd2296ba2d4.html#exhale-function-controller-impl-8c-1abef59c1b09c873e25dcf7cd2296ba2d4"><span class="std std-ref">Function ControllerImpl_device_requestAsyncReboot</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a5836fa9015aac1fba7d702bdc6493d8a.html#exhale-function-controller-impl-8c-1a5836fa9015aac1fba7d702bdc6493d8a"><span class="std std-ref">Function ControllerImpl_init</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1ab4fe78e742d301249bf03da3c58eb442.html#exhale-function-controller-impl-8c-1ab4fe78e742d301249bf03da3c58eb442"><span class="std std-ref">Function ControllerImpl_loop</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a686368da9cd9160885612d45ff18930b.html#exhale-function-controller-impl-8c-1a686368da9cd9160885612d45ff18930b"><span class="std std-ref">Function ControllerImpl_transmitPendingResponses</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a8fc86217766450df200f8c3cfe1da74e.html#exhale-function-controller-impl-8c-1a8fc86217766450df200f8c3cfe1da74e"><span class="std std-ref">Function fault_onBusFaultHandler</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a8e2c4873bd3748d4efcd610b113f203d.html#exhale-function-controller-impl-8c-1a8e2c4873bd3748d4efcd610b113f203d"><span class="std std-ref">Function fault_onErrorHandler</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1acb0c07a81f605dfc5c00031018e8f757.html#exhale-function-controller-impl-8c-1acb0c07a81f605dfc5c00031018e8f757"><span class="std std-ref">Function fault_onHardFaultHandler</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a49fc3195b070e4905bb67597d6cfea70.html#exhale-function-controller-impl-8c-1a49fc3195b070e4905bb67597d6cfea70"><span class="std std-ref">Function fault_onNmiFaultHandler</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1ac8d926da4731b4d105f3e8f07c61577a.html#exhale-function-controller-impl-8c-1ac8d926da4731b4d105f3e8f07c61577a"><span class="std std-ref">Function fault_onUsageFaultHandler</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a9c1bde924f90fffba888f4e323c1346b.html#exhale-function-controller-impl-8c-1a9c1bde924f90fffba888f4e323c1346b"><span class="std std-ref">Function host_doTakeBytes</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a4774f44ed0c59c6419ac85c2785617ea.html#exhale-function-controller-impl-8c-1a4774f44ed0c59c6419ac85c2785617ea"><span class="std std-ref">Function host_onRequestGetBufferStatus</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1af128666cf06641bc21734e78ee596d90.html#exhale-function-controller-impl-8c-1af128666cf06641bc21734e78ee596d90"><span class="std std-ref">Function host_onRequestGetDeviceSetup</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1ae5507b8d85d6929ffb2c4f70698ef8a4.html#exhale-function-controller-impl-8c-1ae5507b8d85d6929ffb2c4f70698ef8a4"><span class="std std-ref">Function host_onRequestGetFirmwareVersion</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a8f394894ddf5ffcb0699b352b4095f53.html#exhale-function-controller-impl-8c-1a8f394894ddf5ffcb0699b352b4095f53"><span class="std std-ref">Function host_onRequestGetOutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1ac40697a0744d47795ebe700126afc962.html#exhale-function-controller-impl-8c-1ac40697a0744d47795ebe700126afc962"><span class="std std-ref">Function host_onRequestGetRange</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1aa6fc1a711ac0cda42f023ddfe9ded04d.html#exhale-function-controller-impl-8c-1aa6fc1a711ac0cda42f023ddfe9ded04d"><span class="std std-ref">Function host_onRequestGetScale</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a3cc3a5ce4a78ca23e9b994dda2c89637.html#exhale-function-controller-impl-8c-1a3cc3a5ce4a78ca23e9b994dda2c89637"><span class="std std-ref">Function host_onRequestGetUptime</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a7652251f5077fd27a96f519aac4c29ce.html#exhale-function-controller-impl-8c-1a7652251f5077fd27a96f519aac4c29ce"><span class="std std-ref">Function host_onRequestSamplingStart</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1aa4859365e6ad62258d64537030a92cf4.html#exhale-function-controller-impl-8c-1aa4859365e6ad62258d64537030a92cf4"><span class="std std-ref">Function host_onRequestSamplingStop</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a9df7ad7339bfa68bc2fd90bfbb2ee326.html#exhale-function-controller-impl-8c-1a9df7ad7339bfa68bc2fd90bfbb2ee326"><span class="std std-ref">Function host_onRequestSetOutputDatatRate</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a73449c33b8e903c9b6e9de4d16be0064.html#exhale-function-controller-impl-8c-1a73449c33b8e903c9b6e9de4d16be0064"><span class="std std-ref">Function host_onRequestSetRange</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1af209ccce35a98bf6f271478cd8ea3c68.html#exhale-function-controller-impl-8c-1af209ccce35a98bf6f271478cd8ea3c68"><span class="std std-ref">Function host_onRequestSetScale</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a66c51aa031796dbb5efb4f0717146e44.html#exhale-function-controller-impl-8c-1a66c51aa031796dbb5efb4f0717146e44"><span class="std std-ref">Function sampling_clearFifoWatermark</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a4ec7e05708eabb0c4b421911b947e8f9.html#exhale-function-controller-impl-8c-1a4ec7e05708eabb0c4b421911b947e8f9"><span class="std std-ref">Function sampling_doDisableSensorImpl</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a372e46bbe50ec2e0aa793ed5bafa3257.html#exhale-function-controller-impl-8c-1a372e46bbe50ec2e0aa793ed5bafa3257"><span class="std std-ref">Function sampling_doEnableSensorImpl</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1adbaedf7e92176b7b33afc0ff2fed9a19.html#exhale-function-controller-impl-8c-1adbaedf7e92176b7b33afc0ff2fed9a19"><span class="std std-ref">Function sampling_doFetchSensorAccelerationImpl</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a66048ba7308a1ff1f0db78dc160c5360.html#exhale-function-controller-impl-8c-1a66048ba7308a1ff1f0db78dc160c5360"><span class="std std-ref">Function sampling_doForwardAccelerationBufferImpl</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a755320ba0c169d3697009b13d3d99e87.html#exhale-function-controller-impl-8c-1a755320ba0c169d3697009b13d3d99e87"><span class="std std-ref">Function sampling_on5usTimerExpired</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a22cb33c193020641a0b8be69deb13546.html#exhale-function-controller-impl-8c-1a22cb33c193020641a0b8be69deb13546"><span class="std std-ref">Function sampling_onBufferOverflowCb</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a649d2c598862d77ddb0b08efdd88a740.html#exhale-function-controller-impl-8c-1a649d2c598862d77ddb0b08efdd88a740"><span class="std std-ref">Function sampling_onFifoOverflowCb</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1ae2b7bd69ad57ae7b4634f7cd1672ff72.html#exhale-function-controller-impl-8c-1ae2b7bd69ad57ae7b4634f7cd1672ff72"><span class="std std-ref">Function sampling_onSamplingAbortedCb</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a2ee729cc36a6cda22ee6ddfb5129aba9.html#exhale-function-controller-impl-8c-1a2ee729cc36a6cda22ee6ddfb5129aba9"><span class="std std-ref">Function sampling_onSamplingFinishedCb</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1add5d5708782076868b58766b5b2fbc99.html#exhale-function-controller-impl-8c-1add5d5708782076868b58766b5b2fbc99"><span class="std std-ref">Function sampling_onSamplingStartedCb</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a9ace065330cb7cedcef975583b11c0ff.html#exhale-function-controller-impl-8c-1a9ace065330cb7cedcef975583b11c0ff"><span class="std std-ref">Function sampling_onSamplingStoppedCb</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1ada37b4670349e284523369e4980833c2.html#exhale-function-controller-impl-8c-1ada37b4670349e284523369e4980833c2"><span class="std std-ref">Function sampling_onTransmissionErrorCb</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a7482fe02c4be77534060addf3a93ee31.html#exhale-function-controller-impl-8c-1a7482fe02c4be77534060addf3a93ee31"><span class="std std-ref">Function sampling_setFifoOverflow</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1af9e9572b6249611db186b7647b71babb.html#exhale-function-controller-impl-8c-1af9e9572b6249611db186b7647b71babb"><span class="std std-ref">Function sampling_setFifoWatermark</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a791c278018effd03c2d785f4f0c25d61.html#exhale-function-controller-impl-8c-1a791c278018effd03c2d785f4f0c25d61"><span class="std std-ref">Function sensor_doGetOutputDataRateImpl</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a89b1d736b2d2afc3d37552260579c0d1.html#exhale-function-controller-impl-8c-1a89b1d736b2d2afc3d37552260579c0d1"><span class="std std-ref">Function sensor_doGetRangeImpl</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a894fc5e10c664f2bc59e4852680c2902.html#exhale-function-controller-impl-8c-1a894fc5e10c664f2bc59e4852680c2902"><span class="std std-ref">Function sensor_doGetScaleImpl</span></a></p></li>
+<li><p><a class="reference internal" href="function_controller__impl_8c_1a88fe47f4a0a879b25e03c39c2297f312.html#exhale-function-controller-impl-8c-1a88fe47f4a0a879b25e03c39c2297f312"><span class="std std-ref">Function sensor_doInitImpl</span></a></p></li>
+</ul>
+</section>
+<section id="defines">
+<h2>Defines<a class="headerlink" href="#defines" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="define_controller__impl_8c_1a2da97cdb974bd8ee7a33fe39e255feb1.html#exhale-define-controller-impl-8c-1a2da97cdb974bd8ee7a33fe39e255feb1"><span class="std std-ref">Define HOSTTRANSPORT_DECLARE_INITIALIZER</span></a></p></li>
+<li><p><a class="reference internal" href="define_controller__impl_8c_1ad8047974c1ca16e65db118ef91ebfc7e.html#exhale-define-controller-impl-8c-1ad8047974c1ca16e65db118ef91ebfc7e"><span class="std std-ref">Define MYSTRINGIZE</span></a></p></li>
+<li><p><a class="reference internal" href="define_controller__impl_8c_1ab0975b1538786e46b8e4b5fa869e7fcd.html#exhale-define-controller-impl-8c-1ab0975b1538786e46b8e4b5fa869e7fcd"><span class="std std-ref">Define MYSTRINGIZE0</span></a></p></li>
+<li><p><a class="reference internal" href="define_controller__impl_8c_1ab1832f23d06d7eadbdb5e9370e4454a5.html#exhale-define-controller-impl-8c-1ab1832f23d06d7eadbdb5e9370e4454a5"><span class="std std-ref">Define SAMPLING_DECLARE_INITIALIZER</span></a></p></li>
+</ul>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1ab56ab2a03c4aa0c3ae17befc6a6f7afe.html#exhale-variable-controller-impl-8c-1ab56ab2a03c4aa0c3ae17befc6a6f7afe"><span class="std std-ref">Variable _reserved_0</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1a8ffa4b52c49fc859a7142a3f64ac9aa5.html#exhale-variable-controller-impl-8c-1a8ffa4b52c49fc859a7142a3f64ac9aa5"><span class="std std-ref">Variable _reserved_1</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1a927bf38d871c85f0d1e0ee9eaa1351d0.html#exhale-variable-controller-impl-8c-1a927bf38d871c85f0d1e0ee9eaa1351d0"><span class="std std-ref">Variable controllerHandle</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1a6b1f2d72702bb2bb2c3d5072fcbae9fa.html#exhale-variable-controller-impl-8c-1a6b1f2d72702bb2bb2c3d5072fcbae9fa"><span class="std std-ref">Variable host_responseGetBufferStatus</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1af327710382584c99df792b222881c0d7.html#exhale-variable-controller-impl-8c-1af327710382584c99df792b222881c0d7"><span class="std std-ref">Variable host_responseGetDeviceSetup</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1ae5f021b6cf2bb304ad61a6a3c3791b61.html#exhale-variable-controller-impl-8c-1ae5f021b6cf2bb304ad61a6a3c3791b61"><span class="std std-ref">Variable host_responseGetFirmwareVersion</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1a3acb0dee90a133ab0ce3b566a9a5da63.html#exhale-variable-controller-impl-8c-1a3acb0dee90a133ab0ce3b566a9a5da63"><span class="std std-ref">Variable host_responseGetOutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1aadd7a9adc675bc15aa20fb8ba2935402.html#exhale-variable-controller-impl-8c-1aadd7a9adc675bc15aa20fb8ba2935402"><span class="std std-ref">Variable host_responseGetRange</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1a87462955bf03d8174675e67e95010fab.html#exhale-variable-controller-impl-8c-1a87462955bf03d8174675e67e95010fab"><span class="std std-ref">Variable host_responseGetScale</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1a671da16d0358339c993f4ad04da9e616.html#exhale-variable-controller-impl-8c-1a671da16d0358339c993f4ad04da9e616"><span class="std std-ref">Variable host_responseGetUptime</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1a39216c9e6e4fb47623e07bd6d66d49e7.html#exhale-variable-controller-impl-8c-1a39216c9e6e4fb47623e07bd6d66d49e7"><span class="std std-ref">Variable pendingResponses</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1a7bec0fed17edfcb64950f5d06bd2a005.html#exhale-variable-controller-impl-8c-1a7bec0fed17edfcb64950f5d06bd2a005"><span class="std std-ref">Variable rebootRequested</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1a0101c712ca279fbf03f282d62b3b61d4.html#exhale-variable-controller-impl-8c-1a0101c712ca279fbf03f282d62b3b61d4"><span class="std std-ref">Variable sampling_responseBufferOverflow</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1a7b038d75e0abe4eed60070914677ee73.html#exhale-variable-controller-impl-8c-1a7b038d75e0abe4eed60070914677ee73"><span class="std std-ref">Variable sampling_responseFifoOverflow</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1a895a28596514d13d23e8e7c282cc4b76.html#exhale-variable-controller-impl-8c-1a895a28596514d13d23e8e7c282cc4b76"><span class="std std-ref">Variable sampling_responseSamplingAborted</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1a84fe37258413abba127b115521aebed9.html#exhale-variable-controller-impl-8c-1a84fe37258413abba127b115521aebed9"><span class="std std-ref">Variable sampling_responseSamplingFinished</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1a5d3f1ea9386237fcc79eea2647e808f9.html#exhale-variable-controller-impl-8c-1a5d3f1ea9386237fcc79eea2647e808f9"><span class="std std-ref">Variable sampling_responseSamplingStopped</span></a></p></li>
+<li><p><a class="reference internal" href="variable_controller__impl_8c_1ab0a6c321e93f7f315e38a82d7235acab.html#exhale-variable-controller-impl-8c-1ab0a6c321e93f7f315e38a82d7235acab"><span class="std std-ref">Variable sampling_responseTransmissionError</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

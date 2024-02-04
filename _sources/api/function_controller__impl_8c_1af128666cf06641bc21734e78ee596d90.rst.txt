@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1af128666cf06641bc21734e78ee596d90:
+
+Function host_onRequestGetDeviceSetup
+=====================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: host_onRequestGetDeviceSetup()
+   :project: My Proj

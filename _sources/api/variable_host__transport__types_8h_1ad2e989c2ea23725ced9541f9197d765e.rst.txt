@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1ad2e989c2ea23725ced9541f9197d765e:
+
+Variable Transport_HeaderId_Tx_SamplingStopped
+==============================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: Transport_HeaderId_Tx_SamplingStopped
+   :project: My Proj

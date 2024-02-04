@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Function Ringbuffer_put(struct Ringbuffer *, const void *) &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Function Ringbuffer_putCount(const struct Ringbuffer *)" href="function_ringbuffer_8c_1af9eabc252f5224d6f9403d54be3f8340.html" />
+    <link rel="prev" title="Function Ringbuffer_put(struct Ringbuffer *, const void *)" href="function_ringbuffer_8c_1ab9f317616d0bd9274f0a5d6e0f1f3f9a.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="library_root.html">Library API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="library_root.html#full-api">Full API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#classes-and-structs">Classes and Structs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#enums">Enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#unions">Unions</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="library_root.html#functions">Functions</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__register_8h_1acc02190e97ec034a25eca812c23b98d6.html">Function __attribute__((packed))</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__types_8h_1a1880fcedd9961d4e738b565207231a04.html">Function __attribute__((packed))</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_host__transport__types_8h_1a8b868bbd21ba7df4a6635a0f147da9ea.html">Function __attribute__((__packed__))</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_host__transport__types_8h_1ac79abf6004596fe72a9b87b36132f2ef.html">Function __attribute__((packed))</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling__types_8h_1a7cad04f2ac26baf73b6284554ea1112d.html">Function __attribute__((packed))</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1ab479e2e5d14e4185269d967fe17ddc45.html">Function __attribute__((packed))</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1a02d49f00cf3ba207510146567e1d6174.html">Function __attribute__((packed))</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a778c373c85d06d09fd2412d5a5636dee.html">Function advanceBegin</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1acaf0d7eaba25e09488f0b1b91646b094.html">Function advanceEnd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1a5605a71e07edcc370b027a668f393615.html">Function Adxl345_getAcceleration(struct Adxl345_Handle *, struct Adxl345Transport_Acceleration *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1a5605a71e07edcc370b027a668f393615.html">Function Adxl345_getAcceleration(struct Adxl345_Handle *, struct Adxl345Transport_Acceleration *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1af238689828fad86568f32caac567fc01.html">Function Adxl345_getOutputDataRate(struct Adxl345_Handle *, enum Adxl345Flags_BwRate_Rate *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1af238689828fad86568f32caac567fc01.html">Function Adxl345_getOutputDataRate(struct Adxl345_Handle *, enum Adxl345Flags_BwRate_Rate *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1a67d00841116cfecf53a7ca6352209df4.html">Function Adxl345_getRange(struct Adxl345_Handle *, enum Adxl345Flags_DataFormat_Range *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1a67d00841116cfecf53a7ca6352209df4.html">Function Adxl345_getRange(struct Adxl345_Handle *, enum Adxl345Flags_DataFormat_Range *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1aec1396797b012df335ff8c96955932e2.html">Function Adxl345_getScale(struct Adxl345_Handle *, enum Adxl345Flags_DataFormat_FullResBit *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1aec1396797b012df335ff8c96955932e2.html">Function Adxl345_getScale(struct Adxl345_Handle *, enum Adxl345Flags_DataFormat_FullResBit *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1a92f47a5a55daaa4f0b7c0952fef0a2d1.html">Function Adxl345_init(struct Adxl345_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1a92f47a5a55daaa4f0b7c0952fef0a2d1.html">Function Adxl345_init(struct Adxl345_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1ad38f932fb6fbb6056e9258b9179abdbd.html">Function Adxl345_setOutputDataRate(struct Adxl345_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1ad38f932fb6fbb6056e9258b9179abdbd.html">Function Adxl345_setOutputDataRate(struct Adxl345_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1a0ef617ec05f613283d155d0de4d37e53.html">Function Adxl345_setPowerCtlMeasure(struct Adxl345_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1a0ef617ec05f613283d155d0de4d37e53.html">Function Adxl345_setPowerCtlMeasure(struct Adxl345_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1ab61b3d92785c6a11acb64cb5b1b9d630.html">Function Adxl345_setPowerCtlStandby(struct Adxl345_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1ab61b3d92785c6a11acb64cb5b1b9d630.html">Function Adxl345_setPowerCtlStandby(struct Adxl345_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1a3460885ccd5cf674d0a8b1ec161114ce.html">Function Adxl345_setRange(struct Adxl345_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1a3460885ccd5cf674d0a8b1ec161114ce.html">Function Adxl345_setRange(struct Adxl345_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1ab9baf97a44fa18d98ba816b1ba85f680.html">Function Adxl345_setScale(struct Adxl345_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8h_1ab9baf97a44fa18d98ba816b1ba85f680.html">Function Adxl345_setScale(struct Adxl345_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8h_1aa14a3171c0d0175bb4da9e60add284f5.html">Function Adxl345TransportImpl_doTransmitFrameImpl(const union Adxl345Transport_TxFrame *, uint8_t, enum Adxl345Spi_Cs, enum Adxl345Spi_RwFlags)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8c_1aa14a3171c0d0175bb4da9e60add284f5.html">Function Adxl345TransportImpl_doTransmitFrameImpl(const union Adxl345Transport_TxFrame *, uint8_t, enum Adxl345Spi_Cs, enum Adxl345Spi_RwFlags)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8h_1af0e573e93c966e33fd642d5771e0d072.html">Function Adxl345TransportImpl_doTransmitReceiveFrameImpl(const union Adxl345Transport_TxFrame *, union Adxl345Transport_RxFrame *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8c_1af0e573e93c966e33fd642d5771e0d072.html">Function Adxl345TransportImpl_doTransmitReceiveFrameImpl(const union Adxl345Transport_TxFrame *, union Adxl345Transport_RxFrame *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1a578e25edef9c83506a63206379af7a25.html">Function checkStartRequest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1a9f656201a21eeecd5486f3e754ff64be.html">Function checkStopRequest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1ab4cac79cff838678a94ab8fc5f28d2b8.html">Function ControllerImpl_device_checkReboot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1abef59c1b09c873e25dcf7cd2296ba2d4.html">Function ControllerImpl_device_requestAsyncReboot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a5836fa9015aac1fba7d702bdc6493d8a.html">Function ControllerImpl_init</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1ab4fe78e742d301249bf03da3c58eb442.html">Function ControllerImpl_loop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a686368da9cd9160885612d45ff18930b.html">Function ControllerImpl_transmitPendingResponses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a8fc86217766450df200f8c3cfe1da74e.html">Function fault_onBusFaultHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a8e2c4873bd3748d4efcd610b113f203d.html">Function fault_onErrorHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1acb0c07a81f605dfc5c00031018e8f757.html">Function fault_onHardFaultHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a49fc3195b070e4905bb67597d6cfea70.html">Function fault_onNmiFaultHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1ac8d926da4731b4d105f3e8f07c61577a.html">Function fault_onUsageFaultHandler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a9c1bde924f90fffba888f4e323c1346b.html">Function host_doTakeBytes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a4774f44ed0c59c6419ac85c2785617ea.html">Function host_onRequestGetBufferStatus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1af128666cf06641bc21734e78ee596d90.html">Function host_onRequestGetDeviceSetup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1ae5507b8d85d6929ffb2c4f70698ef8a4.html">Function host_onRequestGetFirmwareVersion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a8f394894ddf5ffcb0699b352b4095f53.html">Function host_onRequestGetOutputDataRate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1ac40697a0744d47795ebe700126afc962.html">Function host_onRequestGetRange</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1aa6fc1a711ac0cda42f023ddfe9ded04d.html">Function host_onRequestGetScale</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a3cc3a5ce4a78ca23e9b994dda2c89637.html">Function host_onRequestGetUptime</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a7652251f5077fd27a96f519aac4c29ce.html">Function host_onRequestSamplingStart</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1aa4859365e6ad62258d64537030a92cf4.html">Function host_onRequestSamplingStop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a9df7ad7339bfa68bc2fd90bfbb2ee326.html">Function host_onRequestSetOutputDatatRate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a73449c33b8e903c9b6e9de4d16be0064.html">Function host_onRequestSetRange</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1af209ccce35a98bf6f271478cd8ea3c68.html">Function host_onRequestSetScale</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_host__transport__impl_8h_1a10b705c106c1c95a4433aa6b9e1139e3.html">Function HostTransportImpl_doTransmitImpl(uint8_t *, uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_host__transport__impl_8c_1a10b705c106c1c95a4433aa6b9e1139e3.html">Function HostTransportImpl_doTransmitImpl(uint8_t *, uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_host__transport__impl_8h_1afad186c595d91ebd30b58106d767de5b.html">Function HostTransportImpl_isTransmitBusyImpl()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_host__transport__impl_8c_1afad186c595d91ebd30b58106d767de5b.html">Function HostTransportImpl_isTransmitBusyImpl()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_host__transport__impl_8h_1ab795a4b8753590b3d78b7cee07c04d21.html">Function HostTransportImpl_onTakeReceivedImpl(const uint8_t *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_host__transport__impl_8c_1ab795a4b8753590b3d78b7cee07c04d21.html">Function HostTransportImpl_onTakeReceivedImpl(const uint8_t *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1a6fad96b836dc0437c29b2d425e057e91.html">Function isNSamplesReadEnabled</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1a9b676e279b904bfd8efbe13f1e1da5e1.html">Function isTransmitBusy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1ae056628ebdf9afba084c147520922074.html">Function itemAtIndex</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_run-tests_8h_1a3c04138a5bfe5d72780bb7e82a18e627.html">Function main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8c_1a17e93b852aca31ef8d8f495fcfaadc31.html">Function ncsClear</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8c_1ac054c297b066d074bdbd72919dda4f4d.html">Function ncsSet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1ada092c361a17f3eb06a5814803fa5578.html">Function popDataFromRingbuffer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1a35faef7d47e8b565eb9b3832dfa1651b.html">Function pushToRingbuffer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1a901e7705ca34646d41fe7db11c8b2ba6.html">Function readRegister</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345__transport__impl_8c_1a86ca88b3cd7279573f1ee5107019e73c.html">Function receiveFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a0bcd7705c6aae413215637f1d01920ae.html">Function Ringbuffer_init(struct Ringbuffer *, uint8_t *, uint16_t, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1a0bcd7705c6aae413215637f1d01920ae.html">Function Ringbuffer_init(struct Ringbuffer *, uint8_t *, uint16_t, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a90df506fa5d1412690f7045a2a714755.html">Function Ringbuffer_isEmpty(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1a90df506fa5d1412690f7045a2a714755.html">Function Ringbuffer_isEmpty(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a58c877992b59b998ff9af09cd10639fe.html">Function Ringbuffer_isFull(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1a58c877992b59b998ff9af09cd10639fe.html">Function Ringbuffer_isFull(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1ae6714bfe881444624c8636e334e0ef42.html">Function Ringbuffer_itemsCount(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1ae6714bfe881444624c8636e334e0ef42.html">Function Ringbuffer_itemsCount(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a6f9ad21c75ef81abc716c9d88e7eb292.html">Function Ringbuffer_itemSizeBytes(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1a6f9ad21c75ef81abc716c9d88e7eb292.html">Function Ringbuffer_itemSizeBytes(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a14cd7a193ec80b52d8439be928a38ac5.html">Function Ringbuffer_maxCapacityUsed(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1a14cd7a193ec80b52d8439be928a38ac5.html">Function Ringbuffer_maxCapacityUsed(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1ab9f317616d0bd9274f0a5d6e0f1f3f9a.html">Function Ringbuffer_put(struct Ringbuffer *, const void *)</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Function Ringbuffer_put(struct Ringbuffer *, const void *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1af9eabc252f5224d6f9403d54be3f8340.html">Function Ringbuffer_putCount(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1af9eabc252f5224d6f9403d54be3f8340.html">Function Ringbuffer_putCount(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a0ce8c6dc9462bb767de1ee11f8594ada.html">Function Ringbuffer_reset(struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1a0ce8c6dc9462bb767de1ee11f8594ada.html">Function Ringbuffer_reset(struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a30a19998fb065e7ba6662562848cad83.html">Function Ringbuffer_take(struct Ringbuffer *, void *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1a30a19998fb065e7ba6662562848cad83.html">Function Ringbuffer_take(struct Ringbuffer *, void *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a74f72afe4e6c93f662bec40387730db2.html">Function Ringbuffer_takeCount(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1a74f72afe4e6c93f662bec40387730db2.html">Function Ringbuffer_takeCount(const struct Ringbuffer *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8c_1a89583e71625a19f29d0da9a42928358b.html">Function RingbufferIndex_init(struct Ringbuffer_Index *, uint16_t, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_ringbuffer_8h_1a89583e71625a19f29d0da9a42928358b.html">Function RingbufferIndex_init(struct Ringbuffer_Index *, uint16_t, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1a73bc9b85a2c1ec7b6204215d2728414e.html">Function Sampling_clearFifoWatermark(struct Sampling_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8h_1a73bc9b85a2c1ec7b6204215d2728414e.html">Function Sampling_clearFifoWatermark(struct Sampling_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a66c51aa031796dbb5efb4f0717146e44.html">Function sampling_clearFifoWatermark</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a4ec7e05708eabb0c4b421911b947e8f9.html">Function sampling_doDisableSensorImpl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a372e46bbe50ec2e0aa793ed5bafa3257.html">Function sampling_doEnableSensorImpl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1adbaedf7e92176b7b33afc0ff2fed9a19.html">Function sampling_doFetchSensorAccelerationImpl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a66048ba7308a1ff1f0db78dc160c5360.html">Function sampling_doForwardAccelerationBufferImpl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1a2c1b5634e93306c67c78add49d3bf175.html">Function Sampling_fetchForward(struct Sampling_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8h_1a2c1b5634e93306c67c78add49d3bf175.html">Function Sampling_fetchForward(struct Sampling_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1ac0f2c3c25b7af10cef5f51041ff3c05b.html">Function Sampling_on5usTimerExpired(struct Sampling_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8h_1ac0f2c3c25b7af10cef5f51041ff3c05b.html">Function Sampling_on5usTimerExpired(struct Sampling_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a755320ba0c169d3697009b13d3d99e87.html">Function sampling_on5usTimerExpired</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a22cb33c193020641a0b8be69deb13546.html">Function sampling_onBufferOverflowCb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a649d2c598862d77ddb0b08efdd88a740.html">Function sampling_onFifoOverflowCb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1ae2b7bd69ad57ae7b4634f7cd1672ff72.html">Function sampling_onSamplingAbortedCb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a2ee729cc36a6cda22ee6ddfb5129aba9.html">Function sampling_onSamplingFinishedCb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1add5d5708782076868b58766b5b2fbc99.html">Function sampling_onSamplingStartedCb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a9ace065330cb7cedcef975583b11c0ff.html">Function sampling_onSamplingStoppedCb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1ada37b4670349e284523369e4980833c2.html">Function sampling_onTransmissionErrorCb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1ad2b7e3f32490d7cd596cf2d90cfddf2f.html">Function Sampling_setFifoOverflow(struct Sampling_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8h_1ad2b7e3f32490d7cd596cf2d90cfddf2f.html">Function Sampling_setFifoOverflow(struct Sampling_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a7482fe02c4be77534060addf3a93ee31.html">Function sampling_setFifoOverflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1a6b3fd546e3ce118d97afba306bb1f1a3.html">Function Sampling_setFifoWatermark(struct Sampling_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8h_1a6b3fd546e3ce118d97afba306bb1f1a3.html">Function Sampling_setFifoWatermark(struct Sampling_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1af9e9572b6249611db186b7647b71babb.html">Function sampling_setFifoWatermark</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1ab1af2cb7e7cc632823338b6428c912d9.html">Function Sampling_start(struct Sampling_Handle *, uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8h_1ab1af2cb7e7cc632823338b6428c912d9.html">Function Sampling_start(struct Sampling_Handle *, uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1aba2a1f3f45bb7f04876c1bc160de3623.html">Function Sampling_stop(struct Sampling_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8h_1aba2a1f3f45bb7f04876c1bc160de3623.html">Function Sampling_stop(struct Sampling_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling__impl_8h_1a0de7f15197d79f90ae4d0ae89147cccd.html">Function SamplingImpl_doWaitDelay5usImpl(struct Sampling_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling__impl_8c_1a0de7f15197d79f90ae4d0ae89147cccd.html">Function SamplingImpl_doWaitDelay5usImpl(struct Sampling_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a791c278018effd03c2d785f4f0c25d61.html">Function sensor_doGetOutputDataRateImpl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a89b1d736b2d2afc3d37552260579c0d1.html">Function sensor_doGetRangeImpl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a894fc5e10c664f2bc59e4852680c2902.html">Function sensor_doGetScaleImpl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_controller__impl_8c_1a88fe47f4a0a879b25e03c39c2297f312.html">Function sensor_doInitImpl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1a63326a1b70b6e3f070e51687798e02de.html">Function setUp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1ab804e0f66def63262c1d6b4e3d2a2bd7.html">Function tearDown</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1a216ac4bd968ec1d4a1b645d5f608b06d.html">Function test_cap1_empty_isEmptyNotFull</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1ae53c39223316e02dff7bb6b9b54c88f7.html">Function test_cap1_full</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1ade4a4f2120bc7efcc6fdb527256943e1.html">Function test_cap3_empty_isEmptyNotFull</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1aad8df19b8a0a922fb33a49b1b8d0f2d5.html">Function test_cap3_empty_takeItem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1a5dba4d349dffe4a1e8bde8f035fc74e4.html">Function test_cap3_full_isNotEmptyButFull</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1ad99934803afa00f470f0a37273290a13.html">Function test_cap3_full_takeItem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1ad29f62dda14b7954a6995e922821fa05.html">Function test_cap3_notEmptyNotFull_isNotEmptyNotFull</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1ac3892e844d173d328e6cdeb06540a86d.html">Function test_cap3_notEmptyNotFull_takeItem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1a06d373c6c15d33187ebaf9c09c64ed12.html">Function test_cap3_overflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1aac1ea17cbc3f1bfe2e87b452072de95f.html">Function test_cap3_putAndOverflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1adde4b4dd76ebe9500b29125a809f2ee6.html">Function test_cap3_putAndTakeNoOverflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1ac6ad356c992638ab5658944dc6ae71c1.html">Function test_cap65535_beyondLimitsAndAbove</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1abb7e479e02c07d9528d45f35846711bc.html">Function test_cap65535_movingWindowBeyondLimits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_test_8c_1a0040b31a2648820e75882b52c2790efa.html">Function tests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1a9ec2cd757757b00d2b675ea07e249476.html">Function transmit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1a6859b85810ea85ce8d95bd3a58c9f982.html">Function transmitAccelerationBuffered</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_sampling_8c_1a5abc5903ad31d2108b55d8d8283b0e5f.html">Function transmitPending</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_host__transport_8c_1a0c9e0a9338f700b262689280eca75ae4.html">Function Transport_resetBuffer(struct HostTransport_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_host__transport_8h_1a0c9e0a9338f700b262689280eca75ae4.html">Function Transport_resetBuffer(struct HostTransport_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_from__host__transport_8c_1a45016b6d4eea9bccca2a7f6c0de95921.html">Function TransportRx_Process(struct HostTransport_Handle *, const uint8_t *, uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_from__host__transport_8h_1a45016b6d4eea9bccca2a7f6c0de95921.html">Function TransportRx_Process(struct HostTransport_Handle *, const uint8_t *, uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1a5dfd39a11af0cd8ee1af33868ecc3c1e.html">Function TransportTx_TxAccelerationBuffer(struct HostTransport_Handle *, const struct Transport_Acceleration *, uint8_t, uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1a5dfd39a11af0cd8ee1af33868ecc3c1e.html">Function TransportTx_TxAccelerationBuffer(struct HostTransport_Handle *, const struct Transport_Acceleration *, uint8_t, uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1a4cd9e88c2bdeba254ef1633e2840e860.html">Function TransportTx_TxBufferOverflow(struct HostTransport_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1a4cd9e88c2bdeba254ef1633e2840e860.html">Function TransportTx_TxBufferOverflow(struct HostTransport_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1adb072a78e3865c691623afadd15c31f3.html">Function TransportTx_TxBufferStatus(struct HostTransport_Handle *, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1adb072a78e3865c691623afadd15c31f3.html">Function TransportTx_TxBufferStatus(struct HostTransport_Handle *, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1ad27e19bcc1d967a5874090674313d98f.html">Function TransportTx_TxFault(struct HostTransport_Handle *, enum TransportTx_FaultCode)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1ad27e19bcc1d967a5874090674313d98f.html">Function TransportTx_TxFault(struct HostTransport_Handle *, enum TransportTx_FaultCode)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1a2e2dd9eec895bc7adbd99deed3462165.html">Function TransportTx_TxFifoOverflow(struct HostTransport_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1a2e2dd9eec895bc7adbd99deed3462165.html">Function TransportTx_TxFifoOverflow(struct HostTransport_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1acb0715f9c958a78a3ab6271072b65299.html">Function TransportTx_TxFirmwareVersion(struct HostTransport_Handle *, uint8_t, uint8_t, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1acb0715f9c958a78a3ab6271072b65299.html">Function TransportTx_TxFirmwareVersion(struct HostTransport_Handle *, uint8_t, uint8_t, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1a0d70e117d6d861a5496ae5518d2cfc27.html">Function TransportTx_TxOutputDataRate(struct HostTransport_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1a0d70e117d6d861a5496ae5518d2cfc27.html">Function TransportTx_TxOutputDataRate(struct HostTransport_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1aec41b705a2eb5738eae994b4e91e1296.html">Function TransportTx_TxRange(struct HostTransport_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1aec41b705a2eb5738eae994b4e91e1296.html">Function TransportTx_TxRange(struct HostTransport_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1a54d844925874214e816e4a1764f1d0b6.html">Function TransportTx_TxSamplingAborted(struct HostTransport_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1a54d844925874214e816e4a1764f1d0b6.html">Function TransportTx_TxSamplingAborted(struct HostTransport_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1a534fd48fd518d57461e15771a0ccc190.html">Function TransportTx_TxSamplingFinished(struct HostTransport_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1a534fd48fd518d57461e15771a0ccc190.html">Function TransportTx_TxSamplingFinished(struct HostTransport_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1a91f7f7c7d66cec64faa2616b43a1d90f.html">Function TransportTx_TxSamplingSetup(struct HostTransport_Handle *, uint8_t, uint8_t, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1a91f7f7c7d66cec64faa2616b43a1d90f.html">Function TransportTx_TxSamplingSetup(struct HostTransport_Handle *, uint8_t, uint8_t, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1ad4f08c75259c008b3529aaa18438beaa.html">Function TransportTx_TxSamplingStarted(struct HostTransport_Handle *, uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1ad4f08c75259c008b3529aaa18438beaa.html">Function TransportTx_TxSamplingStarted(struct HostTransport_Handle *, uint16_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1acf08bba3589d9124a20243e8b43152e4.html">Function TransportTx_TxSamplingStopped(struct HostTransport_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1acf08bba3589d9124a20243e8b43152e4.html">Function TransportTx_TxSamplingStopped(struct HostTransport_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1a5f8d17e2509d7151ac7418af87684bb4.html">Function TransportTx_TxScale(struct HostTransport_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1a5f8d17e2509d7151ac7418af87684bb4.html">Function TransportTx_TxScale(struct HostTransport_Handle *, uint8_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1a63afd5a4ee612c2f1e1ce9851016ffb4.html">Function TransportTx_TxTransmissionError(struct HostTransport_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1a63afd5a4ee612c2f1e1ce9851016ffb4.html">Function TransportTx_TxTransmissionError(struct HostTransport_Handle *)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8c_1a8754e0a5c57a604a9960aa1014ecbd81.html">Function TransportTx_TxUptime(struct HostTransport_Handle *, uint32_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_to__host__transport_8h_1a8754e0a5c57a604a9960aa1014ecbd81.html">Function TransportTx_TxUptime(struct HostTransport_Handle *, uint32_t)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="function_adxl345_8c_1a5a7d68a9a5e045ed6f5ae88e277fc133.html">Function writeRegister</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#variables">Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#defines">Defines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library_root.html">Library API</a></li>
+      <li class="breadcrumb-item active">Function Ringbuffer_put(struct Ringbuffer *, const void *)</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="function-ringbuffer-put-struct-ringbuffer-const-void">
+<span id="exhale-function-ringbuffer-8h-1ab9f317616d0bd9274f0a5d6e0f1f3f9a"></span><h1>Function Ringbuffer_put(struct Ringbuffer *, const void *)<a class="headerlink" href="#function-ringbuffer-put-struct-ringbuffer-const-void" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.h.html#file-home-runner-work-controller-controller-lib-ringbuffer-src-ringbuffer-h"><span class="std std-ref">File ringbuffer.h</span></a></p></li>
+</ul>
+<section id="function-documentation">
+<h2>Function Documentation<a class="headerlink" href="#function-documentation" title="Link to this heading"></a></h2>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414Ringbuffer_putP10RingbufferPKv">
+<span id="_CPPv314Ringbuffer_putP10RingbufferPKv"></span><span id="_CPPv214Ringbuffer_putP10RingbufferPKv"></span><span id="Ringbuffer_put__RingbufferP.voidCP"></span><span class="target" id="ringbuffer_8h_1ab9f317616d0bd9274f0a5d6e0f1f3f9a"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Ringbuffer_put</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structRingbuffer.html#_CPPv410Ringbuffer" title="Ringbuffer"><span class="n"><span class="pre">Ringbuffer</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">buffer</span></span>, <span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">item</span></span><span class="sig-paren">)</span><br /></dt>
+<dd><p>Stores one item to the buffer if possible.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>buffer</strong> – </p></li>
+<li><p><strong>item</strong> – input data </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>-EOVERFLOW if buffer is full, 0 otherwise </p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

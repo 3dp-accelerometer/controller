@@ -1,0 +1,30 @@
+
+.. _program_listing_file__home_runner_work_controller_controller_Inc_fw_host_transport_impl.h:
+
+Program Listing for File host_transport_impl.h
+==============================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_controller_controller_Inc_fw_host_transport_impl.h>` (``/home/runner/work/controller/controller/Inc/fw/host_transport_impl.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   /**
+    * \file host_transport_impl.h
+    *
+    * Hardware specific transport to the IN USB endpoint of the host.
+    */
+   
+   #pragma once
+   
+   #include <inttypes.h>
+   #include <stdbool.h>
+   
+   enum HostTransport_Status;
+   
+   enum HostTransport_Status HostTransportImpl_doTransmitImpl(uint8_t *buffer,
+                                                              uint16_t len);
+   volatile bool HostTransportImpl_isTransmitBusyImpl();
+   
+   int HostTransportImpl_onTakeReceivedImpl(const uint8_t *buffer);

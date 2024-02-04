@@ -1,0 +1,14 @@
+.. _exhale_function_sampling_8c_1a2c1b5634e93306c67c78add49d3bf175:
+
+Function Sampling_fetchForward(struct Sampling_Handle \*)
+=========================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Sampling_fetchForward(struct Sampling_Handle *)
+   :project: My Proj

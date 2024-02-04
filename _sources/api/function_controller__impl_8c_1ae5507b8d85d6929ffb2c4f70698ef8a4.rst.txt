@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1ae5507b8d85d6929ffb2c4f70698ef8a4:
+
+Function host_onRequestGetFirmwareVersion
+=========================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: host_onRequestGetFirmwareVersion()
+   :project: My Proj

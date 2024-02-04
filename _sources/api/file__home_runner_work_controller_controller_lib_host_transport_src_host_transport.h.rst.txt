@@ -1,0 +1,86 @@
+
+.. _file__home_runner_work_controller_controller_lib_host_transport_src_host_transport.h:
+
+File host_transport.h
+=====================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_lib_host_transport_src>` (``/home/runner/work/controller/controller/lib/host_transport/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/lib/host_transport/src/host_transport.h``)
+------------------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_lib_host_transport_src_host_transport.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``inttypes.h``
+
+- ``ringbuffer.h`` (:ref:`file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.h`)
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_lib_controller_src_controller.h`
+
+- :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_from_host_transport.c`
+
+- :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport.c`
+
+- :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_host_transport_impl.c`
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structHostTransport__FromHostApi`
+
+- :ref:`exhale_struct_structHostTransport__Handle`
+
+- :ref:`exhale_struct_structHostTransport__ToHostApi`
+
+
+Enums
+-----
+
+
+- :ref:`exhale_enum_host__transport_8h_1a74f8ebfaa5c7c50589f432fc564cf13e`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_host__transport_8h_1a0c9e0a9338f700b262689280eca75ae4`
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_host__transport_8h_1a52448fbad12ce1c5f682a6bce5141d49`
+

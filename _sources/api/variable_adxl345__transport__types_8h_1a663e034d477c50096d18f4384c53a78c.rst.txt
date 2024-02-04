@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__transport__types_8h_1a663e034d477c50096d18f4384c53a78c:
+
+Variable asAddress
+==================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asAddress
+   :project: My Proj

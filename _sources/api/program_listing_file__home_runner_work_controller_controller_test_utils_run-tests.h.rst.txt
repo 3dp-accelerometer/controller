@@ -1,0 +1,15 @@
+
+.. _program_listing_file__home_runner_work_controller_controller_test_utils_run-tests.h:
+
+Program Listing for File run-tests.h
+====================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_controller_controller_test_utils_run-tests.h>` (``/home/runner/work/controller/controller/test/utils/run-tests.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #pragma once
+   
+   int main(int argc, char **argv) { return tests(); }

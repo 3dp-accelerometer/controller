@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1af62d06fba8293c51e03074d4cb7e4585:
+
+Variable asGetOutputDataRate
+============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asGetOutputDataRate
+   :project: My Proj

@@ -1,0 +1,24 @@
+
+.. _program_listing_file__home_runner_work_controller_controller_Inc_fw_controller_impl.h:
+
+Program Listing for File controller_impl.h
+==========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_controller_controller_Inc_fw_controller_impl.h>` (``/home/runner/work/controller/controller/Inc/fw/controller_impl.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   /**
+    * \file device_impl.h
+    *
+    * Hardware specific controller implementation API.
+    */
+   
+   #pragma once
+   
+   #include <controller.h>
+   
+   // NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
+   extern struct Controller_Handle controllerHandle;

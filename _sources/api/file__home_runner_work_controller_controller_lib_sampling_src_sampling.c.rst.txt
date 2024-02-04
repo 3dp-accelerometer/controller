@@ -1,0 +1,69 @@
+
+.. _file__home_runner_work_controller_controller_lib_sampling_src_sampling.c:
+
+File sampling.c
+===============
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_lib_sampling_src>` (``/home/runner/work/controller/controller/lib/sampling/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/lib/sampling/src/sampling.c``)
+------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_lib_sampling_src_sampling.c.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``errno.h``
+
+- ``sampling.h`` (:ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling.h`)
+
+- ``sampling_types.h`` (:ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling_types.h`)
+
+
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_sampling_8c_1a578e25edef9c83506a63206379af7a25`
+
+- :ref:`exhale_function_sampling_8c_1a9f656201a21eeecd5486f3e754ff64be`
+
+- :ref:`exhale_function_sampling_8c_1a6fad96b836dc0437c29b2d425e057e91`
+
+- :ref:`exhale_function_sampling_8c_1a73bc9b85a2c1ec7b6204215d2728414e`
+
+- :ref:`exhale_function_sampling_8c_1a2c1b5634e93306c67c78add49d3bf175`
+
+- :ref:`exhale_function_sampling_8c_1ac0f2c3c25b7af10cef5f51041ff3c05b`
+
+- :ref:`exhale_function_sampling_8c_1ad2b7e3f32490d7cd596cf2d90cfddf2f`
+
+- :ref:`exhale_function_sampling_8c_1a6b3fd546e3ce118d97afba306bb1f1a3`
+
+- :ref:`exhale_function_sampling_8c_1ab1af2cb7e7cc632823338b6428c912d9`
+
+- :ref:`exhale_function_sampling_8c_1aba2a1f3f45bb7f04876c1bc160de3623`
+
+- :ref:`exhale_function_sampling_8c_1a5abc5903ad31d2108b55d8d8283b0e5f`
+

@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1ac40697a0744d47795ebe700126afc962:
+
+Function host_onRequestGetRange
+===============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: host_onRequestGetRange()
+   :project: My Proj

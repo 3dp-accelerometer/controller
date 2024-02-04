@@ -1,0 +1,14 @@
+.. _exhale_function_host__transport__impl_8c_1a10b705c106c1c95a4433aa6b9e1139e3:
+
+Function HostTransportImpl_doTransmitImpl(uint8_t \*, uint16_t)
+===============================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_host_transport_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: HostTransportImpl_doTransmitImpl(uint8_t *, uint16_t)
+   :project: My Proj

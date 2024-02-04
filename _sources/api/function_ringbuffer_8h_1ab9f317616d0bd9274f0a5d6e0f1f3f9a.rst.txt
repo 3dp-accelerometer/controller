@@ -1,0 +1,14 @@
+.. _exhale_function_ringbuffer_8h_1ab9f317616d0bd9274f0a5d6e0f1f3f9a:
+
+Function Ringbuffer_put(struct Ringbuffer \*, const void \*)
+============================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Ringbuffer_put(struct Ringbuffer *, const void *)
+   :project: My Proj

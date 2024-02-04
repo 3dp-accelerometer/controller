@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File to_host_transport.c &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File to_host_transport.c</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-to-host-transport-c">
+<span id="program-listing-file-home-runner-work-controller-controller-lib-host-transport-src-to-host-transport-c"></span><h1>Program Listing for File to_host_transport.c<a class="headerlink" href="#program-listing-for-file-to-host-transport-c" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.c.html#file-home-runner-work-controller-controller-lib-host-transport-src-to-host-transport-c"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/host_transport/src/to_host_transport.c</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * \file to_host_transport.c</span>
+<span class="cm"> *</span>
+<span class="cm"> * Implementation for transporting data from controller to host.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;to_host_transport.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fw/debug.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;host_transport.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;host_transport_types.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;errno.h&gt;</span>
+
+<span class="k">static</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="kt">bool</span>
+<span class="nf">isTransmitBusy</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_ToHostApi</span><span class="w"> </span><span class="o">*</span><span class="n">toHostApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">toHostApi</span><span class="o">-&gt;</span><span class="n">isTransmitBusyImpl</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits data to the IN endpoint of host.</span>
+<span class="cm"> *</span>
+<span class="cm"> * The transmission blocks this function from returning until the transmission</span>
+<span class="cm"> * has completely finished.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle underlying pimpl</span>
+<span class="cm"> * @param buffer data to transmit</span>
+<span class="cm"> * @param len data length</span>
+<span class="cm"> * @return transmission status</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="nf">transmit</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span>
+<span class="w">                        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">toHost</span><span class="p">.</span><span class="n">doTransmitImpl</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxSamplingSetup</span><span class="p">(</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">NOLINTNEXTLINE</span><span class="p">(</span><span class="n">bugprone</span><span class="o">-</span><span class="n">easily</span><span class="o">-</span><span class="n">swappable</span><span class="o">-</span><span class="n">parameters</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sensorOdr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sensorScale</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sensorRange</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_DeviceSetup</span><span class="p">;</span>
+
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asDeviceSetup</span><span class="p">.</span><span class="n">outputDataRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorOdr</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asDeviceSetup</span><span class="p">.</span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorScale</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asDeviceSetup</span><span class="p">.</span><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorRange</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">transmit</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asDeviceSetup</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxScale</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sensorScale</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_Scale</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asScale</span><span class="p">.</span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorScale</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">transmit</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asScale</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxRange</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sensorRange</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_Range</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asRange</span><span class="p">.</span><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorRange</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">transmit</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asRange</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxOutputDataRate</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                                  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sensorOdr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_OutputDataRate</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asOutputDataRate</span><span class="p">.</span><span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorOdr</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">      </span><span class="n">transmit</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">               </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asOutputDataRate</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxFirmwareVersion</span><span class="p">(</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">NOLINTNEXTLINE</span><span class="p">(</span><span class="n">bugprone</span><span class="o">-</span><span class="n">easily</span><span class="o">-</span><span class="n">swappable</span><span class="o">-</span><span class="n">parameters</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">major</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">minor</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">patch</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_FirmwareVersion</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFirmwareVersion</span><span class="p">.</span><span class="n">major</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">major</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFirmwareVersion</span><span class="p">.</span><span class="n">minor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">minor</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFirmwareVersion</span><span class="p">.</span><span class="n">patch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">patch</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">      </span><span class="n">transmit</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">               </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFirmwareVersion</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxSamplingStarted</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                                   </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">max_samples</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_SamplingStarted</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asSamplingStarted</span><span class="p">.</span><span class="n">maxSamples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max_samples</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">      </span><span class="n">transmit</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">               </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asSamplingStarted</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxSamplingFinished</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                                    </span><span class="n">Transport_HeaderId_Tx_SamplingFinished</span><span class="p">};</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">      </span><span class="n">transmit</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">               </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asSamplingFinished</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxSamplingStopped</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                                    </span><span class="n">Transport_HeaderId_Tx_SamplingStopped</span><span class="p">};</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">      </span><span class="n">transmit</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">               </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asSamplingStopped</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxSamplingAborted</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                                    </span><span class="n">Transport_HeaderId_Tx_SamplingAborted</span><span class="p">};</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">      </span><span class="n">transmit</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">               </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asSamplingAborted</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxFifoOverflow</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                                    </span><span class="n">Transport_HeaderId_Tx_FifoOverflow</span><span class="p">};</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">transmit</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFifoOverflow</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxBufferOverflow</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span>
+<span class="w">                                    </span><span class="n">Transport_HeaderId_Tx_BufferOverflow</span><span class="p">};</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span>
+<span class="w">      </span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">      </span><span class="n">transmit</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">               </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asBufferOverflow</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxTransmissionError</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_TransmissionError</span><span class="p">;</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">transmit</span><span class="p">(</span>
+<span class="w">             </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">             </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asTransmissionError</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxUptime</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                          </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">uptimeMs</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_Uptime</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asUptime</span><span class="p">.</span><span class="n">elapsedMs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">uptimeMs</span><span class="p">;</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">transmit</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asUptime</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxFault</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportTx_FaultCode</span><span class="w"> </span><span class="n">code</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_Fault</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFault</span><span class="p">.</span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">code</span><span class="p">;</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">transmit</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asFault</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxBufferStatus</span><span class="p">(</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">NOLINTNEXTLINE</span><span class="p">(</span><span class="n">bugprone</span><span class="o">-</span><span class="n">easily</span><span class="o">-</span><span class="n">swappable</span><span class="o">-</span><span class="n">parameters</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">sizeBytes</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">capacityTotal</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">capacityUsedMax</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">putCount</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">takeCount</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">largestTxChunkBytes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="n">data</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_BufferStatus</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asBufferStatus</span><span class="p">.</span><span class="n">sizeBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sizeBytes</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asBufferStatus</span><span class="p">.</span><span class="n">capacityTotal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">capacityTotal</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asBufferStatus</span><span class="p">.</span><span class="n">capacityUsedMax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">capacityUsedMax</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asBufferStatus</span><span class="p">.</span><span class="n">putCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">putCount</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asBufferStatus</span><span class="p">.</span><span class="n">takeCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">takeCount</span><span class="p">;</span>
+<span class="w">  </span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asBufferStatus</span><span class="p">.</span><span class="n">largestTxChunkBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">largestTxChunkBytes</span><span class="p">;</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">HostTransport_Status_Busy</span><span class="w"> </span><span class="o">==</span>
+<span class="w">         </span><span class="n">transmit</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">data</span><span class="p">,</span>
+<span class="w">                  </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asBufferStatus</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">pushToRingbuffer</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                            </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="o">*</span><span class="n">accelerationsChunk</span><span class="p">,</span>
+<span class="w">                            </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">dataCount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">sizeofItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Ringbuffer_itemSizeBytes</span><span class="p">(</span><span class="o">&amp;</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">toHost</span><span class="p">.</span><span class="n">ringbuffer</span><span class="p">)};</span>
+
+<span class="w">  </span><span class="c1">// copy whole acceleration data chunk (if any) to ringbuffer</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">dataCount</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Ringbuffer_isFull</span><span class="p">(</span><span class="o">&amp;</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">toHost</span><span class="p">.</span><span class="n">ringbuffer</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="o">*</span><span class="n">nextInChunk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span>
+<span class="w">        </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">accelerationsChunk</span><span class="p">)[(</span><span class="kt">uint16_t</span><span class="p">)(</span><span class="n">sizeofItem</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">idx</span><span class="p">)];</span>
+
+<span class="w">    </span><span class="n">Ringbuffer_put</span><span class="p">(</span><span class="o">&amp;</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">toHost</span><span class="p">.</span><span class="n">ringbuffer</span><span class="p">,</span><span class="w"> </span><span class="n">nextInChunk</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="nf">popDataFromRingbuffer</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                                      </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">txBuffer</span><span class="p">,</span>
+<span class="w">                                      </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">txBufferSize</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">sizeofItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Ringbuffer_itemSizeBytes</span><span class="p">(</span><span class="o">&amp;</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">toHost</span><span class="p">.</span><span class="n">ringbuffer</span><span class="p">)};</span>
+<span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">poppedItemsCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="c1">// pop data from buffer (if any) and store to TX-buffer</span>
+
+<span class="w">  </span><span class="c1">// NOLINTNEXTLINE(altera-id-dependent-backward-branch)</span>
+<span class="w">  </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="o">!</span><span class="n">Ringbuffer_isEmpty</span><span class="p">(</span><span class="o">&amp;</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">toHost</span><span class="p">.</span><span class="n">ringbuffer</span><span class="p">))</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<span class="w">         </span><span class="p">((</span><span class="n">sizeofItem</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">poppedItemsCount</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">txBufferSize</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="o">*</span><span class="n">nextInTxBuffer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">txBuffer</span><span class="p">[(</span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="p">)(</span><span class="n">sizeofItem</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">poppedItemsCount</span><span class="p">)];</span>
+
+<span class="w">    </span><span class="n">Ringbuffer_take</span><span class="p">(</span><span class="o">&amp;</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">toHost</span><span class="p">.</span><span class="n">ringbuffer</span><span class="p">,</span><span class="w"> </span><span class="n">nextInTxBuffer</span><span class="p">);</span>
+<span class="w">    </span><span class="n">poppedItemsCount</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">poppedItemsCount</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits or buffers acceleration data blocks to the IN endpoint of host or</span>
+<span class="cm"> * in ringbuffer.</span>
+<span class="cm"> *</span>
+<span class="cm"> * This implementation either transmits or buffers data but does not insist on</span>
+<span class="cm"> * completed transmission.</span>
+<span class="cm"> * The USB host will poll the usb client&#39;s IN endpoint about every 1ms</span>
+<span class="cm"> * or lesser.</span>
+<span class="cm"> * This is even slower on weak hardware such as Raspberry Pi or similar.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Notes:</span>
+<span class="cm"> *   - UserTxBufferFS must remain untouched by any other function</span>
+<span class="cm"> *   - UserTxBufferFS is only modified by this implementation</span>
+<span class="cm"> *</span>
+<span class="cm"> * Findings:</span>
+<span class="cm"> *   - on RPi 4B the Pyserial performance is a bottleneck when receiving with</span>
+<span class="cm"> *     ODR1600 or higher</span>
+<span class="cm"> *   - hiccups of about 20ms have been observed where Pyserial did not consume</span>
+<span class="cm"> *     bytes from the serial device;</span>
+<span class="cm"> *     this in turn blocks the device when sending (USB device is busy on TX)</span>
+<span class="cm"> *   - USB host or kernel driver are not expected to be subjects of performance</span>
+<span class="cm"> *     issues (at the time of writing)</span>
+<span class="cm"> *   - before tinkering with the Python performance, buffering on the controller</span>
+<span class="cm"> *     is a reasonable mitigation strategy</span>
+<span class="cm"> *   - Example: a buffer of about 1s at highest sample rate cold be as follows</span>
+<span class="cm"> *     3200kS/s * (1+2+6)B * 1s = 28800B</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle</span>
+<span class="cm"> * @param accelerationsChunk the acceleration data block to transmit, NULL to</span>
+<span class="cm"> * send pending data; Note: the buffer must be packed and contain only data of</span>
+<span class="cm"> * type: Transport_Header + TransportTx_Acceleration.</span>
+<span class="cm"> * @param dataCount amount of items in buffer (Transport_Header +</span>
+<span class="cm"> * TransportTx_Acceleration)</span>
+<span class="cm"> * @return</span>
+<span class="cm"> *   - -ENOMEM if ringbuffer is exhausted</span>
+<span class="cm"> *   - -ENODATA if all data is sent</span>
+<span class="cm"> *   - -EAGAIN if a subsequent call would send pending data</span>
+<span class="cm"> *   - -EIO any other errors</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span>
+<span class="nf">transmitAccelerationBuffered</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                             </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="o">*</span><span class="n">accelerationsChunk</span><span class="p">,</span>
+<span class="w">                             </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">dataCount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="c1">// store data to ringbuffer</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">-</span><span class="n">ENOMEM</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">pushToRingbuffer</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">accelerationsChunk</span><span class="p">,</span><span class="w"> </span><span class="n">dataCount</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">ENOMEM</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// check if we should/can take data from ringbuffer</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">isTransmitBusy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">toHost</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">EAGAIN</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Ringbuffer_isEmpty</span><span class="p">(</span><span class="o">&amp;</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">toHost</span><span class="p">.</span><span class="n">ringbuffer</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">ENODATA</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// pop data from buffer and store to TX-buffer</span>
+
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">byteBuffer</span><span class="p">[</span><span class="n">TRANSPORTTX_TRANSMIT_TX_DATA_CHUNK_BUFFER_BYTES</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="mi">0</span><span class="p">};</span>
+
+<span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">poppedItemsCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">popDataFromRingbuffer</span><span class="p">(</span>
+<span class="w">      </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">byteBuffer</span><span class="p">,</span><span class="w"> </span><span class="n">TRANSPORTTX_TRANSMIT_TX_DATA_CHUNK_BUFFER_BYTES</span><span class="p">)};</span>
+
+<span class="w">  </span><span class="c1">// transmit tx buffer</span>
+
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">sizeofItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="n">Ringbuffer_itemSizeBytes</span><span class="p">(</span><span class="o">&amp;</span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">toHost</span><span class="p">.</span><span class="n">ringbuffer</span><span class="p">)};</span>
+
+<span class="w">  </span><span class="c1">// todo: enforce that no transmission can be initiated from isTransmitBusy()</span>
+<span class="w">  </span><span class="c1">//   until transmission doTransmitImpl()</span>
+
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">txBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">sizeofItem</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">poppedItemsCount</span><span class="p">};</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">txBytes</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">toHost</span><span class="p">.</span><span class="n">largestTxChunkBytes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">toHost</span><span class="p">.</span><span class="n">largestTxChunkBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">txBytes</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">poppedItemsCount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">HostTransport_Status_Fail</span><span class="w"> </span><span class="o">==</span>
+<span class="w">        </span><span class="n">handle</span><span class="o">-&gt;</span><span class="n">toHost</span><span class="p">.</span><span class="n">doTransmitImpl</span><span class="p">(</span><span class="n">byteBuffer</span><span class="p">,</span><span class="w"> </span><span class="n">txBytes</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">EIO</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">EAGAIN</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">TransportTx_TxAccelerationBuffer</span><span class="p">(</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Acceleration</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span>
+<span class="w">    </span><span class="o">//</span><span class="w"> </span><span class="n">NOLINTNEXTLINE</span><span class="p">(</span><span class="n">bugprone</span><span class="o">-</span><span class="n">easily</span><span class="o">-</span><span class="n">swappable</span><span class="o">-</span><span class="n">parameters</span><span class="p">)</span>
+<span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">firstIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER_BYTES</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// transmit pending data</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">transmitAccelerationBuffered</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// packed buffer containing: Transport_Header + TransportTx_Acceleration</span>
+<span class="w">  </span><span class="kt">uint8_t</span>
+<span class="w">      </span><span class="n">byteBuffer</span><span class="p">[</span><span class="n">TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER_BYTES</span><span class="w"> </span><span class="o">*</span>
+<span class="w">                 </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_Acceleration</span><span class="p">)];</span>
+
+<span class="w">  </span><span class="c1">// pack a copy of samples inclusive sequence numbering</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">count</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sizeofItem</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">SIZEOF_HEADER_INCL_PAYLOAD</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_Acceleration</span><span class="p">)};</span>
+
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="o">*</span><span class="n">frame</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="o">&amp;</span><span class="n">byteBuffer</span><span class="p">[(</span><span class="kt">uint16_t</span><span class="p">)(</span><span class="n">idx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sizeofItem</span><span class="p">)]};</span>
+
+<span class="w">    </span><span class="n">frame</span><span class="o">-&gt;</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asAcceleration</span><span class="p">.</span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">firstIndex</span><span class="o">++</span><span class="p">;</span>
+<span class="w">    </span><span class="n">frame</span><span class="o">-&gt;</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asAcceleration</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="n">frame</span><span class="o">-&gt;</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asAcceleration</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">frame</span><span class="o">-&gt;</span><span class="n">asTxFrame</span><span class="p">.</span><span class="n">asAcceleration</span><span class="p">.</span><span class="n">values</span><span class="p">.</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">idx</span><span class="p">].</span><span class="n">z</span><span class="p">;</span>
+<span class="w">    </span><span class="n">frame</span><span class="o">-&gt;</span><span class="n">header</span><span class="p">.</span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Transport_HeaderId_Tx_Acceleration</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">transmitAccelerationBuffered</span><span class="p">(</span>
+<span class="w">      </span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">byteBuffer</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

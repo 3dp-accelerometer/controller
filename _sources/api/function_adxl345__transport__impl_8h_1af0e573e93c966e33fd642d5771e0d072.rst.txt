@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345__transport__impl_8h_1af0e573e93c966e33fd642d5771e0d072:
+
+Function Adxl345TransportImpl_doTransmitReceiveFrameImpl(const union Adxl345Transport_TxFrame \*, union Adxl345Transport_RxFrame \*, uint8_t)
+=============================================================================================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_adxl345_transport_impl.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Adxl345TransportImpl_doTransmitReceiveFrameImpl(const union Adxl345Transport_TxFrame *, union Adxl345Transport_RxFrame *, uint8_t)
+   :project: My Proj

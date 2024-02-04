@@ -1,0 +1,14 @@
+.. _exhale_function_to__host__transport_8h_1adb072a78e3865c691623afadd15c31f3:
+
+Function TransportTx_TxBufferStatus(struct HostTransport_Handle \*, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t)
+===============================================================================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TransportTx_TxBufferStatus(struct HostTransport_Handle *, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t)
+   :project: My Proj

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Define ADXL345_HANDLE_INITIALIZER &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Define ADXL345_WATERMARK_LEVEL" href="define_adxl345_8h_1a1a3b84c4d742fe051f12eb8e9d7db58c.html" />
+    <link rel="prev" title="Define ADXL345_FIFO_ENTRIES" href="define_adxl345_8h_1a593282de5e819f216c6bec6abbdc8c3a.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="library_root.html">Library API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="library_root.html#full-api">Full API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#classes-and-structs">Classes and Structs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#enums">Enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#unions">Unions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#variables">Variables</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="library_root.html#defines">Defines</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="define_adxl345_8h_1a593282de5e819f216c6bec6abbdc8c3a.html">Define ADXL345_FIFO_ENTRIES</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Define ADXL345_HANDLE_INITIALIZER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_adxl345_8h_1a1a3b84c4d742fe051f12eb8e9d7db58c.html">Define ADXL345_WATERMARK_LEVEL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_test_8c_1a31e7ef6ab3db961f1691a459e3c9718a.html">Define DECLARE_BUFFER_CAPACITY1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_test_8c_1a1c97847f645d2639ee866c7565da562d.html">Define DECLARE_BUFFER_CAPACITY3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_test_8c_1a2f3ded3810aad4f1117ac7aac095feda.html">Define DECLARE_BUFFER_CAPACITY65535</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_controller__impl_8c_1a2da97cdb974bd8ee7a33fe39e255feb1.html">Define HOSTTRANSPORT_DECLARE_INITIALIZER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_controller__impl_8c_1ad8047974c1ca16e65db118ef91ebfc7e.html">Define MYSTRINGIZE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_controller__impl_8c_1ab0975b1538786e46b8e4b5fa869e7fcd.html">Define MYSTRINGIZE0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_ringbuffer__impl_8h_1a1973b18f985517b2dd4328bb7ad4ab62.html">Define RINGBUFFER_DECLARE_INITIALIZER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_ringbuffer__impl_8h_1a7b169c21c38fba69b8b43ef5d9ca47bb.html">Define RINGBUFFER_INDEX_INITIALIZER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_ringbuffer__impl_8h_1ab678e1a5f5ebc9c4d79a2115a2bca497.html">Define RINGBUFFER_INITIALIZER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_ringbuffer__impl_8h_1a018e3f6206f28db535e27ce850a65cb3.html">Define RINGBUFFER_STORAGE_ITEM_SIZE_BYTES</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_ringbuffer__impl_8h_1a466d94c34710afcd889fc18809cf96c0.html">Define RINGBUFFER_STORAGE_SIZE_BYTES</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_controller__impl_8c_1ab1832f23d06d7eadbdb5e9370e4454a5.html">Define SAMPLING_DECLARE_INITIALIZER</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_sampling__types_8h_1a6f7f6b56470de805df7b77526191beba.html">Define SAMPLING_NUM_SAMPLES_READ_AT_ONCE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_host__transport__types_8h_1abc3544aae2ae0f78650ee7c49ed2c83e.html">Define SIZEOF_HEADER_INCL_PAYLOAD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_to__host__transport_8h_1a88f66998421f186a13c59a27c011e76f.html">Define TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER_BYTES</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_host__transport_8h_1a52448fbad12ce1c5f682a6bce5141d49.html">Define TRANSPORTTX_TRANSMIT_TX_DATA_CHUNK_BUFFER_BYTES</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_unity__config_8h_1a1ef6780dec5ea37eea810e22e1a4c632.html">Define UNITY_INCLUDE_EXEC_TIME</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_debug_8h_1a72ec92f727e507f8ed89b2496451f25b.html">Define USER_DEBUG0_HIGH</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_debug_8h_1a236cbb0238bec6b69565a156e8c3ad53.html">Define USER_DEBUG0_LOW</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_debug_8h_1a80d1d47668a4caa45de6559e1970b397.html">Define USER_DEBUG0_TOGGLE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_debug_8h_1add553479c72b1bad9cdb870d84a81aa1.html">Define USER_DEBUG1_HIGH</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_debug_8h_1a7d82fab60f7c4d9259508ddeefe6860f.html">Define USER_DEBUG1_LOW</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_debug_8h_1a646e5c6a686c1e4cc559a7cc68bc005d.html">Define USER_DEBUG1_TOGGLE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_led_8h_1a948ea3bd7e3719f0a67d06fc396cd260.html">Define USER_LED0_OFF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_led_8h_1ab9762c7920a3a458f5281a9c8513e9b8.html">Define USER_LED0_ON</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_led_8h_1afbf9ff806df4edcc06b11991c7353cfc.html">Define USER_LED0_TOGGLE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_version_8h_1a1c6d5de492ac61ad29aec7aa9a436bbf.html">Define VERSION</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_version_8h_1a1a53b724b6de666faa8a9e0d06d1055f.html">Define VERSION_MAJOR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_version_8h_1ae0cb52afb79b185b1bf82c7e235f682b.html">Define VERSION_MINOR</a></li>
+<li class="toctree-l4"><a class="reference internal" href="define_version_8h_1a901edadf17488bb6be1ac9a1e3cfea7a.html">Define VERSION_PATCH</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library_root.html">Library API</a></li>
+      <li class="breadcrumb-item active">Define ADXL345_HANDLE_INITIALIZER</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="define-adxl345-handle-initializer">
+<span id="exhale-define-adxl345-transport-impl-8h-1acdec8c760a17d588444cd50899420e75"></span><h1>Define ADXL345_HANDLE_INITIALIZER<a class="headerlink" href="#define-adxl345-handle-initializer" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_adxl345_transport_impl.h.html#file-home-runner-work-controller-controller-inc-fw-adxl345-transport-impl-h"><span class="std std-ref">File adxl345_transport_impl.h</span></a></p></li>
+</ul>
+<section id="define-documentation">
+<h2>Define Documentation<a class="headerlink" href="#define-documentation" title="Link to this heading"></a></h2>
+<dl class="cpp macro">
+<dt class="sig sig-object cpp" id="c.ADXL345_HANDLE_INITIALIZER">
+<span class="target" id="adxl345__transport__impl_8h_1acdec8c760a17d588444cd50899420e75"></span><span class="sig-name descname"><span class="n"><span class="pre">ADXL345_HANDLE_INITIALIZER</span></span></span><a class="headerlink" href="#c.ADXL345_HANDLE_INITIALIZER" title="Link to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

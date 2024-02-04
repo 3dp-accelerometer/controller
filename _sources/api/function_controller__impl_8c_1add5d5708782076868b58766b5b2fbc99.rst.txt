@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1add5d5708782076868b58766b5b2fbc99:
+
+Function sampling_onSamplingStartedCb
+=====================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: sampling_onSamplingStartedCb()
+   :project: My Proj

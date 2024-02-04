@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File controller_impl.c &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File controller_impl.c</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-controller-impl-c">
+<span id="program-listing-file-home-runner-work-controller-controller-src-fw-controller-impl-c"></span><h1>Program Listing for File controller_impl.c<a class="headerlink" href="#program-listing-for-file-controller-impl-c" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file__home_runner_work_controller_controller_Src_fw_controller_impl.c.html#file-home-runner-work-controller-controller-src-fw-controller-impl-c"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/Src/fw/controller_impl.c</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * \file device_impl.c</span>
+<span class="cm"> *</span>
+<span class="cm"> * Implements hardware specific controller implementation API.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fw/adxl345_transport_impl.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fw/host_transport_impl.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fw/led.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fw/ringbuffer_impl.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fw/sampling_impl.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;fw/version.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;main.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;adxl345.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;adxl345_flags.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;adxl345_transport_types.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;controller.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;errno.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;from_host_transport.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;host_transport_types.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sampling.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sampling_types.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stm32f4xx_hal.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;to_host_transport.h&gt;</span>
+
+<span class="cp">#define MYSTRINGIZE0(A) #A</span>
+<span class="cp">#define MYSTRINGIZE(A) MYSTRINGIZE0(A)</span>
+
+<span class="c1">// clang-format off</span>
+
+<span class="c1">// NOLINTNEXTLINE(readability-redundant-declaration)</span>
+<span class="k">static_assert</span><span class="p">(</span>
+<span class="w">  </span><span class="n">SAMPLING_NUM_SAMPLES_READ_AT_ONCE</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">ADXL345_WATERMARK_LEVEL</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&quot;ERROR: maximum allowed read-at-once buffer: &quot;</span>
+<span class="w">  </span><span class="n">MYSTRINGIZE</span><span class="p">(</span><span class="w"> </span><span class="n">ADXL345_WATERMARK_LEVEL</span><span class="p">));</span>
+
+<span class="c1">// NOLINTNEXTLINE(readability-redundant-declaration)</span>
+<span class="k">static_assert</span><span class="p">(</span>
+<span class="w">  </span><span class="n">TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER_BYTES</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ADXL345_WATERMARK_LEVEL</span><span class="p">,</span>
+<span class="w">  </span><span class="s">&quot;ERROR: TransportTx transmit buffer and ADXL345 watermark level must be same: &quot;</span>
+<span class="w">  </span><span class="n">MYSTRINGIZE</span><span class="p">(</span><span class="n">TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER_BYTES</span><span class="p">)</span><span class="w"> </span><span class="s">&quot; vs. &quot;</span>
+<span class="w">  </span><span class="n">MYSTRINGIZE</span><span class="p">(</span><span class="n">ADXL345_WATERMARK_LEVEL</span><span class="p">));</span>
+
+<span class="c1">// clang-format on</span>
+
+<span class="cp">#undef MYSTRINGIZE</span>
+<span class="cp">#undef MYSTRINGIZE0</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Controller public API implementation.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @{</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ControllerImpl_init</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ControllerImpl_loop</span><span class="p">();</span>
+<span class="c1">/// @}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Device specific controller implementation.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @{</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ControllerImpl_device_checkReboot</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ControllerImpl_device_requestAsyncReboot</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ControllerImpl_transmitPendingResponses</span><span class="p">();</span>
+<span class="c1">/// @}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Device specific controller implementation for host communication.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @{</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_doTakeBytes</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestGetFirmwareVersion</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_responseGetFirmwareVersion</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestGetOutputDataRate</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_responseGetOutputDataRate</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span>
+<span class="nf">host_onRequestSetOutputDatatRate</span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetOutputDataRate_Rate</span><span class="w"> </span><span class="n">odr</span><span class="p">);</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestGetRange</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_responseGetRange</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">host_onRequestSetRange</span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetRange_Range</span><span class="w"> </span><span class="n">range</span><span class="p">);</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestGetScale</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_responseGetScale</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">host_onRequestSetScale</span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetScale_Scale</span><span class="w"> </span><span class="n">scale</span><span class="p">);</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestGetDeviceSetup</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_responseGetDeviceSetup</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestSamplingStart</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">maxSamplesCount</span><span class="p">);</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestSamplingStop</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestGetUptime</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_responseGetUptime</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestGetBufferStatus</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_responseGetBufferStatus</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_onTransmissionErrorCb</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_responseTransmissionError</span><span class="p">();</span>
+<span class="c1">/// @}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Device specific controller implementation for acceleration sensor</span>
+<span class="cm"> * manipulation.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @{</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sensor_doInitImpl</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sensor_doGetOutputDataRateImpl</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">odr</span><span class="p">);</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sensor_doGetScaleImpl</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">scale</span><span class="p">);</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sensor_doGetRangeImpl</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">range</span><span class="p">);</span>
+<span class="c1">/// @}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Device specific controller implementation for the sampling module.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @{</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_setFifoWatermark</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_clearFifoWatermark</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_setFifoOverflow</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_on5usTimerExpired</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_onSamplingStartedCb</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_onSamplingStoppedCb</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_responseSamplingStopped</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_onSamplingAbortedCb</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_responseSamplingAborted</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_onSamplingFinishedCb</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_responseSamplingFinished</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sampling_doForwardAccelerationBufferImpl</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Sampling_Acceleration</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">bufferLen</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">firstIndex</span><span class="p">);</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_onFifoOverflowCb</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_responseFifoOverflow</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_onBufferOverflowCb</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_responseBufferOverflow</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_doEnableSensorImpl</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_doDisableSensorImpl</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span>
+<span class="nf">sampling_doFetchSensorAccelerationImpl</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Sampling_Acceleration</span><span class="w"> </span><span class="o">*</span><span class="n">sample</span><span class="p">);</span>
+<span class="c1">/// @}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Device specific controller implementation for fault handlers.</span>
+<span class="cm"> * @{</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">fault_onNmiFaultHandler</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">fault_onUsageFaultHandler</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">fault_onBusFaultHandler</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">fault_onHardFaultHandler</span><span class="p">();</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">fault_onErrorHandler</span><span class="p">();</span>
+<span class="c1">/// @}</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Transport_ResponseFlags</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">host_responseGetFirmwareVersion</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">host_responseGetOutputDataRate</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">host_responseGetRange</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">host_responseGetScale</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">host_responseGetDeviceSetup</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">host_responseGetUptime</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">host_responseGetBufferStatus</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sampling_responseSamplingStopped</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sampling_responseSamplingAborted</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sampling_responseSamplingFinished</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sampling_responseFifoOverflow</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sampling_responseBufferOverflow</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sampling_responseTransmissionError</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">_reserved_0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">_reserved_1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="c1">// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)</span>
+<span class="k">volatile</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Transport_ResponseFlags</span><span class="w"> </span><span class="n">pendingResponses</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+<span class="cp">#define SAMPLING_DECLARE_INITIALIZER                                           \</span>
+<span class="cp">  {                                                                            \</span>
+<span class="cp">    .state = {.maxSamples = 0,                                                 \</span>
+<span class="cp">              .doStart = false,                                                \</span>
+<span class="cp">              .doStop = false,                                                 \</span>
+<span class="cp">              .isStarted = false,                                              \</span>
+<span class="cp">              .waitFor5usTimer = false,                                        \</span>
+<span class="cp">              .rxBuffer = {{.x = 0, .y = 0, .z = 0}},                          \</span>
+<span class="cp">              .isFifoOverflowSet = false,                                      \</span>
+<span class="cp">              .isFifoWatermarkSet = false,                                     \</span>
+<span class="cp">              .transactionsCount = 0},                                         \</span>
+<span class="cp">                                                                               \</span>
+<span class="cp">    .doEnableSensorImpl = sampling_doEnableSensorImpl,                         \</span>
+<span class="cp">    .doDisableSensorImpl = sampling_doDisableSensorImpl,                       \</span>
+<span class="cp">    .doFetchSensorAccelerationImpl = sampling_doFetchSensorAccelerationImpl,   \</span>
+<span class="cp">    .doWaitDelay5usImpl = SamplingImpl_doWaitDelay5usImpl,                     \</span>
+<span class="cp">    .doForwardAccelerationBufferImpl =                                         \</span>
+<span class="cp">        sampling_doForwardAccelerationBufferImpl,                              \</span>
+<span class="cp">                                                                               \</span>
+<span class="cp">    .onSamplingStartedCb = sampling_onSamplingStartedCb,                       \</span>
+<span class="cp">    .onSamplingStoppedCb = sampling_onSamplingStoppedCb,                       \</span>
+<span class="cp">    .onSamplingAbortedCb = sampling_onSamplingAbortedCb,                       \</span>
+<span class="cp">    .onSamplingFinishedCb = sampling_onSamplingFinishedCb,                     \</span>
+<span class="cp">    .onFifoOverflowCb = sampling_onFifoOverflowCb,                             \</span>
+<span class="cp">    .onBufferOverflowCb = sampling_onBufferOverflowCb,                         \</span>
+<span class="cp">    .onTransmissionErrorCb = sampling_onTransmissionErrorCb,                   \</span>
+<span class="cp">  }</span>
+
+<span class="cp">#define HOSTTRANSPORT_DECLARE_INITIALIZER                                      \</span>
+<span class="cp">  {                                                                            \</span>
+<span class="cp">    .fromHost = {.doTakeReceivedPacketImpl =                                   \</span>
+<span class="cp">                     HostTransportImpl_onTakeReceivedImpl},                    \</span>
+<span class="cp">    .toHost = {                                                                \</span>
+<span class="cp">      .ringbuffer = RINGBUFFER_DECLARE_INITIALIZER,                            \</span>
+<span class="cp">      .largestTxChunkBytes = 0,                                                \</span>
+<span class="cp">      .doTransmitImpl = HostTransportImpl_doTransmitImpl,                      \</span>
+<span class="cp">      .isTransmitBusyImpl = HostTransportImpl_isTransmitBusyImpl,              \</span>
+<span class="cp">    }                                                                          \</span>
+<span class="cp">  }</span>
+
+<span class="c1">// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Controller_Handle</span><span class="w"> </span><span class="n">controllerHandle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="n">sensor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{.</span><span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADXL345_HANDLE_INITIALIZER</span><span class="p">,</span><span class="w"> </span><span class="p">.</span><span class="n">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensor_doInitImpl</span><span class="p">},</span>
+
+<span class="w">    </span><span class="p">.</span><span class="n">sampling</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="p">.</span><span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SAMPLING_DECLARE_INITIALIZER</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">doSetFifoWatermark</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sampling_setFifoWatermark</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">doClearFifoWatermark</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sampling_clearFifoWatermark</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">doSetFifoOverflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sampling_setFifoOverflow</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">doSet5usTimerExpired</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sampling_on5usTimerExpired</span><span class="p">,</span>
+
+<span class="w">        </span><span class="p">},</span>
+
+<span class="w">    </span><span class="p">.</span><span class="n">host</span><span class="w"> </span><span class="o">=</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="p">.</span><span class="n">handle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HOSTTRANSPORT_DECLARE_INITIALIZER</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">doTakeBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host_doTakeBytes</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">onRequestGetFirmwareVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host_onRequestGetFirmwareVersion</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">onRequestGetOutputDataRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host_onRequestGetOutputDataRate</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">onRequestSetOutputDatatRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host_onRequestSetOutputDatatRate</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">onRequestGetRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host_onRequestGetRange</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">onRequestSetRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host_onRequestSetRange</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">onRequestGetScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host_onRequestGetScale</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">onRequestSetScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host_onRequestSetScale</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">onRequestGetDeviceSetup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host_onRequestGetDeviceSetup</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">onRequestSamplingStart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host_onRequestSamplingStart</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">onRequestSamplingStop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host_onRequestSamplingStop</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">onRequestUptime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host_onRequestGetUptime</span><span class="p">,</span>
+<span class="w">            </span><span class="p">.</span><span class="n">onRequestBufferStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">host_onRequestGetBufferStatus</span><span class="p">,</span>
+<span class="w">        </span><span class="p">},</span>
+
+<span class="w">    </span><span class="p">.</span><span class="n">init</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ControllerImpl_init</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">loop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ControllerImpl_loop</span><span class="p">,</span>
+
+<span class="w">    </span><span class="p">.</span><span class="n">requestReboot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ControllerImpl_device_requestAsyncReboot</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fault_onNmiFaultHandler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fault_onNmiFaultHandler</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fault_onUsageFaultHandler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fault_onUsageFaultHandler</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fault_onBusFaultHandler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fault_onBusFaultHandler</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fault_onHardFaultHandler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fault_onHardFaultHandler</span><span class="p">,</span>
+<span class="w">    </span><span class="p">.</span><span class="n">fault_onErrorHandler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fault_onErrorHandler</span><span class="p">,</span>
+<span class="p">};</span>
+
+<span class="cm">/* Device ------------------------------------------------------------------- */</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Flag indicating a device reboot was requested.</span>
+<span class="cm"> *</span>
+<span class="cm"> * \see ControllerImpl_device_requestAsyncReboot()</span>
+<span class="cm"> *</span>
+<span class="cm"> * @{</span>
+<span class="cm"> */</span>
+<span class="c1">// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">rebootRequested</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="c1">/// @}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">ControllerImpl_init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sensor</span><span class="p">.</span><span class="n">init</span><span class="p">();</span><span class="w"> </span><span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">ControllerImpl_loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">Sampling_fetchForward</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sampling</span><span class="p">.</span><span class="n">handle</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="o">-</span><span class="no">ECANCELED</span><span class="p">:</span><span class="w"> </span><span class="c1">// NOLINT(bugprone-branch-clone)</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="o">-</span><span class="no">EOVERFLOW</span><span class="p">:</span><span class="w"> </span><span class="c1">// NOLINT(bugprone-branch-clone)</span>
+<span class="w">    </span><span class="n">USER_LED0_ON</span><span class="p">;</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="no">ENODATA</span><span class="p">:</span>
+<span class="w">    </span><span class="n">USER_LED0_OFF</span><span class="p">;</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">  </span><span class="k">default</span><span class="o">:</span>
+<span class="w">    </span><span class="k">break</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="n">ControllerImpl_device_checkReboot</span><span class="p">();</span>
+<span class="w">  </span><span class="n">ControllerImpl_transmitPendingResponses</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">ControllerImpl_device_checkReboot</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rebootRequested</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">NVIC_SystemReset</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">ControllerImpl_device_requestAsyncReboot</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">rebootRequested</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Decouples possible interrupt context from execution which is performed in</span>
+<span class="cm"> * in main() context.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Example: each user request, handled in ISR, sets a flag so that the</span>
+<span class="cm"> * it can be handled later in context of main().</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ControllerImpl_transmitPendingResponses</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetFirmwareVersion</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetFirmwareVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">host_responseGetFirmwareVersion</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetOutputDataRate</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetOutputDataRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">host_responseGetOutputDataRate</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetRange</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">host_responseGetRange</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetScale</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">host_responseGetScale</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetDeviceSetup</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetDeviceSetup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">host_responseGetDeviceSetup</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetUptime</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetUptime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">host_responseGetUptime</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetBufferStatus</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetBufferStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">host_responseGetBufferStatus</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseSamplingStopped</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseSamplingStopped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sampling_responseSamplingStopped</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseSamplingAborted</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseSamplingAborted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sampling_responseSamplingAborted</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseSamplingFinished</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseSamplingFinished</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sampling_responseSamplingFinished</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseFifoOverflow</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseFifoOverflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sampling_responseFifoOverflow</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseBufferOverflow</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseBufferOverflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sampling_responseBufferOverflow</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseTransmissionError</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseTransmissionError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sampling_responseTransmissionError</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// note: avoid memset to clear flags of this struct due un-alignment issue</span>
+<span class="p">}</span>
+
+<span class="cm">/* Host RX data ------------------------------------------------------------- */</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Handles incoming bytes (unfragmented data packet).</span>
+<span class="cm"> *</span>
+<span class="cm"> * Calls generic TransportRx_Process(uint8_t *buffer, uint16_t length)</span>
+<span class="cm"> * implementation which performs basic checks only. Further</span>
+<span class="cm"> * processing/dispatching is delegated to the respective pimpl. \see</span>
+<span class="cm"> * host_transport_impl.h</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param buffer received byte buffer (must not be fragmented)</span>
+<span class="cm"> * @param len received data length</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_doTakeBytes</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportRx_Process</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestGetFirmwareVersion</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetFirmwareVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_responseGetFirmwareVersion</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportTx_TxFirmwareVersion</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">VERSION_MAJOR</span><span class="p">,</span>
+<span class="w">                                </span><span class="n">VERSION_MINOR</span><span class="p">,</span><span class="w"> </span><span class="n">VERSION_PATCH</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestGetOutputDataRate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetOutputDataRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_responseGetOutputDataRate</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">odr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">  </span><span class="n">sensor_doGetOutputDataRateImpl</span><span class="p">(</span><span class="o">&amp;</span><span class="n">odr</span><span class="p">);</span>
+<span class="w">  </span><span class="n">TransportTx_TxOutputDataRate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">odr</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span>
+<span class="nf">host_onRequestSetOutputDatatRate</span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetOutputDataRate_Rate</span><span class="w"> </span><span class="n">odr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">Adxl345_setOutputDataRate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sensor</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">odr</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestGetRange</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_responseGetRange</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">  </span><span class="n">sensor_doGetRangeImpl</span><span class="p">(</span><span class="o">&amp;</span><span class="n">range</span><span class="p">);</span>
+<span class="w">  </span><span class="n">TransportTx_TxRange</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">range</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">host_onRequestSetRange</span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetRange_Range</span><span class="w"> </span><span class="n">range</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">Adxl345_setRange</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sensor</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">range</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestGetScale</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_responseGetScale</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">  </span><span class="n">sensor_doGetScaleImpl</span><span class="p">(</span><span class="o">&amp;</span><span class="n">scale</span><span class="p">);</span>
+<span class="w">  </span><span class="n">TransportTx_TxScale</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">host_onRequestSetScale</span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetScale_Scale</span><span class="w"> </span><span class="n">scale</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">Adxl345_setScale</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sensor</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestGetDeviceSetup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetDeviceSetup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_responseGetDeviceSetup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">odr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+
+<span class="w">  </span><span class="n">sensor_doGetOutputDataRateImpl</span><span class="p">(</span><span class="o">&amp;</span><span class="n">odr</span><span class="p">);</span>
+<span class="w">  </span><span class="n">sensor_doGetScaleImpl</span><span class="p">(</span><span class="o">&amp;</span><span class="n">scale</span><span class="p">);</span>
+<span class="w">  </span><span class="n">sensor_doGetRangeImpl</span><span class="p">(</span><span class="o">&amp;</span><span class="n">range</span><span class="p">);</span>
+
+<span class="w">  </span><span class="n">TransportTx_TxSamplingSetup</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">odr</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="p">,</span><span class="w"> </span><span class="n">range</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestSamplingStart</span><span class="p">(</span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">maxSamplesCount</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Sampling_start</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sampling</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">maxSamplesCount</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestSamplingStop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Sampling_stop</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sampling</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestGetUptime</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetUptime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_responseGetUptime</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportTx_TxUptime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">HAL_GetTick</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_onRequestGetBufferStatus</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetBufferStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">host_responseGetBufferStatus</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportTx_TxBufferStatus</span><span class="p">(</span>
+<span class="w">      </span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">RINGBUFFER_STORAGE_SIZE_BYTES</span><span class="p">,</span>
+<span class="w">      </span><span class="n">RINGBUFFER_STORAGE_ITEMS</span><span class="p">,</span>
+<span class="w">      </span><span class="n">Ringbuffer_maxCapacityUsed</span><span class="p">(</span>
+<span class="w">          </span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">.</span><span class="n">toHost</span><span class="p">.</span><span class="n">ringbuffer</span><span class="p">),</span>
+<span class="w">      </span><span class="n">Ringbuffer_putCount</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">.</span><span class="n">toHost</span><span class="p">.</span><span class="n">ringbuffer</span><span class="p">),</span>
+<span class="w">      </span><span class="n">Ringbuffer_takeCount</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">.</span><span class="n">toHost</span><span class="p">.</span><span class="n">ringbuffer</span><span class="p">),</span>
+<span class="w">      </span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">.</span><span class="n">toHost</span><span class="p">.</span><span class="n">largestTxChunkBytes</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* Sensor ------------------------------------------------------------------- */</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sensor_doInitImpl</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sensor</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sensor_doGetOutputDataRateImpl</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">odr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_BwRate_Rate</span><span class="w"> </span><span class="n">adxlOdr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="n">Adxl345_getOutputDataRate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sensor</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adxlOdr</span><span class="p">);</span>
+<span class="w">  </span><span class="o">*</span><span class="n">odr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adxlOdr</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sensor_doGetScaleImpl</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">scale</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_FullResBit</span><span class="w"> </span><span class="n">adxlScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Adxl345_getScale</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sensor</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adxlScale</span><span class="p">);</span>
+<span class="w">  </span><span class="o">*</span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adxlScale</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sensor_doGetRangeImpl</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">range</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_Range</span><span class="w"> </span><span class="n">adxlRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Adxl345_getRange</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sensor</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">adxlRange</span><span class="p">);</span>
+<span class="w">  </span><span class="o">*</span><span class="n">range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adxlRange</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_setFifoWatermark</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Sampling_setFifoWatermark</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sampling</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_clearFifoWatermark</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Sampling_clearFifoWatermark</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sampling</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_setFifoOverflow</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Sampling_setFifoOverflow</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sampling</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_on5usTimerExpired</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Sampling_on5usTimerExpired</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sampling</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_onSamplingStartedCb</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Transport_resetBuffer</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="w">  </span><span class="n">TransportTx_TxSamplingStarted</span><span class="p">(</span>
+<span class="w">      </span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">      </span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sampling</span><span class="p">.</span><span class="n">handle</span><span class="p">.</span><span class="n">state</span><span class="p">.</span><span class="n">maxSamples</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_onSamplingStoppedCb</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseSamplingStopped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_responseSamplingStopped</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">host_responseGetFirmwareVersion</span><span class="p">();</span>
+<span class="w">  </span><span class="n">host_responseGetBufferStatus</span><span class="p">();</span>
+<span class="w">  </span><span class="n">host_responseGetDeviceSetup</span><span class="p">();</span>
+<span class="w">  </span><span class="n">TransportTx_TxSamplingStopped</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_onSamplingAbortedCb</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseSamplingAborted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_responseSamplingAborted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportTx_TxSamplingAborted</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_onSamplingFinishedCb</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseSamplingFinished</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_responseSamplingFinished</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportTx_TxSamplingFinished</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">sampling_doForwardAccelerationBufferImpl</span><span class="p">(</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Sampling_Acceleration</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">bufferLen</span><span class="p">,</span>
+<span class="w">    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">firstIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">  </span><span class="c1">// ugly c-style type conversion in favour of no dependency in between</span>
+<span class="w">  </span><span class="c1">// transport-module and sampling-module</span>
+
+<span class="w">  </span><span class="k">static_assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Sampling_Acceleration</span><span class="p">)</span><span class="w"> </span><span class="o">==</span>
+<span class="w">                    </span><span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Acceleration</span><span class="p">),</span>
+<span class="w">                </span><span class="s">&quot;ERROR: acceleration structs must match in size!&quot;</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">TransportTx_TxAccelerationBuffer</span><span class="p">(</span>
+<span class="w">      </span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">      </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Acceleration</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">bufferLen</span><span class="p">,</span><span class="w"> </span><span class="n">firstIndex</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_onFifoOverflowCb</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseFifoOverflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_responseFifoOverflow</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportTx_TxFifoOverflow</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_onBufferOverflowCb</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">host_responseGetBufferStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_responseBufferOverflow</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportTx_TxBufferOverflow</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_onTransmissionErrorCb</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">pendingResponses</span><span class="p">.</span><span class="n">sampling_responseTransmissionError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_responseTransmissionError</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportTx_TxTransmissionError</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_doEnableSensorImpl</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345_setPowerCtlMeasure</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sensor</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">sampling_doDisableSensorImpl</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345_setPowerCtlStandby</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sensor</span><span class="p">.</span><span class="n">handle</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span>
+<span class="nf">sampling_doFetchSensorAccelerationImpl</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Sampling_Acceleration</span><span class="w"> </span><span class="o">*</span><span class="n">sample</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345Transport_Acceleration</span><span class="w"> </span><span class="n">sensorSample</span><span class="p">;</span>
+<span class="w">  </span><span class="n">Adxl345_getAcceleration</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">sensor</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">sensorSample</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">NULL</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">sample</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">sample</span><span class="o">-&gt;</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorSample</span><span class="p">.</span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sample</span><span class="o">-&gt;</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorSample</span><span class="p">.</span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="n">sample</span><span class="o">-&gt;</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sensorSample</span><span class="p">.</span><span class="n">z</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">fault_onNmiFaultHandler</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportTx_TxFault</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                      </span><span class="n">TransportTx_FaultCode_NmiHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">fault_onUsageFaultHandler</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportTx_TxFault</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                      </span><span class="n">TransportTx_FaultCode_UsageFaultHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">fault_onBusFaultHandler</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportTx_TxFault</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                      </span><span class="n">TransportTx_FaultCode_BusFaultHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">fault_onHardFaultHandler</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">USER_LED0_ON</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// most likely usb will not transmit anything while in hard-fault handler</span>
+<span class="w">  </span><span class="n">TransportTx_TxFault</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                      </span><span class="n">TransportTx_FaultCode_HardFaultHandler</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">fault_onErrorHandler</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportTx_TxFault</span><span class="p">(</span><span class="o">&amp;</span><span class="n">controllerHandle</span><span class="p">.</span><span class="n">host</span><span class="p">.</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                      </span><span class="n">TransportTx_FaultCode_ErrorHandler</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

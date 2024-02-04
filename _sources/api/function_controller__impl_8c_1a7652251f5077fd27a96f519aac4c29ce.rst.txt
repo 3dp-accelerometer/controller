@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a7652251f5077fd27a96f519aac4c29ce:
+
+Function host_onRequestSamplingStart
+====================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: host_onRequestSamplingStart()
+   :project: My Proj

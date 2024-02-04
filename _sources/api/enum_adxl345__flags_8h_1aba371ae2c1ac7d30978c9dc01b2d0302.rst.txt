@@ -1,0 +1,14 @@
+.. _exhale_enum_adxl345__flags_8h_1aba371ae2c1ac7d30978c9dc01b2d0302:
+
+Enum Adxl345Flags_IntEnable_SingleTap
+=====================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: Adxl345Flags_IntEnable_SingleTap
+   :project: My Proj

@@ -1,0 +1,14 @@
+.. _exhale_function_sampling_8c_1ab1af2cb7e7cc632823338b6428c912d9:
+
+Function Sampling_start(struct Sampling_Handle \*, uint16_t)
+============================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Sampling_start(struct Sampling_Handle *, uint16_t)
+   :project: My Proj

@@ -1,0 +1,14 @@
+.. _exhale_function_ringbuffer_8c_1a0ce8c6dc9462bb767de1ee11f8594ada:
+
+Function Ringbuffer_reset(struct Ringbuffer \*)
+===============================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Ringbuffer_reset(struct Ringbuffer *)
+   :project: My Proj

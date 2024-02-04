@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File adxl345.h &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File adxl345.h</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-adxl345-h">
+<span id="file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-h"></span><h1>File adxl345.h<a class="headerlink" href="#file-adxl345-h" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="dir__home_runner_work_controller_controller_lib_adxl345_src.html#dir-home-runner-work-controller-controller-lib-adxl345-src"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/adxl345/src</span></code>)</p>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-home-runner-work-controller-controller-lib-adxl345-src-adxl345-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/adxl345/src/adxl345.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id2">Detailed Description</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id3">Includes</a></p></li>
+<li><p><a class="reference internal" href="#included-by" id="id4">Included By</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id5">Classes</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id6">Functions</a></p></li>
+<li><p><a class="reference internal" href="#defines" id="id7">Defines</a></p></li>
+</ul>
+</nav>
+<section id="definition-home-runner-work-controller-controller-lib-adxl345-src-adxl345-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/adxl345/src/adxl345.h</span></code>)<a class="headerlink" href="#definition-home-runner-work-controller-controller-lib-adxl345-src-adxl345-h" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h.html">Program Listing for File adxl345.h</a></li>
+</ul>
+</div>
+</section>
+<section id="detailed-description">
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Link to this heading"></a></h2>
+<p>Implementation for manipulating the ADXL345 accelerometer sensor.</p>
+<p>API for manipulating the ADXL345 accelerometer sensor.</p>
+</section>
+<section id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">assert.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inttypes.h</span></code></p></li>
+</ul>
+</section>
+<section id="included-by">
+<h2>Included By<a class="headerlink" href="#included-by" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c.html#file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-c"><span class="std std-ref">File adxl345.c</span></a></p></li>
+<li><p><a class="reference internal" href="file__home_runner_work_controller_controller_lib_controller_src_controller.h.html#file-home-runner-work-controller-controller-lib-controller-src-controller-h"><span class="std std-ref">File controller.h</span></a></p></li>
+<li><p><a class="reference internal" href="file__home_runner_work_controller_controller_lib_sampling_src_sampling_types.h.html#file-home-runner-work-controller-controller-lib-sampling-src-sampling-types-h"><span class="std std-ref">File sampling_types.h</span></a></p></li>
+<li><p><a class="reference internal" href="file__home_runner_work_controller_controller_Src_fw_controller_impl.c.html#file-home-runner-work-controller-controller-src-fw-controller-impl-c"><span class="std std-ref">File controller_impl.c</span></a></p></li>
+</ul>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="structAdxl345__Handle.html#exhale-struct-structadxl345-handle"><span class="std std-ref">Struct Adxl345_Handle</span></a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_adxl345_8h_1a5605a71e07edcc370b027a668f393615.html#exhale-function-adxl345-8h-1a5605a71e07edcc370b027a668f393615"><span class="std std-ref">Function Adxl345_getAcceleration(struct Adxl345_Handle *, struct Adxl345Transport_Acceleration *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_adxl345_8h_1af238689828fad86568f32caac567fc01.html#exhale-function-adxl345-8h-1af238689828fad86568f32caac567fc01"><span class="std std-ref">Function Adxl345_getOutputDataRate(struct Adxl345_Handle *, enum Adxl345Flags_BwRate_Rate *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_adxl345_8h_1a67d00841116cfecf53a7ca6352209df4.html#exhale-function-adxl345-8h-1a67d00841116cfecf53a7ca6352209df4"><span class="std std-ref">Function Adxl345_getRange(struct Adxl345_Handle *, enum Adxl345Flags_DataFormat_Range *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_adxl345_8h_1aec1396797b012df335ff8c96955932e2.html#exhale-function-adxl345-8h-1aec1396797b012df335ff8c96955932e2"><span class="std std-ref">Function Adxl345_getScale(struct Adxl345_Handle *, enum Adxl345Flags_DataFormat_FullResBit *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_adxl345_8h_1a92f47a5a55daaa4f0b7c0952fef0a2d1.html#exhale-function-adxl345-8h-1a92f47a5a55daaa4f0b7c0952fef0a2d1"><span class="std std-ref">Function Adxl345_init(struct Adxl345_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_adxl345_8h_1ad38f932fb6fbb6056e9258b9179abdbd.html#exhale-function-adxl345-8h-1ad38f932fb6fbb6056e9258b9179abdbd"><span class="std std-ref">Function Adxl345_setOutputDataRate(struct Adxl345_Handle *, uint8_t)</span></a></p></li>
+<li><p><a class="reference internal" href="function_adxl345_8h_1a0ef617ec05f613283d155d0de4d37e53.html#exhale-function-adxl345-8h-1a0ef617ec05f613283d155d0de4d37e53"><span class="std std-ref">Function Adxl345_setPowerCtlMeasure(struct Adxl345_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_adxl345_8h_1ab61b3d92785c6a11acb64cb5b1b9d630.html#exhale-function-adxl345-8h-1ab61b3d92785c6a11acb64cb5b1b9d630"><span class="std std-ref">Function Adxl345_setPowerCtlStandby(struct Adxl345_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_adxl345_8h_1a3460885ccd5cf674d0a8b1ec161114ce.html#exhale-function-adxl345-8h-1a3460885ccd5cf674d0a8b1ec161114ce"><span class="std std-ref">Function Adxl345_setRange(struct Adxl345_Handle *, uint8_t)</span></a></p></li>
+<li><p><a class="reference internal" href="function_adxl345_8h_1ab9baf97a44fa18d98ba816b1ba85f680.html#exhale-function-adxl345-8h-1ab9baf97a44fa18d98ba816b1ba85f680"><span class="std std-ref">Function Adxl345_setScale(struct Adxl345_Handle *, uint8_t)</span></a></p></li>
+</ul>
+</section>
+<section id="defines">
+<h2>Defines<a class="headerlink" href="#defines" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="define_adxl345_8h_1a593282de5e819f216c6bec6abbdc8c3a.html#exhale-define-adxl345-8h-1a593282de5e819f216c6bec6abbdc8c3a"><span class="std std-ref">Define ADXL345_FIFO_ENTRIES</span></a></p></li>
+<li><p><a class="reference internal" href="define_adxl345_8h_1a1a3b84c4d742fe051f12eb8e9d7db58c.html#exhale-define-adxl345-8h-1a1a3b84c4d742fe051f12eb8e9d7db58c"><span class="std std-ref">Define ADXL345_WATERMARK_LEVEL</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

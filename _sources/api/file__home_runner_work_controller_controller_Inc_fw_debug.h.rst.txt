@@ -1,0 +1,67 @@
+
+.. _file__home_runner_work_controller_controller_Inc_fw_debug.h:
+
+File debug.h
+============
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Inc_fw>` (``/home/runner/work/controller/controller/Inc/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Inc/fw/debug.h``)
+-----------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Inc_fw_debug.h.rst
+
+
+
+Detailed Description
+--------------------
+
+Debug pin macros for convenient GPIO manipulation. 
+
+
+
+
+Includes
+--------
+
+
+- ``main.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.c`
+
+
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_debug_8h_1a72ec92f727e507f8ed89b2496451f25b`
+
+- :ref:`exhale_define_debug_8h_1a236cbb0238bec6b69565a156e8c3ad53`
+
+- :ref:`exhale_define_debug_8h_1a80d1d47668a4caa45de6559e1970b397`
+
+- :ref:`exhale_define_debug_8h_1add553479c72b1bad9cdb870d84a81aa1`
+
+- :ref:`exhale_define_debug_8h_1a7d82fab60f7c4d9259508ddeefe6860f`
+
+- :ref:`exhale_define_debug_8h_1a646e5c6a686c1e4cc559a7cc68bc005d`
+

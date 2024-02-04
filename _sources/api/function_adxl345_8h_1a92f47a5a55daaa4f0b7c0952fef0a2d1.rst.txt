@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345_8h_1a92f47a5a55daaa4f0b7c0952fef0a2d1:
+
+Function Adxl345_init(struct Adxl345_Handle \*)
+===============================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Adxl345_init(struct Adxl345_Handle *)
+   :project: My Proj

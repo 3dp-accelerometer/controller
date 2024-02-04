@@ -1,0 +1,72 @@
+
+.. _file__home_runner_work_controller_controller_Inc_fw_adxl345_transport_impl.h:
+
+File adxl345_transport_impl.h
+=============================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Inc_fw>` (``/home/runner/work/controller/controller/Inc/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Inc/fw/adxl345_transport_impl.h``)
+----------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Inc_fw_adxl345_transport_impl.h.rst
+
+
+
+Detailed Description
+--------------------
+
+Hardware specific ADXL345 implementation API. 
+
+
+
+
+Includes
+--------
+
+
+- ``adxl345_spi_types.h`` (:ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_spi_types.h`)
+
+- ``adxl345_transport_types.h`` (:ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h`)
+
+- ``inttypes.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_adxl345_transport_impl.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_adxl345__transport__impl_8h_1aa14a3171c0d0175bb4da9e60add284f5`
+
+- :ref:`exhale_function_adxl345__transport__impl_8h_1af0e573e93c966e33fd642d5771e0d072`
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_adxl345__transport__impl_8h_1acdec8c760a17d588444cd50899420e75`
+

@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1af209ccce35a98bf6f271478cd8ea3c68:
+
+Function host_onRequestSetScale
+===============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: host_onRequestSetScale()
+   :project: My Proj

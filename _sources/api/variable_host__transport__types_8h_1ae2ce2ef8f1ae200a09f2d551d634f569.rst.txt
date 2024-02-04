@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1ae2ce2ef8f1ae200a09f2d551d634f569:
+
+Variable asGetFirmwareVersion
+=============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asGetFirmwareVersion
+   :project: My Proj

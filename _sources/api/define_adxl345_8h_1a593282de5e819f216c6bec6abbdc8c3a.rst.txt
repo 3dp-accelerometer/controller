@@ -1,0 +1,14 @@
+.. _exhale_define_adxl345_8h_1a593282de5e819f216c6bec6abbdc8c3a:
+
+Define ADXL345_FIFO_ENTRIES
+===========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: ADXL345_FIFO_ENTRIES
+   :project: My Proj

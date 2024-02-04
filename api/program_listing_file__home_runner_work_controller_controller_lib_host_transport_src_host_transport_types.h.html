@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File host_transport_types.h &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File host_transport_types.h</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-host-transport-types-h">
+<span id="program-listing-file-home-runner-work-controller-controller-lib-host-transport-src-host-transport-types-h"></span><h1>Program Listing for File host_transport_types.h<a class="headerlink" href="#program-listing-for-file-host-transport-types-h" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h.html#file-home-runner-work-controller-controller-lib-host-transport-src-host-transport-types-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/host_transport/src/host_transport_types.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * \file usbd_cdc_transport_types.h</span>
+<span class="cm"> *</span>
+<span class="cm"> * Types transferred from/to the IN USB endpoint (host).</span>
+<span class="cm"> *</span>
+<span class="cm"> * Transmission and reception frames are composed of header-id and subsequent</span>
+<span class="cm"> * payload, hence respective enum/unions/structs must pe packed by</span>
+<span class="cm"> * __attribute__((__packed__)).</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;assert.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;inttypes.h&gt;</span>
+
+<span class="cm">/*----------------------------------------------------------------------------*/</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Computes size of package, namely size of header type + size of package type.</span>
+<span class="cm"> */</span>
+<span class="cp">#define SIZEOF_HEADER_INCL_PAYLOAD(payloadType)                                \</span>
+<span class="cp">  (sizeof(struct Transport_Header) + sizeof(payloadType))</span>
+
+<span class="cm">/* Transport Header ----------------------------------------------------------*/</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX/RX package type ID (header ID) listing.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Each package&#39;s header ID must be one of these.</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Transport_HeaderId</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Request with dedicated unique response.</span>
+<span class="cm">   * @{</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Rx_SetOutputDataRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Rx_GetOutputDataRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Rx_SetRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Rx_GetRange</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">4U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Rx_SetScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Rx_GetScale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Rx_GetDeviceSetup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">7U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Rx_GetFirmwareVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Rx_GetUptime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Rx_GetBufferStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10U</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// @}</span>
+
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Request with no unique response or no response at all.</span>
+<span class="cm">   * @{</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Rx_DeviceReboot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">17U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Rx_SamplingStart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Rx_SamplingStop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">19U</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// @}</span>
+
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Unique response for request with dedicated response.</span>
+<span class="cm">   * @{</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_OutputDataRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_Range</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">26U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_Scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">27U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_DeviceSetup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">28U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_FirmwareVersion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">29U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_Uptime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">30U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_BufferStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">31U</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// @}</span>
+
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Responses with no dedicated or indirect request.</span>
+<span class="cm">   * @{</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_FifoOverflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">33U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_SamplingStarted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">34U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_SamplingFinished</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">35U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_SamplingStopped</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">36U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_SamplingAborted</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">37U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_Acceleration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">38U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_Fault</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">39U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_BufferOverflow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Transport_HeaderId_Tx_TransmissionError</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">41U</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">/// @}</span>
+
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">));</span>
+
+<span class="c1">//  NOLINTNEXTLINE(clang-diagnostic-implicit-int)</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">Transport_HeaderId</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">              </span><span class="s">&quot;ERROR: unexpected size of Transport_HeaderId&quot;</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX/RX package header.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Header</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="nc">Transport_HeaderId</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/* RX ------------------------------------------------------------------------*/</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Output data rate flags as described in data sheet.</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetOutputDataRate_Rate</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportRx_SetOutputDataRate_Rate3200</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1111U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">TransportRx_SetOutputDataRate_Rate1600</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1110U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">TransportRx_SetOutputDataRate_Rate_800</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1101U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">TransportRx_SetOutputDataRate_Rate_400</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1100U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">TransportRx_SetOutputDataRate_Rate_200</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1011U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">TransportRx_SetOutputDataRate_Rate_100</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1010U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">TransportRx_SetOutputDataRate_Rate_50</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1001U</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">));</span>
+
+<span class="c1">// NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetOutputDataRate_Rate</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">              </span><span class="s">&quot;ERROR: unexpected size of TransportRx_SetOutputDataRate_Rate&quot;</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Range flags as described in data sheet.</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetRange_Range</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportRx_SetRange_Range_2g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b00U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">TransportRx_SetRange_Range_4g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b01U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">TransportRx_SetRange_Range_8g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b10U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">TransportRx_SetRange_Range_16g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b11U</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">));</span>
+
+<span class="c1">// NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetRange_Range</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">              </span><span class="s">&quot;ERROR: unexpected size of TransportRx_SetRange_Range&quot;</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Scale flags as described in data sheet.</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetScale_Scale</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportRx_SetScale_Scale_10bit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">TransportRx_SetScale_Scale_full4mg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">__packed__</span><span class="p">));</span>
+
+<span class="c1">// NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetScale_Scale</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">              </span><span class="s">&quot;ERROR: unexpected size of TransportRx_SetScale_Scale&quot;</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * RX payload for retrieving sensor&#39;s ODR.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetOutputDataRate</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * RX payload for setting sensor&#39;s ODR.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SetOutputDataRate</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetOutputDataRate_Rate</span><span class="w"> </span><span class="n">rate</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * RX payload for retrieving sensor&#39;s range.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetRange</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * RX payload for setting sensor&#39;s range.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SetRange</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetRange_Range</span><span class="w"> </span><span class="n">range</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * RX payload for retrieving sensor&#39;s scale.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetScale</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * RX payload for setting sensor&#39;s scale.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SetScale</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetScale_Scale</span><span class="w"> </span><span class="n">scale</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * RX payload for requesting controller reboot.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_DeviceReboot</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * RX payload for requesting sampling start.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SamplingStart</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">max_samples_count</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * RX payload for requesting sampling stop.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SamplingStop</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * RX payload for retrieving sensor&#39;s mot relevant settings.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetDeviceSetup</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * RX payload for retrieving the firmware version.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetFirmwareVersion</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * RX payload for retrieving the uptime since last boot.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetUptime</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * RX payload for retrieving the buffer status.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetBufferStatus</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/* TX ------------------------------------------------------------------------*/</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Code sent to host in case of error.</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">TransportTx_FaultCode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">TransportTx_FaultCode_NmiHandler</span><span class="p">,</span><span class="w">        </span><span class="c1">///&lt; \see stm32f4xx_it.h</span>
+<span class="w">  </span><span class="n">TransportTx_FaultCode_UsageFaultHandler</span><span class="p">,</span><span class="w"> </span><span class="c1">///&lt; \see stm32f4xx_it.h</span>
+<span class="w">  </span><span class="n">TransportTx_FaultCode_BusFaultHandler</span><span class="p">,</span><span class="w">   </span><span class="c1">///&lt; \see stm32f4xx_it.h</span>
+<span class="w">  </span><span class="n">TransportTx_FaultCode_HardFaultHandler</span><span class="p">,</span><span class="w">  </span><span class="c1">///&lt; \see stm32f4xx_it.h</span>
+<span class="w">  </span><span class="n">TransportTx_FaultCode_ErrorHandler</span><span class="w">       </span><span class="c1">///&lt; \see main.h</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="c1">// NOLINTNEXTLINE(readability-redundant-declaration,clang-diagnostic-implicit-int)</span>
+<span class="k">static_assert</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportTx_FaultCode</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1U</span><span class="p">,</span>
+<span class="w">              </span><span class="s">&quot;ERROR: unexpected size of TransportTx_FaultCode&quot;</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload response with sensor&#39;s ODR.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_OutputDataRate</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetOutputDataRate_Rate</span><span class="w"> </span><span class="n">rate</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload response with sensor&#39;s range.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_Range</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetRange_Range</span><span class="w"> </span><span class="n">range</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload response with sensor&#39;s scale.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_Scale</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetScale_Scale</span><span class="w"> </span><span class="n">scale</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload indicating FiFo overrun occurred.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_FifoOverflow</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload indicating ringbuffer overrun occurred.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_BufferOverflow</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload indicating sampling started.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_SamplingStarted</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">maxSamples</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload indicating sampling stream has finished (all samples sent).</span>
+<span class="cm"> *</span>
+<span class="cm"> * Response to host indicating that sampling has been finished successfully.</span>
+<span class="cm"> * This package is sent at the end of stream.</span>
+<span class="cm"> * When this response is sent, the sampling stream has been successfully</span>
+<span class="cm"> * transferred:</span>
+<span class="cm"> *  - stream is complete and</span>
+<span class="cm"> *  - without HW errors.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_SamplingFinished</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload transporting most relevant device settings.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_DeviceSetup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">outputDataRate</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="c1">///&lt; \see Adxl345Register_BwRate_Rate</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">range</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">          </span><span class="c1">///&lt; \see Adxl345Register_DataFormat_Range</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">          </span><span class="c1">///&lt; \see Adxl345Register_DataFormat_FullResBit</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload indicating that the sampling has been stopped (for whatever</span>
+<span class="cm"> * reason).</span>
+<span class="cm"> *</span>
+<span class="cm"> * This package is sent whenever the device stops gathering data from sensor.</span>
+<span class="cm"> * Reasons: user request, overflow, error</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_SamplingStopped</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload indicating that the sampling has been aborted upon user request.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Sent when user requested to stop forwarding samples was received.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_SamplingAborted</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload transporting an acceleration sample.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Acceleration</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">///&lt; raw sampling value in x-axis as seen from sensor</span>
+<span class="w">  </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w"> </span><span class="c1">///&lt; raw sampling value in y-axis as seen from sensor</span>
+<span class="w">  </span><span class="kt">int16_t</span><span class="w"> </span><span class="n">z</span><span class="p">;</span><span class="w"> </span><span class="c1">///&lt; raw sampling value in z-axis as seen from sensor</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload transporting an acceleration sample.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_Acceleration</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">index</span><span class="p">;</span><span class="w"> </span><span class="c1">///&lt; running sample index</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Acceleration</span><span class="w"> </span><span class="n">values</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload transporting the firmware version.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_FirmwareVersion</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">major</span><span class="p">;</span><span class="w"> </span><span class="c1">///&lt; major version</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">minor</span><span class="p">;</span><span class="w"> </span><span class="c1">///&lt; minor version</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">patch</span><span class="p">;</span><span class="w"> </span><span class="c1">///&lt; patch version</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload transporting an error code.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_Fault</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportTx_FaultCode</span><span class="w"> </span><span class="n">code</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload transporting the elapsed microsecond since last boot.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_Uptime</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">elapsedMs</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload transmitted on transmission error while sampling.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_TransmissionError</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * TX payload transporting buffer status.</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_BufferStatus</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">sizeBytes</span><span class="p">;</span><span class="w">       </span><span class="c1">///&lt; buffer size in bytes</span>
+<span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">capacityTotal</span><span class="p">;</span><span class="w">   </span><span class="c1">///&lt; buffer capacity in terms of items (structs)</span>
+<span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">capacityUsedMax</span><span class="p">;</span><span class="w"> </span><span class="c1">///&lt; maximum utilization since last sampling start</span>
+<span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">putCount</span><span class="p">;</span><span class="w">        </span><span class="c1">///&lt; total number of successful put() to buffer</span>
+<span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">takeCount</span><span class="p">;</span><span class="w">       </span><span class="c1">///&lt; total number of successful take() from buffer</span>
+<span class="w">  </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">largestTxChunkBytes</span><span class="p">;</span><span class="w"> </span><span class="c1">///&lt; largest chunk sent at once since last</span>
+<span class="w">                                </span><span class="c1">///&lt; sampling start</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/* Frames --------------------------------------------------------------------*/</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Union for convenient casting to respective TX type without c-style cast.</span>
+<span class="cm"> */</span>
+<span class="k">union</span><span class="w"> </span><span class="nc">TransportTxFrame</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_OutputDataRate</span><span class="w"> </span><span class="n">asOutputDataRate</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_Range</span><span class="w"> </span><span class="n">asRange</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_Scale</span><span class="w"> </span><span class="n">asScale</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_DeviceSetup</span><span class="w"> </span><span class="n">asDeviceSetup</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_FifoOverflow</span><span class="w"> </span><span class="n">asFifoOverflow</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_BufferOverflow</span><span class="w"> </span><span class="n">asBufferOverflow</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_SamplingStarted</span><span class="w"> </span><span class="n">asSamplingStarted</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_SamplingFinished</span><span class="w"> </span><span class="n">asSamplingFinished</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_SamplingStopped</span><span class="w"> </span><span class="n">asSamplingStopped</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_SamplingAborted</span><span class="w"> </span><span class="n">asSamplingAborted</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_Acceleration</span><span class="w"> </span><span class="n">asAcceleration</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_FirmwareVersion</span><span class="w"> </span><span class="n">asFirmwareVersion</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_Fault</span><span class="w"> </span><span class="n">asFault</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_Uptime</span><span class="w"> </span><span class="n">asUptime</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_TransmissionError</span><span class="w"> </span><span class="n">asTransmissionError</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportTx_BufferStatus</span><span class="w"> </span><span class="n">asBufferStatus</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Union for convenient casting to respective RX type without c-style cast.</span>
+<span class="cm"> */</span>
+<span class="k">union</span><span class="w"> </span><span class="nc">TransportRxFrame</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SetOutputDataRate</span><span class="w"> </span><span class="n">asSetOutputDataRate</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetOutputDataRate</span><span class="w"> </span><span class="n">asGetOutputDataRate</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SetRange</span><span class="w"> </span><span class="n">asSetRange</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetRange</span><span class="w"> </span><span class="n">asGetRange</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SetScale</span><span class="w"> </span><span class="n">asSetScale</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetScale</span><span class="w"> </span><span class="n">asGetScale</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetDeviceSetup</span><span class="w"> </span><span class="n">asGetDeviceSetup</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_DeviceReboot</span><span class="w"> </span><span class="n">asDeviceReboot</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SamplingStart</span><span class="w"> </span><span class="n">asSamplingStart</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_SamplingStop</span><span class="w"> </span><span class="n">asSamplingStop</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetFirmwareVersion</span><span class="w"> </span><span class="n">asGetFirmwareVersion</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetUptime</span><span class="w"> </span><span class="n">asGetUptime</span><span class="p">;</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">TransportRx_GetBufferStatus</span><span class="w"> </span><span class="n">asGetBufferStatus</span><span class="p">;</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Generic package (TX/RX) including header and payload.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Notes:</span>
+<span class="cm"> *  - this struct must be packed</span>
+<span class="cm"> *  - Transport_Header must directly followed by TransportTxFrame and</span>
+<span class="cm"> *    TransportRxFrame without spacing</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">TransportFrame</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Header</span><span class="w"> </span><span class="n">header</span><span class="p">;</span>
+<span class="w">  </span><span class="k">union</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">union</span><span class="w"> </span><span class="nc">TransportTxFrame</span><span class="w"> </span><span class="n">asTxFrame</span><span class="p">;</span>
+<span class="w">    </span><span class="k">union</span><span class="w"> </span><span class="nc">TransportRxFrame</span><span class="w"> </span><span class="n">asRxFrame</span><span class="p">;</span>
+<span class="w">  </span><span class="p">};</span>
+<span class="p">}</span><span class="w"> </span><span class="n">__attribute__</span><span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

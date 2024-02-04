@@ -1,0 +1,72 @@
+
+.. _file__home_runner_work_controller_controller_Src_fw_host_transport_impl.c:
+
+File host_transport_impl.c
+==========================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Src_fw>` (``/home/runner/work/controller/controller/Src/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Src/fw/host_transport_impl.c``)
+-------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Src_fw_host_transport_impl.c.rst
+
+
+
+Detailed Description
+--------------------
+
+Implements hardware specific transport to the IN USB endpoint of the host. 
+
+
+
+
+Includes
+--------
+
+
+- ``controller.h`` (:ref:`file__home_runner_work_controller_controller_lib_controller_src_controller.h`)
+
+- ``errno.h``
+
+- ``fw/host_transport_impl.h`` (:ref:`file__home_runner_work_controller_controller_Inc_fw_host_transport_impl.h`)
+
+- ``host_transport.h`` (:ref:`file__home_runner_work_controller_controller_lib_host_transport_src_from_host_transport.h`)
+
+- ``host_transport_types.h`` (:ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`)
+
+- ``usbd_cdc_if.h``
+
+
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_host__transport__impl_8c_1a10b705c106c1c95a4433aa6b9e1139e3`
+
+- :ref:`exhale_function_host__transport__impl_8c_1afad186c595d91ebd30b58106d767de5b`
+
+- :ref:`exhale_function_host__transport__impl_8c_1ab795a4b8753590b3d78b7cee07c04d21`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_host__transport__impl_8c_1a927bf38d871c85f0d1e0ee9eaa1351d0`
+

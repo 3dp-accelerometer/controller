@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Union Adxl345Register &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Union Adxl345Transport_RxFrame" href="unionAdxl345Transport__RxFrame.html" />
+    <link rel="prev" title="Enum TransportTx_FaultCode" href="enum_host__transport__types_8h_1ac83eafa94c9dfa2280f83ef8dc077a19.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="library_root.html">Library API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="library_root.html#full-api">Full API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#classes-and-structs">Classes and Structs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#enums">Enums</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="library_root.html#unions">Unions</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Union Adxl345Register</a></li>
+<li class="toctree-l4"><a class="reference internal" href="unionAdxl345Transport__RxFrame.html">Union Adxl345Transport_RxFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="unionAdxl345Transport__TxFrame.html">Union Adxl345Transport_TxFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="unionTransportRxFrame.html">Union TransportRxFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="unionTransportTxFrame.html">Union TransportTxFrame</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#variables">Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#defines">Defines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library_root.html">Library API</a></li>
+      <li class="breadcrumb-item active">Union Adxl345Register</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="union-adxl345register">
+<span id="exhale-union-unionadxl345register"></span><h1>Union Adxl345Register<a class="headerlink" href="#union-adxl345register" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h.html#file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-register-h"><span class="std std-ref">File adxl345_register.h</span></a></p></li>
+</ul>
+<section id="union-documentation">
+<h2>Union Documentation<a class="headerlink" href="#union-documentation" title="Link to this heading"></a></h2>
+<dl class="cpp union">
+<dt class="sig sig-object cpp" id="_CPPv415Adxl345Register">
+<span id="_CPPv315Adxl345Register"></span><span id="_CPPv215Adxl345Register"></span><span class="target" id="unionAdxl345Register"></span><span class="k"><span class="pre">union</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Adxl345Register</span></span></span><a class="headerlink" href="#_CPPv415Adxl345Register" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;adxl345_register.h&gt;</em></div>
+<p>Union for convenient type-casting in between raw data and respective register type without c-style cast.</p>
+<p>Provides convenient and readable “casting”. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15Adxl345Register12asDataFormatE">
+<span id="_CPPv3N15Adxl345Register12asDataFormatE"></span><span id="_CPPv2N15Adxl345Register12asDataFormatE"></span><span id="Adxl345Register::asDataFormat__Adxl345Register_DataFormat"></span><span class="target" id="unionAdxl345Register_1a14483d97230ffdc33e583be0e95490ca"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structAdxl345Register__DataFormat.html#_CPPv426Adxl345Register_DataFormat" title="Adxl345Register_DataFormat"><span class="n"><span class="pre">Adxl345Register_DataFormat</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asDataFormat</span></span></span><a class="headerlink" href="#_CPPv4N15Adxl345Register12asDataFormatE" title="Link to this definition"></a><br /></dt>
+<dd><p>cast to <a class="reference internal" href="structAdxl345Register__DataFormat.html#structAdxl345Register__DataFormat"><span class="std std-ref">Adxl345Register_DataFormat</span></a></p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15Adxl345Register8asBwRateE">
+<span id="_CPPv3N15Adxl345Register8asBwRateE"></span><span id="_CPPv2N15Adxl345Register8asBwRateE"></span><span id="Adxl345Register::asBwRate__Adxl345Register_BwRate"></span><span class="target" id="unionAdxl345Register_1a0a868965d4861259fd00cb59beaee77d"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structAdxl345Register__BwRate.html#_CPPv422Adxl345Register_BwRate" title="Adxl345Register_BwRate"><span class="n"><span class="pre">Adxl345Register_BwRate</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asBwRate</span></span></span><a class="headerlink" href="#_CPPv4N15Adxl345Register8asBwRateE" title="Link to this definition"></a><br /></dt>
+<dd><p>cast to <a class="reference internal" href="structAdxl345Register__BwRate.html#structAdxl345Register__BwRate"><span class="std std-ref">Adxl345Register_BwRate</span></a></p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15Adxl345Register14asPowerControlE">
+<span id="_CPPv3N15Adxl345Register14asPowerControlE"></span><span id="_CPPv2N15Adxl345Register14asPowerControlE"></span><span id="Adxl345Register::asPowerControl__Adxl345Register_PowerCtl"></span><span class="target" id="unionAdxl345Register_1a53d7f63a74f2d11299a40a8a86354304"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structAdxl345Register__PowerCtl.html#_CPPv424Adxl345Register_PowerCtl" title="Adxl345Register_PowerCtl"><span class="n"><span class="pre">Adxl345Register_PowerCtl</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asPowerControl</span></span></span><a class="headerlink" href="#_CPPv4N15Adxl345Register14asPowerControlE" title="Link to this definition"></a><br /></dt>
+<dd><p>cast to <a class="reference internal" href="structAdxl345Register__PowerCtl.html#structAdxl345Register__PowerCtl"><span class="std std-ref">Adxl345Register_PowerCtl</span></a></p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15Adxl345Register11asIntEnableE">
+<span id="_CPPv3N15Adxl345Register11asIntEnableE"></span><span id="_CPPv2N15Adxl345Register11asIntEnableE"></span><span id="Adxl345Register::asIntEnable__Adxl345Register_IntEnable"></span><span class="target" id="unionAdxl345Register_1abd21bcf856352bd663ec15960a900f46"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structAdxl345Register__IntEnable.html#_CPPv425Adxl345Register_IntEnable" title="Adxl345Register_IntEnable"><span class="n"><span class="pre">Adxl345Register_IntEnable</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asIntEnable</span></span></span><a class="headerlink" href="#_CPPv4N15Adxl345Register11asIntEnableE" title="Link to this definition"></a><br /></dt>
+<dd><p>cast to <a class="reference internal" href="structAdxl345Register__IntEnable.html#structAdxl345Register__IntEnable"><span class="std std-ref">Adxl345Register_IntEnable</span></a></p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15Adxl345Register8asIntMapE">
+<span id="_CPPv3N15Adxl345Register8asIntMapE"></span><span id="_CPPv2N15Adxl345Register8asIntMapE"></span><span id="Adxl345Register::asIntMap__Adxl345Register_IntMap"></span><span class="target" id="unionAdxl345Register_1a65bd50e3eea5dd347d6c6204c0d6de0b"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structAdxl345Register__IntMap.html#_CPPv422Adxl345Register_IntMap" title="Adxl345Register_IntMap"><span class="n"><span class="pre">Adxl345Register_IntMap</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asIntMap</span></span></span><a class="headerlink" href="#_CPPv4N15Adxl345Register8asIntMapE" title="Link to this definition"></a><br /></dt>
+<dd><p>cast to <a class="reference internal" href="structAdxl345Register__IntMap.html#structAdxl345Register__IntMap"><span class="std std-ref">Adxl345Register_IntMap</span></a></p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15Adxl345Register9asFifoCtlE">
+<span id="_CPPv3N15Adxl345Register9asFifoCtlE"></span><span id="_CPPv2N15Adxl345Register9asFifoCtlE"></span><span id="Adxl345Register::asFifoCtl__Adxl345Register_FifoCtl"></span><span class="target" id="unionAdxl345Register_1a6a4cc3748750b9594c34b53c58311504"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structAdxl345Register__FifoCtl.html#_CPPv423Adxl345Register_FifoCtl" title="Adxl345Register_FifoCtl"><span class="n"><span class="pre">Adxl345Register_FifoCtl</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asFifoCtl</span></span></span><a class="headerlink" href="#_CPPv4N15Adxl345Register9asFifoCtlE" title="Link to this definition"></a><br /></dt>
+<dd><p>cast to <a class="reference internal" href="structAdxl345Register__FifoCtl.html#structAdxl345Register__FifoCtl"><span class="std std-ref">Adxl345Register_FifoCtl</span></a></p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N15Adxl345Register12asFifoStatusE">
+<span id="_CPPv3N15Adxl345Register12asFifoStatusE"></span><span id="_CPPv2N15Adxl345Register12asFifoStatusE"></span><span id="Adxl345Register::asFifoStatus__Adxl345Register_FifoStatus"></span><span class="target" id="unionAdxl345Register_1a6be4672ee5e85e223aa45fb4d3f167b5"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="structAdxl345Register__FifoStatus.html#_CPPv426Adxl345Register_FifoStatus" title="Adxl345Register_FifoStatus"><span class="n"><span class="pre">Adxl345Register_FifoStatus</span></span></a><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">asFifoStatus</span></span></span><a class="headerlink" href="#_CPPv4N15Adxl345Register12asFifoStatusE" title="Link to this definition"></a><br /></dt>
+<dd><p>cast to <a class="reference internal" href="structAdxl345Register__FifoStatus.html#structAdxl345Register__FifoStatus"><span class="std std-ref">Adxl345Register_FifoStatus</span></a></p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

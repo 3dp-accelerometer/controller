@@ -1,0 +1,14 @@
+.. _exhale_enum_host__transport__types_8h_1ac83eafa94c9dfa2280f83ef8dc077a19:
+
+Enum TransportTx_FaultCode
+==========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: TransportTx_FaultCode
+   :project: My Proj

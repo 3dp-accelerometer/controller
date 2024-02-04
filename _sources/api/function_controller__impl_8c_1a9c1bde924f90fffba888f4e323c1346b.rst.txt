@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a9c1bde924f90fffba888f4e323c1346b:
+
+Function host_doTakeBytes
+=========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: host_doTakeBytes()
+   :project: My Proj

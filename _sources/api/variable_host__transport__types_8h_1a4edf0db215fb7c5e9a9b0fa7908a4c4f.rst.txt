@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1a4edf0db215fb7c5e9a9b0fa7908a4c4f:
+
+Variable Transport_HeaderId_Rx_GetScale
+=======================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: Transport_HeaderId_Rx_GetScale
+   :project: My Proj

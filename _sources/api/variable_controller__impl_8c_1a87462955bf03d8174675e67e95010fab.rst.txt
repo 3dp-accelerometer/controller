@@ -1,0 +1,14 @@
+.. _exhale_variable_controller__impl_8c_1a87462955bf03d8174675e67e95010fab:
+
+Variable host_responseGetScale
+==============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: host_responseGetScale
+   :project: My Proj

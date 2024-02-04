@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a49fc3195b070e4905bb67597d6cfea70:
+
+Function fault_onNmiFaultHandler
+================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: fault_onNmiFaultHandler()
+   :project: My Proj

@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1a616c0a72f0e4af38b93c736773ac7210:
+
+Variable scale
+==============
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: scale
+   :project: My Proj

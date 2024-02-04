@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File to_host_transport.h &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File to_host_transport.h</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-to-host-transport-h">
+<span id="program-listing-file-home-runner-work-controller-controller-lib-host-transport-src-to-host-transport-h"></span><h1>Program Listing for File to_host_transport.h<a class="headerlink" href="#program-listing-for-file-to-host-transport-h" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.h.html#file-home-runner-work-controller-controller-lib-host-transport-src-to-host-transport-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/host_transport/src/to_host_transport.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * \file to_host_transport.h</span>
+<span class="cm"> *</span>
+<span class="cm"> * API for transporting data from controller to host.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;inttypes.h&gt;</span>
+
+<span class="c1">// NOLINTNEXTLINE(modernize-macro-to-enum)</span>
+<span class="cp">#define TRANSPORTTX_TRANSMIT_ACCELERATION_BUFFER_BYTES 24U</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Acceleration</span><span class="p">;</span>
+
+<span class="k">enum</span><span class="w"> </span><span class="nc">HostTransport_Status</span><span class="p">;</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">TransportTx_FaultCode</span><span class="p">;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits sensor configuration TransportTx_DeviceSetup to the IN endpoint of</span>
+<span class="cm"> * host.</span>
+<span class="cm"> * Transmission will block this function from returning until completion.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle host transport pimpl</span>
+<span class="cm"> * @param sensorOdr sensor output data rate</span>
+<span class="cm"> * @param sensorRange sensor scale</span>
+<span class="cm"> * @param sensorScale sensor range</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxSamplingSetup</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                                 </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sensorOdr</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sensorScale</span><span class="p">,</span>
+<span class="w">                                 </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sensorRange</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits sensor scale TransportTx_Scale to the IN endpoint of host.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Transmission will block this function from returning until completion.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle</span>
+<span class="cm"> * @param sensorScale</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxScale</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sensorScale</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits sensor range TransportTx_Range to the IN endpoint of host.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Transmission will block this function from returning until completion.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle</span>
+<span class="cm"> * @param sensorRange</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxRange</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sensorRange</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits sensor output data rate TransportTx_OutputDataRate to the IN</span>
+<span class="cm"> * endpoint of host.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Transmission will block this function from returning until completion.</span>
+<span class="cm"> * @param handle</span>
+<span class="cm"> * @param sensorOdr</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxOutputDataRate</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                                  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">sensorOdr</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits firmware version TransportTx_FirmwareVersion to the IN endpoint of</span>
+<span class="cm"> * host.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Transmission will block this function from returning until completion.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle host transport pimpl</span>
+<span class="cm"> * @param major firmware version</span>
+<span class="cm"> * @param minor firmware version</span>
+<span class="cm"> * @param patch firmware version</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxFirmwareVersion</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                                   </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">major</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">minor</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">patch</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits sampling started package TransportTx_SamplingStarted to the IN</span>
+<span class="cm"> * endpoint of host.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Transmission will block this function from returning until completion.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle host transport pimpl</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxSamplingStarted</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                                   </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">max_samples</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits sampling finished package TransportTx_SamplingFinished to the IN</span>
+<span class="cm"> * endpoint of host.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Transmission will block this function from returning until completion.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle host transport pimpl</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxSamplingFinished</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits sampling stopped package TransportTx_SamplingStopped to the IN</span>
+<span class="cm"> * endpoint of host.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Transmission will block this function from returning until completion.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle host transport pimpl</span>
+<span class="cm"> * @param sensorOdr</span>
+<span class="cm"> * @param sensorScale</span>
+<span class="cm"> * @param sensorRange</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxSamplingStopped</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits sampling aborted package TransportTx_SamplingAborted to the IN</span>
+<span class="cm"> * endpoint of host.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Transmission will block this function from returning until completion.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle host transport pimpl</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxSamplingAborted</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits FiFo overflow package TransportTx_FifoOverflow to the IN endpoint</span>
+<span class="cm"> * of host.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Transmission will block this function from returning until completion.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle host transport pimpl</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxFifoOverflow</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxBufferOverflow</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxTransmissionError</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits device uptime TransportTx_Uptime to the IN endpoint of host.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Transmission will block this function from returning until completion.</span>
+<span class="cm"> * @param handle</span>
+<span class="cm"> * @param uptimeMs</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxUptime</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                          </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">uptimeMs</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits device error state TransportTx_TxFault to the IN endpoint of host.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Transmission will block this function from returning until completion.</span>
+<span class="cm"> * @param handle</span>
+<span class="cm"> * @param code</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxFault</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                         </span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportTx_FaultCode</span><span class="w"> </span><span class="n">code</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Transmits device buffer status TransportTx_BufferStatus to the IN endpoint of</span>
+<span class="cm"> * host.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Transmission will block this function from returning until completion.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle</span>
+<span class="cm"> * @param sizeBytes total buffer size in bytes</span>
+<span class="cm"> * @param capacityTotal maximum capacity (items/slots)</span>
+<span class="cm"> * @param capacityUsedMax greatest items utilization since sampling start</span>
+<span class="cm"> * @param largestTxChunkBytes largest chunk sent at once since sampling start</span>
+<span class="cm"> */</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">TransportTx_TxBufferStatus</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                                </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">sizeBytes</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">capacityTotal</span><span class="p">,</span>
+<span class="w">                                </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">capacityUsedMax</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">putCount</span><span class="p">,</span>
+<span class="w">                                </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">takeCount</span><span class="p">,</span>
+<span class="w">                                </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">largestTxChunkBytes</span><span class="p">);</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Forwards acceleration data block to the IN endpoint of host.</span>
+<span class="cm"> *</span>
+<span class="cm"> * Triggers sending data to the the IN endpoint.</span>
+<span class="cm"> * If USB is busy the data is buffered for a later transmission.</span>
+<span class="cm"> * To consume all buffered data this function shall be called until -ENODATA is</span>
+<span class="cm"> * returned (with data and/or count being NULL and/or 0).</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param handle host transport pimpl</span>
+<span class="cm"> * @param data tx buffer or NULL to consume remaining buffered data</span>
+<span class="cm"> * @param count buffer size or 0 to consume remaining buffered data</span>
+<span class="cm"> * @param firstIndex the tracked index number of the first acceleration in data</span>
+<span class="cm"> * buffer</span>
+<span class="cm"> * @return</span>
+<span class="cm"> *   - 0 on success (data send in first run),</span>
+<span class="cm"> *   - EBUSY if data was buffered,</span>
+<span class="cm"> *   - ENODATA if no buffered data available (all data sent),</span>
+<span class="cm"> *   - -EINVAL otherwise</span>
+<span class="cm"> */</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">TransportTx_TxAccelerationBuffer</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="o">*</span><span class="n">handle</span><span class="p">,</span>
+<span class="w">                                     </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Transport_Acceleration</span><span class="w"> </span><span class="o">*</span><span class="n">data</span><span class="p">,</span>
+<span class="w">                                     </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">count</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">firstIndex</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

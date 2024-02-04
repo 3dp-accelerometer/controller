@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1a1af577436c0e4a90d7b84d9f1658798f:
+
+Variable asSamplingStarted
+==========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asSamplingStarted
+   :project: My Proj

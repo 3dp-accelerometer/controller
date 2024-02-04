@@ -1,0 +1,87 @@
+
+.. _file__home_runner_work_controller_controller_lib_controller_src_controller.h:
+
+File controller.h
+=================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_lib_controller_src>` (``/home/runner/work/controller/controller/lib/controller/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/lib/controller/src/controller.h``)
+----------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_lib_controller_src_controller.h.rst
+
+
+
+Detailed Description
+--------------------
+
+The controller module aims at abstracting the whole device API.
+
+The device API consists of the following APIs:
+
+- host transport API
+
+- sensor API
+
+- sampling API 
+
+
+
+
+
+
+Includes
+--------
+
+
+- ``adxl345.h`` (:ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h`)
+
+- ``host_transport.h`` (:ref:`file__home_runner_work_controller_controller_lib_host_transport_src_from_host_transport.h`)
+
+- ``inttypes.h``
+
+- ``sampling_types.h`` (:ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling_types.h`)
+
+- ``stdbool.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_Inc_fw_controller_impl.h`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_host_transport_impl.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_sampling_impl.c`
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structController__Handle`
+
+- :ref:`exhale_struct_structController__Host`
+
+- :ref:`exhale_struct_structController__Sampling`
+
+- :ref:`exhale_struct_structController__Sensor`
+

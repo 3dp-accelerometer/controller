@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File to_host_transport.c &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File to_host_transport.c</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-to-host-transport-c">
+<span id="file-home-runner-work-controller-controller-lib-host-transport-src-to-host-transport-c"></span><h1>File to_host_transport.c<a class="headerlink" href="#file-to-host-transport-c" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="dir__home_runner_work_controller_controller_lib_host_transport_src.html#dir-home-runner-work-controller-controller-lib-host-transport-src"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/host_transport/src</span></code>)</p>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-home-runner-work-controller-controller-lib-host-transport-src-to-host-transport-c" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/host_transport/src/to_host_transport.c</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id2">Detailed Description</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id3">Includes</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id4">Functions</a></p></li>
+</ul>
+</nav>
+<section id="definition-home-runner-work-controller-controller-lib-host-transport-src-to-host-transport-c">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/host_transport/src/to_host_transport.c</span></code>)<a class="headerlink" href="#definition-home-runner-work-controller-controller-lib-host-transport-src-to-host-transport-c" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.c.html">Program Listing for File to_host_transport.c</a></li>
+</ul>
+</div>
+</section>
+<section id="detailed-description">
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Link to this heading"></a></h2>
+<p>Implementation for transporting data from controller to host.</p>
+</section>
+<section id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">errno.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fw/debug.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_debug.h.html#file-home-runner-work-controller-controller-inc-fw-debug-h"><span class="std std-ref">File debug.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">host_transport.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_host_transport_src_from_host_transport.h.html#file-home-runner-work-controller-controller-lib-host-transport-src-from-host-transport-h"><span class="std std-ref">File from_host_transport.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">host_transport_types.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h.html#file-home-runner-work-controller-controller-lib-host-transport-src-host-transport-types-h"><span class="std std-ref">File host_transport_types.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">to_host_transport.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.h.html#file-home-runner-work-controller-controller-lib-host-transport-src-to-host-transport-h"><span class="std std-ref">File to_host_transport.h</span></a>)</p></li>
+</ul>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1a9b676e279b904bfd8efbe13f1e1da5e1.html#exhale-function-to-host-transport-8c-1a9b676e279b904bfd8efbe13f1e1da5e1"><span class="std std-ref">Function isTransmitBusy</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1ada092c361a17f3eb06a5814803fa5578.html#exhale-function-to-host-transport-8c-1ada092c361a17f3eb06a5814803fa5578"><span class="std std-ref">Function popDataFromRingbuffer</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1a35faef7d47e8b565eb9b3832dfa1651b.html#exhale-function-to-host-transport-8c-1a35faef7d47e8b565eb9b3832dfa1651b"><span class="std std-ref">Function pushToRingbuffer</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1a9ec2cd757757b00d2b675ea07e249476.html#exhale-function-to-host-transport-8c-1a9ec2cd757757b00d2b675ea07e249476"><span class="std std-ref">Function transmit</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1a6859b85810ea85ce8d95bd3a58c9f982.html#exhale-function-to-host-transport-8c-1a6859b85810ea85ce8d95bd3a58c9f982"><span class="std std-ref">Function transmitAccelerationBuffered</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1a5dfd39a11af0cd8ee1af33868ecc3c1e.html#exhale-function-to-host-transport-8c-1a5dfd39a11af0cd8ee1af33868ecc3c1e"><span class="std std-ref">Function TransportTx_TxAccelerationBuffer(struct HostTransport_Handle *, const struct Transport_Acceleration *, uint8_t, uint16_t)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1a4cd9e88c2bdeba254ef1633e2840e860.html#exhale-function-to-host-transport-8c-1a4cd9e88c2bdeba254ef1633e2840e860"><span class="std std-ref">Function TransportTx_TxBufferOverflow(struct HostTransport_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1adb072a78e3865c691623afadd15c31f3.html#exhale-function-to-host-transport-8c-1adb072a78e3865c691623afadd15c31f3"><span class="std std-ref">Function TransportTx_TxBufferStatus(struct HostTransport_Handle *, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t, uint16_t)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1ad27e19bcc1d967a5874090674313d98f.html#exhale-function-to-host-transport-8c-1ad27e19bcc1d967a5874090674313d98f"><span class="std std-ref">Function TransportTx_TxFault(struct HostTransport_Handle *, enum TransportTx_FaultCode)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1a2e2dd9eec895bc7adbd99deed3462165.html#exhale-function-to-host-transport-8c-1a2e2dd9eec895bc7adbd99deed3462165"><span class="std std-ref">Function TransportTx_TxFifoOverflow(struct HostTransport_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1acb0715f9c958a78a3ab6271072b65299.html#exhale-function-to-host-transport-8c-1acb0715f9c958a78a3ab6271072b65299"><span class="std std-ref">Function TransportTx_TxFirmwareVersion(struct HostTransport_Handle *, uint8_t, uint8_t, uint8_t)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1a0d70e117d6d861a5496ae5518d2cfc27.html#exhale-function-to-host-transport-8c-1a0d70e117d6d861a5496ae5518d2cfc27"><span class="std std-ref">Function TransportTx_TxOutputDataRate(struct HostTransport_Handle *, uint8_t)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1aec41b705a2eb5738eae994b4e91e1296.html#exhale-function-to-host-transport-8c-1aec41b705a2eb5738eae994b4e91e1296"><span class="std std-ref">Function TransportTx_TxRange(struct HostTransport_Handle *, uint8_t)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1a54d844925874214e816e4a1764f1d0b6.html#exhale-function-to-host-transport-8c-1a54d844925874214e816e4a1764f1d0b6"><span class="std std-ref">Function TransportTx_TxSamplingAborted(struct HostTransport_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1a534fd48fd518d57461e15771a0ccc190.html#exhale-function-to-host-transport-8c-1a534fd48fd518d57461e15771a0ccc190"><span class="std std-ref">Function TransportTx_TxSamplingFinished(struct HostTransport_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1a91f7f7c7d66cec64faa2616b43a1d90f.html#exhale-function-to-host-transport-8c-1a91f7f7c7d66cec64faa2616b43a1d90f"><span class="std std-ref">Function TransportTx_TxSamplingSetup(struct HostTransport_Handle *, uint8_t, uint8_t, uint8_t)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1ad4f08c75259c008b3529aaa18438beaa.html#exhale-function-to-host-transport-8c-1ad4f08c75259c008b3529aaa18438beaa"><span class="std std-ref">Function TransportTx_TxSamplingStarted(struct HostTransport_Handle *, uint16_t)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1acf08bba3589d9124a20243e8b43152e4.html#exhale-function-to-host-transport-8c-1acf08bba3589d9124a20243e8b43152e4"><span class="std std-ref">Function TransportTx_TxSamplingStopped(struct HostTransport_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1a5f8d17e2509d7151ac7418af87684bb4.html#exhale-function-to-host-transport-8c-1a5f8d17e2509d7151ac7418af87684bb4"><span class="std std-ref">Function TransportTx_TxScale(struct HostTransport_Handle *, uint8_t)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1a63afd5a4ee612c2f1e1ce9851016ffb4.html#exhale-function-to-host-transport-8c-1a63afd5a4ee612c2f1e1ce9851016ffb4"><span class="std std-ref">Function TransportTx_TxTransmissionError(struct HostTransport_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_to__host__transport_8c_1a8754e0a5c57a604a9960aa1014ecbd81.html#exhale-function-to-host-transport-8c-1a8754e0a5c57a604a9960aa1014ecbd81"><span class="std std-ref">Function TransportTx_TxUptime(struct HostTransport_Handle *, uint32_t)</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

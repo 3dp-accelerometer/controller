@@ -1,0 +1,17 @@
+.. _exhale_struct_structAdxl345Register__BwRate:
+
+Struct Adxl345Register_BwRate
+=============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: Adxl345Register_BwRate
+   :project: My Proj
+   :members:
+   :protected-members:
+   :undoc-members:

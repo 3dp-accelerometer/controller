@@ -1,0 +1,65 @@
+
+.. _file__home_runner_work_controller_controller_Inc_fw_version.h:
+
+File version.h
+==============
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Inc_fw>` (``/home/runner/work/controller/controller/Inc/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Inc/fw/version.h``)
+-------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Inc_fw_version.h.rst
+
+
+
+Detailed Description
+--------------------
+
+Auto generated file crated by "poetry run versionbump".
+
+See also "poetry version".
+
+example: poetryversionpatch
+poetryrunversionbump
+
+
+
+
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_version.c`
+
+
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_version_8h_1a1c6d5de492ac61ad29aec7aa9a436bbf`
+
+- :ref:`exhale_define_version_8h_1a1a53b724b6de666faa8a9e0d06d1055f`
+
+- :ref:`exhale_define_version_8h_1ae0cb52afb79b185b1bf82c7e235f682b`
+
+- :ref:`exhale_define_version_8h_1a901edadf17488bb6be1ac9a1e3cfea7a`
+

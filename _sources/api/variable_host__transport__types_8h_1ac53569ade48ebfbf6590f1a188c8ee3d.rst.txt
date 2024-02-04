@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1ac53569ade48ebfbf6590f1a188c8ee3d:
+
+Variable Transport_HeaderId_Tx_BufferStatus
+===========================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: Transport_HeaderId_Tx_BufferStatus
+   :project: My Proj

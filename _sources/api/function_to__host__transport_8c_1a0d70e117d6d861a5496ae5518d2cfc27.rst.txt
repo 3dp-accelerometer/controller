@@ -1,0 +1,14 @@
+.. _exhale_function_to__host__transport_8c_1a0d70e117d6d861a5496ae5518d2cfc27:
+
+Function TransportTx_TxOutputDataRate(struct HostTransport_Handle \*, uint8_t)
+==============================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TransportTx_TxOutputDataRate(struct HostTransport_Handle *, uint8_t)
+   :project: My Proj

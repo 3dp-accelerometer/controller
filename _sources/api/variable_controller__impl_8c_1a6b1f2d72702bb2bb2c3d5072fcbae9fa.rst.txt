@@ -1,0 +1,14 @@
+.. _exhale_variable_controller__impl_8c_1a6b1f2d72702bb2bb2c3d5072fcbae9fa:
+
+Variable host_responseGetBufferStatus
+=====================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: host_responseGetBufferStatus
+   :project: My Proj

@@ -1,0 +1,14 @@
+.. _exhale_function_to__host__transport_8h_1ad27e19bcc1d967a5874090674313d98f:
+
+Function TransportTx_TxFault(struct HostTransport_Handle \*, enum TransportTx_FaultCode)
+========================================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TransportTx_TxFault(struct HostTransport_Handle *, enum TransportTx_FaultCode)
+   :project: My Proj

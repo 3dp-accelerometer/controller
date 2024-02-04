@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File host_transport_types.h &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File host_transport_types.h</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-host-transport-types-h">
+<span id="file-home-runner-work-controller-controller-lib-host-transport-src-host-transport-types-h"></span><h1>File host_transport_types.h<a class="headerlink" href="#file-host-transport-types-h" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="dir__home_runner_work_controller_controller_lib_host_transport_src.html#dir-home-runner-work-controller-controller-lib-host-transport-src"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/host_transport/src</span></code>)</p>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-home-runner-work-controller-controller-lib-host-transport-src-host-transport-types-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/host_transport/src/host_transport_types.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#included-by" id="id3">Included By</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id4">Classes</a></p></li>
+<li><p><a class="reference internal" href="#enums" id="id5">Enums</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id6">Functions</a></p></li>
+<li><p><a class="reference internal" href="#defines" id="id7">Defines</a></p></li>
+<li><p><a class="reference internal" href="#unions" id="id8">Unions</a></p></li>
+<li><p><a class="reference internal" href="#variables" id="id9">Variables</a></p></li>
+</ul>
+</nav>
+<section id="definition-home-runner-work-controller-controller-lib-host-transport-src-host-transport-types-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/host_transport/src/host_transport_types.h</span></code>)<a class="headerlink" href="#definition-home-runner-work-controller-controller-lib-host-transport-src-host-transport-types-h" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h.html">Program Listing for File host_transport_types.h</a></li>
+</ul>
+</div>
+</section>
+<section id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">assert.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inttypes.h</span></code></p></li>
+</ul>
+</section>
+<section id="included-by">
+<h2>Included By<a class="headerlink" href="#included-by" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="file__home_runner_work_controller_controller_Inc_fw_ringbuffer_impl.h.html#file-home-runner-work-controller-controller-inc-fw-ringbuffer-impl-h"><span class="std std-ref">File ringbuffer_impl.h</span></a></p></li>
+<li><p><a class="reference internal" href="file__home_runner_work_controller_controller_lib_host_transport_src_from_host_transport.c.html#file-home-runner-work-controller-controller-lib-host-transport-src-from-host-transport-c"><span class="std std-ref">File from_host_transport.c</span></a></p></li>
+<li><p><a class="reference internal" href="file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.c.html#file-home-runner-work-controller-controller-lib-host-transport-src-to-host-transport-c"><span class="std std-ref">File to_host_transport.c</span></a></p></li>
+<li><p><a class="reference internal" href="file__home_runner_work_controller_controller_Src_fw_controller_impl.c.html#file-home-runner-work-controller-controller-src-fw-controller-impl-c"><span class="std std-ref">File controller_impl.c</span></a></p></li>
+<li><p><a class="reference internal" href="file__home_runner_work_controller_controller_Src_fw_host_transport_impl.c.html#file-home-runner-work-controller-controller-src-fw-host-transport-impl-c"><span class="std std-ref">File host_transport_impl.c</span></a></p></li>
+</ul>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="structTransport__Acceleration.html#exhale-struct-structtransport-acceleration"><span class="std std-ref">Struct Transport_Acceleration</span></a></p></li>
+<li><p><a class="reference internal" href="structTransport__Header.html#exhale-struct-structtransport-header"><span class="std std-ref">Struct Transport_Header</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportFrame.html#exhale-struct-structtransportframe"><span class="std std-ref">Struct TransportFrame</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__DeviceReboot.html#exhale-struct-structtransportrx-devicereboot"><span class="std std-ref">Struct TransportRx_DeviceReboot</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__GetBufferStatus.html#exhale-struct-structtransportrx-getbufferstatus"><span class="std std-ref">Struct TransportRx_GetBufferStatus</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__GetDeviceSetup.html#exhale-struct-structtransportrx-getdevicesetup"><span class="std std-ref">Struct TransportRx_GetDeviceSetup</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__GetFirmwareVersion.html#exhale-struct-structtransportrx-getfirmwareversion"><span class="std std-ref">Struct TransportRx_GetFirmwareVersion</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__GetOutputDataRate.html#exhale-struct-structtransportrx-getoutputdatarate"><span class="std std-ref">Struct TransportRx_GetOutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__GetRange.html#exhale-struct-structtransportrx-getrange"><span class="std std-ref">Struct TransportRx_GetRange</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__GetScale.html#exhale-struct-structtransportrx-getscale"><span class="std std-ref">Struct TransportRx_GetScale</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__GetUptime.html#exhale-struct-structtransportrx-getuptime"><span class="std std-ref">Struct TransportRx_GetUptime</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__SamplingStart.html#exhale-struct-structtransportrx-samplingstart"><span class="std std-ref">Struct TransportRx_SamplingStart</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__SamplingStop.html#exhale-struct-structtransportrx-samplingstop"><span class="std std-ref">Struct TransportRx_SamplingStop</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__SetOutputDataRate.html#exhale-struct-structtransportrx-setoutputdatarate"><span class="std std-ref">Struct TransportRx_SetOutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__SetRange.html#exhale-struct-structtransportrx-setrange"><span class="std std-ref">Struct TransportRx_SetRange</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportRx__SetScale.html#exhale-struct-structtransportrx-setscale"><span class="std std-ref">Struct TransportRx_SetScale</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__Acceleration.html#exhale-struct-structtransporttx-acceleration"><span class="std std-ref">Struct TransportTx_Acceleration</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__BufferOverflow.html#exhale-struct-structtransporttx-bufferoverflow"><span class="std std-ref">Struct TransportTx_BufferOverflow</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__BufferStatus.html#exhale-struct-structtransporttx-bufferstatus"><span class="std std-ref">Struct TransportTx_BufferStatus</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__DeviceSetup.html#exhale-struct-structtransporttx-devicesetup"><span class="std std-ref">Struct TransportTx_DeviceSetup</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__Fault.html#exhale-struct-structtransporttx-fault"><span class="std std-ref">Struct TransportTx_Fault</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__FifoOverflow.html#exhale-struct-structtransporttx-fifooverflow"><span class="std std-ref">Struct TransportTx_FifoOverflow</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__FirmwareVersion.html#exhale-struct-structtransporttx-firmwareversion"><span class="std std-ref">Struct TransportTx_FirmwareVersion</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__OutputDataRate.html#exhale-struct-structtransporttx-outputdatarate"><span class="std std-ref">Struct TransportTx_OutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__Range.html#exhale-struct-structtransporttx-range"><span class="std std-ref">Struct TransportTx_Range</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__SamplingAborted.html#exhale-struct-structtransporttx-samplingaborted"><span class="std std-ref">Struct TransportTx_SamplingAborted</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__SamplingFinished.html#exhale-struct-structtransporttx-samplingfinished"><span class="std std-ref">Struct TransportTx_SamplingFinished</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__SamplingStarted.html#exhale-struct-structtransporttx-samplingstarted"><span class="std std-ref">Struct TransportTx_SamplingStarted</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__SamplingStopped.html#exhale-struct-structtransporttx-samplingstopped"><span class="std std-ref">Struct TransportTx_SamplingStopped</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__Scale.html#exhale-struct-structtransporttx-scale"><span class="std std-ref">Struct TransportTx_Scale</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__TransmissionError.html#exhale-struct-structtransporttx-transmissionerror"><span class="std std-ref">Struct TransportTx_TransmissionError</span></a></p></li>
+<li><p><a class="reference internal" href="structTransportTx__Uptime.html#exhale-struct-structtransporttx-uptime"><span class="std std-ref">Struct TransportTx_Uptime</span></a></p></li>
+</ul>
+</section>
+<section id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="enum_host__transport__types_8h_1acdd6c68eea248e81eff3eb8f547f5204.html#exhale-enum-host-transport-types-8h-1acdd6c68eea248e81eff3eb8f547f5204"><span class="std std-ref">Enum Transport_HeaderId</span></a></p></li>
+<li><p><a class="reference internal" href="enum_host__transport__types_8h_1a09588d2abff7c25824fe338a4cfafe63.html#exhale-enum-host-transport-types-8h-1a09588d2abff7c25824fe338a4cfafe63"><span class="std std-ref">Enum TransportRx_SetOutputDataRate_Rate</span></a></p></li>
+<li><p><a class="reference internal" href="enum_host__transport__types_8h_1aef31738b236562c4f0a18348be10fa81.html#exhale-enum-host-transport-types-8h-1aef31738b236562c4f0a18348be10fa81"><span class="std std-ref">Enum TransportRx_SetRange_Range</span></a></p></li>
+<li><p><a class="reference internal" href="enum_host__transport__types_8h_1a0f8fc7d8d585dcd04d9142be969268e5.html#exhale-enum-host-transport-types-8h-1a0f8fc7d8d585dcd04d9142be969268e5"><span class="std std-ref">Enum TransportRx_SetScale_Scale</span></a></p></li>
+<li><p><a class="reference internal" href="enum_host__transport__types_8h_1ac83eafa94c9dfa2280f83ef8dc077a19.html#exhale-enum-host-transport-types-8h-1ac83eafa94c9dfa2280f83ef8dc077a19"><span class="std std-ref">Enum TransportTx_FaultCode</span></a></p></li>
+</ul>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_host__transport__types_8h_1a8b868bbd21ba7df4a6635a0f147da9ea.html#exhale-function-host-transport-types-8h-1a8b868bbd21ba7df4a6635a0f147da9ea"><span class="std std-ref">Function __attribute__((__packed__))</span></a></p></li>
+<li><p><a class="reference internal" href="function_host__transport__types_8h_1ac79abf6004596fe72a9b87b36132f2ef.html#exhale-function-host-transport-types-8h-1ac79abf6004596fe72a9b87b36132f2ef"><span class="std std-ref">Function __attribute__((packed))</span></a></p></li>
+</ul>
+</section>
+<section id="defines">
+<h2>Defines<a class="headerlink" href="#defines" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="define_host__transport__types_8h_1abc3544aae2ae0f78650ee7c49ed2c83e.html#exhale-define-host-transport-types-8h-1abc3544aae2ae0f78650ee7c49ed2c83e"><span class="std std-ref">Define SIZEOF_HEADER_INCL_PAYLOAD</span></a></p></li>
+</ul>
+</section>
+<section id="unions">
+<h2>Unions<a class="headerlink" href="#unions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="unionTransportRxFrame.html#exhale-union-uniontransportrxframe"><span class="std std-ref">Union TransportRxFrame</span></a></p></li>
+<li><p><a class="reference internal" href="unionTransportTxFrame.html#exhale-union-uniontransporttxframe"><span class="std std-ref">Union TransportTxFrame</span></a></p></li>
+</ul>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="#variables" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ac3cae26f5f4fd77505c5cc684f000f8b.html#exhale-variable-host-transport-types-8h-1ac3cae26f5f4fd77505c5cc684f000f8b"><span class="std std-ref">Variable &#64;2</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a3875c02c7867a24afd72c07a8e836d0c.html#exhale-variable-host-transport-types-8h-1a3875c02c7867a24afd72c07a8e836d0c"><span class="std std-ref">Variable asAcceleration</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1afc30d1e053db2002729a8af7567f1e8a.html#exhale-variable-host-transport-types-8h-1afc30d1e053db2002729a8af7567f1e8a"><span class="std std-ref">Variable asBufferOverflow</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a47c2854e80e0bdcf6627a28d8d84bb10.html#exhale-variable-host-transport-types-8h-1a47c2854e80e0bdcf6627a28d8d84bb10"><span class="std std-ref">Variable asBufferStatus</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1aa6fa942a4aba55e671401efab0301f68.html#exhale-variable-host-transport-types-8h-1aa6fa942a4aba55e671401efab0301f68"><span class="std std-ref">Variable asDeviceReboot</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a5468707ba0cf05d846b544d6ec5698ab.html#exhale-variable-host-transport-types-8h-1a5468707ba0cf05d846b544d6ec5698ab"><span class="std std-ref">Variable asDeviceSetup</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a9631d2b89caebed04c53e43e98201aad.html#exhale-variable-host-transport-types-8h-1a9631d2b89caebed04c53e43e98201aad"><span class="std std-ref">Variable asFault</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a5189cd3671dace2454c818487957edcf.html#exhale-variable-host-transport-types-8h-1a5189cd3671dace2454c818487957edcf"><span class="std std-ref">Variable asFifoOverflow</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a1d9850472cc852e0884b276ac2131a4e.html#exhale-variable-host-transport-types-8h-1a1d9850472cc852e0884b276ac2131a4e"><span class="std std-ref">Variable asFirmwareVersion</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a0aaf886a4e4afb1771c9774703859d5c.html#exhale-variable-host-transport-types-8h-1a0aaf886a4e4afb1771c9774703859d5c"><span class="std std-ref">Variable asGetBufferStatus</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1add2e75a6243ec44bd1c9f647932d0807.html#exhale-variable-host-transport-types-8h-1add2e75a6243ec44bd1c9f647932d0807"><span class="std std-ref">Variable asGetDeviceSetup</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ae2ce2ef8f1ae200a09f2d551d634f569.html#exhale-variable-host-transport-types-8h-1ae2ce2ef8f1ae200a09f2d551d634f569"><span class="std std-ref">Variable asGetFirmwareVersion</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1af62d06fba8293c51e03074d4cb7e4585.html#exhale-variable-host-transport-types-8h-1af62d06fba8293c51e03074d4cb7e4585"><span class="std std-ref">Variable asGetOutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a57831df9d6b0fc0b56f277d97399c5ab.html#exhale-variable-host-transport-types-8h-1a57831df9d6b0fc0b56f277d97399c5ab"><span class="std std-ref">Variable asGetRange</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ad0c6e0653d68ec75dcc18d34b1986578.html#exhale-variable-host-transport-types-8h-1ad0c6e0653d68ec75dcc18d34b1986578"><span class="std std-ref">Variable asGetScale</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ad29f0fac76adc64bdbcded7ac12ce9c4.html#exhale-variable-host-transport-types-8h-1ad29f0fac76adc64bdbcded7ac12ce9c4"><span class="std std-ref">Variable asGetUptime</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ab164ff21553b40079f884e7adaaab71d.html#exhale-variable-host-transport-types-8h-1ab164ff21553b40079f884e7adaaab71d"><span class="std std-ref">Variable asOutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a8d2ec4d8224fab4223a6ce5fc880c88d.html#exhale-variable-host-transport-types-8h-1a8d2ec4d8224fab4223a6ce5fc880c88d"><span class="std std-ref">Variable asRange</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a72a394e847080e277ff32248ebb7133e.html#exhale-variable-host-transport-types-8h-1a72a394e847080e277ff32248ebb7133e"><span class="std std-ref">Variable asRxFrame</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a7b901b2ed436c9b8a5485f518cda5e02.html#exhale-variable-host-transport-types-8h-1a7b901b2ed436c9b8a5485f518cda5e02"><span class="std std-ref">Variable asSamplingAborted</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a4d33c777e50886258b7f902cab478d0f.html#exhale-variable-host-transport-types-8h-1a4d33c777e50886258b7f902cab478d0f"><span class="std std-ref">Variable asSamplingFinished</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a8fb2926c1358556d1058310c1d227952.html#exhale-variable-host-transport-types-8h-1a8fb2926c1358556d1058310c1d227952"><span class="std std-ref">Variable asSamplingStart</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a1af577436c0e4a90d7b84d9f1658798f.html#exhale-variable-host-transport-types-8h-1a1af577436c0e4a90d7b84d9f1658798f"><span class="std std-ref">Variable asSamplingStarted</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ac921e372c73f74e47f9df8105d6c832e.html#exhale-variable-host-transport-types-8h-1ac921e372c73f74e47f9df8105d6c832e"><span class="std std-ref">Variable asSamplingStop</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a30ce5a792a73cde28c6eabc0d3bfb1c3.html#exhale-variable-host-transport-types-8h-1a30ce5a792a73cde28c6eabc0d3bfb1c3"><span class="std std-ref">Variable asSamplingStopped</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ab616bd38ef9b5bce0700f2f719982afe.html#exhale-variable-host-transport-types-8h-1ab616bd38ef9b5bce0700f2f719982afe"><span class="std std-ref">Variable asScale</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ad861ce2862ef9cba24b3b950b4dd37e2.html#exhale-variable-host-transport-types-8h-1ad861ce2862ef9cba24b3b950b4dd37e2"><span class="std std-ref">Variable asSetOutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a6cd216ab4f7b652797fef14382ed17c7.html#exhale-variable-host-transport-types-8h-1a6cd216ab4f7b652797fef14382ed17c7"><span class="std std-ref">Variable asSetRange</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1aa3169da96d07ddb56442e1f0219ee59d.html#exhale-variable-host-transport-types-8h-1aa3169da96d07ddb56442e1f0219ee59d"><span class="std std-ref">Variable asSetScale</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1aa3f8ec4fce5cd7645a4127ff548590e5.html#exhale-variable-host-transport-types-8h-1aa3f8ec4fce5cd7645a4127ff548590e5"><span class="std std-ref">Variable asTransmissionError</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1aafbd65a18c302f1f153b181db80ba8fa.html#exhale-variable-host-transport-types-8h-1aafbd65a18c302f1f153b181db80ba8fa"><span class="std std-ref">Variable asTxFrame</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ad81494366a13a54bd6e83460780941f1.html#exhale-variable-host-transport-types-8h-1ad81494366a13a54bd6e83460780941f1"><span class="std std-ref">Variable asUptime</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1acb3a6c3ab101017407767420a55c7bce.html#exhale-variable-host-transport-types-8h-1acb3a6c3ab101017407767420a55c7bce"><span class="std std-ref">Variable capacityTotal</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ac27141d7b944f1726d103e1d70bfa42c.html#exhale-variable-host-transport-types-8h-1ac27141d7b944f1726d103e1d70bfa42c"><span class="std std-ref">Variable capacityUsedMax</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a539fade4288db3f9773404189cec9d04.html#exhale-variable-host-transport-types-8h-1a539fade4288db3f9773404189cec9d04"><span class="std std-ref">Variable code</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1af5029fb6db797d8d8aebb7a15533c0d0.html#exhale-variable-host-transport-types-8h-1af5029fb6db797d8d8aebb7a15533c0d0"><span class="std std-ref">Variable elapsedMs</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ade1fc93f9f2ad74d50761aabcbb8c58f.html#exhale-variable-host-transport-types-8h-1ade1fc93f9f2ad74d50761aabcbb8c58f"><span class="std std-ref">Variable header</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1aaa2b01a5565390d6b8b8c7d4ee0ce0f1.html#exhale-variable-host-transport-types-8h-1aaa2b01a5565390d6b8b8c7d4ee0ce0f1"><span class="std std-ref">Variable id</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a852b86a2eaee9852ada7a43e61e311a2.html#exhale-variable-host-transport-types-8h-1a852b86a2eaee9852ada7a43e61e311a2"><span class="std std-ref">Variable index</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a3c16a252ddd5788c1117d24e795ed229.html#exhale-variable-host-transport-types-8h-1a3c16a252ddd5788c1117d24e795ed229"><span class="std std-ref">Variable largestTxChunkBytes</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a5bd4e4c943762926c8f653b6224cced2.html#exhale-variable-host-transport-types-8h-1a5bd4e4c943762926c8f653b6224cced2"><span class="std std-ref">Variable major</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a7092625ebce4006ef4775bf3417f3f42.html#exhale-variable-host-transport-types-8h-1a7092625ebce4006ef4775bf3417f3f42"><span class="std std-ref">Variable max_samples_count</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ae6ee9be053cfc09d38936dada346162d.html#exhale-variable-host-transport-types-8h-1ae6ee9be053cfc09d38936dada346162d"><span class="std std-ref">Variable maxSamples</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ae2f416b0a34b7beb4ed3873d791ac393.html#exhale-variable-host-transport-types-8h-1ae2f416b0a34b7beb4ed3873d791ac393"><span class="std std-ref">Variable minor</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a6215da7f38ae96ed447bb6277fe48150.html#exhale-variable-host-transport-types-8h-1a6215da7f38ae96ed447bb6277fe48150"><span class="std std-ref">Variable outputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a00c54fad5fef8d31eb75c1163468005b.html#exhale-variable-host-transport-types-8h-1a00c54fad5fef8d31eb75c1163468005b"><span class="std std-ref">Variable patch</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a67b4a66a95e3d5dc5050f60d150280d9.html#exhale-variable-host-transport-types-8h-1a67b4a66a95e3d5dc5050f60d150280d9"><span class="std std-ref">Variable putCount</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a9edcde0584b2ab6c4a7b49eaec49d237.html#exhale-variable-host-transport-types-8h-1a9edcde0584b2ab6c4a7b49eaec49d237"><span class="std std-ref">Variable range</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a20ed0fb1e9a2b4e0c3ae40fc5e348962.html#exhale-variable-host-transport-types-8h-1a20ed0fb1e9a2b4e0c3ae40fc5e348962"><span class="std std-ref">Variable rate</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a616c0a72f0e4af38b93c736773ac7210.html#exhale-variable-host-transport-types-8h-1a616c0a72f0e4af38b93c736773ac7210"><span class="std std-ref">Variable scale</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a2643d0396638e7b2337cbb1074bb0bce.html#exhale-variable-host-transport-types-8h-1a2643d0396638e7b2337cbb1074bb0bce"><span class="std std-ref">Variable sizeBytes</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ab2c6b8aaf5dd07f6847367f8a3cc672a.html#exhale-variable-host-transport-types-8h-1ab2c6b8aaf5dd07f6847367f8a3cc672a"><span class="std std-ref">Variable takeCount</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a22bb34790f05eda025ff6ec569a38893.html#exhale-variable-host-transport-types-8h-1a22bb34790f05eda025ff6ec569a38893"><span class="std std-ref">Variable Transport_HeaderId_Rx_DeviceReboot</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a8f226ce7aa0c4a47706b2a629f1cf5ce.html#exhale-variable-host-transport-types-8h-1a8f226ce7aa0c4a47706b2a629f1cf5ce"><span class="std std-ref">Variable Transport_HeaderId_Rx_GetBufferStatus</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ad7b7907f64bd95e2b8283658736eca43.html#exhale-variable-host-transport-types-8h-1ad7b7907f64bd95e2b8283658736eca43"><span class="std std-ref">Variable Transport_HeaderId_Rx_GetDeviceSetup</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a23ea3f828418c5295d37031944da4dc4.html#exhale-variable-host-transport-types-8h-1a23ea3f828418c5295d37031944da4dc4"><span class="std std-ref">Variable Transport_HeaderId_Rx_GetFirmwareVersion</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1adac81cc43b06ba05d7073c02622fc9ae.html#exhale-variable-host-transport-types-8h-1adac81cc43b06ba05d7073c02622fc9ae"><span class="std std-ref">Variable Transport_HeaderId_Rx_GetOutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1aedecacea95ee55904c265c09a71a6b4c.html#exhale-variable-host-transport-types-8h-1aedecacea95ee55904c265c09a71a6b4c"><span class="std std-ref">Variable Transport_HeaderId_Rx_GetRange</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a4edf0db215fb7c5e9a9b0fa7908a4c4f.html#exhale-variable-host-transport-types-8h-1a4edf0db215fb7c5e9a9b0fa7908a4c4f"><span class="std std-ref">Variable Transport_HeaderId_Rx_GetScale</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a18e8da580464a6ec8b8947a53740093c.html#exhale-variable-host-transport-types-8h-1a18e8da580464a6ec8b8947a53740093c"><span class="std std-ref">Variable Transport_HeaderId_Rx_GetUptime</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a369f86e0d4bf8513c48e692f6f093e58.html#exhale-variable-host-transport-types-8h-1a369f86e0d4bf8513c48e692f6f093e58"><span class="std std-ref">Variable Transport_HeaderId_Rx_SamplingStart</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a4eef206282513dee7159851c609bc485.html#exhale-variable-host-transport-types-8h-1a4eef206282513dee7159851c609bc485"><span class="std std-ref">Variable Transport_HeaderId_Rx_SamplingStop</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1acb54ffe6a95d10689128b03eb2a77f42.html#exhale-variable-host-transport-types-8h-1acb54ffe6a95d10689128b03eb2a77f42"><span class="std std-ref">Variable Transport_HeaderId_Rx_SetOutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a0b760b6cc534589862d9c871c107ccd8.html#exhale-variable-host-transport-types-8h-1a0b760b6cc534589862d9c871c107ccd8"><span class="std std-ref">Variable Transport_HeaderId_Rx_SetRange</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ab51e73071fda70a7ca13ad49de54eecb.html#exhale-variable-host-transport-types-8h-1ab51e73071fda70a7ca13ad49de54eecb"><span class="std std-ref">Variable Transport_HeaderId_Rx_SetScale</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a32054bbd4957faf54027c3806f0572d9.html#exhale-variable-host-transport-types-8h-1a32054bbd4957faf54027c3806f0572d9"><span class="std std-ref">Variable Transport_HeaderId_Tx_Acceleration</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a3f2aefc49acb5eb231469ddc39fedf44.html#exhale-variable-host-transport-types-8h-1a3f2aefc49acb5eb231469ddc39fedf44"><span class="std std-ref">Variable Transport_HeaderId_Tx_BufferOverflow</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ac53569ade48ebfbf6590f1a188c8ee3d.html#exhale-variable-host-transport-types-8h-1ac53569ade48ebfbf6590f1a188c8ee3d"><span class="std std-ref">Variable Transport_HeaderId_Tx_BufferStatus</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ae0f29bf62bce92bee634f1f921b9f01e.html#exhale-variable-host-transport-types-8h-1ae0f29bf62bce92bee634f1f921b9f01e"><span class="std std-ref">Variable Transport_HeaderId_Tx_DeviceSetup</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a8a2ae78da974aa7027479922d2a4ed5b.html#exhale-variable-host-transport-types-8h-1a8a2ae78da974aa7027479922d2a4ed5b"><span class="std std-ref">Variable Transport_HeaderId_Tx_Fault</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a596a95e1a93ab06f074222ab18f95920.html#exhale-variable-host-transport-types-8h-1a596a95e1a93ab06f074222ab18f95920"><span class="std std-ref">Variable Transport_HeaderId_Tx_FifoOverflow</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a95a9dd3cb2f96cd681020c4175f5902c.html#exhale-variable-host-transport-types-8h-1a95a9dd3cb2f96cd681020c4175f5902c"><span class="std std-ref">Variable Transport_HeaderId_Tx_FirmwareVersion</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1aae75aa115123d74b76fa6949898584df.html#exhale-variable-host-transport-types-8h-1aae75aa115123d74b76fa6949898584df"><span class="std std-ref">Variable Transport_HeaderId_Tx_OutputDataRate</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a4a3828d9a5b6768a573e1bead3e2d2ff.html#exhale-variable-host-transport-types-8h-1a4a3828d9a5b6768a573e1bead3e2d2ff"><span class="std std-ref">Variable Transport_HeaderId_Tx_Range</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a21a580e681a5f26e8e5fe75dfdbc8a5a.html#exhale-variable-host-transport-types-8h-1a21a580e681a5f26e8e5fe75dfdbc8a5a"><span class="std std-ref">Variable Transport_HeaderId_Tx_SamplingAborted</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a2a5c3e7bd006c058342d46b4a0dcf654.html#exhale-variable-host-transport-types-8h-1a2a5c3e7bd006c058342d46b4a0dcf654"><span class="std std-ref">Variable Transport_HeaderId_Tx_SamplingFinished</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a86257c49aea65b6e107dc85f39306d36.html#exhale-variable-host-transport-types-8h-1a86257c49aea65b6e107dc85f39306d36"><span class="std std-ref">Variable Transport_HeaderId_Tx_SamplingStarted</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ad2e989c2ea23725ced9541f9197d765e.html#exhale-variable-host-transport-types-8h-1ad2e989c2ea23725ced9541f9197d765e"><span class="std std-ref">Variable Transport_HeaderId_Tx_SamplingStopped</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ab0f4f73bd1e609a0b0392110aa6c4464.html#exhale-variable-host-transport-types-8h-1ab0f4f73bd1e609a0b0392110aa6c4464"><span class="std std-ref">Variable Transport_HeaderId_Tx_Scale</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ac6b9dfb6a3df289aea5e75fed74f8ccd.html#exhale-variable-host-transport-types-8h-1ac6b9dfb6a3df289aea5e75fed74f8ccd"><span class="std std-ref">Variable Transport_HeaderId_Tx_TransmissionError</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a18255b9548a3be025fb38341aab3ff28.html#exhale-variable-host-transport-types-8h-1a18255b9548a3be025fb38341aab3ff28"><span class="std std-ref">Variable Transport_HeaderId_Tx_Uptime</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ab80ee75e48bcff60590ab85dc2ba2e4d.html#exhale-variable-host-transport-types-8h-1ab80ee75e48bcff60590ab85dc2ba2e4d"><span class="std std-ref">Variable TransportRx_SetOutputDataRate_Rate1600</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a091d1bce163f98989b9b2fdfea535308.html#exhale-variable-host-transport-types-8h-1a091d1bce163f98989b9b2fdfea535308"><span class="std std-ref">Variable TransportRx_SetOutputDataRate_Rate3200</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a4e673e766b82998f915b4af85e5d7704.html#exhale-variable-host-transport-types-8h-1a4e673e766b82998f915b4af85e5d7704"><span class="std std-ref">Variable TransportRx_SetOutputDataRate_Rate_100</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1afda2aefc18d59926341018e82d875229.html#exhale-variable-host-transport-types-8h-1afda2aefc18d59926341018e82d875229"><span class="std std-ref">Variable TransportRx_SetOutputDataRate_Rate_200</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a3c0035a602dd728ded865b9d6ef15294.html#exhale-variable-host-transport-types-8h-1a3c0035a602dd728ded865b9d6ef15294"><span class="std std-ref">Variable TransportRx_SetOutputDataRate_Rate_400</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1addb6b9f37d6d12114c447e56d7a94910.html#exhale-variable-host-transport-types-8h-1addb6b9f37d6d12114c447e56d7a94910"><span class="std std-ref">Variable TransportRx_SetOutputDataRate_Rate_50</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a1876d2a2a995a89d1ae36b070d01e466.html#exhale-variable-host-transport-types-8h-1a1876d2a2a995a89d1ae36b070d01e466"><span class="std std-ref">Variable TransportRx_SetOutputDataRate_Rate_800</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a199357a0869b4d3117d8d21a4cd818e7.html#exhale-variable-host-transport-types-8h-1a199357a0869b4d3117d8d21a4cd818e7"><span class="std std-ref">Variable TransportRx_SetRange_Range_16g</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a75512796c04cb0ccbc6b6dee9d05a330.html#exhale-variable-host-transport-types-8h-1a75512796c04cb0ccbc6b6dee9d05a330"><span class="std std-ref">Variable TransportRx_SetRange_Range_2g</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ad9b66a7dcec99e0385035d4188cb45ce.html#exhale-variable-host-transport-types-8h-1ad9b66a7dcec99e0385035d4188cb45ce"><span class="std std-ref">Variable TransportRx_SetRange_Range_4g</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a6855bc5e18ebc269c18919a044eccace.html#exhale-variable-host-transport-types-8h-1a6855bc5e18ebc269c18919a044eccace"><span class="std std-ref">Variable TransportRx_SetRange_Range_8g</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a646dea9dddb9a73346683381aca53f42.html#exhale-variable-host-transport-types-8h-1a646dea9dddb9a73346683381aca53f42"><span class="std std-ref">Variable TransportRx_SetScale_Scale_10bit</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a1690465050dce4f1cf0cafd7880f7a41.html#exhale-variable-host-transport-types-8h-1a1690465050dce4f1cf0cafd7880f7a41"><span class="std std-ref">Variable TransportRx_SetScale_Scale_full4mg</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1afd33b8606c3e10d7d0d0f5ebbe2b75ac.html#exhale-variable-host-transport-types-8h-1afd33b8606c3e10d7d0d0f5ebbe2b75ac"><span class="std std-ref">Variable TransportTx_FaultCode_BusFaultHandler</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a5c47aa5e6c52d974ca243117937d1e4b.html#exhale-variable-host-transport-types-8h-1a5c47aa5e6c52d974ca243117937d1e4b"><span class="std std-ref">Variable TransportTx_FaultCode_ErrorHandler</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a8ab014894ee593ada228c8818c805a4d.html#exhale-variable-host-transport-types-8h-1a8ab014894ee593ada228c8818c805a4d"><span class="std std-ref">Variable TransportTx_FaultCode_HardFaultHandler</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a7539b8b6c9a4574a3ca913254c9f4f42.html#exhale-variable-host-transport-types-8h-1a7539b8b6c9a4574a3ca913254c9f4f42"><span class="std std-ref">Variable TransportTx_FaultCode_NmiHandler</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1a87b83b4ee285085422bbd7df9c9840b8.html#exhale-variable-host-transport-types-8h-1a87b83b4ee285085422bbd7df9c9840b8"><span class="std std-ref">Variable TransportTx_FaultCode_UsageFaultHandler</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1af6a306b725a13c587236e4a61d4ea050.html#exhale-variable-host-transport-types-8h-1af6a306b725a13c587236e4a61d4ea050"><span class="std std-ref">Variable values</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1ae1c2d516777e6b42af0d281c9ecc7375.html#exhale-variable-host-transport-types-8h-1ae1c2d516777e6b42af0d281c9ecc7375"><span class="std std-ref">Variable x</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1af77b1a54442f2443cf64a4766f916bcd.html#exhale-variable-host-transport-types-8h-1af77b1a54442f2443cf64a4766f916bcd"><span class="std std-ref">Variable y</span></a></p></li>
+<li><p><a class="reference internal" href="variable_host__transport__types_8h_1abd938edbea27ed4f351dc19d69039222.html#exhale-variable-host-transport-types-8h-1abd938edbea27ed4f351dc19d69039222"><span class="std std-ref">Variable z</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

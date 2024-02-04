@@ -1,0 +1,14 @@
+.. _exhale_function_test_8c_1ae53c39223316e02dff7bb6b9b54c88f7:
+
+Function test_cap1_full
+=======================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_test_test_ringbuffer_test.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: test_cap1_full()
+   :project: My Proj

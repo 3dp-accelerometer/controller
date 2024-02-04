@@ -1,0 +1,14 @@
+.. _exhale_function_ringbuffer_8h_1a14cd7a193ec80b52d8439be928a38ac5:
+
+Function Ringbuffer_maxCapacityUsed(const struct Ringbuffer \*)
+===============================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Ringbuffer_maxCapacityUsed(const struct Ringbuffer *)
+   :project: My Proj

@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1aa3f8ec4fce5cd7645a4127ff548590e5:
+
+Variable asTransmissionError
+============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asTransmissionError
+   :project: My Proj

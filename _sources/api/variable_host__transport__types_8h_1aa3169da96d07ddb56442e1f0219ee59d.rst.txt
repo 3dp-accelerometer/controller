@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1aa3169da96d07ddb56442e1f0219ee59d:
+
+Variable asSetScale
+===================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asSetScale
+   :project: My Proj

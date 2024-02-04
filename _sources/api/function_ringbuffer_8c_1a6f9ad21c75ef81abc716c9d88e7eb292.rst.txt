@@ -1,0 +1,14 @@
+.. _exhale_function_ringbuffer_8c_1a6f9ad21c75ef81abc716c9d88e7eb292:
+
+Function Ringbuffer_itemSizeBytes(const struct Ringbuffer \*)
+=============================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Ringbuffer_itemSizeBytes(const struct Ringbuffer *)
+   :project: My Proj

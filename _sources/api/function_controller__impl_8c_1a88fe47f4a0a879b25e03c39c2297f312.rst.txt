@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a88fe47f4a0a879b25e03c39c2297f312:
+
+Function sensor_doInitImpl
+==========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: sensor_doInitImpl()
+   :project: My Proj

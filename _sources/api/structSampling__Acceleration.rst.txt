@@ -1,0 +1,17 @@
+.. _exhale_struct_structSampling__Acceleration:
+
+Struct Sampling_Acceleration
+============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling_types.h`
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: Sampling_Acceleration
+   :project: My Proj
+   :members:
+   :protected-members:
+   :undoc-members:

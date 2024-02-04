@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File adxl345_flags.h &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File adxl345_flags.h</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-adxl345-flags-h">
+<span id="file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-flags-h"></span><h1>File adxl345_flags.h<a class="headerlink" href="#file-adxl345-flags-h" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="dir__home_runner_work_controller_controller_lib_adxl345_src.html#dir-home-runner-work-controller-controller-lib-adxl345-src"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/adxl345/src</span></code>)</p>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-home-runner-work-controller-controller-lib-adxl345-src-adxl345-flags-h" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/adxl345/src/adxl345_flags.h</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#detailed-description" id="id2">Detailed Description</a></p></li>
+<li><p><a class="reference internal" href="#included-by" id="id3">Included By</a></p></li>
+<li><p><a class="reference internal" href="#enums" id="id4">Enums</a></p></li>
+</ul>
+</nav>
+<section id="definition-home-runner-work-controller-controller-lib-adxl345-src-adxl345-flags-h">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/adxl345/src/adxl345_flags.h</span></code>)<a class="headerlink" href="#definition-home-runner-work-controller-controller-lib-adxl345-src-adxl345-flags-h" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h.html">Program Listing for File adxl345_flags.h</a></li>
+</ul>
+</div>
+</section>
+<section id="detailed-description">
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Link to this heading"></a></h2>
+<p>ADXL345 address and register flags definitions.</p>
+</section>
+<section id="included-by">
+<h2>Included By<a class="headerlink" href="#included-by" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c.html#file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-c"><span class="std std-ref">File adxl345.c</span></a></p></li>
+<li><p><a class="reference internal" href="file__home_runner_work_controller_controller_Src_fw_controller_impl.c.html#file-home-runner-work-controller-controller-src-fw-controller-impl-c"><span class="std std-ref">File controller_impl.c</span></a></p></li>
+</ul>
+</section>
+<section id="enums">
+<h2>Enums<a class="headerlink" href="#enums" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1af90caf8b105f26e06969e5c6da63610b.html#exhale-enum-adxl345-flags-8h-1af90caf8b105f26e06969e5c6da63610b"><span class="std std-ref">Enum Adxl345Flags_Address</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a5ae3e155c2d6fc97a1ac318cd6738c43.html#exhale-enum-adxl345-flags-8h-1a5ae3e155c2d6fc97a1ac318cd6738c43"><span class="std std-ref">Enum Adxl345Flags_BwRate_LowPower</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a9192278eea0272a4b3b92006ca33cb99.html#exhale-enum-adxl345-flags-8h-1a9192278eea0272a4b3b92006ca33cb99"><span class="std std-ref">Enum Adxl345Flags_BwRate_Rate</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a23a3530e3e870d9c68f5acdfa7311eeb.html#exhale-enum-adxl345-flags-8h-1a23a3530e3e870d9c68f5acdfa7311eeb"><span class="std std-ref">Enum Adxl345Flags_DataFormat_FullResBit</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a646668c76f062cdfef18123e259bef39.html#exhale-enum-adxl345-flags-8h-1a646668c76f062cdfef18123e259bef39"><span class="std std-ref">Enum Adxl345Flags_DataFormat_IntInvert</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1ae2234c612a44b8351fd51db6638e5a37.html#exhale-enum-adxl345-flags-8h-1ae2234c612a44b8351fd51db6638e5a37"><span class="std std-ref">Enum Adxl345Flags_DataFormat_Justify</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a8af7ef886711ec1e36a925cccfdf0c2f.html#exhale-enum-adxl345-flags-8h-1a8af7ef886711ec1e36a925cccfdf0c2f"><span class="std std-ref">Enum Adxl345Flags_DataFormat_Range</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1aaa53a6429862365058e9f0d6df90680f.html#exhale-enum-adxl345-flags-8h-1aaa53a6429862365058e9f0d6df90680f"><span class="std std-ref">Enum Adxl345Flags_DataFormat_SelfTest</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1aeacaafb4990ff34e9fc4199e0e3ef82a.html#exhale-enum-adxl345-flags-8h-1aeacaafb4990ff34e9fc4199e0e3ef82a"><span class="std std-ref">Enum Adxl345Flags_DataFormat_SpiBit</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a834927807771e1ed63ea46e924eff48a.html#exhale-enum-adxl345-flags-8h-1a834927807771e1ed63ea46e924eff48a"><span class="std std-ref">Enum Adxl345Flags_FifoCtl_FifoMode</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a2aa33b523bebdd04a462df505f4a9701.html#exhale-enum-adxl345-flags-8h-1a2aa33b523bebdd04a462df505f4a9701"><span class="std std-ref">Enum Adxl345Flags_FifoCtl_Trigger</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a1e836097ed4058fabf46a7f857155356.html#exhale-enum-adxl345-flags-8h-1a1e836097ed4058fabf46a7f857155356"><span class="std std-ref">Enum Adxl345Flags_FifoStatus_FifoTrig</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1ad8a1bc51f25f37bb47d8333fc80579e7.html#exhale-enum-adxl345-flags-8h-1ad8a1bc51f25f37bb47d8333fc80579e7"><span class="std std-ref">Enum Adxl345Flags_IntEnable_Activity</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1ab51a3bca87c0c3b2f22f00d72736ed78.html#exhale-enum-adxl345-flags-8h-1ab51a3bca87c0c3b2f22f00d72736ed78"><span class="std std-ref">Enum Adxl345Flags_IntEnable_DataReady</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a8d417b16f0f93744f8af80d51c38ffeb.html#exhale-enum-adxl345-flags-8h-1a8d417b16f0f93744f8af80d51c38ffeb"><span class="std std-ref">Enum Adxl345Flags_IntEnable_DoubleTap</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1aea113fb35a8964a5862746ef41d4b8c2.html#exhale-enum-adxl345-flags-8h-1aea113fb35a8964a5862746ef41d4b8c2"><span class="std std-ref">Enum Adxl345Flags_IntEnable_FreeFall</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a114643033e2c653158c202adb14dc8e1.html#exhale-enum-adxl345-flags-8h-1a114643033e2c653158c202adb14dc8e1"><span class="std std-ref">Enum Adxl345Flags_IntEnable_Inactivity</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a2481a6a199a4e74aa7999fe071c74267.html#exhale-enum-adxl345-flags-8h-1a2481a6a199a4e74aa7999fe071c74267"><span class="std std-ref">Enum Adxl345Flags_IntEnable_Overrun</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1aba371ae2c1ac7d30978c9dc01b2d0302.html#exhale-enum-adxl345-flags-8h-1aba371ae2c1ac7d30978c9dc01b2d0302"><span class="std std-ref">Enum Adxl345Flags_IntEnable_SingleTap</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1aa7fe91945feaf0cf4983c46963607b53.html#exhale-enum-adxl345-flags-8h-1aa7fe91945feaf0cf4983c46963607b53"><span class="std std-ref">Enum Adxl345Flags_IntEnable_Watermark</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a988b140122294db70bdbe2c685e8883e.html#exhale-enum-adxl345-flags-8h-1a988b140122294db70bdbe2c685e8883e"><span class="std std-ref">Enum Adxl345Flags_IntMap_Activity</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a5852f46c4668a2e61dc6078ecdb1ee5e.html#exhale-enum-adxl345-flags-8h-1a5852f46c4668a2e61dc6078ecdb1ee5e"><span class="std std-ref">Enum Adxl345Flags_IntMap_DataReady</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a50dedcae134fbae0db34ad030ae97d5e.html#exhale-enum-adxl345-flags-8h-1a50dedcae134fbae0db34ad030ae97d5e"><span class="std std-ref">Enum Adxl345Flags_IntMap_DoubleTap</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a8ab4704ccbb33a382957f3501304ba50.html#exhale-enum-adxl345-flags-8h-1a8ab4704ccbb33a382957f3501304ba50"><span class="std std-ref">Enum Adxl345Flags_IntMap_FreeFall</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a56079b83c6d7f874e4b36c2771903a5c.html#exhale-enum-adxl345-flags-8h-1a56079b83c6d7f874e4b36c2771903a5c"><span class="std std-ref">Enum Adxl345Flags_IntMap_Inactivity</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1ad9bb53ea03849579da4b0f85e6970812.html#exhale-enum-adxl345-flags-8h-1ad9bb53ea03849579da4b0f85e6970812"><span class="std std-ref">Enum Adxl345Flags_IntMap_Overrun</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a3e2eb079d34790a2c5e6d53c26e5226c.html#exhale-enum-adxl345-flags-8h-1a3e2eb079d34790a2c5e6d53c26e5226c"><span class="std std-ref">Enum Adxl345Flags_IntMap_SingleTap</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1ad7e7ca6a5a84e87e2e0dc2c382e88f5e.html#exhale-enum-adxl345-flags-8h-1ad7e7ca6a5a84e87e2e0dc2c382e88f5e"><span class="std std-ref">Enum Adxl345Flags_IntMap_Watermark</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a42c672b534e460edb56fd7730b297406.html#exhale-enum-adxl345-flags-8h-1a42c672b534e460edb56fd7730b297406"><span class="std std-ref">Enum Adxl345Flags_PowerCtl_AutoSleep</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a4db2ee2c4eb68481d38218393a5decbd.html#exhale-enum-adxl345-flags-8h-1a4db2ee2c4eb68481d38218393a5decbd"><span class="std std-ref">Enum Adxl345Flags_PowerCtl_Link</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1ae12a87f38a260cd1395fa95b65210e96.html#exhale-enum-adxl345-flags-8h-1ae12a87f38a260cd1395fa95b65210e96"><span class="std std-ref">Enum Adxl345Flags_PowerCtl_Measure</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1addec4913908fc06c3bfafda7d8dbd778.html#exhale-enum-adxl345-flags-8h-1addec4913908fc06c3bfafda7d8dbd778"><span class="std std-ref">Enum Adxl345Flags_PowerCtl_Sleep</span></a></p></li>
+<li><p><a class="reference internal" href="enum_adxl345__flags_8h_1a838f78356395fdc86a710a285d296b7d.html#exhale-enum-adxl345-flags-8h-1a838f78356395fdc86a710a285d296b7d"><span class="std std-ref">Enum Adxl345Flags_PowerCtl_Wakeup</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

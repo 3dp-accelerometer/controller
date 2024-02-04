@@ -1,0 +1,14 @@
+.. _exhale_enum_adxl345__flags_8h_1a5852f46c4668a2e61dc6078ecdb1ee5e:
+
+Enum Adxl345Flags_IntMap_DataReady
+==================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: Adxl345Flags_IntMap_DataReady
+   :project: My Proj

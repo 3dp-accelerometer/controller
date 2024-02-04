@@ -1,0 +1,14 @@
+.. _exhale_variable_ringbuffer__impl_8c_1aca726e74f3e7708930749e2813deb9bd:
+
+Variable ringbufferStorage
+==========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_ringbuffer_impl.c`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: ringbufferStorage
+   :project: My Proj

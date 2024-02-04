@@ -1,0 +1,70 @@
+
+.. _file__home_runner_work_controller_controller_Inc_fw_ringbuffer_impl.h:
+
+File ringbuffer_impl.h
+======================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Inc_fw>` (``/home/runner/work/controller/controller/Inc/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Inc/fw/ringbuffer_impl.h``)
+---------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Inc_fw_ringbuffer_impl.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``host_transport_types.h`` (:ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`)
+
+- ``inttypes.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_ringbuffer_impl.c`
+
+
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_ringbuffer__impl_8h_1a1973b18f985517b2dd4328bb7ad4ab62`
+
+- :ref:`exhale_define_ringbuffer__impl_8h_1a7b169c21c38fba69b8b43ef5d9ca47bb`
+
+- :ref:`exhale_define_ringbuffer__impl_8h_1ab678e1a5f5ebc9c4d79a2115a2bca497`
+
+- :ref:`exhale_define_ringbuffer__impl_8h_1a018e3f6206f28db535e27ce850a65cb3`
+
+- :ref:`exhale_define_ringbuffer__impl_8h_1a466d94c34710afcd889fc18809cf96c0`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_ringbuffer__impl_8h_1a778026c0adaede26aff919edf6aa1de2`
+

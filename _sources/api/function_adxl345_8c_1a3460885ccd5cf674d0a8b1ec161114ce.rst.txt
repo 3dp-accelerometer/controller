@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345_8c_1a3460885ccd5cf674d0a8b1ec161114ce:
+
+Function Adxl345_setRange(struct Adxl345_Handle \*, uint8_t)
+============================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Adxl345_setRange(struct Adxl345_Handle *, uint8_t)
+   :project: My Proj

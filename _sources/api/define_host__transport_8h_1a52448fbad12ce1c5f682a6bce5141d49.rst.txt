@@ -1,0 +1,14 @@
+.. _exhale_define_host__transport_8h_1a52448fbad12ce1c5f682a6bce5141d49:
+
+Define TRANSPORTTX_TRANSMIT_TX_DATA_CHUNK_BUFFER_BYTES
+======================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: TRANSPORTTX_TRANSMIT_TX_DATA_CHUNK_BUFFER_BYTES
+   :project: My Proj

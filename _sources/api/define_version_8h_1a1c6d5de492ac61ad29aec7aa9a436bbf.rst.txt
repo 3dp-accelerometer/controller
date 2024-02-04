@@ -1,0 +1,14 @@
+.. _exhale_define_version_8h_1a1c6d5de492ac61ad29aec7aa9a436bbf:
+
+Define VERSION
+==============
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_version.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: VERSION
+   :project: My Proj

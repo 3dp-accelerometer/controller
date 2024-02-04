@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1adbaedf7e92176b7b33afc0ff2fed9a19:
+
+Function sampling_doFetchSensorAccelerationImpl
+===============================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: sampling_doFetchSensorAccelerationImpl()
+   :project: My Proj

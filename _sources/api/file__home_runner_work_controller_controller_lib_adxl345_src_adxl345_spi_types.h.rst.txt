@@ -1,0 +1,65 @@
+
+.. _file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_spi_types.h:
+
+File adxl345_spi_types.h
+========================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_lib_adxl345_src>` (``/home/runner/work/controller/controller/lib/adxl345/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/lib/adxl345/src/adxl345_spi_types.h``)
+--------------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_spi_types.h.rst
+
+
+
+Detailed Description
+--------------------
+
+ADXL345 SPI TX/RX constants. 
+
+
+
+
+Includes
+--------
+
+
+- ``assert.h``
+
+- ``inttypes.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_Inc_fw_adxl345_transport_impl.h`
+
+- :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_adxl345_transport_impl.c`
+
+
+
+
+Enums
+-----
+
+
+- :ref:`exhale_enum_adxl345__spi__types_8h_1a724c46636785edc1a58e7171c17e7a0c`
+
+- :ref:`exhale_enum_adxl345__spi__types_8h_1afd6c640f316d87383ac8ee42831eb63c`
+

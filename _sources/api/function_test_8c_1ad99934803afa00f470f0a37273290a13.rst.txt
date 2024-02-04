@@ -1,0 +1,14 @@
+.. _exhale_function_test_8c_1ad99934803afa00f470f0a37273290a13:
+
+Function test_cap3_full_takeItem
+================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_test_test_ringbuffer_test.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: test_cap3_full_takeItem()
+   :project: My Proj

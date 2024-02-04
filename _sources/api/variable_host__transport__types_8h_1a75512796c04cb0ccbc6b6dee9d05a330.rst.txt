@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1a75512796c04cb0ccbc6b6dee9d05a330:
+
+Variable TransportRx_SetRange_Range_2g
+======================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: TransportRx_SetRange_Range_2g
+   :project: My Proj

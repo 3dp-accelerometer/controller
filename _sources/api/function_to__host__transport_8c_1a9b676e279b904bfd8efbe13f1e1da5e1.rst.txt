@@ -1,0 +1,14 @@
+.. _exhale_function_to__host__transport_8c_1a9b676e279b904bfd8efbe13f1e1da5e1:
+
+Function isTransmitBusy
+=======================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: isTransmitBusy(const struct HostTransport_ToHostApi *)
+   :project: My Proj

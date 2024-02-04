@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__register_8h_1a47b1d0dc45f9b7da2092fffb11a5b6e0:
+
+Variable asBwRate
+=================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asBwRate
+   :project: My Proj

@@ -1,0 +1,14 @@
+.. _exhale_function_ringbuffer_8c_1acaf0d7eaba25e09488f0b1b91646b094:
+
+Function advanceEnd
+===================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: advanceEnd(struct Ringbuffer_Index *)
+   :project: My Proj

@@ -1,0 +1,14 @@
+.. _exhale_variable_controller__impl_8c_1ab56ab2a03c4aa0c3ae17befc6a6f7afe:
+
+Variable _reserved_0
+====================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: _reserved_0
+   :project: My Proj

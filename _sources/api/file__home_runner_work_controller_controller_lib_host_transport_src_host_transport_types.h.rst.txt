@@ -1,0 +1,374 @@
+
+.. _file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h:
+
+File host_transport_types.h
+===========================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_lib_host_transport_src>` (``/home/runner/work/controller/controller/lib/host_transport/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/lib/host_transport/src/host_transport_types.h``)
+------------------------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``assert.h``
+
+- ``inttypes.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_Inc_fw_ringbuffer_impl.h`
+
+- :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_from_host_transport.c`
+
+- :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_host_transport_impl.c`
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structTransport__Acceleration`
+
+- :ref:`exhale_struct_structTransport__Header`
+
+- :ref:`exhale_struct_structTransportFrame`
+
+- :ref:`exhale_struct_structTransportRx__DeviceReboot`
+
+- :ref:`exhale_struct_structTransportRx__GetBufferStatus`
+
+- :ref:`exhale_struct_structTransportRx__GetDeviceSetup`
+
+- :ref:`exhale_struct_structTransportRx__GetFirmwareVersion`
+
+- :ref:`exhale_struct_structTransportRx__GetOutputDataRate`
+
+- :ref:`exhale_struct_structTransportRx__GetRange`
+
+- :ref:`exhale_struct_structTransportRx__GetScale`
+
+- :ref:`exhale_struct_structTransportRx__GetUptime`
+
+- :ref:`exhale_struct_structTransportRx__SamplingStart`
+
+- :ref:`exhale_struct_structTransportRx__SamplingStop`
+
+- :ref:`exhale_struct_structTransportRx__SetOutputDataRate`
+
+- :ref:`exhale_struct_structTransportRx__SetRange`
+
+- :ref:`exhale_struct_structTransportRx__SetScale`
+
+- :ref:`exhale_struct_structTransportTx__Acceleration`
+
+- :ref:`exhale_struct_structTransportTx__BufferOverflow`
+
+- :ref:`exhale_struct_structTransportTx__BufferStatus`
+
+- :ref:`exhale_struct_structTransportTx__DeviceSetup`
+
+- :ref:`exhale_struct_structTransportTx__Fault`
+
+- :ref:`exhale_struct_structTransportTx__FifoOverflow`
+
+- :ref:`exhale_struct_structTransportTx__FirmwareVersion`
+
+- :ref:`exhale_struct_structTransportTx__OutputDataRate`
+
+- :ref:`exhale_struct_structTransportTx__Range`
+
+- :ref:`exhale_struct_structTransportTx__SamplingAborted`
+
+- :ref:`exhale_struct_structTransportTx__SamplingFinished`
+
+- :ref:`exhale_struct_structTransportTx__SamplingStarted`
+
+- :ref:`exhale_struct_structTransportTx__SamplingStopped`
+
+- :ref:`exhale_struct_structTransportTx__Scale`
+
+- :ref:`exhale_struct_structTransportTx__TransmissionError`
+
+- :ref:`exhale_struct_structTransportTx__Uptime`
+
+
+Enums
+-----
+
+
+- :ref:`exhale_enum_host__transport__types_8h_1acdd6c68eea248e81eff3eb8f547f5204`
+
+- :ref:`exhale_enum_host__transport__types_8h_1a09588d2abff7c25824fe338a4cfafe63`
+
+- :ref:`exhale_enum_host__transport__types_8h_1aef31738b236562c4f0a18348be10fa81`
+
+- :ref:`exhale_enum_host__transport__types_8h_1a0f8fc7d8d585dcd04d9142be969268e5`
+
+- :ref:`exhale_enum_host__transport__types_8h_1ac83eafa94c9dfa2280f83ef8dc077a19`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_host__transport__types_8h_1a8b868bbd21ba7df4a6635a0f147da9ea`
+
+- :ref:`exhale_function_host__transport__types_8h_1ac79abf6004596fe72a9b87b36132f2ef`
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_host__transport__types_8h_1abc3544aae2ae0f78650ee7c49ed2c83e`
+
+
+Unions
+------
+
+
+- :ref:`exhale_union_unionTransportRxFrame`
+
+- :ref:`exhale_union_unionTransportTxFrame`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_host__transport__types_8h_1ac3cae26f5f4fd77505c5cc684f000f8b`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a3875c02c7867a24afd72c07a8e836d0c`
+
+- :ref:`exhale_variable_host__transport__types_8h_1afc30d1e053db2002729a8af7567f1e8a`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a47c2854e80e0bdcf6627a28d8d84bb10`
+
+- :ref:`exhale_variable_host__transport__types_8h_1aa6fa942a4aba55e671401efab0301f68`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a5468707ba0cf05d846b544d6ec5698ab`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a9631d2b89caebed04c53e43e98201aad`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a5189cd3671dace2454c818487957edcf`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a1d9850472cc852e0884b276ac2131a4e`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a0aaf886a4e4afb1771c9774703859d5c`
+
+- :ref:`exhale_variable_host__transport__types_8h_1add2e75a6243ec44bd1c9f647932d0807`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ae2ce2ef8f1ae200a09f2d551d634f569`
+
+- :ref:`exhale_variable_host__transport__types_8h_1af62d06fba8293c51e03074d4cb7e4585`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a57831df9d6b0fc0b56f277d97399c5ab`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ad0c6e0653d68ec75dcc18d34b1986578`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ad29f0fac76adc64bdbcded7ac12ce9c4`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ab164ff21553b40079f884e7adaaab71d`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a8d2ec4d8224fab4223a6ce5fc880c88d`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a72a394e847080e277ff32248ebb7133e`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a7b901b2ed436c9b8a5485f518cda5e02`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a4d33c777e50886258b7f902cab478d0f`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a8fb2926c1358556d1058310c1d227952`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a1af577436c0e4a90d7b84d9f1658798f`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ac921e372c73f74e47f9df8105d6c832e`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a30ce5a792a73cde28c6eabc0d3bfb1c3`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ab616bd38ef9b5bce0700f2f719982afe`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ad861ce2862ef9cba24b3b950b4dd37e2`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a6cd216ab4f7b652797fef14382ed17c7`
+
+- :ref:`exhale_variable_host__transport__types_8h_1aa3169da96d07ddb56442e1f0219ee59d`
+
+- :ref:`exhale_variable_host__transport__types_8h_1aa3f8ec4fce5cd7645a4127ff548590e5`
+
+- :ref:`exhale_variable_host__transport__types_8h_1aafbd65a18c302f1f153b181db80ba8fa`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ad81494366a13a54bd6e83460780941f1`
+
+- :ref:`exhale_variable_host__transport__types_8h_1acb3a6c3ab101017407767420a55c7bce`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ac27141d7b944f1726d103e1d70bfa42c`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a539fade4288db3f9773404189cec9d04`
+
+- :ref:`exhale_variable_host__transport__types_8h_1af5029fb6db797d8d8aebb7a15533c0d0`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ade1fc93f9f2ad74d50761aabcbb8c58f`
+
+- :ref:`exhale_variable_host__transport__types_8h_1aaa2b01a5565390d6b8b8c7d4ee0ce0f1`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a852b86a2eaee9852ada7a43e61e311a2`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a3c16a252ddd5788c1117d24e795ed229`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a5bd4e4c943762926c8f653b6224cced2`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a7092625ebce4006ef4775bf3417f3f42`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ae6ee9be053cfc09d38936dada346162d`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ae2f416b0a34b7beb4ed3873d791ac393`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a6215da7f38ae96ed447bb6277fe48150`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a00c54fad5fef8d31eb75c1163468005b`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a67b4a66a95e3d5dc5050f60d150280d9`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a9edcde0584b2ab6c4a7b49eaec49d237`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a20ed0fb1e9a2b4e0c3ae40fc5e348962`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a616c0a72f0e4af38b93c736773ac7210`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a2643d0396638e7b2337cbb1074bb0bce`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ab2c6b8aaf5dd07f6847367f8a3cc672a`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a22bb34790f05eda025ff6ec569a38893`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a8f226ce7aa0c4a47706b2a629f1cf5ce`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ad7b7907f64bd95e2b8283658736eca43`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a23ea3f828418c5295d37031944da4dc4`
+
+- :ref:`exhale_variable_host__transport__types_8h_1adac81cc43b06ba05d7073c02622fc9ae`
+
+- :ref:`exhale_variable_host__transport__types_8h_1aedecacea95ee55904c265c09a71a6b4c`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a4edf0db215fb7c5e9a9b0fa7908a4c4f`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a18e8da580464a6ec8b8947a53740093c`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a369f86e0d4bf8513c48e692f6f093e58`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a4eef206282513dee7159851c609bc485`
+
+- :ref:`exhale_variable_host__transport__types_8h_1acb54ffe6a95d10689128b03eb2a77f42`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a0b760b6cc534589862d9c871c107ccd8`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ab51e73071fda70a7ca13ad49de54eecb`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a32054bbd4957faf54027c3806f0572d9`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a3f2aefc49acb5eb231469ddc39fedf44`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ac53569ade48ebfbf6590f1a188c8ee3d`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ae0f29bf62bce92bee634f1f921b9f01e`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a8a2ae78da974aa7027479922d2a4ed5b`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a596a95e1a93ab06f074222ab18f95920`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a95a9dd3cb2f96cd681020c4175f5902c`
+
+- :ref:`exhale_variable_host__transport__types_8h_1aae75aa115123d74b76fa6949898584df`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a4a3828d9a5b6768a573e1bead3e2d2ff`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a21a580e681a5f26e8e5fe75dfdbc8a5a`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a2a5c3e7bd006c058342d46b4a0dcf654`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a86257c49aea65b6e107dc85f39306d36`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ad2e989c2ea23725ced9541f9197d765e`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ab0f4f73bd1e609a0b0392110aa6c4464`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ac6b9dfb6a3df289aea5e75fed74f8ccd`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a18255b9548a3be025fb38341aab3ff28`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ab80ee75e48bcff60590ab85dc2ba2e4d`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a091d1bce163f98989b9b2fdfea535308`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a4e673e766b82998f915b4af85e5d7704`
+
+- :ref:`exhale_variable_host__transport__types_8h_1afda2aefc18d59926341018e82d875229`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a3c0035a602dd728ded865b9d6ef15294`
+
+- :ref:`exhale_variable_host__transport__types_8h_1addb6b9f37d6d12114c447e56d7a94910`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a1876d2a2a995a89d1ae36b070d01e466`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a199357a0869b4d3117d8d21a4cd818e7`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a75512796c04cb0ccbc6b6dee9d05a330`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ad9b66a7dcec99e0385035d4188cb45ce`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a6855bc5e18ebc269c18919a044eccace`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a646dea9dddb9a73346683381aca53f42`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a1690465050dce4f1cf0cafd7880f7a41`
+
+- :ref:`exhale_variable_host__transport__types_8h_1afd33b8606c3e10d7d0d0f5ebbe2b75ac`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a5c47aa5e6c52d974ca243117937d1e4b`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a8ab014894ee593ada228c8818c805a4d`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a7539b8b6c9a4574a3ca913254c9f4f42`
+
+- :ref:`exhale_variable_host__transport__types_8h_1a87b83b4ee285085422bbd7df9c9840b8`
+
+- :ref:`exhale_variable_host__transport__types_8h_1af6a306b725a13c587236e4a61d4ea050`
+
+- :ref:`exhale_variable_host__transport__types_8h_1ae1c2d516777e6b42af0d281c9ecc7375`
+
+- :ref:`exhale_variable_host__transport__types_8h_1af77b1a54442f2443cf64a4766f916bcd`
+
+- :ref:`exhale_variable_host__transport__types_8h_1abd938edbea27ed4f351dc19d69039222`
+

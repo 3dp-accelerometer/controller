@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1ad81494366a13a54bd6e83460780941f1:
+
+Variable asUptime
+=================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asUptime
+   :project: My Proj

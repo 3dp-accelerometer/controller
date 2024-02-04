@@ -1,0 +1,14 @@
+.. _exhale_function_from__host__transport_8h_1a45016b6d4eea9bccca2a7f6c0de95921:
+
+Function TransportRx_Process(struct HostTransport_Handle \*, const uint8_t \*, uint16_t)
+========================================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_from_host_transport.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TransportRx_Process(struct HostTransport_Handle *, const uint8_t *, uint16_t)
+   :project: My Proj

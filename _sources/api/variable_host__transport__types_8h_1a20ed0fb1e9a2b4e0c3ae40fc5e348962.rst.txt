@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1a20ed0fb1e9a2b4e0c3ae40fc5e348962:
+
+Variable rate
+=============
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: rate
+   :project: My Proj

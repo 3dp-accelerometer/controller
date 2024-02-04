@@ -1,0 +1,14 @@
+.. _exhale_function_sampling_8c_1a6fad96b836dc0437c29b2d425e057e91:
+
+Function isNSamplesReadEnabled
+==============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: isNSamplesReadEnabled(struct Sampling_Handle *)
+   :project: My Proj

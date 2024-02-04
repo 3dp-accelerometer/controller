@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a8f394894ddf5ffcb0699b352b4095f53:
+
+Function host_onRequestGetOutputDataRate
+========================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: host_onRequestGetOutputDataRate()
+   :project: My Proj

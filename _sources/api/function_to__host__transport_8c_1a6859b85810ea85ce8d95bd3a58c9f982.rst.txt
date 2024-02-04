@@ -1,0 +1,14 @@
+.. _exhale_function_to__host__transport_8c_1a6859b85810ea85ce8d95bd3a58c9f982:
+
+Function transmitAccelerationBuffered
+=====================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: transmitAccelerationBuffered(struct HostTransport_Handle *, struct TransportFrame *, uint16_t)
+   :project: My Proj

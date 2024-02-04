@@ -1,0 +1,45 @@
+
+.. _program_listing_file__home_runner_work_controller_controller_Inc_fw_debug.h:
+
+Program Listing for File debug.h
+================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_controller_controller_Inc_fw_debug.h>` (``/home/runner/work/controller/controller/Inc/fw/debug.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   /** \file debug.h
+    *
+    * Debug pin macros for convenient GPIO manipulation.
+    *
+    **/
+   
+   #include "main.h"
+   
+   #pragma once
+   
+   /**
+    * DEBUG 0: Pin PA1
+    * @{
+    */
+   #define USER_DEBUG0_HIGH                                                       \
+     HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_SET)
+   #define USER_DEBUG0_LOW                                                        \
+     HAL_GPIO_WritePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin, GPIO_PIN_RESET)
+   #define USER_DEBUG0_TOGGLE                                                     \
+     HAL_GPIO_TogglePin(USER_DEBUG1_GPIO_Port, USER_DEBUG1_Pin)
+   /// @}
+   
+   /**
+    * DEBUG 1: Pin PB0
+    * @{
+    */
+   #define USER_DEBUG1_HIGH                                                       \
+     HAL_GPIO_WritePin(USER_DEBUG1_GPIO_Port, USER_DEBUG1_Pin, GPIO_PIN_SET)
+   #define USER_DEBUG1_LOW                                                        \
+     HAL_GPIO_WritePin(USER_DEBUG1_GPIO_Port, USER_DEBUG1_Pin, GPIO_PIN_RESET)
+   #define USER_DEBUG1_TOGGLE                                                     \
+     HAL_GPIO_TogglePin(USER_DEBUG0_GPIO_Port, USER_DEBUG0_Pin)
+   /// @}

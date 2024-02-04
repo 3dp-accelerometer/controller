@@ -1,0 +1,98 @@
+
+.. _file__home_runner_work_controller_controller_lib_sampling_src_sampling_types.h:
+
+File sampling_types.h
+=====================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_lib_sampling_src>` (``/home/runner/work/controller/controller/lib/sampling/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/lib/sampling/src/sampling_types.h``)
+------------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_lib_sampling_src_sampling_types.h.rst
+
+
+
+Detailed Description
+--------------------
+
+Sampling handle and constants. 
+
+
+
+
+Includes
+--------
+
+
+- ``adxl345.h`` (:ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h`)
+
+- ``inttypes.h``
+
+- ``stdbool.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_lib_controller_src_controller.h`
+
+- :ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_sampling_impl.c`
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structSampling__Acceleration`
+
+- :ref:`exhale_struct_structSampling__Handle`
+
+- :ref:`exhale_struct_structSampling__State`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_sampling__types_8h_1a7cad04f2ac26baf73b6284554ea1112d`
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_sampling__types_8h_1a6f7f6b56470de805df7b77526191beba`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_sampling__types_8h_1a41f6ba40d43e75548e08865d412b1ef4`
+
+- :ref:`exhale_variable_sampling__types_8h_1ae1c2d516777e6b42af0d281c9ecc7375`
+
+- :ref:`exhale_variable_sampling__types_8h_1af77b1a54442f2443cf64a4766f916bcd`
+
+- :ref:`exhale_variable_sampling__types_8h_1abd938edbea27ed4f351dc19d69039222`
+

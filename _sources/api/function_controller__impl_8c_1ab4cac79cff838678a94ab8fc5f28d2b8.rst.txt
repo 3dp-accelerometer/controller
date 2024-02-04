@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1ab4cac79cff838678a94ab8fc5f28d2b8:
+
+Function ControllerImpl_device_checkReboot
+==========================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: ControllerImpl_device_checkReboot()
+   :project: My Proj

@@ -1,0 +1,14 @@
+.. _exhale_enum_host__transport_8h_1a74f8ebfaa5c7c50589f432fc564cf13e:
+
+Enum HostTransport_Status
+=========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: HostTransport_Status
+   :project: My Proj

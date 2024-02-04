@@ -1,0 +1,14 @@
+.. _exhale_enum_adxl345__flags_8h_1ae2234c612a44b8351fd51db6638e5a37:
+
+Enum Adxl345Flags_DataFormat_Justify
+====================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: Adxl345Flags_DataFormat_Justify
+   :project: My Proj

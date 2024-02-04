@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File ringbuffer.c &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File ringbuffer.c</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-ringbuffer-c">
+<span id="program-listing-file-home-runner-work-controller-controller-lib-ringbuffer-src-ringbuffer-c"></span><h1>Program Listing for File ringbuffer.c<a class="headerlink" href="#program-listing-for-file-ringbuffer-c" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.c.html#file-home-runner-work-controller-controller-lib-ringbuffer-src-ringbuffer-c"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/ringbuffer/src/ringbuffer.c</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * \file ringbuffer.c</span>
+<span class="cm"> *</span>
+<span class="cm"> * Simple ringbuffer implementation.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;ringbuffer.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;errno.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string.h&gt;</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Advances the end index by one if possible.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param index</span>
+<span class="cm"> * @return -EOVERFLOW if buffer is already full, 0 otherwise</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">advanceEnd</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer_Index</span><span class="w"> </span><span class="o">*</span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="o">-&gt;</span><span class="n">isFull</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">EOVERFLOW</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">nextEndIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="o">-&gt;</span><span class="n">end</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">capacity</span><span class="p">;</span>
+<span class="w">  </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nextEndIndex</span><span class="p">;</span>
+<span class="w">  </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">isFull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nextEndIndex</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">begin</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Advances the begin index by one if possible.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param index</span>
+<span class="cm"> * @return -ENODATA if buffer is already empty, 0 otherwise</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">advanceBegin</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer_Index</span><span class="w"> </span><span class="o">*</span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="o">-&gt;</span><span class="n">isEmpty</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">ENODATA</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">nextBeginIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="o">-&gt;</span><span class="n">begin</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">capacity</span><span class="p">;</span>
+<span class="w">  </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">begin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nextBeginIndex</span><span class="p">;</span>
+<span class="w">  </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">isEmpty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="o">-&gt;</span><span class="n">begin</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">end</span><span class="p">);</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Retrieves the item at the given index.</span>
+<span class="cm"> *</span>
+<span class="cm"> * @param buffer</span>
+<span class="cm"> * @param index</span>
+<span class="cm"> * @return pointer to the item</span>
+<span class="cm"> */</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="nf">itemAtIndex</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">storage</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">itemSizeBytes</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// NOLINTNEXTLINE(bugprone-easily-swappable-parameters)</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">RingbufferIndex_init</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer_Index</span><span class="w"> </span><span class="o">*</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">capacity</span><span class="p">,</span>
+<span class="w">                         </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">itemSizeBytes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">NULL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">begin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">capacity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">capacity</span><span class="p">;</span>
+<span class="w">  </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">isFull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">  </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">isEmpty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<span class="w">  </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">itemSizeBytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">itemSizeBytes</span><span class="p">;</span>
+<span class="w">  </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">itemsCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">maxCapacityUsed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">putCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="n">index</span><span class="o">-&gt;</span><span class="n">takeCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">Ringbuffer_init</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">storage</span><span class="p">,</span>
+<span class="w">                    </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">itemsCount</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">itemSizeBytes</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">NULL</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RingbufferIndex_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">,</span><span class="w"> </span><span class="n">itemsCount</span><span class="p">,</span><span class="w"> </span><span class="n">itemSizeBytes</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">EINVAL</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">storage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">storage</span><span class="p">;</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">Ringbuffer_put</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Ringbuffer_isFull</span><span class="p">(</span><span class="n">buffer</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">EOVERFLOW</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">isEmpty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// avoid memcpy until clear where allowed to use due to un-alignment issues</span>
+<span class="w">  </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">slot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">itemAtIndex</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">end</span><span class="p">)};</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">itemSizeBytes</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">slot</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">item</span><span class="p">)[</span><span class="n">idx</span><span class="p">];</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">advanceEnd</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">);</span>
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">itemsCount</span><span class="o">++</span><span class="p">;</span>
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">maxCapacityUsed</span><span class="w"> </span><span class="o">=</span>
+<span class="w">      </span><span class="p">(</span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">itemsCount</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">maxCapacityUsed</span><span class="p">)</span>
+<span class="w">          </span><span class="o">?</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">itemsCount</span>
+<span class="w">          </span><span class="o">:</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">maxCapacityUsed</span><span class="p">;</span>
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">putCount</span><span class="o">++</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">Ringbuffer_take</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">item</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">Ringbuffer_isEmpty</span><span class="p">(</span><span class="n">buffer</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">ENODATA</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">isFull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">  </span><span class="c1">// avoid memcpy until clear where allowed to use due to un-alignment issues</span>
+<span class="w">  </span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">slot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">itemAtIndex</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">begin</span><span class="p">)};</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">itemSizeBytes</span><span class="p">;</span><span class="w"> </span><span class="n">idx</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">((</span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">item</span><span class="p">)[</span><span class="n">idx</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">slot</span><span class="p">[</span><span class="n">idx</span><span class="p">];</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="n">advanceBegin</span><span class="p">(</span><span class="o">&amp;</span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">);</span>
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">itemsCount</span><span class="o">--</span><span class="p">;</span>
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">takeCount</span><span class="o">++</span><span class="p">;</span>
+
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">Ringbuffer_isEmpty</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">isEmpty</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">bool</span><span class="w"> </span><span class="nf">Ringbuffer_isFull</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">isFull</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">uint16_t</span><span class="w"> </span><span class="nf">Ringbuffer_itemsCount</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">itemsCount</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">uint16_t</span><span class="w"> </span><span class="nf">Ringbuffer_maxCapacityUsed</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">maxCapacityUsed</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">uint16_t</span><span class="w"> </span><span class="nf">Ringbuffer_putCount</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">putCount</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">uint16_t</span><span class="w"> </span><span class="nf">Ringbuffer_takeCount</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">takeCount</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">uint16_t</span><span class="w"> </span><span class="nf">Ringbuffer_itemSizeBytes</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">itemSizeBytes</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">Ringbuffer_reset</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">Ringbuffer</span><span class="w"> </span><span class="o">*</span><span class="n">buffer</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">begin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">isFull</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">isEmpty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">itemsCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">maxCapacityUsed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">putCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">  </span><span class="n">buffer</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">.</span><span class="n">takeCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a686368da9cd9160885612d45ff18930b:
+
+Function ControllerImpl_transmitPendingResponses
+================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: ControllerImpl_transmitPendingResponses()
+   :project: My Proj

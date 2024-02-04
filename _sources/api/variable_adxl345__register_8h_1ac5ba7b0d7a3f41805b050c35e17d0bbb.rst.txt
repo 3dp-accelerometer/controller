@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__register_8h_1ac5ba7b0d7a3f41805b050c35e17d0bbb:
+
+Variable asIntMap
+=================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asIntMap
+   :project: My Proj

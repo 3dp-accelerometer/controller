@@ -1,0 +1,45 @@
+
+.. _file__home_runner_work_controller_controller_Src_fw_ringbuffer_impl.c:
+
+File ringbuffer_impl.c
+======================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Src_fw>` (``/home/runner/work/controller/controller/Src/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Src/fw/ringbuffer_impl.c``)
+---------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Src_fw_ringbuffer_impl.c.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``fw/ringbuffer_impl.h`` (:ref:`file__home_runner_work_controller_controller_Inc_fw_ringbuffer_impl.h`)
+
+
+
+
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_ringbuffer__impl_8c_1aca726e74f3e7708930749e2813deb9bd`
+

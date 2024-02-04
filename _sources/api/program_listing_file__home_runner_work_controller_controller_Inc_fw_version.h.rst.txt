@@ -1,0 +1,31 @@
+
+.. _program_listing_file__home_runner_work_controller_controller_Inc_fw_version.h:
+
+Program Listing for File version.h
+==================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_controller_controller_Inc_fw_version.h>` (``/home/runner/work/controller/controller/Inc/fw/version.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   /** \file version.h
+    *
+    * Auto generated file crated by "poetry run versionbump".
+    *
+    * See also "poetry version".
+    *
+    * example:
+    * \code{.sh}
+    * poetry version patch
+    * poetry run versionbump
+    * \endcode
+    **/
+   
+   #pragma once
+   
+   #define VERSION "0.1.10"
+   #define VERSION_MAJOR 0 // NOLINT(modernize-macro-to-enum)
+   #define VERSION_MINOR 1 // NOLINT(modernize-macro-to-enum)
+   #define VERSION_PATCH 10 // NOLINT(modernize-macro-to-enum)

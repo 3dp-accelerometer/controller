@@ -1,0 +1,14 @@
+.. _exhale_function_to__host__transport_8h_1a5dfd39a11af0cd8ee1af33868ecc3c1e:
+
+Function TransportTx_TxAccelerationBuffer(struct HostTransport_Handle \*, const struct Transport_Acceleration \*, uint8_t, uint16_t)
+====================================================================================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TransportTx_TxAccelerationBuffer(struct HostTransport_Handle *, const struct Transport_Acceleration *, uint8_t, uint16_t)
+   :project: My Proj

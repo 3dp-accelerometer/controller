@@ -1,0 +1,14 @@
+.. _exhale_function_to__host__transport_8c_1a9ec2cd757757b00d2b675ea07e249476:
+
+Function transmit
+=================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: transmit(struct HostTransport_Handle *, uint8_t *, uint16_t)
+   :project: My Proj

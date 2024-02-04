@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345__register_8h_1acc02190e97ec034a25eca812c23b98d6:
+
+Function __attribute__((packed))
+================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: __attribute__((packed))
+   :project: My Proj

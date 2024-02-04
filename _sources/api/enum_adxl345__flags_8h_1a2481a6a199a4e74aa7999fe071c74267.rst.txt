@@ -1,0 +1,14 @@
+.. _exhale_enum_adxl345__flags_8h_1a2481a6a199a4e74aa7999fe071c74267:
+
+Enum Adxl345Flags_IntEnable_Overrun
+===================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: Adxl345Flags_IntEnable_Overrun
+   :project: My Proj

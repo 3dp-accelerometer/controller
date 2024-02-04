@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345__transport__impl_8c_1aa14a3171c0d0175bb4da9e60add284f5:
+
+Function Adxl345TransportImpl_doTransmitFrameImpl(const union Adxl345Transport_TxFrame \*, uint8_t, enum Adxl345Spi_Cs, enum Adxl345Spi_RwFlags)
+================================================================================================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_adxl345_transport_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Adxl345TransportImpl_doTransmitFrameImpl(const union Adxl345Transport_TxFrame *, uint8_t, enum Adxl345Spi_Cs, enum Adxl345Spi_RwFlags)
+   :project: My Proj

@@ -1,0 +1,101 @@
+
+.. _file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h:
+
+File adxl345.h
+==============
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_lib_adxl345_src>` (``/home/runner/work/controller/controller/lib/adxl345/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/lib/adxl345/src/adxl345.h``)
+----------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h.rst
+
+
+
+Detailed Description
+--------------------
+
+Implementation for manipulating the ADXL345 accelerometer sensor.
+
+API for manipulating the ADXL345 accelerometer sensor. 
+
+
+
+
+Includes
+--------
+
+
+- ``assert.h``
+
+- ``inttypes.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c`
+
+- :ref:`file__home_runner_work_controller_controller_lib_controller_src_controller.h`
+
+- :ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling_types.h`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structAdxl345__Handle`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_adxl345_8h_1a5605a71e07edcc370b027a668f393615`
+
+- :ref:`exhale_function_adxl345_8h_1af238689828fad86568f32caac567fc01`
+
+- :ref:`exhale_function_adxl345_8h_1a67d00841116cfecf53a7ca6352209df4`
+
+- :ref:`exhale_function_adxl345_8h_1aec1396797b012df335ff8c96955932e2`
+
+- :ref:`exhale_function_adxl345_8h_1a92f47a5a55daaa4f0b7c0952fef0a2d1`
+
+- :ref:`exhale_function_adxl345_8h_1ad38f932fb6fbb6056e9258b9179abdbd`
+
+- :ref:`exhale_function_adxl345_8h_1a0ef617ec05f613283d155d0de4d37e53`
+
+- :ref:`exhale_function_adxl345_8h_1ab61b3d92785c6a11acb64cb5b1b9d630`
+
+- :ref:`exhale_function_adxl345_8h_1a3460885ccd5cf674d0a8b1ec161114ce`
+
+- :ref:`exhale_function_adxl345_8h_1ab9baf97a44fa18d98ba816b1ba85f680`
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_adxl345_8h_1a593282de5e819f216c6bec6abbdc8c3a`
+
+- :ref:`exhale_define_adxl345_8h_1a1a3b84c4d742fe051f12eb8e9d7db58c`
+

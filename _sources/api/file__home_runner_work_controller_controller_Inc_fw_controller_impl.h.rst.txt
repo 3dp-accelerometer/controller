@@ -1,0 +1,45 @@
+
+.. _file__home_runner_work_controller_controller_Inc_fw_controller_impl.h:
+
+File controller_impl.h
+======================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Inc_fw>` (``/home/runner/work/controller/controller/Inc/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Inc/fw/controller_impl.h``)
+---------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Inc_fw_controller_impl.h.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``controller.h`` (:ref:`file__home_runner_work_controller_controller_lib_controller_src_controller.h`)
+
+
+
+
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_controller__impl_8h_1a927bf38d871c85f0d1e0ee9eaa1351d0`
+

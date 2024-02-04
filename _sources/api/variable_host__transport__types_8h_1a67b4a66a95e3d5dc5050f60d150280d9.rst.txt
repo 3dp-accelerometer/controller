@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1a67b4a66a95e3d5dc5050f60d150280d9:
+
+Variable putCount
+=================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: putCount
+   :project: My Proj

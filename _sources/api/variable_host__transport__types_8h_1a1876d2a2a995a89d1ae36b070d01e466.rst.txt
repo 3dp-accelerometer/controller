@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1a1876d2a2a995a89d1ae36b070d01e466:
+
+Variable TransportRx_SetOutputDataRate_Rate_800
+===============================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: TransportRx_SetOutputDataRate_Rate_800
+   :project: My Proj

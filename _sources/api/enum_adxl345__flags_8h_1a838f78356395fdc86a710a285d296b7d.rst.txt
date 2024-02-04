@@ -1,0 +1,14 @@
+.. _exhale_enum_adxl345__flags_8h_1a838f78356395fdc86a710a285d296b7d:
+
+Enum Adxl345Flags_PowerCtl_Wakeup
+=================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: Adxl345Flags_PowerCtl_Wakeup
+   :project: My Proj

@@ -1,0 +1,14 @@
+.. _exhale_function_sampling__impl_8h_1a0de7f15197d79f90ae4d0ae89147cccd:
+
+Function SamplingImpl_doWaitDelay5usImpl(struct Sampling_Handle \*)
+===================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_sampling_impl.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: SamplingImpl_doWaitDelay5usImpl(struct Sampling_Handle *)
+   :project: My Proj

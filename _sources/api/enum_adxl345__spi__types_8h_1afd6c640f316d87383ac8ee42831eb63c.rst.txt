@@ -1,0 +1,14 @@
+.. _exhale_enum_adxl345__spi__types_8h_1afd6c640f316d87383ac8ee42831eb63c:
+
+Enum Adxl345Spi_RwFlags
+=======================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_spi_types.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: Adxl345Spi_RwFlags
+   :project: My Proj

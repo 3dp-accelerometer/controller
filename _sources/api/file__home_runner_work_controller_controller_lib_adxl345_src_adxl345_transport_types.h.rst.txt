@@ -1,0 +1,116 @@
+
+.. _file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h:
+
+File adxl345_transport_types.h
+==============================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_lib_adxl345_src>` (``/home/runner/work/controller/controller/lib/adxl345/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/lib/adxl345/src/adxl345_transport_types.h``)
+--------------------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h.rst
+
+
+
+Detailed Description
+--------------------
+
+ADXL345 data types transported to/from the sensor. 
+
+
+
+
+Includes
+--------
+
+
+- ``adxl345_register.h`` (:ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`)
+
+- ``assert.h``
+
+- ``inttypes.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_Inc_fw_adxl345_transport_impl.h`
+
+- :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_adxl345_transport_impl.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structAdxl345Transport__Acceleration`
+
+- :ref:`exhale_struct_structAdxl345Transport__DataPaddedRegister`
+
+- :ref:`exhale_struct_structTwoBytes`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_adxl345__transport__types_8h_1a1880fcedd9961d4e738b565207231a04`
+
+
+Unions
+------
+
+
+- :ref:`exhale_union_unionAdxl345Transport__RxFrame`
+
+- :ref:`exhale_union_unionAdxl345Transport__TxFrame`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_adxl345__transport__types_8h_1a95cde0d00f61c5f6c1f2349807717cca`
+
+- :ref:`exhale_variable_adxl345__transport__types_8h_1aecc137c3b81bbba3ef8af885f966196a`
+
+- :ref:`exhale_variable_adxl345__transport__types_8h_1a663e034d477c50096d18f4384c53a78c`
+
+- :ref:`exhale_variable_adxl345__transport__types_8h_1aba591f724855d567a5da5832797c5d8f`
+
+- :ref:`exhale_variable_adxl345__transport__types_8h_1a4aedb463ae74780f786bfd4a86bb7659`
+
+- :ref:`exhale_variable_adxl345__transport__types_8h_1a59dbeb525fc7eeb57fe437a87b495a71`
+
+- :ref:`exhale_variable_adxl345__transport__types_8h_1a40f6375cb41616bdb50a00d3864dc3ef`
+
+- :ref:`exhale_variable_adxl345__transport__types_8h_1a40396861b44e4f4de864b5bb22f69cca`
+
+- :ref:`exhale_variable_adxl345__transport__types_8h_1a33db1da8d46f8ca17619d8f3176708ae`
+
+- :ref:`exhale_variable_adxl345__transport__types_8h_1ae1c2d516777e6b42af0d281c9ecc7375`
+
+- :ref:`exhale_variable_adxl345__transport__types_8h_1af77b1a54442f2443cf64a4766f916bcd`
+
+- :ref:`exhale_variable_adxl345__transport__types_8h_1abd938edbea27ed4f351dc19d69039222`
+

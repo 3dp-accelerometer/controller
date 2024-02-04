@@ -1,0 +1,14 @@
+.. _exhale_function_test_8c_1ad29f62dda14b7954a6995e922821fa05:
+
+Function test_cap3_notEmptyNotFull_isNotEmptyNotFull
+====================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_test_test_ringbuffer_test.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: test_cap3_notEmptyNotFull_isNotEmptyNotFull()
+   :project: My Proj

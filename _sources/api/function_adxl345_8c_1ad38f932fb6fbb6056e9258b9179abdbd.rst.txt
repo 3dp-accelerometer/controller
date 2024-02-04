@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345_8c_1ad38f932fb6fbb6056e9258b9179abdbd:
+
+Function Adxl345_setOutputDataRate(struct Adxl345_Handle \*, uint8_t)
+=====================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Adxl345_setOutputDataRate(struct Adxl345_Handle *, uint8_t)
+   :project: My Proj

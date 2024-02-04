@@ -1,0 +1,14 @@
+.. _exhale_function_adxl345__transport__types_8h_1a1880fcedd9961d4e738b565207231a04:
+
+Function __attribute__((packed))
+================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: __attribute__((packed))
+   :project: My Proj

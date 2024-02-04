@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1ab2c6b8aaf5dd07f6847367f8a3cc672a:
+
+Variable takeCount
+==================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: takeCount
+   :project: My Proj

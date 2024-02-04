@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a8fc86217766450df200f8c3cfe1da74e:
+
+Function fault_onBusFaultHandler
+================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: fault_onBusFaultHandler()
+   :project: My Proj

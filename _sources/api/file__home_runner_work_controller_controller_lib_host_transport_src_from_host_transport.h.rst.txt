@@ -1,0 +1,57 @@
+
+.. _file__home_runner_work_controller_controller_lib_host_transport_src_from_host_transport.h:
+
+File from_host_transport.h
+==========================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_lib_host_transport_src>` (``/home/runner/work/controller/controller/lib/host_transport/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/lib/host_transport/src/from_host_transport.h``)
+-----------------------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_lib_host_transport_src_from_host_transport.h.rst
+
+
+
+Detailed Description
+--------------------
+
+API for processing data from host to controller. 
+
+
+
+
+Includes
+--------
+
+
+- ``inttypes.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_from__host__transport_8h_1a45016b6d4eea9bccca2a7f6c0de95921`
+

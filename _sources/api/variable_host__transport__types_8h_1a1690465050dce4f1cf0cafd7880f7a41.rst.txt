@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1a1690465050dce4f1cf0cafd7880f7a41:
+
+Variable TransportRx_SetScale_Scale_full4mg
+===========================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: TransportRx_SetScale_Scale_full4mg
+   :project: My Proj

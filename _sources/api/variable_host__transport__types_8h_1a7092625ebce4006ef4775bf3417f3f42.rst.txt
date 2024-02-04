@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1a7092625ebce4006ef4775bf3417f3f42:
+
+Variable max_samples_count
+==========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: max_samples_count
+   :project: My Proj

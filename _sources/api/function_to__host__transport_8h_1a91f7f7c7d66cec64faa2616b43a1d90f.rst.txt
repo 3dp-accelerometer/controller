@@ -1,0 +1,14 @@
+.. _exhale_function_to__host__transport_8h_1a91f7f7c7d66cec64faa2616b43a1d90f:
+
+Function TransportTx_TxSamplingSetup(struct HostTransport_Handle \*, uint8_t, uint8_t, uint8_t)
+===============================================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TransportTx_TxSamplingSetup(struct HostTransport_Handle *, uint8_t, uint8_t, uint8_t)
+   :project: My Proj

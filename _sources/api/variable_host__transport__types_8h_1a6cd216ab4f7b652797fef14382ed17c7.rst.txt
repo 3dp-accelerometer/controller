@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1a6cd216ab4f7b652797fef14382ed17c7:
+
+Variable asSetRange
+===================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: asSetRange
+   :project: My Proj

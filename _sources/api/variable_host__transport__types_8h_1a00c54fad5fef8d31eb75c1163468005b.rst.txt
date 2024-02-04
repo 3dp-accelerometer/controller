@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1a00c54fad5fef8d31eb75c1163468005b:
+
+Variable patch
+==============
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: patch
+   :project: My Proj

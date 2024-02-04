@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1abef59c1b09c873e25dcf7cd2296ba2d4:
+
+Function ControllerImpl_device_requestAsyncReboot
+=================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: ControllerImpl_device_requestAsyncReboot()
+   :project: My Proj

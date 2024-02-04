@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1afd33b8606c3e10d7d0d0f5ebbe2b75ac:
+
+Variable TransportTx_FaultCode_BusFaultHandler
+==============================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: TransportTx_FaultCode_BusFaultHandler
+   :project: My Proj

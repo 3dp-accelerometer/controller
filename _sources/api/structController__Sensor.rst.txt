@@ -1,0 +1,17 @@
+.. _exhale_struct_structController__Sensor:
+
+Struct Controller_Sensor
+========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_controller_src_controller.h`
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: Controller_Sensor
+   :project: My Proj
+   :members:
+   :protected-members:
+   :undoc-members:

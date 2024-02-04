@@ -1,0 +1,14 @@
+.. _exhale_function_host__transport__impl_8h_1afad186c595d91ebd30b58106d767de5b:
+
+Function HostTransportImpl_isTransmitBusyImpl()
+===============================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_host_transport_impl.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: HostTransportImpl_isTransmitBusyImpl()
+   :project: My Proj

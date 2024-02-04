@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1ac27141d7b944f1726d103e1d70bfa42c:
+
+Variable capacityUsedMax
+========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: capacityUsedMax
+   :project: My Proj

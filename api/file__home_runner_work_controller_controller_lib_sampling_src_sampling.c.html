@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File sampling.c &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File sampling.c</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-sampling-c">
+<span id="file-home-runner-work-controller-controller-lib-sampling-src-sampling-c"></span><h1>File sampling.c<a class="headerlink" href="#file-sampling-c" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="dir__home_runner_work_controller_controller_lib_sampling_src.html#dir-home-runner-work-controller-controller-lib-sampling-src"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/sampling/src</span></code>)</p>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-home-runner-work-controller-controller-lib-sampling-src-sampling-c" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/sampling/src/sampling.c</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#functions" id="id3">Functions</a></p></li>
+</ul>
+</nav>
+<section id="definition-home-runner-work-controller-controller-lib-sampling-src-sampling-c">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/sampling/src/sampling.c</span></code>)<a class="headerlink" href="#definition-home-runner-work-controller-controller-lib-sampling-src-sampling-c" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file__home_runner_work_controller_controller_lib_sampling_src_sampling.c.html">Program Listing for File sampling.c</a></li>
+</ul>
+</div>
+</section>
+<section id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">errno.h</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sampling.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_sampling_src_sampling.h.html#file-home-runner-work-controller-controller-lib-sampling-src-sampling-h"><span class="std std-ref">File sampling.h</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sampling_types.h</span></code> (<a class="reference internal" href="file__home_runner_work_controller_controller_lib_sampling_src_sampling_types.h.html#file-home-runner-work-controller-controller-lib-sampling-src-sampling-types-h"><span class="std std-ref">File sampling_types.h</span></a>)</p></li>
+</ul>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="function_sampling_8c_1a578e25edef9c83506a63206379af7a25.html#exhale-function-sampling-8c-1a578e25edef9c83506a63206379af7a25"><span class="std std-ref">Function checkStartRequest</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1a9f656201a21eeecd5486f3e754ff64be.html#exhale-function-sampling-8c-1a9f656201a21eeecd5486f3e754ff64be"><span class="std std-ref">Function checkStopRequest</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1a6fad96b836dc0437c29b2d425e057e91.html#exhale-function-sampling-8c-1a6fad96b836dc0437c29b2d425e057e91"><span class="std std-ref">Function isNSamplesReadEnabled</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1a73bc9b85a2c1ec7b6204215d2728414e.html#exhale-function-sampling-8c-1a73bc9b85a2c1ec7b6204215d2728414e"><span class="std std-ref">Function Sampling_clearFifoWatermark(struct Sampling_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1a2c1b5634e93306c67c78add49d3bf175.html#exhale-function-sampling-8c-1a2c1b5634e93306c67c78add49d3bf175"><span class="std std-ref">Function Sampling_fetchForward(struct Sampling_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1ac0f2c3c25b7af10cef5f51041ff3c05b.html#exhale-function-sampling-8c-1ac0f2c3c25b7af10cef5f51041ff3c05b"><span class="std std-ref">Function Sampling_on5usTimerExpired(struct Sampling_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1ad2b7e3f32490d7cd596cf2d90cfddf2f.html#exhale-function-sampling-8c-1ad2b7e3f32490d7cd596cf2d90cfddf2f"><span class="std std-ref">Function Sampling_setFifoOverflow(struct Sampling_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1a6b3fd546e3ce118d97afba306bb1f1a3.html#exhale-function-sampling-8c-1a6b3fd546e3ce118d97afba306bb1f1a3"><span class="std std-ref">Function Sampling_setFifoWatermark(struct Sampling_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1ab1af2cb7e7cc632823338b6428c912d9.html#exhale-function-sampling-8c-1ab1af2cb7e7cc632823338b6428c912d9"><span class="std std-ref">Function Sampling_start(struct Sampling_Handle *, uint16_t)</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1aba2a1f3f45bb7f04876c1bc160de3623.html#exhale-function-sampling-8c-1aba2a1f3f45bb7f04876c1bc160de3623"><span class="std std-ref">Function Sampling_stop(struct Sampling_Handle *)</span></a></p></li>
+<li><p><a class="reference internal" href="function_sampling_8c_1a5abc5903ad31d2108b55d8d8283b0e5f.html#exhale-function-sampling-8c-1a5abc5903ad31d2108b55d8d8283b0e5f"><span class="std std-ref">Function transmitPending</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

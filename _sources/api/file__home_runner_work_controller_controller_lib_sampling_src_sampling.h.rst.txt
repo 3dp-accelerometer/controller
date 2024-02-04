@@ -1,0 +1,77 @@
+
+.. _file__home_runner_work_controller_controller_lib_sampling_src_sampling.h:
+
+File sampling.h
+===============
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_lib_sampling_src>` (``/home/runner/work/controller/controller/lib/sampling/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/lib/sampling/src/sampling.h``)
+------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_lib_sampling_src_sampling.h.rst
+
+
+
+Detailed Description
+--------------------
+
+Implementation of sampling module.
+
+Sampling module taking data from sensor's Fifo and monitoring interrupts.
+
+Takes monitors sensor interrupts (watermark, overrun), samples from sensor's FiFo and forwards samples en-bloc. 
+
+
+
+
+Includes
+--------
+
+
+- ``inttypes.h``
+
+- ``stdbool.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_sampling_8h_1a73bc9b85a2c1ec7b6204215d2728414e`
+
+- :ref:`exhale_function_sampling_8h_1a2c1b5634e93306c67c78add49d3bf175`
+
+- :ref:`exhale_function_sampling_8h_1ac0f2c3c25b7af10cef5f51041ff3c05b`
+
+- :ref:`exhale_function_sampling_8h_1ad2b7e3f32490d7cd596cf2d90cfddf2f`
+
+- :ref:`exhale_function_sampling_8h_1a6b3fd546e3ce118d97afba306bb1f1a3`
+
+- :ref:`exhale_function_sampling_8h_1ab1af2cb7e7cc632823338b6428c912d9`
+
+- :ref:`exhale_function_sampling_8h_1aba2a1f3f45bb7f04876c1bc160de3623`
+

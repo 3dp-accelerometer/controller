@@ -1,0 +1,14 @@
+.. _exhale_function_sampling__types_8h_1a7cad04f2ac26baf73b6284554ea1112d:
+
+Function __attribute__((packed))
+================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling_types.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: __attribute__((packed))
+   :project: My Proj

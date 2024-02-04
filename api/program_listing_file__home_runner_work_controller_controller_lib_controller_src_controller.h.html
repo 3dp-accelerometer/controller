@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File controller.h &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File controller.h</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-controller-h">
+<span id="program-listing-file-home-runner-work-controller-controller-lib-controller-src-controller-h"></span><h1>Program Listing for File controller.h<a class="headerlink" href="#program-listing-for-file-controller-h" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file__home_runner_work_controller_controller_lib_controller_src_controller.h.html#file-home-runner-work-controller-controller-lib-controller-src-controller-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/controller/src/controller.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * \file controller.h</span>
+<span class="cm"> *</span>
+<span class="cm"> * The controller module aims at abstracting the whole device API.</span>
+<span class="cm"> *</span>
+<span class="cm"> * The device API consists of the following APIs:</span>
+<span class="cm"> *   - host transport API</span>
+<span class="cm"> *   - sensor API</span>
+<span class="cm"> *   - sampling API</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;inttypes.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdbool.h&gt;</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;adxl345.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;host_transport.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;sampling_types.h&gt;</span>
+
+<span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetOutputDataRate_Rate</span><span class="p">;</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetScale_Scale</span><span class="p">;</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetRange_Range</span><span class="p">;</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Controller_Sensor</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Adxl345_Handle</span><span class="w"> </span><span class="n">handle</span><span class="p">;</span>
+
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">init</span><span class="p">)();</span><span class="w"> </span><span class="c1">///&lt; Context: main()</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Controller_Sampling</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Sampling_Handle</span><span class="w"> </span><span class="n">handle</span><span class="p">;</span><span class="w"> </span><span class="c1">///&lt; device specific pimpl</span>
+
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Device API for sampling module.</span>
+<span class="cm">   *</span>
+<span class="cm">   * @{</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">doSetFifoWatermark</span><span class="p">)();</span><span class="w">   </span><span class="c1">///&lt; Context: EXTI2_IRQHandler()</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">doClearFifoWatermark</span><span class="p">)();</span><span class="w"> </span><span class="c1">///&lt; Context: EXTI2_IRQHandler()</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">doSetFifoOverflow</span><span class="p">)();</span><span class="w">    </span><span class="c1">///&lt; Context: EXTI3_IRQHandler()</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">doSet5usTimerExpired</span><span class="p">)();</span><span class="w"> </span><span class="c1">///&lt; Context: TIM3_IRQHandler()</span>
+<span class="w">  </span><span class="c1">/// @}</span>
+<span class="p">};</span>
+
+<span class="k">struct</span><span class="w"> </span><span class="nc">Controller_Host</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">HostTransport_Handle</span><span class="w"> </span><span class="n">handle</span><span class="p">;</span><span class="w"> </span><span class="c1">///&lt; device specific pimpl</span>
+
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Device API for host-transport module.</span>
+<span class="cm">   *</span>
+<span class="cm">   * Context: CDC_Receive_FS(uint8_t*, uint32_t *)</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">doTakeBytes</span><span class="p">)(</span><span class="k">const</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="kt">uint16_t</span><span class="p">);</span>
+
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Device API for Host-Transport callbacks upon doTakeBytes(uint8_t *,</span>
+<span class="cm">   * uint16_t).</span>
+<span class="cm">   *</span>
+<span class="cm">   * Context: CDC_Receive_FS(uint8_t*, uint32_t *)</span>
+<span class="cm">   * @{</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">onRequestGetFirmwareVersion</span><span class="p">)();</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">onRequestGetOutputDataRate</span><span class="p">)();</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">onRequestSetOutputDatatRate</span><span class="p">)(</span>
+<span class="w">      </span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetOutputDataRate_Rate</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">onRequestGetRange</span><span class="p">)();</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">onRequestSetRange</span><span class="p">)(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetRange_Range</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">onRequestGetScale</span><span class="p">)();</span>
+<span class="w">  </span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">onRequestSetScale</span><span class="p">)(</span><span class="k">enum</span><span class="w"> </span><span class="nc">TransportRx_SetScale_Scale</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">onRequestGetDeviceSetup</span><span class="p">)();</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">onRequestSamplingStart</span><span class="p">)(</span><span class="kt">uint16_t</span><span class="p">);</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">onRequestSamplingStop</span><span class="p">)();</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">onRequestUptime</span><span class="p">)();</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">onRequestBufferStatus</span><span class="p">)();</span>
+<span class="w">  </span><span class="c1">/// @}</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Handle for several device pointer implementations.</span>
+<span class="cm"> *</span>
+<span class="cm"> * This handle will be shared among main() context and several interrupts&#39;</span>
+<span class="cm"> * context.Hence, all members shall be seen as const and never be modified at</span>
+<span class="cm"> * runtime.Underlying fields may be changed though. These shall be marked as</span>
+<span class="cm"> * volatile and properly synchronized.</span>
+<span class="cm"> *</span>
+<span class="cm"> */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">Controller_Handle</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Device API for sensor and sensor pimpl.</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Controller_Sensor</span><span class="w"> </span><span class="n">sensor</span><span class="p">;</span>
+
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Device API for sampling and sampling pimpl.</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Controller_Sampling</span><span class="w"> </span><span class="n">sampling</span><span class="p">;</span>
+
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Device API for host transport and host transport pimpl.</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="k">struct</span><span class="w"> </span><span class="nc">Controller_Host</span><span class="w"> </span><span class="n">host</span><span class="p">;</span>
+
+<span class="w">  </span><span class="cm">/**</span>
+<span class="cm">   * Public device API.</span>
+<span class="cm">   * @{</span>
+<span class="cm">   */</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">init</span><span class="p">)();</span><span class="w"> </span><span class="c1">///&lt; Context: main()</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">loop</span><span class="p">)();</span><span class="w"> </span><span class="c1">///&lt; Context: main()</span>
+
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">requestReboot</span><span class="p">)();</span><span class="w"> </span><span class="c1">///&lt; Context: main()</span>
+
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">fault_onNmiFaultHandler</span><span class="p">)();</span><span class="w">   </span><span class="c1">///&lt; \see stm32f4xx_it.h</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">fault_onUsageFaultHandler</span><span class="p">)();</span><span class="w"> </span><span class="c1">///&lt; \see stm32f4xx_it.h</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">fault_onBusFaultHandler</span><span class="p">)();</span><span class="w">   </span><span class="c1">///&lt; \see stm32f4xx_it.h</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">fault_onHardFaultHandler</span><span class="p">)();</span><span class="w">  </span><span class="c1">///&lt; \see stm32f4xx_it.h</span>
+<span class="w">  </span><span class="kt">void</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">fault_onErrorHandler</span><span class="p">)();</span><span class="w">      </span><span class="c1">///&lt; \see main.h</span>
+
+<span class="w">  </span><span class="c1">/// @}</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

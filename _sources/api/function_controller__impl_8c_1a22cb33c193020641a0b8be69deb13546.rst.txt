@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a22cb33c193020641a0b8be69deb13546:
+
+Function sampling_onBufferOverflowCb
+====================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: sampling_onBufferOverflowCb()
+   :project: My Proj

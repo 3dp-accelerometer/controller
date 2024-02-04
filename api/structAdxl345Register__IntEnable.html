@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Struct Adxl345Register_IntEnable &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Struct Adxl345Register_IntMap" href="structAdxl345Register__IntMap.html" />
+    <link rel="prev" title="Struct Adxl345Register_FifoStatus" href="structAdxl345Register__FifoStatus.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="library_root.html">Library API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="library_root.html#full-api">Full API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="library_root.html#classes-and-structs">Classes and Structs</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="structAdxl345__Handle.html">Struct Adxl345_Handle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structAdxl345Register__BwRate.html">Struct Adxl345Register_BwRate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structAdxl345Register__DataFormat.html">Struct Adxl345Register_DataFormat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structAdxl345Register__FifoCtl.html">Struct Adxl345Register_FifoCtl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structAdxl345Register__FifoStatus.html">Struct Adxl345Register_FifoStatus</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Struct Adxl345Register_IntEnable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structAdxl345Register__IntMap.html">Struct Adxl345Register_IntMap</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structAdxl345Register__PowerCtl.html">Struct Adxl345Register_PowerCtl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structAdxl345Transport__Acceleration.html">Struct Adxl345Transport_Acceleration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structAdxl345Transport__DataPaddedRegister.html">Struct Adxl345Transport_DataPaddedRegister</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structController__Handle.html">Struct Controller_Handle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structController__Host.html">Struct Controller_Host</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structController__Sampling.html">Struct Controller_Sampling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structController__Sensor.html">Struct Controller_Sensor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structFoo.html">Struct Foo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structHostTransport__FromHostApi.html">Struct HostTransport_FromHostApi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structHostTransport__Handle.html">Struct HostTransport_Handle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structHostTransport__ToHostApi.html">Struct HostTransport_ToHostApi</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structRingbuffer.html">Struct Ringbuffer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structRingbuffer__Index.html">Struct Ringbuffer_Index</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structSampling__Acceleration.html">Struct Sampling_Acceleration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structSampling__Handle.html">Struct Sampling_Handle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structSampling__State.html">Struct Sampling_State</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransport__Acceleration.html">Struct Transport_Acceleration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransport__Header.html">Struct Transport_Header</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransport__ResponseFlags.html">Struct Transport_ResponseFlags</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportFrame.html">Struct TransportFrame</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportRx__DeviceReboot.html">Struct TransportRx_DeviceReboot</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportRx__GetBufferStatus.html">Struct TransportRx_GetBufferStatus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportRx__GetDeviceSetup.html">Struct TransportRx_GetDeviceSetup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportRx__GetFirmwareVersion.html">Struct TransportRx_GetFirmwareVersion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportRx__GetOutputDataRate.html">Struct TransportRx_GetOutputDataRate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportRx__GetRange.html">Struct TransportRx_GetRange</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportRx__GetScale.html">Struct TransportRx_GetScale</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportRx__GetUptime.html">Struct TransportRx_GetUptime</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportRx__SamplingStart.html">Struct TransportRx_SamplingStart</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportRx__SamplingStop.html">Struct TransportRx_SamplingStop</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportRx__SetOutputDataRate.html">Struct TransportRx_SetOutputDataRate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportRx__SetRange.html">Struct TransportRx_SetRange</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportRx__SetScale.html">Struct TransportRx_SetScale</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__Acceleration.html">Struct TransportTx_Acceleration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__BufferOverflow.html">Struct TransportTx_BufferOverflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__BufferStatus.html">Struct TransportTx_BufferStatus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__DeviceSetup.html">Struct TransportTx_DeviceSetup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__Fault.html">Struct TransportTx_Fault</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__FifoOverflow.html">Struct TransportTx_FifoOverflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__FirmwareVersion.html">Struct TransportTx_FirmwareVersion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__OutputDataRate.html">Struct TransportTx_OutputDataRate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__Range.html">Struct TransportTx_Range</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__SamplingAborted.html">Struct TransportTx_SamplingAborted</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__SamplingFinished.html">Struct TransportTx_SamplingFinished</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__SamplingStarted.html">Struct TransportTx_SamplingStarted</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__SamplingStopped.html">Struct TransportTx_SamplingStopped</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__Scale.html">Struct TransportTx_Scale</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__TransmissionError.html">Struct TransportTx_TransmissionError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTransportTx__Uptime.html">Struct TransportTx_Uptime</a></li>
+<li class="toctree-l4"><a class="reference internal" href="structTwoBytes.html">Struct TwoBytes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#enums">Enums</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#unions">Unions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#variables">Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="library_root.html#defines">Defines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="library_root.html">Library API</a></li>
+      <li class="breadcrumb-item active">Struct Adxl345Register_IntEnable</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="struct-adxl345register-intenable">
+<span id="exhale-struct-structadxl345register-intenable"></span><h1>Struct Adxl345Register_IntEnable<a class="headerlink" href="#struct-adxl345register-intenable" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p>Defined in <a class="reference internal" href="file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h.html#file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-register-h"><span class="std std-ref">File adxl345_register.h</span></a></p></li>
+</ul>
+<section id="struct-documentation">
+<h2>Struct Documentation<a class="headerlink" href="#struct-documentation" title="Link to this heading"></a></h2>
+<dl class="cpp struct">
+<dt class="sig sig-object cpp" id="_CPPv425Adxl345Register_IntEnable">
+<span id="_CPPv325Adxl345Register_IntEnable"></span><span id="_CPPv225Adxl345Register_IntEnable"></span><span id="Adxl345Register_IntEnable"></span><span class="target" id="structAdxl345Register__IntEnable"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">Adxl345Register_IntEnable</span></span></span><a class="headerlink" href="#_CPPv425Adxl345Register_IntEnable" title="Link to this definition"></a><br /></dt>
+<dd><p>ADXL345 register.</p>
+<p>See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28) </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25Adxl345Register_IntEnable7overrunE">
+<span id="_CPPv3N25Adxl345Register_IntEnable7overrunE"></span><span id="_CPPv2N25Adxl345Register_IntEnable7overrunE"></span><span id="Adxl345Register_IntEnable::overrun__uint8_t"></span><span class="target" id="structAdxl345Register__IntEnable_1ad056b36bbe5b76bd7803c43be71c3c15"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">overrun</span></span></span><a class="headerlink" href="#_CPPv4N25Adxl345Register_IntEnable7overrunE" title="Link to this definition"></a><br /></dt>
+<dd><p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Adxl345Register_IntEnable_Overrun </p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25Adxl345Register_IntEnable9watermarkE">
+<span id="_CPPv3N25Adxl345Register_IntEnable9watermarkE"></span><span id="_CPPv2N25Adxl345Register_IntEnable9watermarkE"></span><span id="Adxl345Register_IntEnable::watermark__uint8_t"></span><span class="target" id="structAdxl345Register__IntEnable_1ada595fee341535e674ff1ab62908678d"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">watermark</span></span></span><a class="headerlink" href="#_CPPv4N25Adxl345Register_IntEnable9watermarkE" title="Link to this definition"></a><br /></dt>
+<dd><p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Adxl345Register_IntEnable_Watermark </p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25Adxl345Register_IntEnable8freeFallE">
+<span id="_CPPv3N25Adxl345Register_IntEnable8freeFallE"></span><span id="_CPPv2N25Adxl345Register_IntEnable8freeFallE"></span><span id="Adxl345Register_IntEnable::freeFall__uint8_t"></span><span class="target" id="structAdxl345Register__IntEnable_1a76bdbd23c0dd8f1cfb2599897bc46da4"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">freeFall</span></span></span><a class="headerlink" href="#_CPPv4N25Adxl345Register_IntEnable8freeFallE" title="Link to this definition"></a><br /></dt>
+<dd><p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Adxl345Register_IntEnable_FreeFall </p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25Adxl345Register_IntEnable10inactivityE">
+<span id="_CPPv3N25Adxl345Register_IntEnable10inactivityE"></span><span id="_CPPv2N25Adxl345Register_IntEnable10inactivityE"></span><span id="Adxl345Register_IntEnable::inactivity__uint8_t"></span><span class="target" id="structAdxl345Register__IntEnable_1a448d8e4f3117858fe66d8aa86ff63cb1"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">inactivity</span></span></span><a class="headerlink" href="#_CPPv4N25Adxl345Register_IntEnable10inactivityE" title="Link to this definition"></a><br /></dt>
+<dd><p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Adxl345Register_IntEnable_Inactivity </p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25Adxl345Register_IntEnable8activityE">
+<span id="_CPPv3N25Adxl345Register_IntEnable8activityE"></span><span id="_CPPv2N25Adxl345Register_IntEnable8activityE"></span><span id="Adxl345Register_IntEnable::activity__uint8_t"></span><span class="target" id="structAdxl345Register__IntEnable_1af37d03450408c523d02e33e6a7c3d77a"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">activity</span></span></span><a class="headerlink" href="#_CPPv4N25Adxl345Register_IntEnable8activityE" title="Link to this definition"></a><br /></dt>
+<dd><p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Adxl345Register_IntEnable_Activity </p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25Adxl345Register_IntEnable9doubleTapE">
+<span id="_CPPv3N25Adxl345Register_IntEnable9doubleTapE"></span><span id="_CPPv2N25Adxl345Register_IntEnable9doubleTapE"></span><span id="Adxl345Register_IntEnable::doubleTap__uint8_t"></span><span class="target" id="structAdxl345Register__IntEnable_1a008d75456a2f781e0ced05bfd630b076"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">doubleTap</span></span></span><a class="headerlink" href="#_CPPv4N25Adxl345Register_IntEnable9doubleTapE" title="Link to this definition"></a><br /></dt>
+<dd><p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Adxl345Register_IntEnable_DoubleTap </p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25Adxl345Register_IntEnable9singleTapE">
+<span id="_CPPv3N25Adxl345Register_IntEnable9singleTapE"></span><span id="_CPPv2N25Adxl345Register_IntEnable9singleTapE"></span><span id="Adxl345Register_IntEnable::singleTap__uint8_t"></span><span class="target" id="structAdxl345Register__IntEnable_1a75c1e85bc9b8fd93bfb07907facf7514"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">singleTap</span></span></span><a class="headerlink" href="#_CPPv4N25Adxl345Register_IntEnable9singleTapE" title="Link to this definition"></a><br /></dt>
+<dd><p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Adxl345Register_IntEnable_SingleTap </p>
+</div>
+</p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N25Adxl345Register_IntEnable9dataReadyE">
+<span id="_CPPv3N25Adxl345Register_IntEnable9dataReadyE"></span><span id="_CPPv2N25Adxl345Register_IntEnable9dataReadyE"></span><span id="Adxl345Register_IntEnable::dataReady__uint8_t"></span><span class="target" id="structAdxl345Register__IntEnable_1af333435e67915aad26dd1613de3ad0f7"></span><span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">dataReady</span></span></span><a class="headerlink" href="#_CPPv4N25Adxl345Register_IntEnable9dataReadyE" title="Link to this definition"></a><br /></dt>
+<dd><p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p>Adxl345Register_IntEnable_DataReady </p>
+</div>
+</p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

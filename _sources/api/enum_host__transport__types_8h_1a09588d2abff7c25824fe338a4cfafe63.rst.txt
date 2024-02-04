@@ -1,0 +1,14 @@
+.. _exhale_enum_host__transport__types_8h_1a09588d2abff7c25824fe338a4cfafe63:
+
+Enum TransportRx_SetOutputDataRate_Rate
+=======================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: TransportRx_SetOutputDataRate_Rate
+   :project: My Proj

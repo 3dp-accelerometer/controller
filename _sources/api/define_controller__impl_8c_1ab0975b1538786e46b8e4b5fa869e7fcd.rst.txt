@@ -1,0 +1,14 @@
+.. _exhale_define_controller__impl_8c_1ab0975b1538786e46b8e4b5fa869e7fcd:
+
+Define MYSTRINGIZE0
+===================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: MYSTRINGIZE0
+   :project: My Proj

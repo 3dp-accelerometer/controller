@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a5836fa9015aac1fba7d702bdc6493d8a:
+
+Function ControllerImpl_init
+============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: ControllerImpl_init()
+   :project: My Proj

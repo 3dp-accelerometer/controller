@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1a9edcde0584b2ab6c4a7b49eaec49d237:
+
+Variable range
+==============
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: range
+   :project: My Proj

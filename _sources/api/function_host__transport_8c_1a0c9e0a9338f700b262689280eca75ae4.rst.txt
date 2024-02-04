@@ -1,0 +1,14 @@
+.. _exhale_function_host__transport_8c_1a0c9e0a9338f700b262689280eca75ae4:
+
+Function Transport_resetBuffer(struct HostTransport_Handle \*)
+==============================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Transport_resetBuffer(struct HostTransport_Handle *)
+   :project: My Proj

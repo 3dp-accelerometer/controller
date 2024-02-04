@@ -1,0 +1,14 @@
+.. _exhale_define_ringbuffer__impl_8h_1a018e3f6206f28db535e27ce850a65cb3:
+
+Define RINGBUFFER_STORAGE_ITEM_SIZE_BYTES
+=========================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_ringbuffer_impl.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: RINGBUFFER_STORAGE_ITEM_SIZE_BYTES
+   :project: My Proj

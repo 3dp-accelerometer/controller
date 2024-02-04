@@ -1,0 +1,23 @@
+
+.. _program_listing_file__home_runner_work_controller_controller_Inc_fw_sampling_impl.h:
+
+Program Listing for File sampling_impl.h
+========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_controller_controller_Inc_fw_sampling_impl.h>` (``/home/runner/work/controller/controller/Inc/fw/sampling_impl.h``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   /**
+    * \file sampling_impl.h
+    *
+    * API of sampling implementation.
+    */
+   
+   #pragma once
+   
+   struct Sampling_Handle;
+   
+   void SamplingImpl_doWaitDelay5usImpl(struct Sampling_Handle *handle);

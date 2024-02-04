@@ -1,0 +1,14 @@
+.. _exhale_function_sampling_8c_1a5abc5903ad31d2108b55d8d8283b0e5f:
+
+Function transmitPending
+========================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_sampling_src_sampling.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: transmitPending(struct Sampling_Handle *)
+   :project: My Proj

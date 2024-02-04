@@ -1,0 +1,288 @@
+:orphan:
+
+
+Full API
+========
+
+Directories
+***********
+
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_Inc.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_Inc_fw.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_lib.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_lib_adxl345.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_lib_adxl345_src.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_lib_controller.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_lib_controller_src.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_lib_host_transport.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_lib_host_transport_src.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_lib_ringbuffer.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_lib_ringbuffer_src.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_lib_sampling.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_lib_sampling_src.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_Src.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_Src_fw.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_test.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_test_test_ringbuffer.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   dir__home_runner_work_controller_controller_test_utils.rst
+
+Files
+*****
+
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_adxl345_src_adxl345.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_spi_types.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_Src_fw_adxl345_transport_impl.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_Inc_fw_adxl345_transport_impl.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_controller_src_controller.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_controller_src_controller.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_Src_fw_controller_impl.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_Inc_fw_controller_impl.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_Inc_fw_debug.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_host_transport_src_from_host_transport.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_host_transport_src_from_host_transport.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_host_transport_src_host_transport.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_host_transport_src_host_transport.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_Src_fw_host_transport_impl.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_Inc_fw_host_transport_impl.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_Inc_fw_led.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_Src_fw_ringbuffer_impl.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_Inc_fw_ringbuffer_impl.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_test_utils_run-tests.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_sampling_src_sampling.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_sampling_src_sampling.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_Src_fw_sampling_impl.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_Inc_fw_sampling_impl.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_sampling_src_sampling_types.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_test_test_ringbuffer_test.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_test_unity_config.h.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_Src_fw_version.c.rst
+
+.. toctree::
+   :maxdepth: 5
+
+   file__home_runner_work_controller_controller_Inc_fw_version.h.rst

@@ -1,0 +1,14 @@
+.. _exhale_define_unity__config_8h_1a1ef6780dec5ea37eea810e22e1a4c632:
+
+Define UNITY_INCLUDE_EXEC_TIME
+==============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_test_unity_config.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: UNITY_INCLUDE_EXEC_TIME
+   :project: My Proj

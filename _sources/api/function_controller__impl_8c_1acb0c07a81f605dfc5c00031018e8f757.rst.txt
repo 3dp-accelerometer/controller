@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1acb0c07a81f605dfc5c00031018e8f757:
+
+Function fault_onHardFaultHandler
+=================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: fault_onHardFaultHandler()
+   :project: My Proj

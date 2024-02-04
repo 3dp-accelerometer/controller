@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a3cc3a5ce4a78ca23e9b994dda2c89637:
+
+Function host_onRequestGetUptime
+================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: host_onRequestGetUptime()
+   :project: My Proj

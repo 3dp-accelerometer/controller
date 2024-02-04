@@ -1,0 +1,53 @@
+
+.. _file__home_runner_work_controller_controller_Inc_fw_sampling_impl.h:
+
+File sampling_impl.h
+====================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_Inc_fw>` (``/home/runner/work/controller/controller/Inc/fw``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/Inc/fw/sampling_impl.h``)
+-------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_Inc_fw_sampling_impl.h.rst
+
+
+
+Detailed Description
+--------------------
+
+API of sampling implementation. 
+
+
+
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+- :ref:`file__home_runner_work_controller_controller_Src_fw_sampling_impl.c`
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_sampling__impl_8h_1a0de7f15197d79f90ae4d0ae89147cccd`
+

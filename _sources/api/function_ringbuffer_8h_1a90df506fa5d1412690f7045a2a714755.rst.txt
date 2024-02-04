@@ -1,0 +1,14 @@
+.. _exhale_function_ringbuffer_8h_1a90df506fa5d1412690f7045a2a714755:
+
+Function Ringbuffer_isEmpty(const struct Ringbuffer \*)
+=======================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Ringbuffer_isEmpty(const struct Ringbuffer *)
+   :project: My Proj

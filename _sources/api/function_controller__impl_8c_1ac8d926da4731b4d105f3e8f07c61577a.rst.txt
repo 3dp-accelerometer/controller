@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1ac8d926da4731b4d105f3e8f07c61577a:
+
+Function fault_onUsageFaultHandler
+==================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: fault_onUsageFaultHandler()
+   :project: My Proj

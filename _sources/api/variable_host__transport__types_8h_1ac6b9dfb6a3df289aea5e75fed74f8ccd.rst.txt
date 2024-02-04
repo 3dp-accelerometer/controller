@@ -1,0 +1,14 @@
+.. _exhale_variable_host__transport__types_8h_1ac6b9dfb6a3df289aea5e75fed74f8ccd:
+
+Variable Transport_HeaderId_Tx_TransmissionError
+================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: Transport_HeaderId_Tx_TransmissionError
+   :project: My Proj

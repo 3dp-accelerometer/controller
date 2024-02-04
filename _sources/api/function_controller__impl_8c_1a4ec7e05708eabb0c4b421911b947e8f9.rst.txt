@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a4ec7e05708eabb0c4b421911b947e8f9:
+
+Function sampling_doDisableSensorImpl
+=====================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: sampling_doDisableSensorImpl()
+   :project: My Proj

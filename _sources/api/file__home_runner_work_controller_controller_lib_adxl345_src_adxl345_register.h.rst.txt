@@ -1,0 +1,162 @@
+
+.. _file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h:
+
+File adxl345_register.h
+=======================
+
+|exhale_lsh| :ref:`Parent directory <dir__home_runner_work_controller_controller_lib_adxl345_src>` (``/home/runner/work/controller/controller/lib/adxl345/src``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``/home/runner/work/controller/controller/lib/adxl345/src/adxl345_register.h``)
+-------------------------------------------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h.rst
+
+
+
+Detailed Description
+--------------------
+
+ADXL345 register definitions. 
+
+
+
+
+Includes
+--------
+
+
+- ``inttypes.h``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_transport_types.h`
+
+
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structAdxl345Register__BwRate`
+
+- :ref:`exhale_struct_structAdxl345Register__DataFormat`
+
+- :ref:`exhale_struct_structAdxl345Register__FifoCtl`
+
+- :ref:`exhale_struct_structAdxl345Register__FifoStatus`
+
+- :ref:`exhale_struct_structAdxl345Register__IntEnable`
+
+- :ref:`exhale_struct_structAdxl345Register__IntMap`
+
+- :ref:`exhale_struct_structAdxl345Register__PowerCtl`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_adxl345__register_8h_1acc02190e97ec034a25eca812c23b98d6`
+
+
+Unions
+------
+
+
+- :ref:`exhale_union_unionAdxl345Register`
+
+
+Variables
+---------
+
+
+- :ref:`exhale_variable_adxl345__register_8h_1a3420c8f78425c8970b2868d78abbce2e`
+
+- :ref:`exhale_variable_adxl345__register_8h_1acdfd9f6432ec3eee8e7be7efb1a2dec8`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a6e4be064ea971273c6259af76bb9a32d`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a5372599aeb847c2b1f1b56b5270e8e76`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a93b0907ea07c3b6be23444e0dec73760`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a47b1d0dc45f9b7da2092fffb11a5b6e0`
+
+- :ref:`exhale_variable_adxl345__register_8h_1aae0908816800863313ff083c84c903df`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a15c1d3def8ea37e52de9ed0db8dc30cd`
+
+- :ref:`exhale_variable_adxl345__register_8h_1ac4eaa5de8ee14643f71be6145e82524b`
+
+- :ref:`exhale_variable_adxl345__register_8h_1acf9bcc20052a8187846fb82935e9b45a`
+
+- :ref:`exhale_variable_adxl345__register_8h_1ac5ba7b0d7a3f41805b050c35e17d0bbb`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a1558e28e9bd987127aa73bebbc1f59f8`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a80cb95696b39a93fbf3ff70a453383e5`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a6223f169ec7f986bb2b5c822270d94e7`
+
+- :ref:`exhale_variable_adxl345__register_8h_1abc3b103dde8dc5818d978805495a8a73`
+
+- :ref:`exhale_variable_adxl345__register_8h_1af90c0732bf1a59f6f8291714c18cb1cd`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a401a1c7bc3fea1c7fbc21fd378f68376`
+
+- :ref:`exhale_variable_adxl345__register_8h_1aaf3f0e48a6284f3dcc2f8c18566277ae`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a7bafb935dc96b0d6ef23c35d57ec98d5`
+
+- :ref:`exhale_variable_adxl345__register_8h_1afb916727068c402389508917b64dc82b`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a5b3fdb1d6accca0c21fbf4ae06912074`
+
+- :ref:`exhale_variable_adxl345__register_8h_1aaff90b525f34bedcce6c6e69a26541e1`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a6e314e6949fce335374afdcc02e518f9`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a1c7dfe6bdcd6993494b6e94993ef5607`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a14425184ac354135e844ac0557667f41`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a6c4505263fab9a43d25826a97795031a`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a9a6b60dd9a65d1af54f4b12a1a3d77c5`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a9edcde0584b2ab6c4a7b49eaec49d237`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a20ed0fb1e9a2b4e0c3ae40fc5e348962`
+
+- :ref:`exhale_variable_adxl345__register_8h_1aea542246eb60ba1d3d083ceae4e5e2ce`
+
+- :ref:`exhale_variable_adxl345__register_8h_1ac492110d02c2421f1638fb8626c0c712`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a74cbe59d5c067e7dec7b2bf0957f002b`
+
+- :ref:`exhale_variable_adxl345__register_8h_1ad704111a3ed0809de990087ed155569d`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a4d876947d880a19cf85d11ce818b579a`
+
+- :ref:`exhale_variable_adxl345__register_8h_1ad47e9b879c95a25ce124bd5611ff9497`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a14cb75436545b3d993304c28feaeebd9`
+
+- :ref:`exhale_variable_adxl345__register_8h_1a3585201b190b39d2d702daa9192323a3`
+

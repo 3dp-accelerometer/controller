@@ -1,0 +1,14 @@
+.. _exhale_function_to__host__transport_8h_1a8754e0a5c57a604a9960aa1014ecbd81:
+
+Function TransportTx_TxUptime(struct HostTransport_Handle \*, uint32_t)
+=======================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TransportTx_TxUptime(struct HostTransport_Handle *, uint32_t)
+   :project: My Proj

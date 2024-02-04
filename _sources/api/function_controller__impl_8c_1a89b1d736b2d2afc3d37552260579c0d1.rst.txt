@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a89b1d736b2d2afc3d37552260579c0d1:
+
+Function sensor_doGetRangeImpl
+==============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: sensor_doGetRangeImpl()
+   :project: My Proj

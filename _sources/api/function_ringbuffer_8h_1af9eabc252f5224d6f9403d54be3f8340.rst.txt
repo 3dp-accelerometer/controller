@@ -1,0 +1,14 @@
+.. _exhale_function_ringbuffer_8h_1af9eabc252f5224d6f9403d54be3f8340:
+
+Function Ringbuffer_putCount(const struct Ringbuffer \*)
+========================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_ringbuffer_src_ringbuffer.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: Ringbuffer_putCount(const struct Ringbuffer *)
+   :project: My Proj

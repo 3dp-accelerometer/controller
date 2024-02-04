@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1ada37b4670349e284523369e4980833c2:
+
+Function sampling_onTransmissionErrorCb
+=======================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: sampling_onTransmissionErrorCb()
+   :project: My Proj

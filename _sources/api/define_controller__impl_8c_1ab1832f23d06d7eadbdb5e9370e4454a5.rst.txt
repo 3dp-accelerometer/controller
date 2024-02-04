@@ -1,0 +1,14 @@
+.. _exhale_define_controller__impl_8c_1ab1832f23d06d7eadbdb5e9370e4454a5:
+
+Define SAMPLING_DECLARE_INITIALIZER
+===================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: SAMPLING_DECLARE_INITIALIZER
+   :project: My Proj

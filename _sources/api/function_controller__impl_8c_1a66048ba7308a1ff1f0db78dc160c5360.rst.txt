@@ -1,0 +1,14 @@
+.. _exhale_function_controller__impl_8c_1a66048ba7308a1ff1f0db78dc160c5360:
+
+Function sampling_doForwardAccelerationBufferImpl
+=================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Src_fw_controller_impl.c`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: sampling_doForwardAccelerationBufferImpl()
+   :project: My Proj

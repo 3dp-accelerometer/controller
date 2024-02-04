@@ -1,0 +1,14 @@
+.. _exhale_enum_host__transport__types_8h_1a0f8fc7d8d585dcd04d9142be969268e5:
+
+Enum TransportRx_SetScale_Scale
+===============================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_host_transport_types.h`
+
+
+Enum Documentation
+------------------
+
+
+.. doxygenenum:: TransportRx_SetScale_Scale
+   :project: My Proj

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Program Listing for File adxl345_flags.h &mdash; 3dpaxxel 0.1.10 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx-toolbox-code.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/sphinx-toolbox.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sphinx_toolbox_installation.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=bafade30"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/sphinx_toolbox_installation.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            3dpaxxel
+          </a>
+              <div class="version">
+                0.1.10
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#workflow">Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#connecting-modules">Connecting Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../readme.html#references">References</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../readme-wireshark.html">Wireshark Dissector for 3DP Axxel</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library_root.html">Library API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/3dp-accelerometer/controller">GitHub</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">3dpaxxel</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Program Listing for File adxl345_flags.h</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="program-listing-for-file-adxl345-flags-h">
+<span id="program-listing-file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-flags-h"></span><h1>Program Listing for File adxl345_flags.h<a class="headerlink" href="#program-listing-for-file-adxl345-flags-h" title="Link to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_flags.h.html#file-home-runner-work-controller-controller-lib-adxl345-src-adxl345-flags-h"><span class="std std-ref">Return to documentation for file</span></a> (<code class="docutils literal notranslate"><span class="pre">/home/runner/work/controller/controller/lib/adxl345/src/adxl345_flags.h</span></code>)</p>
+<div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * \file adxl345_flags.h</span>
+<span class="cm"> *</span>
+<span class="cm"> * ADXL345 address and register flags definitions.</span>
+<span class="cm"> */</span>
+
+<span class="cp">#pragma once</span>
+
+<span class="cm">/* ADXL345 Sensor Register Addresses -----------------------------------------*/</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register address listing.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G p.23</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_Address</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_devId</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="c1">// expected 0b11100101</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_reserved_01</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x01U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_reserved_1C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x1CU</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_thresTap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x1DU</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_offsX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x1EU</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_offsY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x1FU</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_offsZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x20U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_dur</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x21U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_latent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x22U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_window</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x23U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_thresAct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x24U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_thresInact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x25U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_timeInact</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x26U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_actInactCtl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x27U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_thresFf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x28U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_timeFf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x29U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_tapAxes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x2AU</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_actTapStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x2BU</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_bwRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x2CU</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_powerCtl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x2DU</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_intEnable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x2EU</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_intMap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x2FU</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_intSource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x30U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_dataFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x31U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_dataX0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x32U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_dataX1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x33U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_dataY0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x34U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_dataY1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x35U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_dataZ0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x36U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_dataZ1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x37U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_fifoCtl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x38U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_Address_fifoStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x39U</span>
+<span class="p">};</span>
+
+<span class="cm">/* ADXL345 Register Flags ----------------------------------------------------*/</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_PowerCtl_Wakeup</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_PowerCtl_Wakeup_8Hz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b00U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_PowerCtl_Wakeup_4Hz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b01U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_PowerCtl_Wakeup_2Hz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b10U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_PowerCtl_Wakeup_1Hz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b11U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_PowerCtl_Sleep</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_PowerCtl_Sleep_normalMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_PowerCtl_Sleep_sleepMode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_PowerCtl_Measure</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_PowerCtl_Measure_standby</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_PowerCtl_Measure_measure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_PowerCtl_AutoSleep</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_PowerCtl_AutoSleep_disabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_PowerCtl_AutoSleep_function</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_PowerCtl_Link</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_PowerCtl_Link_concurrent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_PowerCtl_Link_serial</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntEnable_Overrun</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_Overrun_disable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_Overrun_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntEnable_Watermark</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_Watermark_disable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_Watermark_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntEnable_FreeFall</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_FreeFall_disable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_FreeFall_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntEnable_Inactivity</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_Inactivity_disable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_Inactivity_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntEnable_Activity</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_Activity_disable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_Activity_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntEnable_DoubleTap</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_DoubleTap_disable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_DoubleTap_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntEnable_SingleTap</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_SingleTap_disable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_SingleTap_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntEnable_DataReady</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_DataReady_disable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntEnable_DataReady_enable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntMap_Overrun</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_Overrun_int1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_Overrun_int2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntMap_Watermark</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_Watermark_int1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_Watermark_int2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntMap_FreeFall</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_FreeFall_int1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_FreeFall_int2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntMap_Inactivity</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_Inactivity_int1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_Inactivity_int2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntMap_Activity</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_Activity_int1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_Activity_int2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntMap_DoubleTap</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_DoubleTap_int1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_DoubleTap_int2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntMap_SingleTap</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_SingleTap_int1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_SingleTap_int2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_IntMap_DataReady</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_DataReady_int1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_IntMap_DataReady_int2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_SelfTest</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_DataFormat_SelfTest_disableForce</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_DataFormat_SelfTest_enableForce</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_SpiBit</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_DataFormat_SpiBit_3wire</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_DataFormat_SpiBit_4wire</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_IntInvert</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_DataFormat_IntInvert_activeHigh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_DataFormat_IntInvert_activeLow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_FullResBit</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// full range 10bit: each range scales to 10 bit output</span>
+<span class="w">  </span><span class="n">Adxl345Flags_DataFormat_FullResBit_10bit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="c1">// full resolution (16 bit): each range maintains 4mg/LSB</span>
+<span class="w">  </span><span class="n">Adxl345Flags_DataFormat_FullResBit_fullRes_4mg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_Justify</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_DataFormat_Justify_lsbRight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="c1">///&lt; intuitive ordering</span>
+<span class="w">  </span><span class="n">Adxl345Flags_DataFormat_Justify_msbLeft</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span><span class="w">  </span><span class="c1">///&lt; left aligned</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_DataFormat_Range</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_DataFormat_Range_2g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b00U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_DataFormat_Range_4g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b01U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_DataFormat_Range_8g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b10U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_DataFormat_Range_16g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b11U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_BwRate_Rate</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr3200</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1111U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr1600</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1110U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr800</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1101U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr400</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1100U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr200</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1011U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr100</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1010U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr50</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1001U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr25</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1000U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr12_5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b0111U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr6_25</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b0110U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr3_13</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b0101U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr1_56</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b0100U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr0_78</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b0011U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr0_39</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b0010U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr0_20</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b0001U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_normalPowerOdr0_10</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b0000U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_reducedPowerOdr400</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1100U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_reducedPowerOdr200</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1011U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_reducedPowerOdr100</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1010U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_reducedPowerOdr50</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1001U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_reducedPowerOdr25</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b1000U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_Rate_reducedPowerOdr12_5</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b0111U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_BwRate_LowPower</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_LowPower_normal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_BwRate_LowPower_reduced</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_FifoCtl_Trigger</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_FifoCtl_Trigger_int1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_FifoCtl_Trigger_int2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_FifoCtl_FifoMode</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_FifoCtl_FifoMode_bypass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b00U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_FifoCtl_FifoMode_fifo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b01U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_FifoCtl_FifoMode_stream</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b10U</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_FifoCtl_FifoMode_trigger</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b11U</span>
+<span class="p">};</span>
+
+<span class="cm">/**</span>
+<span class="cm"> * ADXL345 register flags.</span>
+<span class="cm"> *</span>
+<span class="cm"> * See section Register Map in ADXL345 Data Sheet Rev.G (pp.24-28)</span>
+<span class="cm"> */</span>
+<span class="k">enum</span><span class="w"> </span><span class="nc">Adxl345Flags_FifoStatus_FifoTrig</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">Adxl345Flags_FifoStatus_FifoTrig_triggered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Adxl345Flags_FifoStatus_FifoTrig_notTriggered</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1U</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023 Raoul Rubien.
+      <span class="lastupdated">Last updated on 04 Feb 2024.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

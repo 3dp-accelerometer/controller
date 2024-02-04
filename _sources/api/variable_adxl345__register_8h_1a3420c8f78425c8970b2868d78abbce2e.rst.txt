@@ -1,0 +1,14 @@
+.. _exhale_variable_adxl345__register_8h_1a3420c8f78425c8970b2868d78abbce2e:
+
+Variable _zeroD4
+================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_adxl345_src_adxl345_register.h`
+
+
+Variable Documentation
+----------------------
+
+
+.. doxygenvariable:: _zeroD4
+   :project: My Proj

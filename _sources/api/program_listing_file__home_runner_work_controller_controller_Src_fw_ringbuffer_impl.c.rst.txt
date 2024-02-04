@@ -1,0 +1,16 @@
+
+.. _program_listing_file__home_runner_work_controller_controller_Src_fw_ringbuffer_impl.c:
+
+Program Listing for File ringbuffer_impl.c
+==========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file__home_runner_work_controller_controller_Src_fw_ringbuffer_impl.c>` (``/home/runner/work/controller/controller/Src/fw/ringbuffer_impl.c``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   #include "fw/ringbuffer_impl.h"
+   
+   // NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
+   uint8_t ringbufferStorage[RINGBUFFER_STORAGE_SIZE_BYTES] = {0};

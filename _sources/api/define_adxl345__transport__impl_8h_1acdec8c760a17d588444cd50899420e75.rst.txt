@@ -1,0 +1,14 @@
+.. _exhale_define_adxl345__transport__impl_8h_1acdec8c760a17d588444cd50899420e75:
+
+Define ADXL345_HANDLE_INITIALIZER
+=================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_Inc_fw_adxl345_transport_impl.h`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: ADXL345_HANDLE_INITIALIZER
+   :project: My Proj

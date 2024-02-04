@@ -1,0 +1,14 @@
+.. _exhale_function_to__host__transport_8h_1a534fd48fd518d57461e15771a0ccc190:
+
+Function TransportTx_TxSamplingFinished(struct HostTransport_Handle \*)
+=======================================================================
+
+- Defined in :ref:`file__home_runner_work_controller_controller_lib_host_transport_src_to_host_transport.h`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: TransportTx_TxSamplingFinished(struct HostTransport_Handle *)
+   :project: My Proj
